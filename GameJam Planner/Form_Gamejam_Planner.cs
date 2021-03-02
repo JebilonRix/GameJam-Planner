@@ -23,21 +23,24 @@ namespace GameJam_Planner
                 using (StreamReader sr = new StreamReader(@"saved.txt"))
                 {
                     {
-                        textBoxTheme.Text = sr.ReadLine();
-                        textBoxName.Text = sr.ReadLine();
-                        textBoxGenre.Text = sr.ReadLine();
-                        textBoxArtStyle.Text = sr.ReadLine();
-                        textBoxGameEngine.Text = sr.ReadLine();
+                        string[] Lines = new string[] {
+                        textBoxTheme.Text, textBoxName.Text, textBoxGenre.Text, textBoxArtStyle.Text, textBoxGameEngine.Text,
+                        richTextBoxDy.Text,richTextBoxMec.Text,richTextBoxCl.Text,richTextBoxMet.Text , richTextBoxCh.Text ,
+                        richTextBoxOb.Text, richTextBoxAn.Text,richTextBoxMus.Text ,richTextBoxSo.Text };
 
-                        richTextBoxDy.Text = sr.ReadLine();
-                        richTextBoxMec.Text = sr.ReadLine();
-                        richTextBoxCl.Text = sr.ReadLine();
-                        richTextBoxMet.Text = sr.ReadLine();
-                        richTextBoxCh.Text = sr.ReadLine();
-                        richTextBoxOb.Text = sr.ReadLine();
-                        richTextBoxAn.Text = sr.ReadLine();
-                        richTextBoxMus.Text = sr.ReadLine();
-                        richTextBoxSo.Text = sr.ReadLine();
+                        while (true)
+                        {
+                            int i = 0;
+
+                            if (sr.ReadLine() == "----")
+                            {
+                                i++;
+                            }
+                            else
+                            {
+                                Lines[i] = sr.ReadLine() + "\n";
+                            }
+                        }
                     }
                 }
             }

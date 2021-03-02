@@ -67,7 +67,7 @@ namespace GameJam_Planner
 
             }
         }
-
+   
         // fırmül
     }
 }
