@@ -53,6 +53,7 @@ namespace GameJam_Planner
             this.groupBoxMusics = new System.Windows.Forms.GroupBox();
             this.richTextBoxMus = new System.Windows.Forms.RichTextBox();
             this.groupBoxStyle = new System.Windows.Forms.GroupBox();
+            this.comboBoxEngines = new System.Windows.Forms.ComboBox();
             this.groupBoxMechanics = new System.Windows.Forms.GroupBox();
             this.richTextBoxMec = new System.Windows.Forms.RichTextBox();
             this.groupBoxDynamics = new System.Windows.Forms.GroupBox();
@@ -64,7 +65,8 @@ namespace GameJam_Planner
             this.textBoxTheme = new System.Windows.Forms.TextBox();
             this.textBoxGenre = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBoxGameEngine = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxGroupName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
@@ -74,9 +76,6 @@ namespace GameJam_Planner
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.buttonPrint = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.textBoxGroupName = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxEngines = new System.Windows.Forms.ComboBox();
             this.groupBoxCode.SuspendLayout();
             this.groupBoxMethod.SuspendLayout();
             this.groupBoxClass.SuspendLayout();
@@ -355,7 +354,6 @@ namespace GameJam_Planner
             this.groupBoxStyle.Controls.Add(this.comboBoxEngines);
             this.groupBoxStyle.Controls.Add(this.groupBoxMechanics);
             this.groupBoxStyle.Controls.Add(this.groupBoxDynamics);
-            this.groupBoxStyle.Controls.Add(this.textBoxGameEngine);
             this.groupBoxStyle.Controls.Add(this.label11);
             this.groupBoxStyle.Controls.Add(this.label4);
             this.groupBoxStyle.Controls.Add(this.textBoxArtStyle);
@@ -374,6 +372,17 @@ namespace GameJam_Planner
             this.groupBoxStyle.TabIndex = 2;
             this.groupBoxStyle.TabStop = false;
             this.groupBoxStyle.Text = "Main";
+            // 
+            // comboBoxEngines
+            // 
+            this.comboBoxEngines.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.comboBoxEngines.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.comboBoxEngines.FormattingEnabled = true;
+            this.comboBoxEngines.Location = new System.Drawing.Point(130, 205);
+            this.comboBoxEngines.Name = "comboBoxEngines";
+            this.comboBoxEngines.Size = new System.Drawing.Size(154, 27);
+            this.comboBoxEngines.TabIndex = 6;
+            this.comboBoxEngines.Text = "-Select-";
             // 
             // groupBoxMechanics
             // 
@@ -480,14 +489,23 @@ namespace GameJam_Planner
             this.label3.TabIndex = 1;
             this.label3.Text = "Game Engine:";
             // 
-            // textBoxGameEngine
+            // label5
             // 
-            this.textBoxGameEngine.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBoxGameEngine.Location = new System.Drawing.Point(290, 203);
-            this.textBoxGameEngine.Name = "textBoxGameEngine";
-            this.textBoxGameEngine.Size = new System.Drawing.Size(25, 29);
-            this.textBoxGameEngine.TabIndex = 0;
-            this.textBoxGameEngine.Visible = false;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label5.Location = new System.Drawing.Point(10, 32);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(63, 19);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Group:";
+            // 
+            // textBoxGroupName
+            // 
+            this.textBoxGroupName.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBoxGroupName.Location = new System.Drawing.Point(130, 30);
+            this.textBoxGroupName.Name = "textBoxGroupName";
+            this.textBoxGroupName.Size = new System.Drawing.Size(155, 29);
+            this.textBoxGroupName.TabIndex = 0;
             // 
             // label1
             // 
@@ -584,35 +602,6 @@ namespace GameJam_Planner
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // textBoxGroupName
-            // 
-            this.textBoxGroupName.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBoxGroupName.Location = new System.Drawing.Point(130, 30);
-            this.textBoxGroupName.Name = "textBoxGroupName";
-            this.textBoxGroupName.Size = new System.Drawing.Size(155, 29);
-            this.textBoxGroupName.TabIndex = 0;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label5.Location = new System.Drawing.Point(10, 32);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 19);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Group:";
-            // 
-            // comboBoxEngines
-            // 
-            this.comboBoxEngines.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.comboBoxEngines.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.comboBoxEngines.FormattingEnabled = true;
-            this.comboBoxEngines.Location = new System.Drawing.Point(130, 205);
-            this.comboBoxEngines.Name = "comboBoxEngines";
-            this.comboBoxEngines.Size = new System.Drawing.Size(154, 27);
-            this.comboBoxEngines.TabIndex = 6;
-            this.comboBoxEngines.Text = "-Select-";
-            // 
             // Form_Gamejam_Planner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 22F);
@@ -668,7 +657,6 @@ namespace GameJam_Planner
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxTheme;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxGameEngine;
         private System.Windows.Forms.PictureBox pictureBoxUi;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;

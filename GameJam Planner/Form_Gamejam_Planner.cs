@@ -10,16 +10,9 @@ namespace GameJam_Planner
 {
     public partial class Form_Gamejam_Planner : Form
     {
-        
-        public int TextBoxCount = 6;
-        public int RichTextBoxCount = 9;
-        public int SumOfTextBox;
-
         public Form_Gamejam_Planner()
         {
             InitializeComponent();
-
-            SumOfTextBox = RichTextBoxCount + TextBoxCount;
 
             tabPage1.Text = "Main";
             tabPage2.Text = "Code";
@@ -36,147 +29,84 @@ namespace GameJam_Planner
         }
         private void Form_Gamejam_Planner_Load(object sender, EventArgs e)
         {
-            if (File.Exists(@"saved.txt") == true)
-            {
-                string[] TxtLine = new string[TextBoxCount];
-                string[] RichTxtLine = new string[RichTextBoxCount];
-
-                using (StreamReader sr = new StreamReader(@"saved.txt"))
-                {
-                    {
-                        int i = 0;
-
-                        while (i < SumOfTextBox)
-                        {
-                            string x = sr.ReadLine().Trim();
-
-                            if (x == "----")
-                            {
-                                i++;
-                            }
-                            else if (i < TextBoxCount && x != "----")
-                            {
-                                TxtLine[i] += x;
-                            }
-                            else if (TextBoxCount <= i && x != "----" && i < SumOfTextBox)
-                            {
-                                RichTxtLine[i - TextBoxCount] += x + '\n';
-                            }
-                        }
-                    }
-
-                    textBoxGroupName.Text = TxtLine[0];
-                    textBoxTheme.Text = TxtLine[1];
-                    textBoxName.Text = TxtLine[2];
-                    textBoxGenre.Text = TxtLine[3];
-                    textBoxArtStyle.Text = TxtLine[4];
-                    comboBoxEngines.SelectedItem = TxtLine[5];
-
-                    richTextBoxDy.Text = RichTxtLine[0];
-                    richTextBoxMec.Text = RichTxtLine[1];
-                    richTextBoxCl.Text = RichTxtLine[2];
-                    richTextBoxMet.Text = RichTxtLine[3];
-                    richTextBoxCh.Text = RichTxtLine[4];
-                    richTextBoxOb.Text = RichTxtLine[5];
-                    richTextBoxAn.Text = RichTxtLine[6];
-                    richTextBoxMus.Text = RichTxtLine[7];
-                    richTextBoxSo.Text = RichTxtLine[8];
-                }
-            }
-
-
-            string j;
-            
-            using (StreamReader sr = new StreamReader(@"Deneme.json"))
-            {
-                 j = sr.ReadToEnd();
-            }
-
-
             MyJson mj = new MyJson();
             mj = JsonConvert.DeserializeObject<MyJson>(File.ReadAllText(@"Deneme.json"));
 
-            Debug.WriteLine(mj.Dynamics);
+            textBoxGroupName.Text = mj.Group;
+            textBoxTheme.Text = mj.Theme;
+            textBoxName.Text = mj.Name;
+            textBoxGenre.Text = mj.Genre;
+            textBoxArtStyle.Text = mj.ArtStyle;
+            comboBoxEngines.SelectedItem = mj.GameEngine;
+            richTextBoxDy.Text = mj.Dynamics;
+            richTextBoxMec.Text = mj.Mechanics;
+            richTextBoxCl.Text = mj.Classes;
+            richTextBoxMet.Text = mj.Methods;
+            richTextBoxCh.Text = mj.Characters;
+            richTextBoxOb.Text = mj.Objects;
+            richTextBoxAn.Text = mj.Animations;
+            richTextBoxMus.Text = mj.Musics;
+            richTextBoxSo.Text = mj.Sounds;
 
-            
-
-            if (File.Exists(@"ui.jpg") == true)
+            if (File.Exists(@"ui.jpg"))
             {
-                pictureBoxUi.Image = Image.FromFile(@"ui.jpg");
+                pictureBoxUi.Image = Image.FromFile(mj.UI);
             }
-            if (File.Exists(@"menu.jpg") == true)
+            if (File.Exists(@"menu.jpg"))
             {
-                pictureBoxMenu.Image = Image.FromFile(@"menu.jpg");
+                pictureBoxMenu.Image = Image.FromFile(mj.Menu);
             }
-            if (File.Exists(@"background.jpg") == true)
+            if (File.Exists(@"background.jpg"))
             {
-                pictureBoxBackground.Image = Image.FromFile(@"background.jpg");
+                pictureBoxBackground.Image = Image.FromFile(mj.Background);
             }
         }
         private void buttonSave_Click(object sender, EventArgs e)
         {
             MyJson mj = new MyJson();
 
-            
-
-            mj.Animations = "";
-
             if (comboBoxEngines.SelectedItem != null)
             {
-                textBoxGameEngine.Text = comboBoxEngines.SelectedItem.ToString();
+
                 mj.GameEngine = comboBoxEngines.SelectedItem.ToString();
             }
 
-
-            
-
-
-            string[] TextBoxArray = new string[] { textBoxGroupName.Text,textBoxTheme.Text, textBoxName.Text, textBoxGenre.Text,
-            textBoxArtStyle.Text,textBoxGameEngine.Text,richTextBoxDy.Text,richTextBoxMec.Text,richTextBoxCl.Text,richTextBoxMet.Text,
-            richTextBoxCh.Text,richTextBoxOb.Text,richTextBoxAn.Text,richTextBoxMus.Text,richTextBoxSo.Text};
-
-            string intermediacy = "----";
-
-            mj.Group = TextBoxArray[0];
-            mj.Theme = TextBoxArray[1];
-            mj.Name = TextBoxArray[2];
-            mj.Genre = TextBoxArray[3];
-            mj.ArtStyle = TextBoxArray[4];
+            mj.Group = textBoxGroupName.Text;
+            mj.Theme = textBoxTheme.Text;
+            mj.Name = textBoxName.Text;
+            mj.Genre = textBoxGenre.Text;
+            mj.ArtStyle = textBoxArtStyle.Text;
+            mj.Animations = richTextBoxAn.Text;
+            mj.Characters = richTextBoxCh.Text;
             mj.Dynamics = richTextBoxDy.Text;
-            mj.UI = @"ui.jpg";
-
-            string myjson = JsonConvert.SerializeObject(mj);
-
-            File.WriteAllText(@"Deneme.json", myjson);
-
-
-            using (StreamWriter sw = new StreamWriter(@"saved.txt"))
-            {
-                for (int i = 0; i < TextBoxArray.Length; i++)
-                {
-                    sw.WriteLine(TextBoxArray[i]);
-                    sw.WriteLine(intermediacy);
-                }
-            }
+            mj.Mechanics = richTextBoxMec.Text;
+            mj.Classes = richTextBoxCl.Text;
+            mj.Methods = richTextBoxMet.Text;
+            mj.Objects = richTextBoxOb.Text;
+            mj.Musics = richTextBoxMus.Text;
+            mj.Sounds = richTextBoxSo.Text;
 
             if (pictureBoxUi.Image != null)
             {
-                ImageSaveController(pictureBoxUi, "ui.jpg");
+                mj.UI = "ui.jpg";
             }
             if (pictureBoxMenu.Image != null)
             {
-                ImageSaveController(pictureBoxMenu, "menu.jpg");
+                mj.Menu = "menu.jpg";
             }
             if (pictureBoxBackground.Image != null)
             {
-                ImageSaveController(pictureBoxBackground, "background.jpg");
+                mj.Background = "background.jpg";
             }
+
+            string myjson = JsonConvert.SerializeObject(mj);
+            File.WriteAllText(@"Deneme.json", myjson);
         }
         private void button_Print_Click(object sender, EventArgs e)
         {
             Class_Print cp = new Class_Print();
 
-            string[] MainLines = { textBoxGroupName.Text, textBoxTheme.Text, textBoxName.Text, textBoxGenre.Text, textBoxArtStyle.Text, textBoxGameEngine.Text };
+            string[] MainLines = { textBoxGroupName.Text, textBoxTheme.Text, textBoxName.Text, textBoxGenre.Text, textBoxArtStyle.Text };
 
             string[] richDy = richTextBoxDy.Text.Split('\n');
             string[] richMec = richTextBoxMec.Text.Split('\n');
@@ -190,52 +120,46 @@ namespace GameJam_Planner
 
             cp.Printer(MainLines, richDy, richMec, richCl, richMet, richCh, richOb, richAn, richMus, richSo);
         }
+
+        #region ImageImport
         private void pictureBoxUi_Click(object sender, EventArgs e)
         {
-            pictureBoxUi.Image = ImageImporter(pictureBoxUi).Image;
+            string ui = "ui.jpg";
+            pictureBoxUi.Image = ImageImporter(pictureBoxUi, ui).Image;
         }
         private void pictureBoxMenu_Click(object sender, EventArgs e)
         {
-            pictureBoxMenu.Image = ImageImporter(pictureBoxMenu).Image;
+            string menu = "menu.jpg";
+            pictureBoxMenu.Image = ImageImporter(pictureBoxMenu, menu).Image;
         }
         private void pictureBoxBackground_Click(object sender, EventArgs e)
         {
-            pictureBoxBackground.Image = ImageImporter(pictureBoxBackground).Image;
+            string back = "background.jpg";
+            pictureBoxBackground.Image = ImageImporter(pictureBoxBackground, back).Image;
         }
-
-        private PictureBox ImageImporter(PictureBox pictureBox)
+        private PictureBox ImageImporter(PictureBox pictureBox, string name)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    pictureBox.Image = Image.FromFile(ofd.FileName);
+                    if (File.Exists(name))
+                    {
+                        //resmini sikem
+                        pictureBox.Image.Dispose();
+                        File.Delete(name);
+                    }
+                    else
+                    {
+                        pictureBox.Image = Image.FromFile(ofd.FileName);
+                        File.Copy(ofd.FileName, name);
+                    }
                 }
             }
 
             return pictureBox;
         }
-        private void ImageSaveController(PictureBox pictureBox, string FileName)
-        {
-            if (File.Exists(@"FileName") == true)
-            {
-                File.Delete(@"FileName");
-
-                string Fuat="Fuat";
-
-
-
-
-                pictureBox.Image.Save(@Fuat);
-                FileName = Fuat;
-
-                pictureBox.Image.Save(@FileName);
-            }
-            else
-            {
-                pictureBox.Image.Save(@"FileName");
-            }
-        }
+        #endregion
 
     }
 }
