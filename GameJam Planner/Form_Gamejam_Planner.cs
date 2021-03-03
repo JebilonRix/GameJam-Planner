@@ -7,41 +7,76 @@ namespace GameJam_Planner
 {
     public partial class Form_Gamejam_Planner : Form
     {
-        public Class_Print cp = new Class_Print();
+        public int TextBoxCount = 6;
+        public int RichTextBoxCount = 9;
+        public int SumOfTextBox;
+
         public Form_Gamejam_Planner()
         {
             InitializeComponent();
+
+            SumOfTextBox = RichTextBoxCount + TextBoxCount;
+
             tabPage1.Text = "Main";
             tabPage2.Text = "Code";
             tabPage3.Text = "Art";
             tabPage4.Text = "Sound";
+
+            string[] Engines = new string[] { "Unity", "Unreal", "Godot", "CryEngine", "GameMaker" };
+
+            for (int i = 0; i < Engines.Length; i++)
+            {
+                comboBoxEngines.Items.Add(Engines[i]);
+            }
+
         }
         private void Form_Gamejam_Planner_Load(object sender, EventArgs e)
         {
             if (File.Exists(@"saved.txt") == true)
             {
+                string[] TxtLine = new string[TextBoxCount];
+                string[] RichTxtLine = new string[RichTextBoxCount];
+
                 using (StreamReader sr = new StreamReader(@"saved.txt"))
                 {
                     {
-                        string[] Lines = new string[] {
-                        textBoxTheme.Text, textBoxName.Text, textBoxGenre.Text, textBoxArtStyle.Text, textBoxGameEngine.Text,
-                        richTextBoxDy.Text,richTextBoxMec.Text,richTextBoxCl.Text,richTextBoxMet.Text , richTextBoxCh.Text ,
-                        richTextBoxOb.Text, richTextBoxAn.Text,richTextBoxMus.Text ,richTextBoxSo.Text };
+                        int i = 0;
 
-                        while (true)
+                        while (i < SumOfTextBox)
                         {
-                            int i = 0;
+                            string x = sr.ReadLine().Trim();
 
-                            if (sr.ReadLine() == "----")
+                            if (x == "----")
                             {
                                 i++;
                             }
-                            else
+                            else if (i < TextBoxCount && x != "----")
                             {
-                                Lines[i] = sr.ReadLine() + "\n";
+                                TxtLine[i] += x;
+                            }
+                            else if (TextBoxCount <= i && x != "----" && i < SumOfTextBox)
+                            {
+                                RichTxtLine[i - TextBoxCount] += x + '\n';
                             }
                         }
                     }
+
+                    textBoxGroupName.Text = TxtLine[0];
+                    textBoxTheme.Text = TxtLine[1];
+                    textBoxName.Text = TxtLine[2];
+                    textBoxGenre.Text = TxtLine[3];
+                    textBoxArtStyle.Text = TxtLine[4];
+                    comboBoxEngines.SelectedItem = TxtLine[5];
+
+                    richTextBoxDy.Text = RichTxtLine[0];
+                    richTextBoxMec.Text = RichTxtLine[1];
+                    richTextBoxCl.Text = RichTxtLine[2];
+                    richTextBoxMet.Text = RichTxtLine[3];
+                    richTextBoxCh.Text = RichTxtLine[4];
+                    richTextBoxOb.Text = RichTxtLine[5];
+                    richTextBoxAn.Text = RichTxtLine[6];
+                    richTextBoxMus.Text = RichTxtLine[7];
+                    richTextBoxSo.Text = RichTxtLine[8];
                 }
             }
 
@@ -58,9 +93,46 @@ namespace GameJam_Planner
                 pictureBoxBackground.Image = Image.FromFile(@"background.jpg");
             }
         }
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            if (comboBoxEngines.SelectedItem != null)
+            {
+                textBoxGameEngine.Text = comboBoxEngines.SelectedItem.ToString();
+            }
+
+            string[] TextBoxArray = new string[] { textBoxGroupName.Text,textBoxTheme.Text, textBoxName.Text, textBoxGenre.Text,
+            textBoxArtStyle.Text,textBoxGameEngine.Text,richTextBoxDy.Text,richTextBoxMec.Text,richTextBoxCl.Text,richTextBoxMet.Text,
+            richTextBoxCh.Text,richTextBoxOb.Text,richTextBoxAn.Text,richTextBoxMus.Text,richTextBoxSo.Text};
+
+            string intermediacy = "----";
+
+            using (StreamWriter sw = new StreamWriter(@"saved.txt"))
+            {
+                for (int i = 0; i < TextBoxArray.Length; i++)
+                {
+                    sw.WriteLine(TextBoxArray[i]);
+                    sw.WriteLine(intermediacy);
+                }
+            }
+
+            if (pictureBoxUi.Image != null)
+            {
+                ImageSaveController(pictureBoxUi, "ui.jpg");
+            }
+            if (pictureBoxMenu.Image != null)
+            {
+                ImageSaveController(pictureBoxMenu, "menu.jpg");
+            }
+            if (pictureBoxBackground.Image != null)
+            {
+                ImageSaveController(pictureBoxBackground, "background.jpg");
+            }
+        }
         private void button_Print_Click(object sender, EventArgs e)
         {
-            string[] MainLines = { textBoxTheme.Text, textBoxName.Text, textBoxGenre.Text, textBoxArtStyle.Text, textBoxGameEngine.Text };
+            Class_Print cp = new Class_Print();
+
+            string[] MainLines = { textBoxGroupName.Text, textBoxTheme.Text, textBoxName.Text, textBoxGenre.Text, textBoxArtStyle.Text, textBoxGameEngine.Text };
 
             string[] richDy = richTextBoxDy.Text.Split('\n');
             string[] richMec = richTextBoxMec.Text.Split('\n');
@@ -74,41 +146,6 @@ namespace GameJam_Planner
 
             cp.Printer(MainLines, richDy, richMec, richCl, richMet, richCh, richOb, richAn, richMus, richSo);
         }
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-            using (StreamWriter sw = new StreamWriter(@"saved.txt"))
-            {
-                sw.WriteLine(textBoxTheme.Text + "\n" + "----");
-                sw.WriteLine(textBoxName.Text + "\n" + "----");
-                sw.WriteLine(textBoxGenre.Text + "\n" + "----");
-                sw.WriteLine(textBoxArtStyle.Text + "\n" + "----");
-                sw.WriteLine(textBoxGameEngine.Text + "\n" + "----");
-
-                sw.WriteLine(richTextBoxDy.Text + "\n" + "----");
-                sw.WriteLine(richTextBoxMec.Text + "\n" + "----");
-                sw.WriteLine(richTextBoxCl.Text + "\n" + "----");
-                sw.WriteLine(richTextBoxMet.Text + "\n" + "----");
-                sw.WriteLine(richTextBoxCh.Text + "\n" + "----");
-                sw.WriteLine(richTextBoxOb.Text + "\n" + "----");
-                sw.WriteLine(richTextBoxAn.Text + "\n" + "----");
-                sw.WriteLine(richTextBoxMus.Text + "\n" + "----");
-                sw.WriteLine(richTextBoxSo.Text + "\n" + "----");
-            }
-
-            if (pictureBoxUi.Image != null)
-            {
-                pictureBoxUi.Image.Save(@"ui.jpg");
-            }
-            if (pictureBoxMenu.Image != null)
-            {
-                pictureBoxMenu.Image.Save(@"menu.jpg");
-            }
-            if (pictureBoxBackground.Image != null)
-            {
-                pictureBoxBackground.Image.Save(@"background.jpg");
-            }
-
-        }
         private void pictureBoxUi_Click(object sender, EventArgs e)
         {
             pictureBoxUi.Image = ImageImporter(pictureBoxUi).Image;
@@ -121,6 +158,7 @@ namespace GameJam_Planner
         {
             pictureBoxBackground.Image = ImageImporter(pictureBoxBackground).Image;
         }
+
         private PictureBox ImageImporter(PictureBox pictureBox)
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
@@ -132,6 +170,24 @@ namespace GameJam_Planner
             }
 
             return pictureBox;
+        }
+        private void ImageSaveController(PictureBox pictureBox, string FileName)
+        {
+            if (File.Exists(@"FileName") == true)
+            {
+                File.Delete(@"FileName");
+
+                string Fuat="Fuat";
+
+                pictureBox.Image.Save(@Fuat);
+                FileName = Fuat;
+
+                pictureBox.Image.Save(@FileName);
+            }
+            else
+            {
+                pictureBox.Image.Save(@"FileName");
+            }
         }
 
     }

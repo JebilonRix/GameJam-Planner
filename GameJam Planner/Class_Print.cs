@@ -40,11 +40,12 @@ namespace GameJam_Planner
                     {
                         string PrintLine =
                             "GENERAL" + "\n" +
-                            "Theme:" + MainLines1[0] + "\n"
-                           + "Name:" + MainLines1[1] + "\n"
-                           + "Genre:" + MainLines1[2] + "\n"
-                           + "Style:" + MainLines1[3] + "\n"
-                           + "Engine:" + MainLines1[4] + "\n" + "\n"
+                            "Group Name:" + MainLines1[0] + "\n"
+                           + "Theme:" + MainLines1[1] + "\n"
+                           + "Name:" + MainLines1[2] + "\n"
+                           + "Genre:" + MainLines1[3] + "\n"
+                           + "Style:" + MainLines1[4] + "\n"
+                           + "Engine:" + MainLines1[5] + "\n" + "\n"
                            + "MAIN" + "\n"
                            + "Dynamics" + "\n" + Organizer(MainLines2) + "\n"
                            + "Mechanics" + "\n" + Organizer(MainLines3) + "\n" + "\n"

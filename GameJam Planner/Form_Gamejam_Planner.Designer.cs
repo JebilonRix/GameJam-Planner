@@ -74,6 +74,9 @@ namespace GameJam_Planner
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.buttonPrint = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.textBoxGroupName = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.comboBoxEngines = new System.Windows.Forms.ComboBox();
             this.groupBoxCode.SuspendLayout();
             this.groupBoxMethod.SuspendLayout();
             this.groupBoxClass.SuspendLayout();
@@ -99,9 +102,10 @@ namespace GameJam_Planner
             // 
             // groupBoxCode
             // 
-            this.groupBoxCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.groupBoxCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBoxCode.Controls.Add(this.groupBoxMethod);
             this.groupBoxCode.Controls.Add(this.groupBoxClass);
+            this.groupBoxCode.ForeColor = System.Drawing.SystemColors.Info;
             this.groupBoxCode.Location = new System.Drawing.Point(3, 6);
             this.groupBoxCode.Name = "groupBoxCode";
             this.groupBoxCode.Size = new System.Drawing.Size(1230, 620);
@@ -112,7 +116,8 @@ namespace GameJam_Planner
             // groupBoxMethod
             // 
             this.groupBoxMethod.Controls.Add(this.richTextBoxMet);
-            this.groupBoxMethod.Location = new System.Drawing.Point(725, 38);
+            this.groupBoxMethod.ForeColor = System.Drawing.SystemColors.Info;
+            this.groupBoxMethod.Location = new System.Drawing.Point(402, 38);
             this.groupBoxMethod.Name = "groupBoxMethod";
             this.groupBoxMethod.Size = new System.Drawing.Size(375, 419);
             this.groupBoxMethod.TabIndex = 5;
@@ -121,6 +126,7 @@ namespace GameJam_Planner
             // 
             // richTextBoxMet
             // 
+            this.richTextBoxMet.BackColor = System.Drawing.Color.Silver;
             this.richTextBoxMet.Location = new System.Drawing.Point(6, 28);
             this.richTextBoxMet.Name = "richTextBoxMet";
             this.richTextBoxMet.Size = new System.Drawing.Size(363, 373);
@@ -130,7 +136,8 @@ namespace GameJam_Planner
             // groupBoxClass
             // 
             this.groupBoxClass.Controls.Add(this.richTextBoxCl);
-            this.groupBoxClass.Location = new System.Drawing.Point(90, 38);
+            this.groupBoxClass.ForeColor = System.Drawing.SystemColors.Info;
+            this.groupBoxClass.Location = new System.Drawing.Point(6, 38);
             this.groupBoxClass.Name = "groupBoxClass";
             this.groupBoxClass.Size = new System.Drawing.Size(375, 419);
             this.groupBoxClass.TabIndex = 4;
@@ -139,6 +146,7 @@ namespace GameJam_Planner
             // 
             // richTextBoxCl
             // 
+            this.richTextBoxCl.BackColor = System.Drawing.Color.Silver;
             this.richTextBoxCl.Location = new System.Drawing.Point(6, 28);
             this.richTextBoxCl.Name = "richTextBoxCl";
             this.richTextBoxCl.Size = new System.Drawing.Size(363, 373);
@@ -147,7 +155,7 @@ namespace GameJam_Planner
             // 
             // groupBoxArt
             // 
-            this.groupBoxArt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.groupBoxArt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBoxArt.Controls.Add(this.groupBoxAnimations);
             this.groupBoxArt.Controls.Add(this.groupBoxObjects);
             this.groupBoxArt.Controls.Add(this.groupBoxChracters);
@@ -157,6 +165,7 @@ namespace GameJam_Planner
             this.groupBoxArt.Controls.Add(this.label14);
             this.groupBoxArt.Controls.Add(this.label8);
             this.groupBoxArt.Controls.Add(this.label7);
+            this.groupBoxArt.ForeColor = System.Drawing.SystemColors.Info;
             this.groupBoxArt.Location = new System.Drawing.Point(3, 6);
             this.groupBoxArt.Name = "groupBoxArt";
             this.groupBoxArt.Size = new System.Drawing.Size(1230, 620);
@@ -167,6 +176,7 @@ namespace GameJam_Planner
             // groupBoxAnimations
             // 
             this.groupBoxAnimations.Controls.Add(this.richTextBoxAn);
+            this.groupBoxAnimations.ForeColor = System.Drawing.SystemColors.Info;
             this.groupBoxAnimations.Location = new System.Drawing.Point(832, 308);
             this.groupBoxAnimations.Name = "groupBoxAnimations";
             this.groupBoxAnimations.Size = new System.Drawing.Size(375, 265);
@@ -176,6 +186,7 @@ namespace GameJam_Planner
             // 
             // richTextBoxAn
             // 
+            this.richTextBoxAn.BackColor = System.Drawing.Color.Silver;
             this.richTextBoxAn.Location = new System.Drawing.Point(6, 43);
             this.richTextBoxAn.Name = "richTextBoxAn";
             this.richTextBoxAn.Size = new System.Drawing.Size(363, 179);
@@ -185,6 +196,7 @@ namespace GameJam_Planner
             // groupBoxObjects
             // 
             this.groupBoxObjects.Controls.Add(this.richTextBoxOb);
+            this.groupBoxObjects.ForeColor = System.Drawing.SystemColors.Info;
             this.groupBoxObjects.Location = new System.Drawing.Point(420, 308);
             this.groupBoxObjects.Name = "groupBoxObjects";
             this.groupBoxObjects.Size = new System.Drawing.Size(375, 265);
@@ -194,6 +206,7 @@ namespace GameJam_Planner
             // 
             // richTextBoxOb
             // 
+            this.richTextBoxOb.BackColor = System.Drawing.Color.Silver;
             this.richTextBoxOb.Location = new System.Drawing.Point(6, 43);
             this.richTextBoxOb.Name = "richTextBoxOb";
             this.richTextBoxOb.Size = new System.Drawing.Size(363, 179);
@@ -203,6 +216,7 @@ namespace GameJam_Planner
             // groupBoxChracters
             // 
             this.groupBoxChracters.Controls.Add(this.richTextBoxCh);
+            this.groupBoxChracters.ForeColor = System.Drawing.SystemColors.Info;
             this.groupBoxChracters.Location = new System.Drawing.Point(14, 308);
             this.groupBoxChracters.Name = "groupBoxChracters";
             this.groupBoxChracters.Size = new System.Drawing.Size(375, 265);
@@ -212,6 +226,7 @@ namespace GameJam_Planner
             // 
             // richTextBoxCh
             // 
+            this.richTextBoxCh.BackColor = System.Drawing.Color.Silver;
             this.richTextBoxCh.Location = new System.Drawing.Point(6, 43);
             this.richTextBoxCh.Name = "richTextBoxCh";
             this.richTextBoxCh.Size = new System.Drawing.Size(363, 179);
@@ -220,7 +235,7 @@ namespace GameJam_Planner
             // 
             // pictureBoxBackground
             // 
-            this.pictureBoxBackground.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.pictureBoxBackground.BackColor = System.Drawing.Color.DarkGray;
             this.pictureBoxBackground.Location = new System.Drawing.Point(832, 57);
             this.pictureBoxBackground.Name = "pictureBoxBackground";
             this.pictureBoxBackground.Size = new System.Drawing.Size(377, 240);
@@ -231,7 +246,7 @@ namespace GameJam_Planner
             // 
             // pictureBoxMenu
             // 
-            this.pictureBoxMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.pictureBoxMenu.BackColor = System.Drawing.Color.DarkGray;
             this.pictureBoxMenu.Location = new System.Drawing.Point(420, 57);
             this.pictureBoxMenu.Name = "pictureBoxMenu";
             this.pictureBoxMenu.Size = new System.Drawing.Size(377, 240);
@@ -242,7 +257,7 @@ namespace GameJam_Planner
             // 
             // pictureBoxUi
             // 
-            this.pictureBoxUi.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.pictureBoxUi.BackColor = System.Drawing.Color.DarkGray;
             this.pictureBoxUi.Location = new System.Drawing.Point(14, 51);
             this.pictureBoxUi.Name = "pictureBoxUi";
             this.pictureBoxUi.Size = new System.Drawing.Size(377, 240);
@@ -257,9 +272,9 @@ namespace GameJam_Planner
             this.label14.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label14.Location = new System.Drawing.Point(828, 29);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(104, 19);
+            this.label14.Size = new System.Drawing.Size(110, 19);
             this.label14.TabIndex = 0;
-            this.label14.Text = "Background";
+            this.label14.Text = "Background:";
             // 
             // label8
             // 
@@ -267,9 +282,9 @@ namespace GameJam_Planner
             this.label8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.label8.Location = new System.Drawing.Point(416, 29);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 19);
+            this.label8.Size = new System.Drawing.Size(57, 19);
             this.label8.TabIndex = 0;
-            this.label8.Text = "Menu";
+            this.label8.Text = "Menu:";
             // 
             // label7
             // 
@@ -283,9 +298,10 @@ namespace GameJam_Planner
             // 
             // groupBoxMusic
             // 
-            this.groupBoxMusic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.groupBoxMusic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBoxMusic.Controls.Add(this.groupBoxSounds);
             this.groupBoxMusic.Controls.Add(this.groupBoxMusics);
+            this.groupBoxMusic.ForeColor = System.Drawing.SystemColors.Info;
             this.groupBoxMusic.Location = new System.Drawing.Point(0, 3);
             this.groupBoxMusic.Name = "groupBoxMusic";
             this.groupBoxMusic.Size = new System.Drawing.Size(1236, 626);
@@ -296,6 +312,7 @@ namespace GameJam_Planner
             // groupBoxSounds
             // 
             this.groupBoxSounds.Controls.Add(this.richTextBoxSo);
+            this.groupBoxSounds.ForeColor = System.Drawing.SystemColors.Info;
             this.groupBoxSounds.Location = new System.Drawing.Point(424, 40);
             this.groupBoxSounds.Name = "groupBoxSounds";
             this.groupBoxSounds.Size = new System.Drawing.Size(375, 265);
@@ -305,6 +322,7 @@ namespace GameJam_Planner
             // 
             // richTextBoxSo
             // 
+            this.richTextBoxSo.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.richTextBoxSo.Location = new System.Drawing.Point(6, 44);
             this.richTextBoxSo.Name = "richTextBoxSo";
             this.richTextBoxSo.Size = new System.Drawing.Size(363, 179);
@@ -314,6 +332,7 @@ namespace GameJam_Planner
             // groupBoxMusics
             // 
             this.groupBoxMusics.Controls.Add(this.richTextBoxMus);
+            this.groupBoxMusics.ForeColor = System.Drawing.SystemColors.Info;
             this.groupBoxMusics.Location = new System.Drawing.Point(17, 40);
             this.groupBoxMusics.Name = "groupBoxMusics";
             this.groupBoxMusics.Size = new System.Drawing.Size(375, 265);
@@ -323,6 +342,7 @@ namespace GameJam_Planner
             // 
             // richTextBoxMus
             // 
+            this.richTextBoxMus.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.richTextBoxMus.Location = new System.Drawing.Point(6, 44);
             this.richTextBoxMus.Name = "richTextBoxMus";
             this.richTextBoxMus.Size = new System.Drawing.Size(363, 179);
@@ -331,9 +351,11 @@ namespace GameJam_Planner
             // 
             // groupBoxStyle
             // 
-            this.groupBoxStyle.BackColor = System.Drawing.Color.Red;
+            this.groupBoxStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBoxStyle.Controls.Add(this.comboBoxEngines);
             this.groupBoxStyle.Controls.Add(this.groupBoxMechanics);
             this.groupBoxStyle.Controls.Add(this.groupBoxDynamics);
+            this.groupBoxStyle.Controls.Add(this.textBoxGameEngine);
             this.groupBoxStyle.Controls.Add(this.label11);
             this.groupBoxStyle.Controls.Add(this.label4);
             this.groupBoxStyle.Controls.Add(this.textBoxArtStyle);
@@ -341,9 +363,11 @@ namespace GameJam_Planner
             this.groupBoxStyle.Controls.Add(this.textBoxTheme);
             this.groupBoxStyle.Controls.Add(this.textBoxGenre);
             this.groupBoxStyle.Controls.Add(this.label3);
-            this.groupBoxStyle.Controls.Add(this.textBoxGameEngine);
+            this.groupBoxStyle.Controls.Add(this.label5);
+            this.groupBoxStyle.Controls.Add(this.textBoxGroupName);
             this.groupBoxStyle.Controls.Add(this.label1);
             this.groupBoxStyle.Controls.Add(this.textBoxName);
+            this.groupBoxStyle.ForeColor = System.Drawing.SystemColors.Info;
             this.groupBoxStyle.Location = new System.Drawing.Point(0, 3);
             this.groupBoxStyle.Name = "groupBoxStyle";
             this.groupBoxStyle.Size = new System.Drawing.Size(1230, 620);
@@ -354,6 +378,7 @@ namespace GameJam_Planner
             // groupBoxMechanics
             // 
             this.groupBoxMechanics.Controls.Add(this.richTextBoxMec);
+            this.groupBoxMechanics.ForeColor = System.Drawing.SystemColors.Info;
             this.groupBoxMechanics.Location = new System.Drawing.Point(747, 28);
             this.groupBoxMechanics.Name = "groupBoxMechanics";
             this.groupBoxMechanics.Size = new System.Drawing.Size(384, 343);
@@ -363,6 +388,7 @@ namespace GameJam_Planner
             // 
             // richTextBoxMec
             // 
+            this.richTextBoxMec.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.richTextBoxMec.Location = new System.Drawing.Point(16, 28);
             this.richTextBoxMec.Name = "richTextBoxMec";
             this.richTextBoxMec.Size = new System.Drawing.Size(350, 297);
@@ -372,6 +398,7 @@ namespace GameJam_Planner
             // groupBoxDynamics
             // 
             this.groupBoxDynamics.Controls.Add(this.richTextBoxDy);
+            this.groupBoxDynamics.ForeColor = System.Drawing.SystemColors.Window;
             this.groupBoxDynamics.Location = new System.Drawing.Point(344, 28);
             this.groupBoxDynamics.Name = "groupBoxDynamics";
             this.groupBoxDynamics.Size = new System.Drawing.Size(375, 343);
@@ -381,6 +408,8 @@ namespace GameJam_Planner
             // 
             // richTextBoxDy
             // 
+            this.richTextBoxDy.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.richTextBoxDy.ForeColor = System.Drawing.SystemColors.MenuText;
             this.richTextBoxDy.Location = new System.Drawing.Point(9, 28);
             this.richTextBoxDy.Name = "richTextBoxDy";
             this.richTextBoxDy.Size = new System.Drawing.Size(350, 297);
@@ -391,7 +420,7 @@ namespace GameJam_Planner
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label11.Location = new System.Drawing.Point(6, 175);
+            this.label11.Location = new System.Drawing.Point(10, 169);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 19);
             this.label11.TabIndex = 1;
@@ -401,7 +430,7 @@ namespace GameJam_Planner
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label4.Location = new System.Drawing.Point(6, 71);
+            this.label4.Location = new System.Drawing.Point(10, 65);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 19);
             this.label4.TabIndex = 1;
@@ -409,16 +438,17 @@ namespace GameJam_Planner
             // 
             // textBoxArtStyle
             // 
-            this.textBoxArtStyle.Location = new System.Drawing.Point(89, 169);
+            this.textBoxArtStyle.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBoxArtStyle.Location = new System.Drawing.Point(130, 170);
             this.textBoxArtStyle.Name = "textBoxArtStyle";
-            this.textBoxArtStyle.Size = new System.Drawing.Size(145, 29);
+            this.textBoxArtStyle.Size = new System.Drawing.Size(155, 29);
             this.textBoxArtStyle.TabIndex = 0;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(6, 140);
+            this.label2.Location = new System.Drawing.Point(10, 134);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(61, 19);
             this.label2.TabIndex = 1;
@@ -426,14 +456,16 @@ namespace GameJam_Planner
             // 
             // textBoxTheme
             // 
-            this.textBoxTheme.Location = new System.Drawing.Point(79, 65);
+            this.textBoxTheme.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBoxTheme.Location = new System.Drawing.Point(130, 65);
             this.textBoxTheme.Name = "textBoxTheme";
             this.textBoxTheme.Size = new System.Drawing.Size(155, 29);
             this.textBoxTheme.TabIndex = 0;
             // 
             // textBoxGenre
             // 
-            this.textBoxGenre.Location = new System.Drawing.Point(79, 134);
+            this.textBoxGenre.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBoxGenre.Location = new System.Drawing.Point(130, 135);
             this.textBoxGenre.Name = "textBoxGenre";
             this.textBoxGenre.Size = new System.Drawing.Size(155, 29);
             this.textBoxGenre.TabIndex = 0;
@@ -442,7 +474,7 @@ namespace GameJam_Planner
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.Location = new System.Drawing.Point(6, 210);
+            this.label3.Location = new System.Drawing.Point(10, 210);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(117, 19);
             this.label3.TabIndex = 1;
@@ -450,16 +482,18 @@ namespace GameJam_Planner
             // 
             // textBoxGameEngine
             // 
-            this.textBoxGameEngine.Location = new System.Drawing.Point(129, 204);
+            this.textBoxGameEngine.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBoxGameEngine.Location = new System.Drawing.Point(290, 203);
             this.textBoxGameEngine.Name = "textBoxGameEngine";
-            this.textBoxGameEngine.Size = new System.Drawing.Size(105, 29);
+            this.textBoxGameEngine.Size = new System.Drawing.Size(25, 29);
             this.textBoxGameEngine.TabIndex = 0;
+            this.textBoxGameEngine.Visible = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(6, 105);
+            this.label1.Location = new System.Drawing.Point(10, 99);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(59, 19);
             this.label1.TabIndex = 1;
@@ -467,7 +501,8 @@ namespace GameJam_Planner
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(79, 99);
+            this.textBoxName.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBoxName.Location = new System.Drawing.Point(130, 100);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(155, 29);
             this.textBoxName.TabIndex = 0;
@@ -549,16 +584,46 @@ namespace GameJam_Planner
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
+            // textBoxGroupName
+            // 
+            this.textBoxGroupName.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBoxGroupName.Location = new System.Drawing.Point(130, 30);
+            this.textBoxGroupName.Name = "textBoxGroupName";
+            this.textBoxGroupName.Size = new System.Drawing.Size(155, 29);
+            this.textBoxGroupName.TabIndex = 0;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label5.Location = new System.Drawing.Point(10, 32);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(63, 19);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Group:";
+            // 
+            // comboBoxEngines
+            // 
+            this.comboBoxEngines.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.comboBoxEngines.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.comboBoxEngines.FormattingEnabled = true;
+            this.comboBoxEngines.Location = new System.Drawing.Point(130, 205);
+            this.comboBoxEngines.Name = "comboBoxEngines";
+            this.comboBoxEngines.Size = new System.Drawing.Size(154, 27);
+            this.comboBoxEngines.TabIndex = 6;
+            this.comboBoxEngines.Text = "-Select-";
+            // 
             // Form_Gamejam_Planner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonPrint);
             this.Controls.Add(this.tabControl);
             this.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "Form_Gamejam_Planner";
             this.Text = "GameJam Planner";
@@ -637,6 +702,9 @@ namespace GameJam_Planner
         private System.Windows.Forms.RichTextBox richTextBoxMus;
         private System.Windows.Forms.Button buttonPrint;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBoxGroupName;
+        private System.Windows.Forms.ComboBox comboBoxEngines;
     }
 }
 
