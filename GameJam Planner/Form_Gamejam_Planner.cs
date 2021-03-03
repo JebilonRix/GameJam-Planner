@@ -1,12 +1,16 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+
 
 namespace GameJam_Planner
 {
     public partial class Form_Gamejam_Planner : Form
     {
+        
         public int TextBoxCount = 6;
         public int RichTextBoxCount = 9;
         public int SumOfTextBox;
@@ -80,6 +84,22 @@ namespace GameJam_Planner
                 }
             }
 
+
+            string j;
+            
+            using (StreamReader sr = new StreamReader(@"Deneme.json"))
+            {
+                 j = sr.ReadToEnd();
+            }
+
+
+            MyJson mj = new MyJson();
+            mj = JsonConvert.DeserializeObject<MyJson>(File.ReadAllText(@"Deneme.json"));
+
+            Debug.WriteLine(mj.Dynamics);
+
+            
+
             if (File.Exists(@"ui.jpg") == true)
             {
                 pictureBoxUi.Image = Image.FromFile(@"ui.jpg");
@@ -95,16 +115,40 @@ namespace GameJam_Planner
         }
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            MyJson mj = new MyJson();
+
+            
+
+            mj.Animations = "";
+
             if (comboBoxEngines.SelectedItem != null)
             {
                 textBoxGameEngine.Text = comboBoxEngines.SelectedItem.ToString();
+                mj.GameEngine = comboBoxEngines.SelectedItem.ToString();
             }
+
+
+            
+
 
             string[] TextBoxArray = new string[] { textBoxGroupName.Text,textBoxTheme.Text, textBoxName.Text, textBoxGenre.Text,
             textBoxArtStyle.Text,textBoxGameEngine.Text,richTextBoxDy.Text,richTextBoxMec.Text,richTextBoxCl.Text,richTextBoxMet.Text,
             richTextBoxCh.Text,richTextBoxOb.Text,richTextBoxAn.Text,richTextBoxMus.Text,richTextBoxSo.Text};
 
             string intermediacy = "----";
+
+            mj.Group = TextBoxArray[0];
+            mj.Theme = TextBoxArray[1];
+            mj.Name = TextBoxArray[2];
+            mj.Genre = TextBoxArray[3];
+            mj.ArtStyle = TextBoxArray[4];
+            mj.Dynamics = richTextBoxDy.Text;
+            mj.UI = @"ui.jpg";
+
+            string myjson = JsonConvert.SerializeObject(mj);
+
+            File.WriteAllText(@"Deneme.json", myjson);
+
 
             using (StreamWriter sw = new StreamWriter(@"saved.txt"))
             {
@@ -178,6 +222,9 @@ namespace GameJam_Planner
                 File.Delete(@"FileName");
 
                 string Fuat="Fuat";
+
+
+
 
                 pictureBox.Image.Save(@Fuat);
                 FileName = Fuat;
