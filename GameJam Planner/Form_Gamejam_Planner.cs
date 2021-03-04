@@ -50,15 +50,27 @@ namespace GameJam_Planner
 
             if (File.Exists(@"ui.jpg"))
             {
-                pictureBoxUi.Image = Image.FromFile(mj.UI);
+                if (mj.UI != null)
+                {
+                    pictureBoxUi.Image = Image.FromFile(mj.UI);
+                }
+                
             }
             if (File.Exists(@"menu.jpg"))
             {
-                pictureBoxMenu.Image = Image.FromFile(mj.Menu);
+                if (mj.Menu != null)
+                {
+                    pictureBoxMenu.Image = Image.FromFile(mj.Menu);
+                }
+               
             }
             if (File.Exists(@"background.jpg"))
             {
-                pictureBoxBackground.Image = Image.FromFile(mj.Background);
+                if (mj.Background != null)
+                {
+                    pictureBoxBackground.Image = Image.FromFile(mj.Background);
+                }
+                
             }
         }
         private void buttonSave_Click(object sender, EventArgs e)
@@ -124,18 +136,18 @@ namespace GameJam_Planner
         #region ImageImport
         private void pictureBoxUi_Click(object sender, EventArgs e)
         {
-            string ui = "ui.jpg";
-            pictureBoxUi.Image = ImageImporter(pictureBoxUi, ui).Image;
+            pictureBoxUi.Image.Dispose();
+            pictureBoxUi.Image = ImageImporter(pictureBoxUi, "ui.jpg").Image;
         }
         private void pictureBoxMenu_Click(object sender, EventArgs e)
         {
-            string menu = "menu.jpg";
-            pictureBoxMenu.Image = ImageImporter(pictureBoxMenu, menu).Image;
+            pictureBoxMenu.Image.Dispose();
+            pictureBoxMenu.Image = ImageImporter(pictureBoxMenu, "menu.jpg").Image;
         }
         private void pictureBoxBackground_Click(object sender, EventArgs e)
         {
-            string back = "background.jpg";
-            pictureBoxBackground.Image = ImageImporter(pictureBoxBackground, back).Image;
+            pictureBoxBackground.Image.Dispose();
+            pictureBoxBackground.Image = ImageImporter(pictureBoxBackground, "background.jpg").Image;
         }
         private PictureBox ImageImporter(PictureBox pictureBox, string name)
         {
@@ -143,17 +155,19 @@ namespace GameJam_Planner
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
+
                     if (File.Exists(name))
                     {
-                        //resmini sikem
-                        pictureBox.Image.Dispose();
-                        File.Delete(name);
+                        File.Copy(ofd.FileName, name, true);
                     }
                     else
                     {
-                        pictureBox.Image = Image.FromFile(ofd.FileName);
                         File.Copy(ofd.FileName, name);
                     }
+                    
+                    pictureBox.Image = Image.FromFile(name);
+
+
                 }
             }
 
