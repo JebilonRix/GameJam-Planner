@@ -103,6 +103,8 @@ namespace GameJam_Planner
 
             string myjson = JsonConvert.SerializeObject(mj);
             File.WriteAllText(@"Deneme.json", myjson);
+
+            MessageBox.Show("Saved");
         }
         private void button_Print_Click(object sender, EventArgs e)
         {
@@ -155,25 +157,30 @@ namespace GameJam_Planner
 
         #endregion
 
+        #region ImageRemove
+
+        private void ImageRemover(PictureBox pictureBox, string filename)
+        {
+            pictureBox.Image.Dispose();
+            File.Delete(filename);
+            pictureBox.Image = Image.FromFile(@"default\default.jpg");
+        }
         private void buttonUiDeleter_Click(object sender, EventArgs e)
         {
-            pictureBoxUi.Image.Dispose();
-            File.Delete("ui.jpg");
-            pictureBoxUi.ImageLocation = @"default\default.jpg";
+            ImageRemover(pictureBoxUi, "ui.jpg");
         }
 
         private void buttonMenuDeleter_Click(object sender, EventArgs e)
         {
-            pictureBoxMenu.Image.Dispose();
-            File.Delete("menu.jpg");
-            pictureBoxMenu.ImageLocation = @"default\default.jpg";
+            ImageRemover(pictureBoxMenu, "menu.jpg");
         }
 
         private void buttonBackgroundDeleter_Click(object sender, EventArgs e)
         {
-            pictureBoxBackground.Image.Dispose();
-            File.Delete("background.jpg");
-            pictureBoxBackground.ImageLocation = @"default\default.jpg";
+            ImageRemover(pictureBoxBackground, "background.jpg");
         }
+
+        #endregion
+
     }
 }
