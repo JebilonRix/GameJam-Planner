@@ -127,18 +127,18 @@ namespace GameJam_Planner
         #region ImageImport
         private void pictureBoxUi_Click(object sender, EventArgs e)
         {
-            string ui = "ui.jpg";
-            pictureBoxUi.Image = ImageImporter(pictureBoxUi, ui).Image;
+            pictureBoxUi.Image.Dispose();
+            pictureBoxUi.Image = ImageImporter(pictureBoxUi, "ui.jpg").Image;
         }
         private void pictureBoxMenu_Click(object sender, EventArgs e)
         {
-            string menu = "menu.jpg";
-            pictureBoxMenu.Image = ImageImporter(pictureBoxMenu, menu).Image;
+            pictureBoxMenu.Image.Dispose();
+            pictureBoxMenu.Image = ImageImporter(pictureBoxMenu, "menu.jpg").Image;
         }
         private void pictureBoxBackground_Click(object sender, EventArgs e)
         {
-            string back = "background.jpg";
-            pictureBoxBackground.Image = ImageImporter(pictureBoxBackground, back).Image;
+            pictureBoxBackground.Image.Dispose();
+            pictureBoxBackground.Image = ImageImporter(pictureBoxBackground, "background.jpg").Image;
         }
         private PictureBox ImageImporter(PictureBox pictureBox, string name)
         {
@@ -147,7 +147,7 @@ namespace GameJam_Planner
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     pictureBox.Image = Image.FromFile(ofd.FileName);
-                    File.Copy(ofd.FileName, name);
+                    File.Copy(ofd.FileName, name,true);
                 }
             }
 
