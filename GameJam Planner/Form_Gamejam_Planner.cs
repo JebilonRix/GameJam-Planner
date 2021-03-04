@@ -13,11 +13,6 @@ namespace GameJam_Planner
         {
             InitializeComponent();
 
-            tabPage1.Text = "Main";
-            tabPage2.Text = "Code";
-            tabPage3.Text = "Art";
-            tabPage4.Text = "Sound";
-
             string[] Engines = new string[] { "Unity", "Unreal", "Godot", "CryEngine", "GameMaker" };
 
             for (int i = 0; i < Engines.Length; i++)
@@ -127,27 +122,44 @@ namespace GameJam_Planner
         #region ImageImport
         private void pictureBoxUi_Click(object sender, EventArgs e)
         {
-            pictureBoxUi.Image.Dispose();
+
             pictureBoxUi.Image = ImageImporter(pictureBoxUi, "ui.jpg").Image;
+
+
         }
         private void pictureBoxMenu_Click(object sender, EventArgs e)
         {
-            pictureBoxMenu.Image.Dispose();
+
             pictureBoxMenu.Image = ImageImporter(pictureBoxMenu, "menu.jpg").Image;
+
         }
         private void pictureBoxBackground_Click(object sender, EventArgs e)
         {
-            pictureBoxBackground.Image.Dispose();
             pictureBoxBackground.Image = ImageImporter(pictureBoxBackground, "background.jpg").Image;
         }
         private PictureBox ImageImporter(PictureBox pictureBox, string name)
         {
-            using (OpenFileDialog ofd = new OpenFileDialog())
+            if (File.Exists(name))
             {
-                if (ofd.ShowDialog() == DialogResult.OK)
+                pictureBox.Image.Dispose();
+                using (OpenFileDialog ofd = new OpenFileDialog())
                 {
-                    pictureBox.Image = Image.FromFile(ofd.FileName);
-                    File.Copy(ofd.FileName, name,true);
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        pictureBox.Image = Image.FromFile(ofd.FileName);
+                        File.Copy(ofd.FileName, name, true);
+                    }
+                }
+            }
+            else
+            {
+                using (OpenFileDialog ofd = new OpenFileDialog())
+                {
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        pictureBox.Image = Image.FromFile(ofd.FileName);
+                        File.Copy(ofd.FileName, name, true);
+                    }
                 }
             }
 
@@ -181,5 +193,9 @@ namespace GameJam_Planner
 
         #endregion
 
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
