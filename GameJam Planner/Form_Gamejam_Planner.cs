@@ -103,7 +103,7 @@ namespace GameJam_Planner
             string myjson = JsonConvert.SerializeObject(mj);
             File.WriteAllText(@"Deneme.json", myjson);
 
-            MessageBox.Show("Saved");
+            MessageBox.Show("Saved.");
         }
         private void button_Print_Click(object sender, EventArgs e)
         {
