@@ -1,6 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Newtonsoft.Json; //uzantılıradan json yüklenmesi gerekmetedir.(NuPaket)
 using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
