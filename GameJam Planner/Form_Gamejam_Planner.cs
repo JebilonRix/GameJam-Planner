@@ -51,14 +51,17 @@ namespace GameJam_Planner
             if (File.Exists(@"ui.jpg"))
             {
                 pictureBoxUi.Image = Image.FromFile(mj.UI);
+                buttonUiDeleter.Enabled = true;
             }
             if (File.Exists(@"menu.jpg"))
             {
                 pictureBoxMenu.Image = Image.FromFile(mj.Menu);
+                buttonMenuDeleter.Enabled = true;
             }
             if (File.Exists(@"background.jpg"))
             {
                 pictureBoxBackground.Image = Image.FromFile(mj.Background);
+                buttonBackgroundDeleter.Enabled = true;
             }
         }
         private void buttonSave_Click(object sender, EventArgs e)
@@ -67,7 +70,6 @@ namespace GameJam_Planner
 
             if (comboBoxEngines.SelectedItem != null)
             {
-
                 mj.GameEngine = comboBoxEngines.SelectedItem.ToString();
             }
 
@@ -143,23 +145,35 @@ namespace GameJam_Planner
             {
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    if (File.Exists(name))
-                    {
-                        //resmini sikem
-                        pictureBox.Image.Dispose();
-                        File.Delete(name);
-                    }
-                    else
-                    {
-                        pictureBox.Image = Image.FromFile(ofd.FileName);
-                        File.Copy(ofd.FileName, name);
-                    }
+                    pictureBox.Image = Image.FromFile(ofd.FileName);
+                    File.Copy(ofd.FileName, name);
                 }
             }
 
             return pictureBox;
         }
+
         #endregion
 
+        private void buttonUiDeleter_Click(object sender, EventArgs e)
+        {
+            pictureBoxUi.Image.Dispose();
+            File.Delete("ui.jpg");
+            pictureBoxUi.ImageLocation = @"default\default.jpg";
+        }
+
+        private void buttonMenuDeleter_Click(object sender, EventArgs e)
+        {
+            pictureBoxMenu.Image.Dispose();
+            File.Delete("menu.jpg");
+            pictureBoxMenu.ImageLocation = @"default\default.jpg";
+        }
+
+        private void buttonBackgroundDeleter_Click(object sender, EventArgs e)
+        {
+            pictureBoxBackground.Image.Dispose();
+            File.Delete("background.jpg");
+            pictureBoxBackground.ImageLocation = @"default\default.jpg";
+        }
     }
 }

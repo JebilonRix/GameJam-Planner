@@ -35,6 +35,9 @@ namespace GameJam_Planner
             this.groupBoxClass = new System.Windows.Forms.GroupBox();
             this.richTextBoxCl = new System.Windows.Forms.RichTextBox();
             this.groupBoxArt = new System.Windows.Forms.GroupBox();
+            this.buttonBackgroundDeleter = new System.Windows.Forms.Button();
+            this.buttonMenuDeleter = new System.Windows.Forms.Button();
+            this.buttonUiDeleter = new System.Windows.Forms.Button();
             this.groupBoxAnimations = new System.Windows.Forms.GroupBox();
             this.richTextBoxAn = new System.Windows.Forms.RichTextBox();
             this.groupBoxObjects = new System.Windows.Forms.GroupBox();
@@ -155,6 +158,9 @@ namespace GameJam_Planner
             // groupBoxArt
             // 
             this.groupBoxArt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.groupBoxArt.Controls.Add(this.buttonBackgroundDeleter);
+            this.groupBoxArt.Controls.Add(this.buttonMenuDeleter);
+            this.groupBoxArt.Controls.Add(this.buttonUiDeleter);
             this.groupBoxArt.Controls.Add(this.groupBoxAnimations);
             this.groupBoxArt.Controls.Add(this.groupBoxObjects);
             this.groupBoxArt.Controls.Add(this.groupBoxChracters);
@@ -171,6 +177,42 @@ namespace GameJam_Planner
             this.groupBoxArt.TabIndex = 1;
             this.groupBoxArt.TabStop = false;
             this.groupBoxArt.Text = "Art";
+            // 
+            // buttonBackgroundDeleter
+            // 
+            this.buttonBackgroundDeleter.Enabled = false;
+            this.buttonBackgroundDeleter.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.buttonBackgroundDeleter.Location = new System.Drawing.Point(944, 25);
+            this.buttonBackgroundDeleter.Name = "buttonBackgroundDeleter";
+            this.buttonBackgroundDeleter.Size = new System.Drawing.Size(36, 27);
+            this.buttonBackgroundDeleter.TabIndex = 6;
+            this.buttonBackgroundDeleter.Text = "-";
+            this.buttonBackgroundDeleter.UseVisualStyleBackColor = true;
+            this.buttonBackgroundDeleter.Click += new System.EventHandler(this.buttonBackgroundDeleter_Click);
+            // 
+            // buttonMenuDeleter
+            // 
+            this.buttonMenuDeleter.Enabled = false;
+            this.buttonMenuDeleter.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.buttonMenuDeleter.Location = new System.Drawing.Point(479, 24);
+            this.buttonMenuDeleter.Name = "buttonMenuDeleter";
+            this.buttonMenuDeleter.Size = new System.Drawing.Size(36, 27);
+            this.buttonMenuDeleter.TabIndex = 6;
+            this.buttonMenuDeleter.Text = "-";
+            this.buttonMenuDeleter.UseVisualStyleBackColor = true;
+            this.buttonMenuDeleter.Click += new System.EventHandler(this.buttonMenuDeleter_Click);
+            // 
+            // buttonUiDeleter
+            // 
+            this.buttonUiDeleter.Enabled = false;
+            this.buttonUiDeleter.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.buttonUiDeleter.Location = new System.Drawing.Point(56, 21);
+            this.buttonUiDeleter.Name = "buttonUiDeleter";
+            this.buttonUiDeleter.Size = new System.Drawing.Size(36, 27);
+            this.buttonUiDeleter.TabIndex = 6;
+            this.buttonUiDeleter.Text = "-";
+            this.buttonUiDeleter.UseVisualStyleBackColor = true;
+            this.buttonUiDeleter.Click += new System.EventHandler(this.buttonUiDeleter_Click);
             // 
             // groupBoxAnimations
             // 
@@ -693,6 +735,9 @@ namespace GameJam_Planner
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxGroupName;
         private System.Windows.Forms.ComboBox comboBoxEngines;
+        private System.Windows.Forms.Button buttonUiDeleter;
+        private System.Windows.Forms.Button buttonBackgroundDeleter;
+        private System.Windows.Forms.Button buttonMenuDeleter;
     }
 }
 
