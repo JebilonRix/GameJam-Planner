@@ -12,7 +12,9 @@ namespace GameJam_Planner
         public Form_Gamejam_Planner()
         {
             InitializeComponent();
-
+        }
+        private void Form_Gamejam_Planner_Load(object sender, EventArgs e)
+        {
             string[] Engines = new string[] { "Unity", "Unreal", "Godot", "CryEngine", "GameMaker" };
 
             for (int i = 0; i < Engines.Length; i++)
@@ -20,12 +22,14 @@ namespace GameJam_Planner
                 comboBoxEngines.Items.Add(Engines[i]);
             }
 
-        }
-        private void Form_Gamejam_Planner_Load(object sender, EventArgs e)
-        {
             MyJson mj = new MyJson();
             mj = JsonConvert.DeserializeObject<MyJson>(File.ReadAllText(@"Deneme.json"));
 
+            LoadPage(mj, "");
+
+        }
+        public void LoadPage(MyJson mj, string komut)
+        {
             textBoxGroupName.Text = mj.Group;
             textBoxTheme.Text = mj.Theme;
             textBoxName.Text = mj.Name;
@@ -44,19 +48,38 @@ namespace GameJam_Planner
 
             if (File.Exists(@"ui.jpg"))
             {
-                pictureBoxUi.Image = Image.FromFile(mj.UI);
-                buttonUiDeleter.Enabled = true;
+                if (mj.UI != null)
+                {
+                    pictureBoxUi.Image = Image.FromFile(mj.UI);
+                    buttonUiDeleter.Enabled = true;
+                }
             }
             if (File.Exists(@"menu.jpg"))
             {
-                pictureBoxMenu.Image = Image.FromFile(mj.Menu);
-                buttonMenuDeleter.Enabled = true;
+                if (mj.Menu != null)
+                {
+                    pictureBoxMenu.Image = Image.FromFile(mj.Menu);
+                    buttonMenuDeleter.Enabled = true;
+                }
             }
             if (File.Exists(@"background.jpg"))
             {
-                pictureBoxBackground.Image = Image.FromFile(mj.Background);
-                buttonBackgroundDeleter.Enabled = true;
+                if (mj.Background != null)
+                {
+                    pictureBoxBackground.Image = Image.FromFile(mj.Background);
+                    buttonBackgroundDeleter.Enabled = true;
+                }
             }
+
+            if (komut == "clear")
+            {
+                ImageRemover(pictureBoxUi, "ui.jpg", buttonUiDeleter);
+                ImageRemover(pictureBoxMenu, "menu.jpg", buttonMenuDeleter);
+                ImageRemover(pictureBoxBackground, "background.jpg", buttonBackgroundDeleter);
+            }
+
+
+
         }
         private void buttonSave_Click(object sender, EventArgs e)
         {
@@ -122,22 +145,19 @@ namespace GameJam_Planner
         #region ImageImport
         private void pictureBoxUi_Click(object sender, EventArgs e)
         {
-
-            pictureBoxUi.Image = ImageImporter(pictureBoxUi, "ui.jpg").Image;
-
-
+            pictureBoxUi.Image = ImageImporter(pictureBoxUi, "ui.jpg", buttonUiDeleter).Image;
         }
         private void pictureBoxMenu_Click(object sender, EventArgs e)
         {
 
-            pictureBoxMenu.Image = ImageImporter(pictureBoxMenu, "menu.jpg").Image;
+            pictureBoxMenu.Image = ImageImporter(pictureBoxMenu, "menu.jpg", buttonMenuDeleter).Image;
 
         }
         private void pictureBoxBackground_Click(object sender, EventArgs e)
         {
-            pictureBoxBackground.Image = ImageImporter(pictureBoxBackground, "background.jpg").Image;
+            pictureBoxBackground.Image = ImageImporter(pictureBoxBackground, "background.jpg", buttonBackgroundDeleter).Image;
         }
-        private PictureBox ImageImporter(PictureBox pictureBox, string name)
+        private PictureBox ImageImporter(PictureBox pictureBox, string name, Button button)
         {
             if (File.Exists(name))
             {
@@ -148,6 +168,7 @@ namespace GameJam_Planner
                     {
                         pictureBox.Image = Image.FromFile(ofd.FileName);
                         File.Copy(ofd.FileName, name, true);
+                        button.Enabled = true;
                     }
                 }
             }
@@ -159,6 +180,7 @@ namespace GameJam_Planner
                     {
                         pictureBox.Image = Image.FromFile(ofd.FileName);
                         File.Copy(ofd.FileName, name, true);
+                        button.Enabled = true;
                     }
                 }
             }
@@ -170,25 +192,29 @@ namespace GameJam_Planner
 
         #region ImageRemove
 
-        private void ImageRemover(PictureBox pictureBox, string filename)
+        private void ImageRemover(PictureBox pictureBox, string filename, Button button)
         {
-            pictureBox.Image.Dispose();
-            File.Delete(filename);
-            pictureBox.Image = Image.FromFile(@"default\default.jpg");
+            if (pictureBox.Image != null)
+            {
+                pictureBox.Image.Dispose();
+                File.Delete(filename);
+                pictureBox.Image = Image.FromFile(@"default\default.jpg");
+                button.Enabled = false;
+            }
         }
         private void buttonUiDeleter_Click(object sender, EventArgs e)
         {
-            ImageRemover(pictureBoxUi, "ui.jpg");
+            ImageRemover(pictureBoxUi, "ui.jpg", buttonUiDeleter);
         }
 
         private void buttonMenuDeleter_Click(object sender, EventArgs e)
         {
-            ImageRemover(pictureBoxMenu, "menu.jpg");
+            ImageRemover(pictureBoxMenu, "menu.jpg", buttonMenuDeleter);
         }
 
         private void buttonBackgroundDeleter_Click(object sender, EventArgs e)
         {
-            ImageRemover(pictureBoxBackground, "background.jpg");
+            ImageRemover(pictureBoxBackground, "background.jpg", buttonBackgroundDeleter);
         }
 
         #endregion
@@ -196,6 +222,11 @@ namespace GameJam_Planner
         private void buttonExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            LoadPage(new MyJson(), "clear");
         }
     }
 }
