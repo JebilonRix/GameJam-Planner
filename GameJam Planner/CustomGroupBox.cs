@@ -40,16 +40,26 @@ namespace GameJam_Planner
         public void CustomGroupBoxLock(Button buttonLock)
         {
             buttonLock.Click += ButtonLock_Click;
+            ImageChanger(buttonLock, isLocked);
         }
         private void ButtonLock_Click(object sender, EventArgs e)
         {
             this.isLocked = !this.isLocked;
-
+        }
+        private void ImageChanger(Button buttonLock, bool isLocked)
+        {
             switch (isLocked)
             {
-                //case true: buttonLock.BackgroundImage = Image.FromFile(@"Assets\kilit.png"); break;
-                //case false: buttonLock.BackgroundImage = Image.FromFile(@"Assets\kilit.png"); break;
-                default: break;
+                case true:
+                    buttonLock.BackgroundImage.Dispose();
+                    buttonLock.BackgroundImage = Image.FromFile(@"Assets\kilit.png");
+                    break;
+                case false:
+                    buttonLock.BackgroundImage.Dispose();
+                    buttonLock.BackgroundImage = Image.FromFile(@"Assets\kilit2.png");
+                    break;
+                default:
+                    break;
             }
         }
 

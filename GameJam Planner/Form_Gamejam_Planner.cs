@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace GameJam_Planner
@@ -9,7 +10,7 @@ namespace GameJam_Planner
         public Form_Gamejam_Planner()
         {
             InitializeComponent();
-            this.MouseClick += AAA;
+            this.MouseClick += groupBoxMouseClick;
         }
         private void Form_Gamejam_Planner_Load(object sender, EventArgs e)
         {
@@ -53,7 +54,6 @@ namespace GameJam_Planner
             RichTextBox richTextBox = new RichTextBox();
             groupBox.Text = "GroupBox";
             Spawn_Group(groupBox, richTextBox);
-
         }
         private void imageBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -68,7 +68,6 @@ namespace GameJam_Planner
             RichTextBox richTextBox = new RichTextBox();
             groupBox.Text = "SoundBox";
             Spawn_Group(groupBox, richTextBox);
-
         }
         private void Spawn_Group(CustomGroupBox groupBox, RichTextBox richTextBox)
         {
@@ -88,7 +87,7 @@ namespace GameJam_Planner
             pictureBox.Size = new Size(220, 150);
             pictureBox.ForeColor = Color.Black;
             pictureBox.BackColor = Color.White;
-            pictureBox.Font = new Font("Arial", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             groupBox.Controls.Add(pictureBox);
             Shaper(groupBox);
         }
@@ -112,10 +111,9 @@ namespace GameJam_Planner
             groupBox.CustomGroupBoxLock(buttonLock);
             groupBox.isLocked = false;
 
-            groupBox.MouseClick += AAA;
-
+            groupBox.MouseClick += groupBoxMouseClick;
         }
-        private void AAA(object sender, MouseEventArgs e)
+        private void groupBoxMouseClick(object sender, MouseEventArgs e)
         {
             if (sender.GetType() == typeof(CustomGroupBox))
             {
@@ -124,39 +122,27 @@ namespace GameJam_Planner
                     this.contextMenuStripOptions.Show();
                     contextMenuStripOptions.Left += CustomGroupBox.MousePosition.X;
                     contextMenuStripOptions.Top += CustomGroupBox.MousePosition.Y;
-
-                    int index = contextMenuStripOptions.Items.Count;
-
-                    if (e.Button == MouseButtons.Left)
-                    {
-                        switch (index)
-                        {
-                            case 0: toolStripMenuItemName_Click(sender, e); break;
-                           // case 1: toolStripMenuItemColor_Click(sender, e); break;
-                            case 2: toolStripMenuItemDeleteTxt_Click(sender, e); break;
-                            case 3: toolStripMenuItemDeletePic_Click(sender, e); break;
-
-                            default: break;
-                        }
-
-                    }
                 }
             }
         }
-
         private void toolStripMenuItemName_Click(object sender, EventArgs e)
         {
             MessageBox.Show("1");
         }
-        private void toolStripMenuItemColor_Click(object sender, EventArgs e,CustomGroupBox groupBox)
+        private void toolStripMenuItemColor_Click(object sender, EventArgs e)
         {
-            using (ColorDialog cd = new ColorDialog())
-            {
-                if (cd.ShowDialog() == DialogResult.OK)
-                {
-                    groupBox.BackColor = cd.Color;
-                }
-            }
+            //Buraya ne yazmam gerekiyor
+
+            //CustomGroupBox groupBox =  ;
+
+            //using (ColorDialog cd = new ColorDialog())
+            //{
+            //    if (cd.ShowDialog() == DialogResult.OK)
+            //    {
+            //        groupBox.BackColor = cd.Color;
+            //        Shaper(groupBox);
+            //    }
+            //}
         }
         private void toolStripMenuItemDeleteTxt_Click(object sender, EventArgs e)
         {
@@ -166,5 +152,6 @@ namespace GameJam_Planner
         {
             MessageBox.Show("4");
         }
+
     }
 }
