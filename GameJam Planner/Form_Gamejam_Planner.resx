@@ -214,14 +214,4 @@
   <metadata name="contextMenuStripOptions.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>166, 17</value>
   </metadata>
-  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        xAAADsQBlSsOGwAAABt0RVh0U29mdHdhcmUAQ2Vsc3lzIFN0dWRpbyBUb29swafhfAAAANVJREFUOE+t
-        kE0OgjAQRgsJgRtxPTZ4BDwBgQrEMxAB3RJ3bDgHgTI6tJiOFRKjL5mUr3yv/DD4AUO+ty1c6xp4mgLn
-        HM5FAbemUXcphozFOI5BTNOShRCQZxnM87xknY/y6fnEFZT0rPNfuakqo1zkubqiGPKlLCFNEhjHcfle
-        XPHn4foOkbuuA8uygDFmjOu60Pe9akqIvCWu43meakqIrBfxoCAIyB6OzqaMc4wikh3HUU3JrnwIQ5Lx
-        bXR2Zd/3jT2dVxqGwSi+j23bqi2hR30FwANiIrys7Z0MlQAAAABJRU5ErkJggg==
-</value>
-  </data>
 </root>

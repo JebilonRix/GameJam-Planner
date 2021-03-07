@@ -33,3 +33,4 @@ C:\Users\fuat\Desktop\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.
 C:\Users\fuat\Desktop\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.exe
 C:\Users\fuat\Desktop\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.pdb
 C:\Users\fuat\Desktop\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csprojAssemblyReference.cache
+C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csprojAssemblyReference.cache

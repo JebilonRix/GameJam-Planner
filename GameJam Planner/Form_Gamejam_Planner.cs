@@ -11,6 +11,7 @@ namespace GameJam_Planner
         {
             InitializeComponent();
             this.MouseClick += groupBoxMouseClick;
+            this.MouseClick += pictureBoxClick;
         }
         private void Form_Gamejam_Planner_Load(object sender, EventArgs e)
         {
@@ -27,7 +28,7 @@ namespace GameJam_Planner
             textBoxGenre.Text = "";
             textBoxArtStyle.Text = "";
             comboBoxEngines.SelectedItem = "";
-        } //bitmedi
+        }
         private void SaveMenuItem_Click(object sender, EventArgs e)
         {
             if (comboBoxEngines.SelectedItem != null)
@@ -55,7 +56,7 @@ namespace GameJam_Planner
             groupBox.Text = "GroupBox";
             Spawn_Group(groupBox, richTextBox);
         }
-        private void imageBoxToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ImageBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CustomGroupBox groupBox = new CustomGroupBox();
             PictureBox pictureBox = new PictureBox();
@@ -125,14 +126,29 @@ namespace GameJam_Planner
                 }
             }
         }
+        private void pictureBoxClick(object sender, MouseEventArgs e)
+        {
+            if (sender.GetType() == typeof(PictureBox))
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    using (OpenFileDialog ofd = new OpenFileDialog())
+                    {
+                        if (ofd.ShowDialog() == DialogResult.OK)
+                        {
+                           // PictureBox.Image = Image.FromFile(ofd.FileName);
+                            File.Copy(ofd.FileName, "", true);
+                        }
+                    }
+                }
+            }
+        }
         private void toolStripMenuItemName_Click(object sender, EventArgs e)
         {
             MessageBox.Show("1");
         }
         private void toolStripMenuItemColor_Click(object sender, EventArgs e)
         {
-            //Buraya ne yazmam gerekiyor
-
             //CustomGroupBox groupBox =  ;
 
             //using (ColorDialog cd = new ColorDialog())
@@ -152,6 +168,7 @@ namespace GameJam_Planner
         {
             MessageBox.Show("4");
         }
+
 
     }
 }
