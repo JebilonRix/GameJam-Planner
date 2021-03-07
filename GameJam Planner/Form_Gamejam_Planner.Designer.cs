@@ -29,29 +29,13 @@ namespace GameJam_Planner
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBoxMethod = new System.Windows.Forms.GroupBox();
-            this.richTextBoxMet = new System.Windows.Forms.RichTextBox();
-            this.groupBoxClass = new System.Windows.Forms.GroupBox();
-            this.richTextBoxCl = new System.Windows.Forms.RichTextBox();
-            this.buttonBackgroundDeleter = new System.Windows.Forms.Button();
-            this.buttonMenuDeleter = new System.Windows.Forms.Button();
-            this.buttonUiDeleter = new System.Windows.Forms.Button();
-            this.groupBoxAnimations = new System.Windows.Forms.GroupBox();
-            this.richTextBoxAn = new System.Windows.Forms.RichTextBox();
-            this.groupBoxObjects = new System.Windows.Forms.GroupBox();
-            this.richTextBoxOb = new System.Windows.Forms.RichTextBox();
-            this.groupBoxChracters = new System.Windows.Forms.GroupBox();
-            this.richTextBoxCh = new System.Windows.Forms.RichTextBox();
-            this.pictureBoxBackground = new System.Windows.Forms.PictureBox();
-            this.pictureBoxMenu = new System.Windows.Forms.PictureBox();
-            this.pictureBoxUi = new System.Windows.Forms.PictureBox();
-            this.groupBoxSounds = new System.Windows.Forms.GroupBox();
-            this.richTextBoxSo = new System.Windows.Forms.RichTextBox();
-            this.groupBoxMusics = new System.Windows.Forms.GroupBox();
-            this.richTextBoxMus = new System.Windows.Forms.RichTextBox();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Gamejam_Planner));
             this.groupBoxMain = new System.Windows.Forms.GroupBox();
             this.comboBoxEngines = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.groupBoxMechanics = new System.Windows.Forms.GroupBox();
+            this.richTextBoxMec = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxArtStyle = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -62,252 +46,39 @@ namespace GameJam_Planner
             this.textBoxGroupName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
-            this.groupBoxMechanics = new System.Windows.Forms.GroupBox();
-            this.richTextBoxMec = new System.Windows.Forms.RichTextBox();
-            this.groupBoxDynamics = new System.Windows.Forms.GroupBox();
-            this.richTextBoxDy = new System.Windows.Forms.RichTextBox();
-            this.buttonPrint = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.groupBoxUi = new System.Windows.Forms.GroupBox();
-            this.groupBoxMenu = new System.Windows.Forms.GroupBox();
-            this.groupBoxBackground = new System.Windows.Forms.GroupBox();
-            this.buttonExit = new System.Windows.Forms.Button();
-            this.buttonClear = new System.Windows.Forms.Button();
-            this.groupBoxMethod.SuspendLayout();
-            this.groupBoxClass.SuspendLayout();
-            this.groupBoxAnimations.SuspendLayout();
-            this.groupBoxObjects.SuspendLayout();
-            this.groupBoxChracters.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackground)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUi)).BeginInit();
-            this.groupBoxSounds.SuspendLayout();
-            this.groupBoxMusics.SuspendLayout();
+            this.menuStripPlanner = new System.Windows.Forms.MenuStrip();
+            this.SaveMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AddMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.noteBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ımageBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.soundBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.HintsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ClearMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.customGroupBox1 = new GameJam_Planner.CustomGroupBox(this.components);
             this.groupBoxMain.SuspendLayout();
             this.groupBoxMechanics.SuspendLayout();
-            this.groupBoxDynamics.SuspendLayout();
-            this.groupBoxUi.SuspendLayout();
-            this.groupBoxMenu.SuspendLayout();
-            this.groupBoxBackground.SuspendLayout();
+            this.menuStripPlanner.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // groupBoxMethod
-            // 
-            this.groupBoxMethod.Controls.Add(this.richTextBoxMet);
-            this.groupBoxMethod.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBoxMethod.Location = new System.Drawing.Point(370, 248);
-            this.groupBoxMethod.Name = "groupBoxMethod";
-            this.groupBoxMethod.Size = new System.Drawing.Size(250, 230);
-            this.groupBoxMethod.TabIndex = 7;
-            this.groupBoxMethod.TabStop = false;
-            this.groupBoxMethod.Text = "Methods";
-            // 
-            // richTextBoxMet
-            // 
-            this.richTextBoxMet.BackColor = System.Drawing.Color.Silver;
-            this.richTextBoxMet.Location = new System.Drawing.Point(9, 35);
-            this.richTextBoxMet.Name = "richTextBoxMet";
-            this.richTextBoxMet.Size = new System.Drawing.Size(235, 180);
-            this.richTextBoxMet.TabIndex = 0;
-            this.richTextBoxMet.Text = "";
-            // 
-            // groupBoxClass
-            // 
-            this.groupBoxClass.Controls.Add(this.richTextBoxCl);
-            this.groupBoxClass.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBoxClass.Location = new System.Drawing.Point(625, 248);
-            this.groupBoxClass.Name = "groupBoxClass";
-            this.groupBoxClass.Size = new System.Drawing.Size(250, 230);
-            this.groupBoxClass.TabIndex = 3;
-            this.groupBoxClass.TabStop = false;
-            this.groupBoxClass.Text = "Classes";
-            // 
-            // richTextBoxCl
-            // 
-            this.richTextBoxCl.BackColor = System.Drawing.Color.Silver;
-            this.richTextBoxCl.Location = new System.Drawing.Point(9, 35);
-            this.richTextBoxCl.Name = "richTextBoxCl";
-            this.richTextBoxCl.Size = new System.Drawing.Size(235, 180);
-            this.richTextBoxCl.TabIndex = 0;
-            this.richTextBoxCl.Text = "";
-            // 
-            // buttonBackgroundDeleter
-            // 
-            this.buttonBackgroundDeleter.Enabled = false;
-            this.buttonBackgroundDeleter.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.buttonBackgroundDeleter.Location = new System.Drawing.Point(6, 197);
-            this.buttonBackgroundDeleter.Name = "buttonBackgroundDeleter";
-            this.buttonBackgroundDeleter.Size = new System.Drawing.Size(36, 27);
-            this.buttonBackgroundDeleter.TabIndex = 6;
-            this.buttonBackgroundDeleter.Text = "-";
-            this.buttonBackgroundDeleter.UseVisualStyleBackColor = true;
-            this.buttonBackgroundDeleter.Click += new System.EventHandler(this.buttonBackgroundDeleter_Click);
-            // 
-            // buttonMenuDeleter
-            // 
-            this.buttonMenuDeleter.Enabled = false;
-            this.buttonMenuDeleter.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.buttonMenuDeleter.Location = new System.Drawing.Point(6, 197);
-            this.buttonMenuDeleter.Name = "buttonMenuDeleter";
-            this.buttonMenuDeleter.Size = new System.Drawing.Size(36, 27);
-            this.buttonMenuDeleter.TabIndex = 6;
-            this.buttonMenuDeleter.Text = "-";
-            this.buttonMenuDeleter.UseVisualStyleBackColor = true;
-            this.buttonMenuDeleter.Click += new System.EventHandler(this.buttonMenuDeleter_Click);
-            // 
-            // buttonUiDeleter
-            // 
-            this.buttonUiDeleter.Enabled = false;
-            this.buttonUiDeleter.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.buttonUiDeleter.Location = new System.Drawing.Point(6, 197);
-            this.buttonUiDeleter.Name = "buttonUiDeleter";
-            this.buttonUiDeleter.Size = new System.Drawing.Size(36, 27);
-            this.buttonUiDeleter.TabIndex = 6;
-            this.buttonUiDeleter.Text = "-";
-            this.buttonUiDeleter.UseVisualStyleBackColor = true;
-            this.buttonUiDeleter.Click += new System.EventHandler(this.buttonUiDeleter_Click);
-            // 
-            // groupBoxAnimations
-            // 
-            this.groupBoxAnimations.Controls.Add(this.richTextBoxAn);
-            this.groupBoxAnimations.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBoxAnimations.Location = new System.Drawing.Point(882, 484);
-            this.groupBoxAnimations.Name = "groupBoxAnimations";
-            this.groupBoxAnimations.Size = new System.Drawing.Size(250, 230);
-            this.groupBoxAnimations.TabIndex = 5;
-            this.groupBoxAnimations.TabStop = false;
-            this.groupBoxAnimations.Text = "Animations";
-            // 
-            // richTextBoxAn
-            // 
-            this.richTextBoxAn.BackColor = System.Drawing.Color.Silver;
-            this.richTextBoxAn.Location = new System.Drawing.Point(9, 35);
-            this.richTextBoxAn.Name = "richTextBoxAn";
-            this.richTextBoxAn.Size = new System.Drawing.Size(235, 180);
-            this.richTextBoxAn.TabIndex = 1;
-            this.richTextBoxAn.Text = "";
-            // 
-            // groupBoxObjects
-            // 
-            this.groupBoxObjects.Controls.Add(this.richTextBoxOb);
-            this.groupBoxObjects.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBoxObjects.Location = new System.Drawing.Point(881, 248);
-            this.groupBoxObjects.Name = "groupBoxObjects";
-            this.groupBoxObjects.Size = new System.Drawing.Size(250, 230);
-            this.groupBoxObjects.TabIndex = 4;
-            this.groupBoxObjects.TabStop = false;
-            this.groupBoxObjects.Text = "Objects";
-            // 
-            // richTextBoxOb
-            // 
-            this.richTextBoxOb.BackColor = System.Drawing.Color.Silver;
-            this.richTextBoxOb.Location = new System.Drawing.Point(9, 35);
-            this.richTextBoxOb.Name = "richTextBoxOb";
-            this.richTextBoxOb.Size = new System.Drawing.Size(235, 180);
-            this.richTextBoxOb.TabIndex = 2;
-            this.richTextBoxOb.Text = "";
-            // 
-            // groupBoxChracters
-            // 
-            this.groupBoxChracters.Controls.Add(this.richTextBoxCh);
-            this.groupBoxChracters.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBoxChracters.Location = new System.Drawing.Point(881, 12);
-            this.groupBoxChracters.Name = "groupBoxChracters";
-            this.groupBoxChracters.Size = new System.Drawing.Size(250, 230);
-            this.groupBoxChracters.TabIndex = 4;
-            this.groupBoxChracters.TabStop = false;
-            this.groupBoxChracters.Text = "Chracters";
-            // 
-            // richTextBoxCh
-            // 
-            this.richTextBoxCh.BackColor = System.Drawing.Color.Silver;
-            this.richTextBoxCh.Location = new System.Drawing.Point(9, 35);
-            this.richTextBoxCh.Name = "richTextBoxCh";
-            this.richTextBoxCh.Size = new System.Drawing.Size(235, 180);
-            this.richTextBoxCh.TabIndex = 3;
-            this.richTextBoxCh.Text = "";
-            // 
-            // pictureBoxBackground
-            // 
-            this.pictureBoxBackground.BackColor = System.Drawing.Color.DarkGray;
-            this.pictureBoxBackground.Location = new System.Drawing.Point(6, 28);
-            this.pictureBoxBackground.Name = "pictureBoxBackground";
-            this.pictureBoxBackground.Size = new System.Drawing.Size(235, 163);
-            this.pictureBoxBackground.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxBackground.TabIndex = 1;
-            this.pictureBoxBackground.TabStop = false;
-            this.pictureBoxBackground.Click += new System.EventHandler(this.pictureBoxBackground_Click);
-            // 
-            // pictureBoxMenu
-            // 
-            this.pictureBoxMenu.BackColor = System.Drawing.Color.DarkGray;
-            this.pictureBoxMenu.Location = new System.Drawing.Point(6, 28);
-            this.pictureBoxMenu.Name = "pictureBoxMenu";
-            this.pictureBoxMenu.Size = new System.Drawing.Size(235, 163);
-            this.pictureBoxMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxMenu.TabIndex = 1;
-            this.pictureBoxMenu.TabStop = false;
-            this.pictureBoxMenu.Click += new System.EventHandler(this.pictureBoxMenu_Click);
-            // 
-            // pictureBoxUi
-            // 
-            this.pictureBoxUi.BackColor = System.Drawing.Color.DarkGray;
-            this.pictureBoxUi.Location = new System.Drawing.Point(6, 28);
-            this.pictureBoxUi.Name = "pictureBoxUi";
-            this.pictureBoxUi.Size = new System.Drawing.Size(235, 163);
-            this.pictureBoxUi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxUi.TabIndex = 1;
-            this.pictureBoxUi.TabStop = false;
-            this.pictureBoxUi.Click += new System.EventHandler(this.pictureBoxUi_Click);
-            // 
-            // groupBoxSounds
-            // 
-            this.groupBoxSounds.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxSounds.Controls.Add(this.richTextBoxSo);
-            this.groupBoxSounds.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBoxSounds.Location = new System.Drawing.Point(626, 484);
-            this.groupBoxSounds.Name = "groupBoxSounds";
-            this.groupBoxSounds.Size = new System.Drawing.Size(250, 230);
-            this.groupBoxSounds.TabIndex = 4;
-            this.groupBoxSounds.TabStop = false;
-            this.groupBoxSounds.Text = "Sounds";
-            // 
-            // richTextBoxSo
-            // 
-            this.richTextBoxSo.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.richTextBoxSo.Location = new System.Drawing.Point(9, 35);
-            this.richTextBoxSo.Name = "richTextBoxSo";
-            this.richTextBoxSo.Size = new System.Drawing.Size(235, 180);
-            this.richTextBoxSo.TabIndex = 2;
-            this.richTextBoxSo.Text = "";
-            // 
-            // groupBoxMusics
-            // 
-            this.groupBoxMusics.Controls.Add(this.richTextBoxMus);
-            this.groupBoxMusics.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBoxMusics.Location = new System.Drawing.Point(370, 484);
-            this.groupBoxMusics.Name = "groupBoxMusics";
-            this.groupBoxMusics.Size = new System.Drawing.Size(250, 230);
-            this.groupBoxMusics.TabIndex = 6;
-            this.groupBoxMusics.TabStop = false;
-            this.groupBoxMusics.Text = "Musics";
-            // 
-            // richTextBoxMus
-            // 
-            this.richTextBoxMus.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.richTextBoxMus.Location = new System.Drawing.Point(9, 35);
-            this.richTextBoxMus.Name = "richTextBoxMus";
-            this.richTextBoxMus.Size = new System.Drawing.Size(235, 180);
-            this.richTextBoxMus.TabIndex = 1;
-            this.richTextBoxMus.Text = "";
             // 
             // groupBoxMain
             // 
             this.groupBoxMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBoxMain.Controls.Add(this.comboBoxEngines);
             this.groupBoxMain.Controls.Add(this.label11);
+            this.groupBoxMain.Controls.Add(this.groupBoxMechanics);
             this.groupBoxMain.Controls.Add(this.label4);
             this.groupBoxMain.Controls.Add(this.textBoxArtStyle);
             this.groupBoxMain.Controls.Add(this.label2);
@@ -319,7 +90,7 @@ namespace GameJam_Planner
             this.groupBoxMain.Controls.Add(this.label1);
             this.groupBoxMain.Controls.Add(this.textBoxName);
             this.groupBoxMain.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBoxMain.Location = new System.Drawing.Point(3, 5);
+            this.groupBoxMain.Location = new System.Drawing.Point(12, 38);
             this.groupBoxMain.Name = "groupBoxMain";
             this.groupBoxMain.Size = new System.Drawing.Size(357, 265);
             this.groupBoxMain.TabIndex = 1;
@@ -334,7 +105,7 @@ namespace GameJam_Planner
             this.comboBoxEngines.Location = new System.Drawing.Point(130, 205);
             this.comboBoxEngines.Name = "comboBoxEngines";
             this.comboBoxEngines.Size = new System.Drawing.Size(154, 27);
-            this.comboBoxEngines.TabIndex = 6;
+            this.comboBoxEngines.TabIndex = 5;
             this.comboBoxEngines.Text = "-Select-";
             // 
             // label11
@@ -346,6 +117,26 @@ namespace GameJam_Planner
             this.label11.Size = new System.Drawing.Size(79, 19);
             this.label11.TabIndex = 1;
             this.label11.Text = "Art Style:";
+            // 
+            // groupBoxMechanics
+            // 
+            this.groupBoxMechanics.Controls.Add(this.richTextBoxMec);
+            this.groupBoxMechanics.ForeColor = System.Drawing.SystemColors.Info;
+            this.groupBoxMechanics.Location = new System.Drawing.Point(357, 210);
+            this.groupBoxMechanics.Name = "groupBoxMechanics";
+            this.groupBoxMechanics.Size = new System.Drawing.Size(250, 230);
+            this.groupBoxMechanics.TabIndex = 4;
+            this.groupBoxMechanics.TabStop = false;
+            this.groupBoxMechanics.Text = "Mechanics";
+            // 
+            // richTextBoxMec
+            // 
+            this.richTextBoxMec.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.richTextBoxMec.Location = new System.Drawing.Point(9, 35);
+            this.richTextBoxMec.Name = "richTextBoxMec";
+            this.richTextBoxMec.Size = new System.Drawing.Size(235, 180);
+            this.richTextBoxMec.TabIndex = 5;
+            this.richTextBoxMec.Text = "";
             // 
             // label4
             // 
@@ -363,7 +154,7 @@ namespace GameJam_Planner
             this.textBoxArtStyle.Location = new System.Drawing.Point(130, 170);
             this.textBoxArtStyle.Name = "textBoxArtStyle";
             this.textBoxArtStyle.Size = new System.Drawing.Size(155, 29);
-            this.textBoxArtStyle.TabIndex = 0;
+            this.textBoxArtStyle.TabIndex = 4;
             // 
             // label2
             // 
@@ -381,7 +172,7 @@ namespace GameJam_Planner
             this.textBoxTheme.Location = new System.Drawing.Point(130, 65);
             this.textBoxTheme.Name = "textBoxTheme";
             this.textBoxTheme.Size = new System.Drawing.Size(155, 29);
-            this.textBoxTheme.TabIndex = 0;
+            this.textBoxTheme.TabIndex = 1;
             // 
             // textBoxGenre
             // 
@@ -389,7 +180,7 @@ namespace GameJam_Planner
             this.textBoxGenre.Location = new System.Drawing.Point(130, 135);
             this.textBoxGenre.Name = "textBoxGenre";
             this.textBoxGenre.Size = new System.Drawing.Size(155, 29);
-            this.textBoxGenre.TabIndex = 0;
+            this.textBoxGenre.TabIndex = 3;
             // 
             // label3
             // 
@@ -435,124 +226,174 @@ namespace GameJam_Planner
             this.textBoxName.Location = new System.Drawing.Point(130, 100);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(155, 29);
-            this.textBoxName.TabIndex = 0;
+            this.textBoxName.TabIndex = 2;
             // 
-            // groupBoxMechanics
+            // menuStripPlanner
             // 
-            this.groupBoxMechanics.Controls.Add(this.richTextBoxMec);
-            this.groupBoxMechanics.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBoxMechanics.Location = new System.Drawing.Point(370, 12);
-            this.groupBoxMechanics.Name = "groupBoxMechanics";
-            this.groupBoxMechanics.Size = new System.Drawing.Size(250, 230);
-            this.groupBoxMechanics.TabIndex = 4;
-            this.groupBoxMechanics.TabStop = false;
-            this.groupBoxMechanics.Text = "Mechanics";
+            this.menuStripPlanner.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("menuStripPlanner.BackgroundImage")));
+            this.menuStripPlanner.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.SaveMenuItem,
+            this.AddMenuItem,
+            this.HintsMenuItem,
+            this.ClearMenuItem,
+            this.ExitMenuItem});
+            this.menuStripPlanner.Location = new System.Drawing.Point(0, 0);
+            this.menuStripPlanner.Name = "menuStripPlanner";
+            this.menuStripPlanner.Size = new System.Drawing.Size(1430, 24);
+            this.menuStripPlanner.TabIndex = 10;
+            this.menuStripPlanner.Text = "PlannerManu";
             // 
-            // richTextBoxMec
+            // SaveMenuItem
             // 
-            this.richTextBoxMec.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.richTextBoxMec.Location = new System.Drawing.Point(9, 35);
-            this.richTextBoxMec.Name = "richTextBoxMec";
-            this.richTextBoxMec.Size = new System.Drawing.Size(235, 180);
-            this.richTextBoxMec.TabIndex = 5;
-            this.richTextBoxMec.Text = "";
+            this.SaveMenuItem.Name = "SaveMenuItem";
+            this.SaveMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.SaveMenuItem.Text = "Save";
+            this.SaveMenuItem.Click += new System.EventHandler(this.SaveMenuItem_Click);
             // 
-            // groupBoxDynamics
+            // AddMenuItem
             // 
-            this.groupBoxDynamics.Controls.Add(this.richTextBoxDy);
-            this.groupBoxDynamics.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBoxDynamics.Location = new System.Drawing.Point(625, 12);
-            this.groupBoxDynamics.Name = "groupBoxDynamics";
-            this.groupBoxDynamics.Size = new System.Drawing.Size(250, 230);
-            this.groupBoxDynamics.TabIndex = 2;
-            this.groupBoxDynamics.TabStop = false;
-            this.groupBoxDynamics.Text = "Dynamics";
+            this.AddMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.noteBoxToolStripMenuItem,
+            this.ımageBoxToolStripMenuItem,
+            this.soundBoxToolStripMenuItem});
+            this.AddMenuItem.Name = "AddMenuItem";
+            this.AddMenuItem.Size = new System.Drawing.Size(41, 20);
+            this.AddMenuItem.Text = "Add";
             // 
-            // richTextBoxDy
+            // noteBoxToolStripMenuItem
             // 
-            this.richTextBoxDy.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.richTextBoxDy.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.richTextBoxDy.Location = new System.Drawing.Point(9, 35);
-            this.richTextBoxDy.Name = "richTextBoxDy";
-            this.richTextBoxDy.Size = new System.Drawing.Size(235, 180);
-            this.richTextBoxDy.TabIndex = 5;
-            this.richTextBoxDy.Text = "";
+            this.noteBoxToolStripMenuItem.Name = "noteBoxToolStripMenuItem";
+            this.noteBoxToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.noteBoxToolStripMenuItem.Text = "Note Box";
+            this.noteBoxToolStripMenuItem.Click += new System.EventHandler(this.noteBoxToolStripMenuItem_Click);
             // 
-            // buttonPrint
+            // ımageBoxToolStripMenuItem
             // 
-            this.buttonPrint.Location = new System.Drawing.Point(3, 276);
-            this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(110, 31);
-            this.buttonPrint.TabIndex = 4;
-            this.buttonPrint.Text = "Print";
-            this.buttonPrint.UseVisualStyleBackColor = true;
-            this.buttonPrint.Click += new System.EventHandler(this.button_Print_Click);
+            this.ımageBoxToolStripMenuItem.Name = "ımageBoxToolStripMenuItem";
+            this.ımageBoxToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.ımageBoxToolStripMenuItem.Text = "Image Box";
+            this.ımageBoxToolStripMenuItem.Click += new System.EventHandler(this.imageBoxToolStripMenuItem_Click);
             // 
-            // buttonSave
+            // soundBoxToolStripMenuItem
             // 
-            this.buttonSave.Location = new System.Drawing.Point(119, 276);
-            this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(110, 31);
-            this.buttonSave.TabIndex = 5;
-            this.buttonSave.Text = "Save";
-            this.buttonSave.UseVisualStyleBackColor = true;
-            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            this.soundBoxToolStripMenuItem.Name = "soundBoxToolStripMenuItem";
+            this.soundBoxToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.soundBoxToolStripMenuItem.Text = "Sound Box";
+            this.soundBoxToolStripMenuItem.Click += new System.EventHandler(this.soundBoxToolStripMenuItem_Click);
             // 
-            // groupBoxUi
+            // HintsMenuItem
             // 
-            this.groupBoxUi.Controls.Add(this.pictureBoxUi);
-            this.groupBoxUi.Controls.Add(this.buttonUiDeleter);
-            this.groupBoxUi.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBoxUi.Location = new System.Drawing.Point(1137, 248);
-            this.groupBoxUi.Name = "groupBoxUi";
-            this.groupBoxUi.Size = new System.Drawing.Size(250, 230);
-            this.groupBoxUi.TabIndex = 6;
-            this.groupBoxUi.TabStop = false;
-            this.groupBoxUi.Text = "UI";
+            this.HintsMenuItem.Name = "HintsMenuItem";
+            this.HintsMenuItem.Size = new System.Drawing.Size(47, 20);
+            this.HintsMenuItem.Text = "Hints";
+            this.HintsMenuItem.Click += new System.EventHandler(this.HintsMenuItem_Click);
             // 
-            // groupBoxMenu
+            // ClearMenuItem
             // 
-            this.groupBoxMenu.Controls.Add(this.pictureBoxMenu);
-            this.groupBoxMenu.Controls.Add(this.buttonMenuDeleter);
-            this.groupBoxMenu.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBoxMenu.Location = new System.Drawing.Point(1137, 12);
-            this.groupBoxMenu.Name = "groupBoxMenu";
-            this.groupBoxMenu.Size = new System.Drawing.Size(250, 230);
-            this.groupBoxMenu.TabIndex = 6;
-            this.groupBoxMenu.TabStop = false;
-            this.groupBoxMenu.Text = "Menu";
+            this.ClearMenuItem.Name = "ClearMenuItem";
+            this.ClearMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.ClearMenuItem.Text = "Clear";
+            this.ClearMenuItem.Click += new System.EventHandler(this.ClearMenuItem_Click);
             // 
-            // groupBoxBackground
+            // ExitMenuItem
             // 
-            this.groupBoxBackground.Controls.Add(this.buttonBackgroundDeleter);
-            this.groupBoxBackground.Controls.Add(this.pictureBoxBackground);
-            this.groupBoxBackground.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBoxBackground.Location = new System.Drawing.Point(1143, 484);
-            this.groupBoxBackground.Name = "groupBoxBackground";
-            this.groupBoxBackground.Size = new System.Drawing.Size(250, 230);
-            this.groupBoxBackground.TabIndex = 6;
-            this.groupBoxBackground.TabStop = false;
-            this.groupBoxBackground.Text = "Background";
+            this.ExitMenuItem.Name = "ExitMenuItem";
+            this.ExitMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.ExitMenuItem.Text = "Exit";
+            this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
             // 
-            // buttonExit
+            // groupBox1
             // 
-            this.buttonExit.Location = new System.Drawing.Point(235, 276);
-            this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(110, 30);
-            this.buttonExit.TabIndex = 8;
-            this.buttonExit.Text = "Exit";
-            this.buttonExit.UseVisualStyleBackColor = true;
-            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.richTextBox1);
+            this.groupBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.Info;
+            this.groupBox1.Location = new System.Drawing.Point(967, 312);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(230, 200);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
             // 
-            // buttonClear
+            // button2
             // 
-            this.buttonClear.Location = new System.Drawing.Point(3, 313);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(110, 28);
-            this.buttonClear.TabIndex = 9;
-            this.buttonClear.Text = "Clear";
-            this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            this.button2.Location = new System.Drawing.Point(165, 15);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(20, 20);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button1.Location = new System.Drawing.Point(191, 19);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(33, 13);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "...";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.richTextBox1.Location = new System.Drawing.Point(4, 38);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(220, 156);
+            this.richTextBox1.TabIndex = 0;
+            this.richTextBox1.Text = "";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.pictureBox1);
+            this.groupBox2.ForeColor = System.Drawing.SystemColors.Info;
+            this.groupBox2.Location = new System.Drawing.Point(715, 312);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(230, 200);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.pictureBox1.Location = new System.Drawing.Point(6, 45);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(220, 149);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.richTextBox2);
+            this.groupBox3.ForeColor = System.Drawing.SystemColors.Info;
+            this.groupBox3.Location = new System.Drawing.Point(961, 58);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(230, 200);
+            this.groupBox3.TabIndex = 13;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "groupBox3";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(6, 38);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(220, 145);
+            this.richTextBox2.TabIndex = 0;
+            this.richTextBox2.Text = "";
+            // 
+            // customGroupBox1
+            // 
+            this.customGroupBox1.Location = new System.Drawing.Point(498, 393);
+            this.customGroupBox1.Name = "customGroupBox1";
+            this.customGroupBox1.Size = new System.Drawing.Size(200, 119);
+            this.customGroupBox1.TabIndex = 14;
+            this.customGroupBox1.TabStop = false;
+            this.customGroupBox1.Text = "customGroupBox1";
             // 
             // Form_Gamejam_Planner
             // 
@@ -560,47 +401,31 @@ namespace GameJam_Planner
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1430, 727);
-            this.Controls.Add(this.buttonClear);
-            this.Controls.Add(this.buttonExit);
+            this.Controls.Add(this.customGroupBox1);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxMain);
-            this.Controls.Add(this.groupBoxMethod);
-            this.Controls.Add(this.groupBoxMechanics);
-            this.Controls.Add(this.groupBoxMenu);
-            this.Controls.Add(this.groupBoxDynamics);
-            this.Controls.Add(this.groupBoxClass);
-            this.Controls.Add(this.groupBoxBackground);
-            this.Controls.Add(this.groupBoxUi);
-            this.Controls.Add(this.groupBoxSounds);
-            this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.groupBoxMusics);
-            this.Controls.Add(this.groupBoxAnimations);
-            this.Controls.Add(this.buttonPrint);
-            this.Controls.Add(this.groupBoxChracters);
-            this.Controls.Add(this.groupBoxObjects);
+            this.Controls.Add(this.menuStripPlanner);
             this.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.MainMenuStrip = this.menuStripPlanner;
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "Form_Gamejam_Planner";
             this.Text = "GameJam Planner";
+            this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.Load += new System.EventHandler(this.Form_Gamejam_Planner_Load);
-            this.groupBoxMethod.ResumeLayout(false);
-            this.groupBoxClass.ResumeLayout(false);
-            this.groupBoxAnimations.ResumeLayout(false);
-            this.groupBoxObjects.ResumeLayout(false);
-            this.groupBoxChracters.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBackground)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUi)).EndInit();
-            this.groupBoxSounds.ResumeLayout(false);
-            this.groupBoxMusics.ResumeLayout(false);
             this.groupBoxMain.ResumeLayout(false);
             this.groupBoxMain.PerformLayout();
             this.groupBoxMechanics.ResumeLayout(false);
-            this.groupBoxDynamics.ResumeLayout(false);
-            this.groupBoxUi.ResumeLayout(false);
-            this.groupBoxMenu.ResumeLayout(false);
-            this.groupBoxBackground.ResumeLayout(false);
+            this.menuStripPlanner.ResumeLayout(false);
+            this.menuStripPlanner.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -613,42 +438,31 @@ namespace GameJam_Planner
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxTheme;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.PictureBox pictureBoxUi;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBoxArtStyle;
-        private System.Windows.Forms.PictureBox pictureBoxBackground;
-        private System.Windows.Forms.PictureBox pictureBoxMenu;
-        private System.Windows.Forms.GroupBox groupBoxMethod;
-        private System.Windows.Forms.GroupBox groupBoxClass;
         private System.Windows.Forms.GroupBox groupBoxMechanics;
-        private System.Windows.Forms.GroupBox groupBoxDynamics;
-        private System.Windows.Forms.GroupBox groupBoxAnimations;
-        private System.Windows.Forms.GroupBox groupBoxObjects;
-        private System.Windows.Forms.GroupBox groupBoxChracters;
-        private System.Windows.Forms.GroupBox groupBoxSounds;
-        private System.Windows.Forms.GroupBox groupBoxMusics;
         private System.Windows.Forms.RichTextBox richTextBoxMec;
-        private System.Windows.Forms.RichTextBox richTextBoxDy;
-        private System.Windows.Forms.RichTextBox richTextBoxMet;
-        private System.Windows.Forms.RichTextBox richTextBoxCl;
-        private System.Windows.Forms.RichTextBox richTextBoxAn;
-        private System.Windows.Forms.RichTextBox richTextBoxOb;
-        private System.Windows.Forms.RichTextBox richTextBoxCh;
-        private System.Windows.Forms.RichTextBox richTextBoxSo;
-        private System.Windows.Forms.RichTextBox richTextBoxMus;
-        private System.Windows.Forms.Button buttonPrint;
-        private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxGroupName;
         private System.Windows.Forms.ComboBox comboBoxEngines;
-        private System.Windows.Forms.Button buttonUiDeleter;
-        private System.Windows.Forms.Button buttonBackgroundDeleter;
-        private System.Windows.Forms.Button buttonMenuDeleter;
-        private System.Windows.Forms.GroupBox groupBoxUi;
-        private System.Windows.Forms.GroupBox groupBoxMenu;
-        private System.Windows.Forms.GroupBox groupBoxBackground;
-        private System.Windows.Forms.Button buttonExit;
-        private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.MenuStrip menuStripPlanner;
+        private System.Windows.Forms.ToolStripMenuItem SaveMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AddMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ClearMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem HintsMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ExitMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem noteBoxToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ımageBoxToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem soundBoxToolStripMenuItem;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private CustomGroupBox customGroupBox1;
     }
 }
 
