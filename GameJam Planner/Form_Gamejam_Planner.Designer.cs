@@ -56,18 +56,25 @@ namespace GameJam_Planner
             this.ClearMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.contextMenuStripOptions = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItemName = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemColor = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemDeleteTxt = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemDeletePic = new System.Windows.Forms.ToolStripMenuItem();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.customGroupBox1 = new GameJam_Planner.CustomGroupBox(this.components);
             this.groupBoxMain.SuspendLayout();
             this.groupBoxMechanics.SuspendLayout();
             this.menuStripPlanner.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.contextMenuStripOptions.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -304,8 +311,8 @@ namespace GameJam_Planner
             // 
             // groupBox1
             // 
+            this.groupBox1.ContextMenuStrip = this.contextMenuStripOptions;
             this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.richTextBox1);
             this.groupBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Info;
@@ -316,32 +323,56 @@ namespace GameJam_Planner
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
+            // contextMenuStripOptions
+            // 
+            this.contextMenuStripOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItemName,
+            this.toolStripMenuItemColor,
+            this.toolStripMenuItemDeleteTxt,
+            this.toolStripMenuItemDeletePic});
+            this.contextMenuStripOptions.Name = "contextMenuStripOptions";
+            this.contextMenuStripOptions.Size = new System.Drawing.Size(215, 114);
+            // 
+            // toolStripMenuItemName
+            // 
+            this.toolStripMenuItemName.Name = "toolStripMenuItemName";
+            this.toolStripMenuItemName.Size = new System.Drawing.Size(214, 22);
+            this.toolStripMenuItemName.Text = "Change Name";
+            this.toolStripMenuItemName.Click += new System.EventHandler(this.toolStripMenuItemName_Click);
+            // 
+            // toolStripMenuItemColor
+            // 
+            this.toolStripMenuItemColor.Name = "toolStripMenuItemColor";
+            this.toolStripMenuItemColor.Size = new System.Drawing.Size(214, 22);
+            this.toolStripMenuItemColor.Text = "Change Background Color";
+            // 
+            // toolStripMenuItemDeleteTxt
+            // 
+            this.toolStripMenuItemDeleteTxt.Name = "toolStripMenuItemDeleteTxt";
+            this.toolStripMenuItemDeleteTxt.Size = new System.Drawing.Size(214, 22);
+            this.toolStripMenuItemDeleteTxt.Text = "Delete All Text";
+            this.toolStripMenuItemDeleteTxt.Click += new System.EventHandler(this.toolStripMenuItemDeleteTxt_Click);
+            // 
+            // toolStripMenuItemDeletePic
+            // 
+            this.toolStripMenuItemDeletePic.Name = "toolStripMenuItemDeletePic";
+            this.toolStripMenuItemDeletePic.Size = new System.Drawing.Size(214, 22);
+            this.toolStripMenuItemDeletePic.Text = "Delete Picture";
+            this.toolStripMenuItemDeletePic.Click += new System.EventHandler(this.toolStripMenuItemDeletePic_Click);
+            // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(165, 15);
+            this.button2.Location = new System.Drawing.Point(200, 14);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(20, 20);
             this.button2.TabIndex = 14;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
-            // 
-            this.button1.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(191, 19);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(33, 13);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "...";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // richTextBox1
             // 
             this.richTextBox1.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.richTextBox1.Location = new System.Drawing.Point(4, 38);
+            this.richTextBox1.Location = new System.Drawing.Point(6, 38);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(220, 156);
             this.richTextBox1.TabIndex = 0;
@@ -386,8 +417,23 @@ namespace GameJam_Planner
             this.richTextBox2.TabIndex = 0;
             this.richTextBox2.Text = "";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(26, 469);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(434, 29);
+            this.textBox1.TabIndex = 15;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(26, 513);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(434, 29);
+            this.textBox2.TabIndex = 15;
+            // 
             // customGroupBox1
             // 
+            this.customGroupBox1.ContextMenuStrip = this.contextMenuStripOptions;
             this.customGroupBox1.Location = new System.Drawing.Point(498, 393);
             this.customGroupBox1.Name = "customGroupBox1";
             this.customGroupBox1.Size = new System.Drawing.Size(200, 119);
@@ -401,6 +447,8 @@ namespace GameJam_Planner
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1430, 727);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.customGroupBox1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -421,6 +469,7 @@ namespace GameJam_Planner
             this.menuStripPlanner.ResumeLayout(false);
             this.menuStripPlanner.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.contextMenuStripOptions.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox3.ResumeLayout(false);
@@ -460,9 +509,15 @@ namespace GameJam_Planner
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RichTextBox richTextBox2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private CustomGroupBox customGroupBox1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripOptions;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemName;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemColor;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDeleteTxt;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDeletePic;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
 

@@ -11,7 +11,6 @@ namespace GameJam_Planner
         Point point;
         public bool isLocked;
 
-
         public CustomGroupBox() { }
 
         public CustomGroupBox(IContainer container)
@@ -37,6 +36,7 @@ namespace GameJam_Planner
 
             base.OnMouseMove(e);
         }
+
         public void CustomGroupBoxLock(Button buttonLock)
         {
             buttonLock.Click += ButtonLock_Click;

@@ -9,6 +9,7 @@ namespace GameJam_Planner
         public Form_Gamejam_Planner()
         {
             InitializeComponent();
+            this.MouseClick += AAA;
         }
         private void Form_Gamejam_Planner_Load(object sender, EventArgs e)
         {
@@ -52,6 +53,7 @@ namespace GameJam_Planner
             RichTextBox richTextBox = new RichTextBox();
             groupBox.Text = "GroupBox";
             Spawn_Group(groupBox, richTextBox);
+
         }
         private void imageBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -66,6 +68,7 @@ namespace GameJam_Planner
             RichTextBox richTextBox = new RichTextBox();
             groupBox.Text = "SoundBox";
             Spawn_Group(groupBox, richTextBox);
+
         }
         private void Spawn_Group(CustomGroupBox groupBox, RichTextBox richTextBox)
         {
@@ -97,30 +100,71 @@ namespace GameJam_Planner
             groupBox.ForeColor = Color.White;
             groupBox.Font = new Font("Arial", 15.25F, FontStyle.Bold, GraphicsUnit.Point);
 
-            Button buttonOptions = new Button();
-            buttonOptions.Location = new Point(191, 19);
-            buttonOptions.Size = new Size(33, 13);
-            buttonOptions.Text = "";
-            buttonOptions.ForeColor = Color.Black;
-            buttonOptions.BackColor = Color.White;
-            groupBox.Controls.Add(buttonOptions);
-            Options(buttonOptions);
-
             Button buttonLock = new Button();
-            buttonLock.Location = new Point(165, 15);
+            buttonLock.Location = new Point(200, 14);
             buttonLock.Size = new Size(20, 20);
             buttonLock.Text = "";
             buttonLock.ForeColor = Color.Black;
             buttonLock.BackColor = Color.White;
             buttonLock.BackgroundImage = Image.FromFile(@"Assets\kilit.png");
             groupBox.Controls.Add(buttonLock);
+
             groupBox.CustomGroupBoxLock(buttonLock);
             groupBox.isLocked = false;
+
+            groupBox.MouseClick += AAA;
+
         }
-        private void Options(Button buttonOptions)
+        private void AAA(object sender, MouseEventArgs e)
         {
+            if (sender.GetType() == typeof(CustomGroupBox))
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    this.contextMenuStripOptions.Show();
+                    contextMenuStripOptions.Left += CustomGroupBox.MousePosition.X;
+                    contextMenuStripOptions.Top += CustomGroupBox.MousePosition.Y;
 
+                    int index = contextMenuStripOptions.Items.Count;
+
+                    if (e.Button == MouseButtons.Left)
+                    {
+                        switch (index)
+                        {
+                            case 0: toolStripMenuItemName_Click(sender, e); break;
+                           // case 1: toolStripMenuItemColor_Click(sender, e); break;
+                            case 2: toolStripMenuItemDeleteTxt_Click(sender, e); break;
+                            case 3: toolStripMenuItemDeletePic_Click(sender, e); break;
+
+                            default: break;
+                        }
+
+                    }
+                }
+            }
         }
 
+        private void toolStripMenuItemName_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("1");
+        }
+        private void toolStripMenuItemColor_Click(object sender, EventArgs e,CustomGroupBox groupBox)
+        {
+            using (ColorDialog cd = new ColorDialog())
+            {
+                if (cd.ShowDialog() == DialogResult.OK)
+                {
+                    groupBox.BackColor = cd.Color;
+                }
+            }
+        }
+        private void toolStripMenuItemDeleteTxt_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("3");
+        }
+        private void toolStripMenuItemDeletePic_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("4");
+        }
     }
 }

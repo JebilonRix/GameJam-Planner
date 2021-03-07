@@ -11,7 +11,6 @@ C:\Users\fuat\Desktop\kodlama\_Github\GameJam Planner\obj\Debug\GameJam Planner.
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\GameJam Planner.exe.config
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\GameJam Planner.exe
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\GameJam Planner.pdb
-C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csprojAssemblyReference.cache
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_Gamejam_Planner.resources
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Properties.Resources.resources
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csproj.GenerateResource.cache
