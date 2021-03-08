@@ -24,6 +24,7 @@ namespace GameJam_Planner
             groupBox.Controls.Add(richTextBox);
 
             //CustomGroupBox.customGroupBox_Click(e as MouseEventArgs); statik istiyor :/
+            //hooooooooogk (not) noice!
 
 
             return groupBox;
