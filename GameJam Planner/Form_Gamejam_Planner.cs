@@ -10,6 +10,7 @@ namespace GameJam_Planner
         CustomGroupBox ActiveGroupBox;
         RichTextBox ActiveRichTextBox;
         PictureBox ActivePicturetBox;
+        private int switch_on;
 
         Class_Spawner Spawner = new Class_Spawner();
         public Form_Gamejam_Planner()
@@ -47,7 +48,10 @@ namespace GameJam_Planner
         }  //bitmedi
         private void HintsMenuItem_Click(object sender, EventArgs e)
         {
-            string message = "You can add boxes like:" + "\n" + "\n" + "Coding: Dynamics, Methods" + "\n" + "Art Style: Characters, Objects, Animations" + "\n" + "Audio: Music, Foley";
+            string message = "You can add boxes like:" + "\n"
+                + "\n" + "Coding: Dynamics, Methods"
+                + "\n" + "Art Style: Characters, Objects, Animations"
+                + "\n" + "Audio: Music, Foley";
             MessageBox.Show(message);
         }
         private void ExitMenuItem_Click(object sender, EventArgs e)
@@ -61,8 +65,10 @@ namespace GameJam_Planner
             Spawner.Spawn_Group(groupBox, richTextBox);
             this.Controls.Add(groupBox);
             groupBox.MouseClick += groupBoxMouseClick;
+
             ActiveGroupBox = groupBox;
             ActiveRichTextBox = richTextBox;
+            switch_on = 0;
         }
         private void ImageBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -72,8 +78,10 @@ namespace GameJam_Planner
             this.Controls.Add(groupBox);
             groupBox.MouseClick += groupBoxMouseClick;
             groupBox.MouseClick += pictureBoxClick;
+
             ActiveGroupBox = groupBox;
             ActivePicturetBox = pictureBox;
+            switch_on = 1;
         }
         private void groupBoxMouseClick(object sender, MouseEventArgs e)
         {
@@ -98,7 +106,8 @@ namespace GameJam_Planner
                         if (ofd.ShowDialog() == DialogResult.OK)
                         {
                             ActivePicturetBox.Image = Image.FromFile(ofd.FileName);
-                            File.Copy(ofd.FileName, "", true);
+                            Spawner.Spawn_Picture(ActiveGroupBox, ActivePicturetBox);
+                            //File.Copy(ofd.FileName, "", true);
                         }
                     }
                 }
@@ -116,7 +125,15 @@ namespace GameJam_Planner
                 if (cd.ShowDialog() == DialogResult.OK)
                 {
                     ActiveGroupBox.BackColor = cd.Color;
-                    Spawner.Spawn_Group(ActiveGroupBox, ActiveRichTextBox);
+
+                    switch (switch_on)
+                    {
+                        case 0: Spawner.Spawn_Group(ActiveGroupBox, ActiveRichTextBox); break;
+                        case 1: Spawner.Spawn_Picture(ActiveGroupBox, ActivePicturetBox); break;
+                        default: break;
+                    }
+
+
                 }
             }
         }
@@ -129,9 +146,5 @@ namespace GameJam_Planner
             MessageBox.Show("4");
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
