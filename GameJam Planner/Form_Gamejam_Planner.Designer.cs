@@ -51,7 +51,6 @@ namespace GameJam_Planner
             this.AddMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noteBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImageBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.soundBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HintsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ClearMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,10 +59,14 @@ namespace GameJam_Planner
             this.toolStripMenuItemColor = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDeleteTxt = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemDeletePic = new System.Windows.Forms.ToolStripMenuItem();
+            this.customGroupBox1 = new GameJam_Planner.CustomGroupBox(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBoxMain.SuspendLayout();
             this.groupBoxMechanics.SuspendLayout();
             this.menuStripPlanner.SuspendLayout();
             this.contextMenuStripOptions.SuspendLayout();
+            this.customGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxMain
@@ -247,8 +250,7 @@ namespace GameJam_Planner
             // 
             this.AddMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.noteBoxToolStripMenuItem,
-            this.ImageBoxToolStripMenuItem,
-            this.soundBoxToolStripMenuItem});
+            this.ImageBoxToolStripMenuItem});
             this.AddMenuItem.Name = "AddMenuItem";
             this.AddMenuItem.Size = new System.Drawing.Size(41, 20);
             this.AddMenuItem.Text = "Add";
@@ -256,23 +258,16 @@ namespace GameJam_Planner
             // noteBoxToolStripMenuItem
             // 
             this.noteBoxToolStripMenuItem.Name = "noteBoxToolStripMenuItem";
-            this.noteBoxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noteBoxToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.noteBoxToolStripMenuItem.Text = "Note Box";
             this.noteBoxToolStripMenuItem.Click += new System.EventHandler(this.noteBoxToolStripMenuItem_Click);
             // 
             // ImageBoxToolStripMenuItem
             // 
             this.ImageBoxToolStripMenuItem.Name = "ImageBoxToolStripMenuItem";
-            this.ImageBoxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ImageBoxToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.ImageBoxToolStripMenuItem.Text = "Image Box";
             this.ImageBoxToolStripMenuItem.Click += new System.EventHandler(this.ImageBoxToolStripMenuItem_Click);
-            // 
-            // soundBoxToolStripMenuItem
-            // 
-            this.soundBoxToolStripMenuItem.Name = "soundBoxToolStripMenuItem";
-            this.soundBoxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.soundBoxToolStripMenuItem.Text = "Sound Box";
-            this.soundBoxToolStripMenuItem.Click += new System.EventHandler(this.soundBoxToolStripMenuItem_Click);
             // 
             // HintsMenuItem
             // 
@@ -333,12 +328,32 @@ namespace GameJam_Planner
             this.toolStripMenuItemDeletePic.Text = "Delete Picture";
             this.toolStripMenuItemDeletePic.Click += new System.EventHandler(this.toolStripMenuItemDeletePic_Click);
             // 
+            // customGroupBox1
+            // 
+            this.customGroupBox1.Controls.Add(this.pictureBox1);
+            this.customGroupBox1.Location = new System.Drawing.Point(510, 55);
+            this.customGroupBox1.Name = "customGroupBox1";
+            this.customGroupBox1.Size = new System.Drawing.Size(262, 171);
+            this.customGroupBox1.TabIndex = 11;
+            this.customGroupBox1.TabStop = false;
+            this.customGroupBox1.Text = "customGroupBox1";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(29, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(208, 137);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // Form_Gamejam_Planner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1430, 727);
+            this.Controls.Add(this.customGroupBox1);
             this.Controls.Add(this.groupBoxMain);
             this.Controls.Add(this.menuStripPlanner);
             this.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -355,6 +370,8 @@ namespace GameJam_Planner
             this.menuStripPlanner.ResumeLayout(false);
             this.menuStripPlanner.PerformLayout();
             this.contextMenuStripOptions.ResumeLayout(false);
+            this.customGroupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -384,12 +401,13 @@ namespace GameJam_Planner
         private System.Windows.Forms.ToolStripMenuItem ExitMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noteBoxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ImageBoxToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem soundBoxToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip contextMenuStripOptions;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemName;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemColor;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDeleteTxt;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDeletePic;
+        private CustomGroupBox customGroupBox1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

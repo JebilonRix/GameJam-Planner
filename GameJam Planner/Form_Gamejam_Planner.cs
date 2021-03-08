@@ -7,6 +7,11 @@ namespace GameJam_Planner
 {
     public partial class Form_Gamejam_Planner : Form
     {
+        CustomGroupBox ActiveGroupBox;
+        RichTextBox ActiveRichTextBox;
+        PictureBox ActivePicturetBox;
+
+        Class_Spawner Spawner = new Class_Spawner();
         public Form_Gamejam_Planner()
         {
             InitializeComponent();
@@ -53,66 +58,22 @@ namespace GameJam_Planner
         {
             CustomGroupBox groupBox = new CustomGroupBox();
             RichTextBox richTextBox = new RichTextBox();
-            groupBox.Text = "GroupBox";
-            Spawn_Group(groupBox, richTextBox);
+            Spawner.Spawn_Group(groupBox, richTextBox);
+            this.Controls.Add(groupBox);
+            groupBox.MouseClick += groupBoxMouseClick;
+            ActiveGroupBox = groupBox;
+            ActiveRichTextBox = richTextBox;
         }
         private void ImageBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CustomGroupBox groupBox = new CustomGroupBox();
             PictureBox pictureBox = new PictureBox();
-            groupBox.Text = "PictureBox";
-            Spawn_Picture(groupBox, pictureBox);
-        }
-        private void soundBoxToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CustomGroupBox groupBox = new CustomGroupBox();
-            RichTextBox richTextBox = new RichTextBox();
-            groupBox.Text = "SoundBox";
-            Spawn_Group(groupBox, richTextBox);
-        }
-        private void Spawn_Group(CustomGroupBox groupBox, RichTextBox richTextBox)
-        {
-            this.Controls.Add(richTextBox);
-            richTextBox.Location = new Point(6, 45);
-            richTextBox.Size = new Size(220, 150);
-            richTextBox.ForeColor = Color.Black;
-            richTextBox.BackColor = Color.White;
-            richTextBox.Font = new Font("Arial", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox.Controls.Add(richTextBox);
-            Shaper(groupBox);
-        }
-        private void Spawn_Picture(CustomGroupBox groupBox, PictureBox pictureBox)
-        {
-            this.Controls.Add(pictureBox);
-            pictureBox.Location = new Point(6, 45);
-            pictureBox.Size = new Size(220, 150);
-            pictureBox.ForeColor = Color.Black;
-            pictureBox.BackColor = Color.White;
-            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            groupBox.Controls.Add(pictureBox);
-            Shaper(groupBox);
-        }
-        private void Shaper(CustomGroupBox groupBox)
-        {
+            Spawner.Spawn_Picture(groupBox, pictureBox);
             this.Controls.Add(groupBox);
-            groupBox.Location = new Point(390, 50);
-            groupBox.Size = new Size(230, 200);
-            groupBox.ForeColor = Color.White;
-            groupBox.Font = new Font("Arial", 15.25F, FontStyle.Bold, GraphicsUnit.Point);
-
-            Button buttonLock = new Button();
-            buttonLock.Location = new Point(200, 14);
-            buttonLock.Size = new Size(20, 20);
-            buttonLock.Text = "";
-            buttonLock.ForeColor = Color.Black;
-            buttonLock.BackColor = Color.White;
-            buttonLock.BackgroundImage = Image.FromFile(@"Assets\kilit.png");
-            groupBox.Controls.Add(buttonLock);
-
-            groupBox.CustomGroupBoxLock(buttonLock);
-            groupBox.isLocked = false;
-
             groupBox.MouseClick += groupBoxMouseClick;
+            groupBox.MouseClick += pictureBoxClick;
+            ActiveGroupBox = groupBox;
+            ActivePicturetBox = pictureBox;
         }
         private void groupBoxMouseClick(object sender, MouseEventArgs e)
         {
@@ -136,29 +97,28 @@ namespace GameJam_Planner
                     {
                         if (ofd.ShowDialog() == DialogResult.OK)
                         {
-                           // PictureBox.Image = Image.FromFile(ofd.FileName);
+                            ActivePicturetBox.Image = Image.FromFile(ofd.FileName);
                             File.Copy(ofd.FileName, "", true);
                         }
                     }
                 }
             }
         }
+
         private void toolStripMenuItemName_Click(object sender, EventArgs e)
         {
             MessageBox.Show("1");
         }
         private void toolStripMenuItemColor_Click(object sender, EventArgs e)
         {
-            //CustomGroupBox groupBox =  ;
-
-            //using (ColorDialog cd = new ColorDialog())
-            //{
-            //    if (cd.ShowDialog() == DialogResult.OK)
-            //    {
-            //        groupBox.BackColor = cd.Color;
-            //        Shaper(groupBox);
-            //    }
-            //}
+            using (ColorDialog cd = new ColorDialog())
+            {
+                if (cd.ShowDialog() == DialogResult.OK)
+                {
+                    ActiveGroupBox.BackColor = cd.Color;
+                    Spawner.Spawn_Group(ActiveGroupBox, ActiveRichTextBox);
+                }
+            }
         }
         private void toolStripMenuItemDeleteTxt_Click(object sender, EventArgs e)
         {
@@ -169,6 +129,9 @@ namespace GameJam_Planner
             MessageBox.Show("4");
         }
 
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
