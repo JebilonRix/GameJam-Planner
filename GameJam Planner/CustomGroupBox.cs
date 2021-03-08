@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -10,16 +9,20 @@ namespace GameJam_Planner
     {
         Point point;
         public bool isLocked;
+        ContextMenu cm = new ContextMenu();
 
-        public int GroupBoxType = 0;
+        public CustomGroupBox()
+        {
 
-        public CustomGroupBox() { }
-
+        }
         public CustomGroupBox(IContainer container)
         {
             container.Add(this);
-
-            ContextMenu.MenuItems.Add("change color", new EventHandler(changeColor_Click));
+            SetUpContextMenu();
+        }
+        private void SetUpContextMenu()
+        {
+            cm.MenuItems.Add("Change Color Of Background", new EventHandler(changeColor_Click));
         }
 
         #region Mouse Events
@@ -27,12 +30,10 @@ namespace GameJam_Planner
         {
             point = e.Location;
 
-            if (e.Button == MouseButtons.Right)
-            {
-                ContextMenu.Show(Controls[0], e.Location);
-            }
+            customGroupBox_Click(e);   // forma box'ı yüklü verirsem çalışıyor ama box'ı sonradan eklersem çalışmıyor :D 
 
             base.OnMouseDown(e);
+
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
@@ -48,47 +49,48 @@ namespace GameJam_Planner
 
             base.OnMouseMove(e);
         }
+        private void customGroupBox_Click(MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Right: cm.Show(this, point); break;
+                default: break;
+            }
+        }
+
         #endregion
 
         #region Lock Controls
         public void CustomGroupBoxLock(Button buttonLock)
         {
             buttonLock.Click += ButtonLock_Click;
-            ImageChanger(buttonLock, isLocked);
+            switch (isLocked)
+            {
+                case true: buttonLock.BackColor = Color.Green; break;
+                case false: buttonLock.BackColor = Color.Red; break;
+                default: break;
+            }
         }
         private void ButtonLock_Click(object sender, EventArgs e)
         {
             this.isLocked = !this.isLocked;
         }
-        private void ImageChanger(Button buttonLock, bool isLocked)
-        {
-            switch (isLocked)
-            {
-                case true:
-                    buttonLock.BackgroundImage.Dispose();
-                    buttonLock.BackgroundImage = Image.FromFile(@"Assets\kilit.png");
-                    break;
-                case false:
-                    buttonLock.BackgroundImage.Dispose();
-                    buttonLock.BackgroundImage = Image.FromFile(@"Assets\kilit2.png");
-                    break;
-                default:
-                    break;
-            }
-        }
+
         #endregion
 
-
-
+        #region MenuItems
         private void changeColor_Click(object sender, EventArgs e)
         {
             using (ColorDialog cd = new ColorDialog())
             {
                 if (cd.ShowDialog() == DialogResult.OK)
                 {
-                    BackColor = cd.Color;
+                    this.BackColor = cd.Color;
                 }
             }
         }
+
+        #endregion
+
     }
 }

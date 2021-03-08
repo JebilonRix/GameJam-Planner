@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Drawing;
-using System.IO;
 using System.Windows.Forms;
 
 namespace GameJam_Planner
 {
     public partial class Form_Gamejam_Planner : Form
     {
-        CustomGroupBox ActiveGroupBox;
-        RichTextBox ActiveRichTextBox;
-        PictureBox ActivePicturetBox;
-        private int switch_on;
-
         public Form_Gamejam_Planner()
         {
             InitializeComponent();
@@ -58,82 +51,21 @@ namespace GameJam_Planner
         {
             Application.Exit();
         }
+
+
         private void noteBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CustomGroupBox groupBox = new CustomGroupBox();
-            RichTextBox richTextBox = new RichTextBox();
-            Class_Spawner.Spawner.Spawn_Group(groupBox, richTextBox);
+            Class_Spawner.Spawner.Spawn_Group(groupBox);
             this.Controls.Add(groupBox);
-            //groupBox.MouseClick += groupBoxMouseClick;
-
-            ActiveGroupBox = groupBox;
-            ActiveRichTextBox = richTextBox;
-            switch_on = 0;
         }
         private void ImageBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CustomGroupBox groupBox = new CustomGroupBox();
-            PictureBox pictureBox = new PictureBox();
-            Class_Spawner.Spawner.Spawn_Picture(groupBox, pictureBox);
+            Class_Spawner.Spawner.Spawn_Picture(groupBox);
             this.Controls.Add(groupBox);
-            //groupBox.MouseClick += groupBoxMouseClick;
-            groupBox.MouseClick += pictureBoxClick;
-
-            ActiveGroupBox = groupBox;
-            ActivePicturetBox = pictureBox;
-            switch_on = 1;
         }
 
-        private void pictureBoxClick(object sender, MouseEventArgs e)
-        {
-            if (sender.GetType() == typeof(PictureBox))
-            {
-                if (e.Button == MouseButtons.Left)
-                {
-                    using (OpenFileDialog ofd = new OpenFileDialog())
-                    {
-                        if (ofd.ShowDialog() == DialogResult.OK)
-                        {
-                            ActivePicturetBox.Image = Image.FromFile(ofd.FileName);
-                            Class_Spawner.Spawner.Spawn_Picture(ActiveGroupBox, ActivePicturetBox);
-                            //File.Copy(ofd.FileName, "", true);
-                        }
-                    }
-                }
-            }
-        }
-
-        private void toolStripMenuItemName_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("1");
-        }
-        private void toolStripMenuItemColor_Click(object sender, EventArgs e)
-        {
-            using (ColorDialog cd = new ColorDialog())
-            {
-                if (cd.ShowDialog() == DialogResult.OK)
-                {
-                    ActiveGroupBox.BackColor = cd.Color;
-
-                    switch (switch_on)
-                    {
-                        case 0: Class_Spawner.Spawner.Spawn_Group(ActiveGroupBox, ActiveRichTextBox); break;
-                        case 1: Class_Spawner.Spawner.Spawn_Picture(ActiveGroupBox, ActivePicturetBox); break;
-                        default: break;
-                    }
-
-
-                }
-            }
-        }
-        private void toolStripMenuItemDeleteTxt_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("3");
-        }
-        private void toolStripMenuItemDeletePic_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("4");
-        }
-
+       
     }
 }
