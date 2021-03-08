@@ -12,12 +12,12 @@ namespace GameJam_Planner
         PictureBox ActivePicturetBox;
         private int switch_on;
 
-        Class_Spawner Spawner = new Class_Spawner();
         public Form_Gamejam_Planner()
         {
             InitializeComponent();
-            this.MouseClick += groupBoxMouseClick;
-            this.MouseClick += pictureBoxClick;
+            Class_Spawner.Spawner = new Class_Spawner();
+            //this.MouseClick += groupBoxMouseClick;
+            //this.MouseClick += pictureBoxClick;
         }
         private void Form_Gamejam_Planner_Load(object sender, EventArgs e)
         {
@@ -62,9 +62,9 @@ namespace GameJam_Planner
         {
             CustomGroupBox groupBox = new CustomGroupBox();
             RichTextBox richTextBox = new RichTextBox();
-            Spawner.Spawn_Group(groupBox, richTextBox);
+            Class_Spawner.Spawner.Spawn_Group(groupBox, richTextBox);
             this.Controls.Add(groupBox);
-            groupBox.MouseClick += groupBoxMouseClick;
+            //groupBox.MouseClick += groupBoxMouseClick;
 
             ActiveGroupBox = groupBox;
             ActiveRichTextBox = richTextBox;
@@ -74,27 +74,16 @@ namespace GameJam_Planner
         {
             CustomGroupBox groupBox = new CustomGroupBox();
             PictureBox pictureBox = new PictureBox();
-            Spawner.Spawn_Picture(groupBox, pictureBox);
+            Class_Spawner.Spawner.Spawn_Picture(groupBox, pictureBox);
             this.Controls.Add(groupBox);
-            groupBox.MouseClick += groupBoxMouseClick;
+            //groupBox.MouseClick += groupBoxMouseClick;
             groupBox.MouseClick += pictureBoxClick;
 
             ActiveGroupBox = groupBox;
             ActivePicturetBox = pictureBox;
             switch_on = 1;
         }
-        private void groupBoxMouseClick(object sender, MouseEventArgs e)
-        {
-            if (sender.GetType() == typeof(CustomGroupBox))
-            {
-                if (e.Button == MouseButtons.Right)
-                {
-                    this.contextMenuStripOptions.Show();
-                    contextMenuStripOptions.Left += CustomGroupBox.MousePosition.X;
-                    contextMenuStripOptions.Top += CustomGroupBox.MousePosition.Y;
-                }
-            }
-        }
+
         private void pictureBoxClick(object sender, MouseEventArgs e)
         {
             if (sender.GetType() == typeof(PictureBox))
@@ -106,7 +95,7 @@ namespace GameJam_Planner
                         if (ofd.ShowDialog() == DialogResult.OK)
                         {
                             ActivePicturetBox.Image = Image.FromFile(ofd.FileName);
-                            Spawner.Spawn_Picture(ActiveGroupBox, ActivePicturetBox);
+                            Class_Spawner.Spawner.Spawn_Picture(ActiveGroupBox, ActivePicturetBox);
                             //File.Copy(ofd.FileName, "", true);
                         }
                     }
@@ -128,8 +117,8 @@ namespace GameJam_Planner
 
                     switch (switch_on)
                     {
-                        case 0: Spawner.Spawn_Group(ActiveGroupBox, ActiveRichTextBox); break;
-                        case 1: Spawner.Spawn_Picture(ActiveGroupBox, ActivePicturetBox); break;
+                        case 0: Class_Spawner.Spawner.Spawn_Group(ActiveGroupBox, ActiveRichTextBox); break;
+                        case 1: Class_Spawner.Spawner.Spawn_Picture(ActiveGroupBox, ActivePicturetBox); break;
                         default: break;
                     }
 

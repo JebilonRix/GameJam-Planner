@@ -11,15 +11,27 @@ namespace GameJam_Planner
         Point point;
         public bool isLocked;
 
+        public int GroupBoxType = 0;
+
         public CustomGroupBox() { }
 
         public CustomGroupBox(IContainer container)
         {
             container.Add(this);
+
+            ContextMenu.MenuItems.Add("change color", new EventHandler(changeColor_Click));
         }
+
+        #region Mouse Events
         protected override void OnMouseDown(MouseEventArgs e)
         {
             point = e.Location;
+
+            if (e.Button == MouseButtons.Right)
+            {
+                ContextMenu.Show(Controls[0], e.Location);
+            }
+
             base.OnMouseDown(e);
         }
         protected override void OnMouseMove(MouseEventArgs e)
@@ -36,7 +48,9 @@ namespace GameJam_Planner
 
             base.OnMouseMove(e);
         }
+        #endregion
 
+        #region Lock Controls
         public void CustomGroupBoxLock(Button buttonLock)
         {
             buttonLock.Click += ButtonLock_Click;
@@ -62,6 +76,19 @@ namespace GameJam_Planner
                     break;
             }
         }
+        #endregion
 
+
+
+        private void changeColor_Click(object sender, EventArgs e)
+        {
+            using (ColorDialog cd = new ColorDialog())
+            {
+                if (cd.ShowDialog() == DialogResult.OK)
+                {
+                    BackColor = cd.Color;
+                }
+            }
+        }
     }
 }
