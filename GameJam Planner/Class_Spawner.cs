@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace GameJam_Planner
@@ -6,8 +7,10 @@ namespace GameJam_Planner
     public class Class_Spawner
     {
         public static Class_Spawner Spawner;
-        public CustomGroupBox Spawn_Group(CustomGroupBox groupBox)
+        public CustomGroupBox Spawn_Group(EventArgs e)
         {
+            CustomGroupBox groupBox = new CustomGroupBox();
+
             groupBox.Text = "GroupBox";
             CommonsFeatures(groupBox);
             RichTextBox richTextBox = new RichTextBox();
@@ -17,13 +20,18 @@ namespace GameJam_Planner
             richTextBox.ForeColor = Color.Black;
             richTextBox.BackColor = Color.White;
             richTextBox.Font = new Font("Arial", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
-            
+
             groupBox.Controls.Add(richTextBox);
+
+            //CustomGroupBox.customGroupBox_Click(e as MouseEventArgs); statik istiyor :/
+
 
             return groupBox;
         }
-        public CustomGroupBox Spawn_Picture(CustomGroupBox groupBox) 
+        public CustomGroupBox Spawn_Picture()
         {
+            CustomGroupBox groupBox = new CustomGroupBox();
+
             groupBox.Text = "PictureBox";
             CommonsFeatures(groupBox);
             PictureBox pictureBox = new PictureBox();
@@ -58,6 +66,7 @@ namespace GameJam_Planner
             groupBox.isLocked = false;
 
             groupBox.Controls.Add(buttonLock);
+
         }
     }
 }

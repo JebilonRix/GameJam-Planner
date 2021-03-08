@@ -249,14 +249,14 @@ namespace GameJam_Planner
             // noteBoxToolStripMenuItem
             // 
             this.noteBoxToolStripMenuItem.Name = "noteBoxToolStripMenuItem";
-            this.noteBoxToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.noteBoxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.noteBoxToolStripMenuItem.Text = "Note Box";
             this.noteBoxToolStripMenuItem.Click += new System.EventHandler(this.noteBoxToolStripMenuItem_Click);
             // 
             // ImageBoxToolStripMenuItem
             // 
             this.ImageBoxToolStripMenuItem.Name = "ImageBoxToolStripMenuItem";
-            this.ImageBoxToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.ImageBoxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ImageBoxToolStripMenuItem.Text = "Image Box";
             this.ImageBoxToolStripMenuItem.Click += new System.EventHandler(this.ImageBoxToolStripMenuItem_Click);
             // 

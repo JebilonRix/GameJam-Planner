@@ -27,6 +27,7 @@ namespace GameJam_Planner
             point = e.Location;
             customGroupBox_Click(e);   // forma box'ı yüklü verirsem çalışıyor ama box'ı sonradan eklersem çalışmıyor :D 
             base.OnMouseDown(e);
+
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
@@ -37,16 +38,17 @@ namespace GameJam_Planner
             }
             else if (this.isLocked)
             {
-                //We'll bang,OK!
+                //We'll bang,OK! 
             }
 
             base.OnMouseMove(e);
         }
-        private void customGroupBox_Click(MouseEventArgs e)
+        public void customGroupBox_Click(MouseEventArgs e)
         {
             switch (e.Button)
             {
                 case MouseButtons.Right: cm.Show(this, point); break;
+                case MouseButtons.Middle: cm.Show(this, point); break;  //bunu, silme eylemi olarak ayarlamak istiyorum
                 default: break;
             }
         }
@@ -75,6 +77,7 @@ namespace GameJam_Planner
         private void SetUpContextMenu()
         {
             cm.MenuItems.Add("Change Color Of Background", new EventHandler(changeColor_Click));
+            cm.MenuItems.Add("Delet dis", new EventHandler(Delete_Click));
         }
         private void changeColor_Click(object sender, EventArgs e)
         {
@@ -85,6 +88,10 @@ namespace GameJam_Planner
                     this.BackColor = cd.Color;
                 }
             }
+        }
+        private void Delete_Click(object sender, EventArgs e)
+        {
+
         }
 
         #endregion

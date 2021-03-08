@@ -5,6 +5,7 @@ namespace GameJam_Planner
 {
     public partial class Form_Gamejam_Planner : Form
     {
+
         public Form_Gamejam_Planner()
         {
             InitializeComponent();
@@ -52,20 +53,15 @@ namespace GameJam_Planner
             Application.Exit();
         }
 
-
         private void noteBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CustomGroupBox groupBox = new CustomGroupBox();
-            Class_Spawner.Spawner.Spawn_Group(groupBox);
-            this.Controls.Add(groupBox);
+            Class_Spawner.Spawner.Spawn_Group(e);
+            this.Controls.Add(Class_Spawner.Spawner.Spawn_Group(e));
         }
         private void ImageBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CustomGroupBox groupBox = new CustomGroupBox();
-            Class_Spawner.Spawner.Spawn_Picture(groupBox);
-            this.Controls.Add(groupBox);
+            Class_Spawner.Spawner.Spawn_Picture();
+            this.Controls.Add(Class_Spawner.Spawner.Spawn_Picture());
         }
-
-       
     }
 }
