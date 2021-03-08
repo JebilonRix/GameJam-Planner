@@ -17,9 +17,9 @@ namespace GameJam_Planner
             richTextBox.ForeColor = Color.Black;
             richTextBox.BackColor = Color.White;
             richTextBox.Font = new Font("Arial", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
-
+            
             groupBox.Controls.Add(richTextBox);
-           
+
             return groupBox;
         }
         public CustomGroupBox Spawn_Picture(CustomGroupBox groupBox) 

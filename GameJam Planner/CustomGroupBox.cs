@@ -20,20 +20,13 @@ namespace GameJam_Planner
             container.Add(this);
             SetUpContextMenu();
         }
-        private void SetUpContextMenu()
-        {
-            cm.MenuItems.Add("Change Color Of Background", new EventHandler(changeColor_Click));
-        }
 
         #region Mouse Events
         protected override void OnMouseDown(MouseEventArgs e)
         {
             point = e.Location;
-
             customGroupBox_Click(e);   // forma box'ı yüklü verirsem çalışıyor ama box'ı sonradan eklersem çalışmıyor :D 
-
             base.OnMouseDown(e);
-
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
@@ -79,6 +72,10 @@ namespace GameJam_Planner
         #endregion
 
         #region MenuItems
+        private void SetUpContextMenu()
+        {
+            cm.MenuItems.Add("Change Color Of Background", new EventHandler(changeColor_Click));
+        }
         private void changeColor_Click(object sender, EventArgs e)
         {
             using (ColorDialog cd = new ColorDialog())
