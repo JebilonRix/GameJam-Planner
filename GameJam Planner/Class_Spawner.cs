@@ -10,6 +10,7 @@ namespace GameJam_Planner
         public int box_id;
         public int pic_id;
         public string TypeOfBox;
+        public MouseEventArgs e;
 
         public CustomGroupBox Spawn_Group()
         {

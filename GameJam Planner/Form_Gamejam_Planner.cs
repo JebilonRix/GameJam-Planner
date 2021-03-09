@@ -50,7 +50,7 @@ namespace GameJam_Planner
                     }
                 }
             }
-        }  
+        }
         private void HintsMenuItem_Click(object sender, EventArgs e)
         {
             string message = "You can add boxes like:" + "\n"
@@ -74,21 +74,23 @@ namespace GameJam_Planner
         }
         private void ImageBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Pic();
+            Pic(e as MouseEventArgs);
         }
         private void RightClickPicture_Click(object sender, EventArgs e)
         {
-            Pic();
+            Pic(e as MouseEventArgs);
         }
         private void Box()
         {
             var BoxSpawn = Class_Spawner.Spawner.Spawn_Group();
             this.Controls.Add(BoxSpawn);
         }
-        private void Pic()
+        private void Pic(MouseEventArgs e)
         {
+            Class_Spawner.Spawner.e = e;
             var BoxSpawn = Class_Spawner.Spawner.Spawn_Picture();
             this.Controls.Add(BoxSpawn);
+           
         }
     }
 }

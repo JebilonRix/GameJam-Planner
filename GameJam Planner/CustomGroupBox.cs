@@ -12,6 +12,7 @@ namespace GameJam_Planner
         public bool isLocked;
         ContextMenu cm = new ContextMenu();
         Form_Name_Changer FNC = new Form_Name_Changer();
+        PictureBox PC = new PictureBox();
 
         public CustomGroupBox()
         {
@@ -23,7 +24,6 @@ namespace GameJam_Planner
         {
             point = e.Location;
             customGroupBox_Click(e);
-            PictureBox_Click(e);  //groupbox'a çift tıklanınca çalışıyor
             base.OnMouseDown(e);
         }
         protected override void OnMouseMove(MouseEventArgs e)
@@ -48,46 +48,6 @@ namespace GameJam_Planner
                 case MouseButtons.Middle: Delete_Click(this, e); break;
                 default: break;
             }
-        }
-        private void PictureBox_Click(MouseEventArgs e)
-        {
-            if (e.Clicks == 2)
-            {
-                switch (e.Button)
-                {
-                    case MouseButtons.Left: ImageImporter(Class_Spawner.Spawner.PictureBox()); break;
-                }
-            }
-        }
-        private PictureBox ImageImporter(PictureBox pictureBox)
-        {
-            if (pictureBox.Image != null)
-            {
-                pictureBox.Image.Dispose();
-
-                using (OpenFileDialog ofd = new OpenFileDialog())
-                {
-                    if (ofd.ShowDialog() == DialogResult.OK)
-                    {
-                        pictureBox.Image = Image.FromFile(ofd.FileName);
-                        File.Copy(ofd.FileName, ofd.SafeFileName, true);
-                        pictureBox.Visible = true;
-                    }
-                }
-            }
-            else
-            {
-                using (OpenFileDialog ofd = new OpenFileDialog())
-                {
-                    if (ofd.ShowDialog() == DialogResult.OK)
-                    {
-                        pictureBox.Image = Image.FromFile(ofd.FileName);
-                        File.Copy(ofd.FileName, ofd.SafeFileName, true);
-                    }
-                }
-            }
-
-            return pictureBox;
         }
 
         #endregion
@@ -119,6 +79,7 @@ namespace GameJam_Planner
             cm.MenuItems.Add("Change Color", new EventHandler(ChangeColor_Click));
             cm.MenuItems.Add("Change Name", new EventHandler(ChangeName_Click));
             cm.MenuItems.Add("Delet Dis", new EventHandler(Delete_Click));
+            cm.MenuItems.Add("Add Pic", new EventHandler(AddPicture_Click));
         }
         private void ChangeColor_Click(object sender, EventArgs e)
         {
@@ -140,10 +101,45 @@ namespace GameJam_Planner
             }
             this.Dispose();
         }
-        private void ChangeName_Click(object sender, EventArgs e) //çalışmıyor
+        private void ChangeName_Click(object sender, EventArgs e)
         {
             FNC.ShowDialog();
             this.Text = FNC.Joker;
+        }
+        private void AddPicture_Click(object sender, EventArgs e)
+        {
+            ImageImporter();
+        }
+
+        // İmage importer çalışmiri
+        private PictureBox ImageImporter()
+        {
+            if (PC.Image != null)
+            {
+                PC.Image.Dispose();
+
+                using (OpenFileDialog ofd = new OpenFileDialog())
+                {
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        PC.Image = Image.FromFile(ofd.FileName);
+                        File.Copy(ofd.FileName, ofd.SafeFileName, true);
+                    }
+                }
+            }
+            else
+            {
+                using (OpenFileDialog ofd = new OpenFileDialog())
+                {
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        PC.Image = Image.FromFile(ofd.FileName);
+                        File.Copy(ofd.FileName, ofd.SafeFileName, true);
+                    }
+                }
+            }
+
+            return PC;
         }
 
         #endregion
