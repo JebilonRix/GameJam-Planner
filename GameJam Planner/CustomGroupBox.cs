@@ -11,6 +11,7 @@ namespace GameJam_Planner
         public bool isLocked;
         ContextMenu cm = new ContextMenu();
 
+        #region Main
         public CustomGroupBox()
         {
 
@@ -20,6 +21,8 @@ namespace GameJam_Planner
             container.Add(this);
             SetUpContextMenu();
         }
+        #endregion
+
         #region Mouse Events
         protected override void OnMouseDown(MouseEventArgs e)
         {
@@ -29,12 +32,12 @@ namespace GameJam_Planner
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
-            if (!this.isLocked && e.Button == MouseButtons.Left)
+            if (this.isLocked == false && e.Button == MouseButtons.Left)
             {
                 this.Left += e.X - point.X;
                 this.Top += e.Y - point.Y;
             }
-            else if (this.isLocked)
+            else if (this.isLocked == true)
             {
                 //We'll bang,OK! 
             }
@@ -46,7 +49,7 @@ namespace GameJam_Planner
             switch (e.Button)
             {
                 case MouseButtons.Right: cm.Show(this, point); break;
-                case MouseButtons.Middle: cm.Show(this, point); break;  //bunu, "silme" eylemi olarak ayarlamak istiyorum
+                case MouseButtons.Middle: Delete_Click(this, e); break;  //bunu, "silme" eylemi olarak ayarlamak istiyorum
                 default: break;
             }
         }
@@ -75,7 +78,8 @@ namespace GameJam_Planner
         private void SetUpContextMenu()
         {
             cm.MenuItems.Add("Change Color Of Background", new EventHandler(changeColor_Click));
-            cm.MenuItems.Add("Delet dis", new EventHandler(Delete_Click));
+            cm.MenuItems.Add("Delet Dis", new EventHandler(Delete_Click));
+            cm.MenuItems.Add("Change Name", new EventHandler(ChangeName_Click));
         }
         private void changeColor_Click(object sender, EventArgs e)
         {
@@ -89,9 +93,16 @@ namespace GameJam_Planner
         }
         private void Delete_Click(object sender, EventArgs e)
         {
+            this.Dispose();
+        }
 
+        private void ChangeName_Click(object sender, EventArgs e)
+        {
+            this.Text = "";
         }
 
         #endregion
+
+
     }
 }

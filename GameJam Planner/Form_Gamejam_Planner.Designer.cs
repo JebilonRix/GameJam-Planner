@@ -54,10 +54,17 @@ namespace GameJam_Planner
             this.HintsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ClearMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.RightClickBox = new System.Windows.Forms.ToolStripMenuItem();
+            this.RightClickPicture = new System.Windows.Forms.ToolStripMenuItem();
             this.customGroupBox1 = new GameJam_Planner.CustomGroupBox(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBoxMain.SuspendLayout();
             this.groupBoxMechanics.SuspendLayout();
             this.menuStripPlanner.SuspendLayout();
+            this.contextMenuStrip.SuspendLayout();
+            this.customGroupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxMain
@@ -249,14 +256,14 @@ namespace GameJam_Planner
             // noteBoxToolStripMenuItem
             // 
             this.noteBoxToolStripMenuItem.Name = "noteBoxToolStripMenuItem";
-            this.noteBoxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.noteBoxToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.noteBoxToolStripMenuItem.Text = "Note Box";
             this.noteBoxToolStripMenuItem.Click += new System.EventHandler(this.noteBoxToolStripMenuItem_Click);
             // 
             // ImageBoxToolStripMenuItem
             // 
             this.ImageBoxToolStripMenuItem.Name = "ImageBoxToolStripMenuItem";
-            this.ImageBoxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ImageBoxToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.ImageBoxToolStripMenuItem.Text = "Image Box";
             this.ImageBoxToolStripMenuItem.Click += new System.EventHandler(this.ImageBoxToolStripMenuItem_Click);
             // 
@@ -281,14 +288,46 @@ namespace GameJam_Planner
             this.ExitMenuItem.Text = "Exit";
             this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
             // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.RightClickBox,
+            this.RightClickPicture});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(134, 48);
+            // 
+            // RightClickBox
+            // 
+            this.RightClickBox.Name = "RightClickBox";
+            this.RightClickBox.Size = new System.Drawing.Size(133, 22);
+            this.RightClickBox.Text = "Add Box";
+            this.RightClickBox.Click += new System.EventHandler(this.RightClickBox_Click);
+            // 
+            // RightClickPicture
+            // 
+            this.RightClickPicture.Name = "RightClickPicture";
+            this.RightClickPicture.Size = new System.Drawing.Size(133, 22);
+            this.RightClickPicture.Text = "AddPicture";
+            this.RightClickPicture.Click += new System.EventHandler(this.RightClickPicture_Click);
+            // 
             // customGroupBox1
             // 
-            this.customGroupBox1.Location = new System.Drawing.Point(26, 352);
+            this.customGroupBox1.Controls.Add(this.pictureBox1);
+            this.customGroupBox1.Location = new System.Drawing.Point(26, 323);
             this.customGroupBox1.Name = "customGroupBox1";
             this.customGroupBox1.Size = new System.Drawing.Size(200, 100);
             this.customGroupBox1.TabIndex = 11;
             this.customGroupBox1.TabStop = false;
             this.customGroupBox1.Text = "customGroupBox1";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.pictureBox1.Location = new System.Drawing.Point(26, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(151, 66);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // Form_Gamejam_Planner
             // 
@@ -296,6 +335,7 @@ namespace GameJam_Planner
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1430, 727);
+            this.ContextMenuStrip = this.contextMenuStrip;
             this.Controls.Add(this.customGroupBox1);
             this.Controls.Add(this.groupBoxMain);
             this.Controls.Add(this.menuStripPlanner);
@@ -312,6 +352,9 @@ namespace GameJam_Planner
             this.groupBoxMechanics.ResumeLayout(false);
             this.menuStripPlanner.ResumeLayout(false);
             this.menuStripPlanner.PerformLayout();
+            this.contextMenuStrip.ResumeLayout(false);
+            this.customGroupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -342,6 +385,10 @@ namespace GameJam_Planner
         private System.Windows.Forms.ToolStripMenuItem noteBoxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ImageBoxToolStripMenuItem;
         private CustomGroupBox customGroupBox1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem RightClickBox;
+        private System.Windows.Forms.ToolStripMenuItem RightClickPicture;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

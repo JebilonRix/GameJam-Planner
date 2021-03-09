@@ -9,8 +9,6 @@ namespace GameJam_Planner
         {
             InitializeComponent();
             Class_Spawner.Spawner = new Class_Spawner();
-            //this.MouseClick += groupBoxMouseClick;
-            //this.MouseClick += pictureBoxClick;
         }
         private void Form_Gamejam_Planner_Load(object sender, EventArgs e)
         {
@@ -54,10 +52,27 @@ namespace GameJam_Planner
 
         private void noteBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var BoxSpawn = Class_Spawner.Spawner.Spawn_Group();
-            this.Controls.Add(BoxSpawn);
+            Box();
+        }
+        private void RightClickBox_Click(object sender, EventArgs e)
+        {
+            Box();
         }
         private void ImageBoxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Pic();
+        }
+        private void RightClickPicture_Click(object sender, EventArgs e)
+        {
+            Pic();
+        }
+        private void Box()
+        {
+            var BoxSpawn = Class_Spawner.Spawner.Spawn_Group();
+            this.Controls.Add(BoxSpawn);
+
+        }
+        private void Pic()
         {
             var BoxSpawn = Class_Spawner.Spawner.Spawn_Picture();
             this.Controls.Add(BoxSpawn);

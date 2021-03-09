@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace GameJam_Planner
@@ -8,12 +9,14 @@ namespace GameJam_Planner
     {
         public static Class_Spawner Spawner;
 
+        int box_id;
+        int pic_id;
         public CustomGroupBox Spawn_Group()
         {
+            box_id++;
             CustomGroupBox groupBox = new CustomGroupBox();
-
-            groupBox.Text = "GroupBox";
-            CommonsFeatures(groupBox);
+            groupBox.Text = "GroupBox" + box_id.ToString();
+            CommonFeatures(groupBox);
             RichTextBox richTextBox = new RichTextBox();
 
             richTextBox.Location = new Point(6, 45);
@@ -23,15 +26,14 @@ namespace GameJam_Planner
             richTextBox.Font = new Font("Arial", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
 
             groupBox.Controls.Add(richTextBox);
-
             return groupBox;
         }
         public CustomGroupBox Spawn_Picture()
         {
+            pic_id++;
             CustomGroupBox groupBox = new CustomGroupBox();
-
-            groupBox.Text = "PictureBox";
-            CommonsFeatures(groupBox);
+            groupBox.Text = "PictureBox" + pic_id.ToString();
+            CommonFeatures(groupBox);
             PictureBox pictureBox = new PictureBox();
 
             pictureBox.Location = new Point(6, 45);
@@ -39,13 +41,12 @@ namespace GameJam_Planner
             pictureBox.ForeColor = Color.Black;
             pictureBox.BackColor = Color.White;
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox.Image = Image.FromFile(@"Assets\default.jpg");
-
+            ImageAdd(pictureBox);
             groupBox.Controls.Add(pictureBox);
 
             return groupBox;
         }
-        private void CommonsFeatures(CustomGroupBox groupBox)
+        private void CommonFeatures(CustomGroupBox groupBox)
         {
             groupBox.Location = new Point(390, 50);
             groupBox.Size = new Size(230, 200);
@@ -64,6 +65,24 @@ namespace GameJam_Planner
             groupBox.isLocked = false;
 
             groupBox.Controls.Add(buttonLock);
+        }
+        private void ImageAdd(PictureBox pictureBox)
+        {
+            if (pictureBox.Image == null)
+            {
+                pictureBox.Image = Image.FromFile(@"Assets\default.jpg");
+            }
+            else
+            {
+                using (OpenFileDialog ofd = new OpenFileDialog())
+                {
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        pictureBox.Image = Image.FromFile(ofd.FileName);
+                        File.Copy(ofd.FileName, "", true);
+                    }
+                }
+            }
         }
 
     }
