@@ -7,12 +7,14 @@ namespace GameJam_Planner
     {
         public static Class_Spawner Spawner;
 
-        int box_id;
-        int pic_id;
+        public int box_id;
+        public int pic_id;
+        public string TypeOfBox;
 
         public CustomGroupBox Spawn_Group()
         {
             box_id++;
+            TypeOfBox = "GroupText";
             CustomGroupBox groupBox = new CustomGroupBox();
             groupBox.Text = "GroupBox" + box_id.ToString();
             CommonFeatures(groupBox);
@@ -30,6 +32,7 @@ namespace GameJam_Planner
         public CustomGroupBox Spawn_Picture()
         {
             pic_id++;
+            TypeOfBox = "GroupPict";
             CustomGroupBox groupBox = new CustomGroupBox();
             groupBox.Text = "PictureBox" + pic_id.ToString();
             CommonFeatures(groupBox);
@@ -71,7 +74,7 @@ namespace GameJam_Planner
 
             return pictureBox;
         }
-
+        
 
     }
 }

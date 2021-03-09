@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -21,7 +22,7 @@ namespace GameJam_Planner
         {
             point = e.Location;
             customGroupBox_Click(e);
-            PictureBox_Click(e);
+            PictureBox_Click(e);  //groupbox'a çift tıklanınca çalışıyor
             base.OnMouseDown(e);
         }
         protected override void OnMouseMove(MouseEventArgs e)
@@ -57,31 +58,46 @@ namespace GameJam_Planner
                 }
             }
         }
-        private void ImageAdd(PictureBox pictureBox)
+        private PictureBox ImageAdd(PictureBox pictureBox)
         {
-            pictureBox.Image.Dispose();
-
-            using (OpenFileDialog ofd = new OpenFileDialog())
+            if (File.Exists(@"Assets\default.jpg"))
             {
-                if (ofd.ShowDialog() == DialogResult.OK)
+                pictureBox.Image.Dispose();
+
+                using (OpenFileDialog ofd = new OpenFileDialog())
                 {
-                    pictureBox.Image = Image.FromFile(ofd.FileName);
-                    File.Copy(ofd.FileName, ofd.SafeFileName, true);
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        pictureBox.Image = Image.FromFile(ofd.FileName);
+                        File.Copy(ofd.FileName, ofd.SafeFileName, true);
+                    }
+                }
+            }
+            else
+            {
+                using (OpenFileDialog ofd = new OpenFileDialog())
+                {
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        pictureBox.Image = Image.FromFile(ofd.FileName);
+                        File.Copy(ofd.FileName, ofd.SafeFileName, true);
+                    }
                 }
             }
 
+            return pictureBox;
         }
 
         #endregion
 
         #region Lock Controls
-        public Button CustomGroupBoxLock(Button buttonLock)
+        public Button CustomGroupBoxLock(Button buttonLock)   //çalışmıyor
         {
             buttonLock.Click += ButtonLock_Click;
 
             switch (isLocked)
             {
-                case true: buttonLock.BackColor = Color.Red; break;          //çalışmıyor
+                case true: buttonLock.BackColor = Color.Red; break;
                 case false: buttonLock.BackColor = Color.White; break;
                 default: break;
             }
@@ -114,26 +130,32 @@ namespace GameJam_Planner
         }
         private void Delete_Click(object sender, EventArgs e)
         {
+            switch (Class_Spawner.Spawner.TypeOfBox)
+            {
+                case "GroupText": Class_Spawner.Spawner.box_id--; break;
+                case "GroupPict": Class_Spawner.Spawner.pic_id--; break;
+                default: break;
+            }
             this.Dispose();
         }
-        private void ChangeName_Click(object sender, EventArgs e)
+        private void ChangeName_Click(object sender, EventArgs e) //çalışmıyor
         {
             Form_Name_Changer FNC = new Form_Name_Changer();
             FNC.Show();
 
             if (FNC.Result == true)
             {
-                this.Text = FNC.TXT;    //çalışmıyor
+                this.Text = FNC.TXT;
             }
         }
 
         #endregion
 
 
-        //public CustomGroupBox(IContainer container)
-        //{
-        //    container.Add(this);
-        //    SetUpContextMenu();
-        //}
+        public CustomGroupBox(IContainer container)
+        {
+            container.Add(this);
+            SetUpContextMenu();
+        }
     }
 }
