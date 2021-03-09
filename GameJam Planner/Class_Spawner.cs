@@ -7,10 +7,11 @@ namespace GameJam_Planner
     {
         public static Class_Spawner Spawner;
 
+        public Button buttonLock = new Button();
+
         public int box_id;
         public int pic_id;
         public string TypeOfBox;
-        public MouseEventArgs e;
 
         public CustomGroupBox Spawn_Group()
         {
@@ -35,11 +36,20 @@ namespace GameJam_Planner
             pic_id++;
             TypeOfBox = "GroupPict";
             CustomGroupBox groupBox = new CustomGroupBox();
+            PictureBox pictureBox = new PictureBox();
+
             groupBox.Text = "PictureBox" + pic_id.ToString();
             CommonFeatures(groupBox);
-            PictureBox();
 
-            groupBox.Controls.Add(PictureBox());
+            pictureBox.Location = new Point(6, 45);
+            pictureBox.Size = new Size(220, 150);
+            pictureBox.ForeColor = Color.Black;
+            pictureBox.BackColor = Color.White;
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.Image = groupBox.ImageImporter();
+
+            groupBox.Controls.Add(pictureBox);
+
             return groupBox;
         }
         private void CommonFeatures(CustomGroupBox groupBox)
@@ -49,7 +59,6 @@ namespace GameJam_Planner
             groupBox.ForeColor = Color.White;
             groupBox.Font = new Font("Arial", 15.25F, FontStyle.Bold, GraphicsUnit.Point);
 
-            Button buttonLock = new Button();
             buttonLock.Location = new Point(200, 14);
             buttonLock.Size = new Size(20, 20);
             buttonLock.Text = "";
@@ -62,23 +71,7 @@ namespace GameJam_Planner
 
             groupBox.Controls.Add(buttonLock);
         }
-        public PictureBox PictureBox()
-        {
-            PictureBox pictureBox = new PictureBox();
 
-            pictureBox.Location = new Point(6, 45);
-            pictureBox.Size = new Size(220, 150);
-            pictureBox.ForeColor = Color.Black;
-            pictureBox.BackColor = Color.White;
-            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            if (pictureBox.Image == null)
-            {
-                pictureBox.Image = Image.FromFile(@"Assets\default.jpg");
-            }
-
-            return pictureBox;
-        }
 
 
     }

@@ -74,23 +74,22 @@ namespace GameJam_Planner
         }
         private void ImageBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Pic(e as MouseEventArgs);
+            Pic();
         }
         private void RightClickPicture_Click(object sender, EventArgs e)
         {
-            Pic(e as MouseEventArgs);
+            Pic();
         }
         private void Box()
         {
             var BoxSpawn = Class_Spawner.Spawner.Spawn_Group();
             this.Controls.Add(BoxSpawn);
         }
-        private void Pic(MouseEventArgs e)
+        private void Pic()
         {
-            Class_Spawner.Spawner.e = e;
             var BoxSpawn = Class_Spawner.Spawner.Spawn_Picture();
             this.Controls.Add(BoxSpawn);
-           
         }
+
     }
 }

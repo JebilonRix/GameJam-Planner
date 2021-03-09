@@ -12,11 +12,12 @@ namespace GameJam_Planner
         public bool isLocked;
         ContextMenu cm = new ContextMenu();
         Form_Name_Changer FNC = new Form_Name_Changer();
-        PictureBox PC = new PictureBox();
+        Image img;
 
         public CustomGroupBox()
         {
             SetUpContextMenu();
+
         }
 
         #region Mouse Events
@@ -69,6 +70,7 @@ namespace GameJam_Planner
         private void ButtonLock_Click(object sender, EventArgs e)
         {
             this.isLocked = !this.isLocked;
+
         }
 
         #endregion
@@ -111,35 +113,38 @@ namespace GameJam_Planner
             ImageImporter();
         }
 
-        // İmage importer çalışmiri
-        private PictureBox ImageImporter()
+        public Image ImageImporter()
         {
-            if (PC.Image != null)
-            {
-                PC.Image.Dispose();
+            // Debug.WriteLine("Heheheh");
 
+            if (img == null)
+            {
                 using (OpenFileDialog ofd = new OpenFileDialog())
                 {
+
                     if (ofd.ShowDialog() == DialogResult.OK)
                     {
-                        PC.Image = Image.FromFile(ofd.FileName);
-                       // File.Copy(ofd.FileName, ofd.SafeFileName, true);
+                        img = new Bitmap(ofd.FileName);
+                        File.Copy(ofd.FileName, ofd.SafeFileName, true);
                     }
                 }
             }
+
             else
             {
+                img.Dispose();
+
                 using (OpenFileDialog ofd = new OpenFileDialog())
                 {
                     if (ofd.ShowDialog() == DialogResult.OK)
                     {
-                        PC.Image = Image.FromFile(ofd.FileName);
-                        //File.Copy(ofd.FileName, ofd.SafeFileName, true);
+                        img = new Bitmap(ofd.FileName);
+                        File.Copy(ofd.FileName, ofd.SafeFileName, true);
                     }
                 }
             }
 
-            return PC;
+            return img;
         }
 
         #endregion
