@@ -1,6 +1,4 @@
-﻿using System;
-using System.Drawing;
-using System.IO;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace GameJam_Planner
@@ -11,6 +9,7 @@ namespace GameJam_Planner
 
         int box_id;
         int pic_id;
+
         public CustomGroupBox Spawn_Group()
         {
             box_id++;
@@ -34,16 +33,9 @@ namespace GameJam_Planner
             CustomGroupBox groupBox = new CustomGroupBox();
             groupBox.Text = "PictureBox" + pic_id.ToString();
             CommonFeatures(groupBox);
-            PictureBox pictureBox = new PictureBox();
+            PictureBox();
 
-            pictureBox.Location = new Point(6, 45);
-            pictureBox.Size = new Size(220, 150);
-            pictureBox.ForeColor = Color.Black;
-            pictureBox.BackColor = Color.White;
-            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            ImageAdd(pictureBox);
-            groupBox.Controls.Add(pictureBox);
-
+            groupBox.Controls.Add(PictureBox());
             return groupBox;
         }
         private void CommonFeatures(CustomGroupBox groupBox)
@@ -66,24 +58,20 @@ namespace GameJam_Planner
 
             groupBox.Controls.Add(buttonLock);
         }
-        private void ImageAdd(PictureBox pictureBox)
+        public PictureBox PictureBox()
         {
-            if (pictureBox.Image == null)
-            {
-                pictureBox.Image = Image.FromFile(@"Assets\default.jpg");
-            }
-            else
-            {
-                using (OpenFileDialog ofd = new OpenFileDialog())
-                {
-                    if (ofd.ShowDialog() == DialogResult.OK)
-                    {
-                        pictureBox.Image = Image.FromFile(ofd.FileName);
-                        File.Copy(ofd.FileName, "", true);
-                    }
-                }
-            }
+            PictureBox pictureBox = new PictureBox();
+
+            pictureBox.Location = new Point(6, 45);
+            pictureBox.Size = new Size(220, 150);
+            pictureBox.ForeColor = Color.Black;
+            pictureBox.BackColor = Color.White;
+            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox.Image = Image.FromFile(@"Assets\default.jpg");
+
+            return pictureBox;
         }
+
 
     }
 }

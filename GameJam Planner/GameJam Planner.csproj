@@ -59,10 +59,19 @@
     <Compile Include="Form_Gamejam_Planner.Designer.cs">
       <DependentUpon>Form_Gamejam_Planner.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_Name_Changer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Name_Changer.Designer.cs">
+      <DependentUpon>Form_Name_Changer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form_Gamejam_Planner.resx">
       <DependentUpon>Form_Gamejam_Planner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Name_Changer.resx">
+      <DependentUpon>Form_Name_Changer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

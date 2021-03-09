@@ -1,6 +1,6 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace GameJam_Planner
@@ -11,23 +11,17 @@ namespace GameJam_Planner
         public bool isLocked;
         ContextMenu cm = new ContextMenu();
 
-        #region Main
         public CustomGroupBox()
         {
             SetUpContextMenu();
         }
-        public CustomGroupBox(IContainer container)
-        {
-            container.Add(this);
-            SetUpContextMenu();
-        }
-        #endregion
 
         #region Mouse Events
         protected override void OnMouseDown(MouseEventArgs e)
         {
             point = e.Location;
-            customGroupBox_Click(e);   // forma box'ı yüklü verirsem çalışıyor ama box'ı sonradan eklersem çalışmıyor :D 
+            customGroupBox_Click(e);
+            PictureBox_Click(e);
             base.OnMouseDown(e);
         }
         protected override void OnMouseMove(MouseEventArgs e)
@@ -49,23 +43,50 @@ namespace GameJam_Planner
             switch (e.Button)
             {
                 case MouseButtons.Right: cm.Show(this, point); break;
-                case MouseButtons.Middle: Delete_Click(this, e); break;  //bunu, "silme" eylemi olarak ayarlamak istiyorum
+                case MouseButtons.Middle: Delete_Click(this, e); break;
                 default: break;
             }
+        }
+        private void PictureBox_Click(MouseEventArgs e)
+        {
+            if (e.Clicks == 2)
+            {
+                switch (e.Button)
+                {
+                    case MouseButtons.Left: ImageAdd(Class_Spawner.Spawner.PictureBox()); break;
+                }
+            }
+        }
+        private void ImageAdd(PictureBox pictureBox)
+        {
+            pictureBox.Image.Dispose();
+
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    pictureBox.Image = Image.FromFile(ofd.FileName);
+                    File.Copy(ofd.FileName, ofd.SafeFileName, true);
+                }
+            }
+
         }
 
         #endregion
 
         #region Lock Controls
-        public void CustomGroupBoxLock(Button buttonLock)
+        public Button CustomGroupBoxLock(Button buttonLock)
         {
             buttonLock.Click += ButtonLock_Click;
+
             switch (isLocked)
             {
-                case true: buttonLock.BackColor = Color.Green; break;
-                case false: buttonLock.BackColor = Color.Red; break;
+                case true: buttonLock.BackColor = Color.Red; break;          //çalışmıyor
+                case false: buttonLock.BackColor = Color.White; break;
                 default: break;
             }
+
+            return buttonLock;
         }
         private void ButtonLock_Click(object sender, EventArgs e)
         {
@@ -77,9 +98,9 @@ namespace GameJam_Planner
         #region MenuItems
         private void SetUpContextMenu()
         {
-            cm.MenuItems.Add("Change Color Of Background", new EventHandler(changeColor_Click));
-            cm.MenuItems.Add("Delet Dis", new EventHandler(Delete_Click));
+            cm.MenuItems.Add("Change Color", new EventHandler(changeColor_Click));
             cm.MenuItems.Add("Change Name", new EventHandler(ChangeName_Click));
+            cm.MenuItems.Add("Delet Dis", new EventHandler(Delete_Click));
         }
         private void changeColor_Click(object sender, EventArgs e)
         {
@@ -95,14 +116,24 @@ namespace GameJam_Planner
         {
             this.Dispose();
         }
-
         private void ChangeName_Click(object sender, EventArgs e)
         {
-            this.Text = "";
+            Form_Name_Changer FNC = new Form_Name_Changer();
+            FNC.Show();
+
+            if (FNC.Result == true)
+            {
+                this.Text = FNC.TXT;    //çalışmıyor
+            }
         }
 
         #endregion
 
 
+        //public CustomGroupBox(IContainer container)
+        //{
+        //    container.Add(this);
+        //    SetUpContextMenu();
+        //}
     }
 }
