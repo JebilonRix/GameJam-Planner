@@ -20,14 +20,12 @@ namespace GameJam_Planner
             container.Add(this);
             SetUpContextMenu();
         }
-
         #region Mouse Events
         protected override void OnMouseDown(MouseEventArgs e)
         {
             point = e.Location;
             customGroupBox_Click(e);   // forma box'ı yüklü verirsem çalışıyor ama box'ı sonradan eklersem çalışmıyor :D 
             base.OnMouseDown(e);
-
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
@@ -43,12 +41,12 @@ namespace GameJam_Planner
 
             base.OnMouseMove(e);
         }
-        public void customGroupBox_Click(MouseEventArgs e)
+        private void customGroupBox_Click(MouseEventArgs e)
         {
             switch (e.Button)
             {
                 case MouseButtons.Right: cm.Show(this, point); break;
-                case MouseButtons.Middle: cm.Show(this, point); break;  //bunu, silme eylemi olarak ayarlamak istiyorum
+                case MouseButtons.Middle: cm.Show(this, point); break;  //bunu, "silme" eylemi olarak ayarlamak istiyorum
                 default: break;
             }
         }
@@ -95,6 +93,5 @@ namespace GameJam_Planner
         }
 
         #endregion
-
     }
 }

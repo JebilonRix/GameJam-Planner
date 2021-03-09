@@ -7,7 +7,8 @@ namespace GameJam_Planner
     public class Class_Spawner
     {
         public static Class_Spawner Spawner;
-        public CustomGroupBox Spawn_Group(EventArgs e)
+
+        public CustomGroupBox Spawn_Group()
         {
             CustomGroupBox groupBox = new CustomGroupBox();
 
@@ -22,10 +23,6 @@ namespace GameJam_Planner
             richTextBox.Font = new Font("Arial", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
 
             groupBox.Controls.Add(richTextBox);
-
-            //CustomGroupBox.customGroupBox_Click(e as MouseEventArgs); statik istiyor :/
-            //hooooooooogk (not) noice!
-
 
             return groupBox;
         }
@@ -67,7 +64,7 @@ namespace GameJam_Planner
             groupBox.isLocked = false;
 
             groupBox.Controls.Add(buttonLock);
-
         }
+
     }
 }

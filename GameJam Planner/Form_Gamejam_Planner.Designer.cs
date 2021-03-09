@@ -283,7 +283,7 @@ namespace GameJam_Planner
             // 
             // customGroupBox1
             // 
-            this.customGroupBox1.Location = new System.Drawing.Point(151, 400);
+            this.customGroupBox1.Location = new System.Drawing.Point(26, 352);
             this.customGroupBox1.Name = "customGroupBox1";
             this.customGroupBox1.Size = new System.Drawing.Size(200, 100);
             this.customGroupBox1.TabIndex = 11;
