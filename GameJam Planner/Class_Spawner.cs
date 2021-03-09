@@ -70,11 +70,15 @@ namespace GameJam_Planner
             pictureBox.ForeColor = Color.Black;
             pictureBox.BackColor = Color.White;
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox.Image = Image.FromFile(@"Assets\default.jpg");
+
+            if (pictureBox.Image == null)
+            {
+                pictureBox.Image = Image.FromFile(@"Assets\default.jpg");
+            }
 
             return pictureBox;
         }
-        
+
 
     }
 }

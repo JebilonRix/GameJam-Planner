@@ -11,6 +11,7 @@ namespace GameJam_Planner
         Point point;
         public bool isLocked;
         ContextMenu cm = new ContextMenu();
+        Form_Name_Changer FNC = new Form_Name_Changer();
 
         public CustomGroupBox()
         {
@@ -54,13 +55,13 @@ namespace GameJam_Planner
             {
                 switch (e.Button)
                 {
-                    case MouseButtons.Left: ImageAdd(Class_Spawner.Spawner.PictureBox()); break;
+                    case MouseButtons.Left: ImageImporter(Class_Spawner.Spawner.PictureBox()); break;
                 }
             }
         }
-        private PictureBox ImageAdd(PictureBox pictureBox)
+        private PictureBox ImageImporter(PictureBox pictureBox)
         {
-            if (File.Exists(@"Assets\default.jpg"))
+            if (pictureBox.Image != null)
             {
                 pictureBox.Image.Dispose();
 
@@ -70,6 +71,7 @@ namespace GameJam_Planner
                     {
                         pictureBox.Image = Image.FromFile(ofd.FileName);
                         File.Copy(ofd.FileName, ofd.SafeFileName, true);
+                        pictureBox.Visible = true;
                     }
                 }
             }
@@ -114,11 +116,11 @@ namespace GameJam_Planner
         #region MenuItems
         private void SetUpContextMenu()
         {
-            cm.MenuItems.Add("Change Color", new EventHandler(changeColor_Click));
+            cm.MenuItems.Add("Change Color", new EventHandler(ChangeColor_Click));
             cm.MenuItems.Add("Change Name", new EventHandler(ChangeName_Click));
             cm.MenuItems.Add("Delet Dis", new EventHandler(Delete_Click));
         }
-        private void changeColor_Click(object sender, EventArgs e)
+        private void ChangeColor_Click(object sender, EventArgs e)
         {
             using (ColorDialog cd = new ColorDialog())
             {
@@ -140,17 +142,11 @@ namespace GameJam_Planner
         }
         private void ChangeName_Click(object sender, EventArgs e) //çalışmıyor
         {
-            Form_Name_Changer FNC = new Form_Name_Changer();
-            FNC.Show();
-
-            if (FNC.Result == true)
-            {
-                this.Text = FNC.TXT;
-            }
+            FNC.ShowDialog();
+            this.Text = FNC.Joker;
         }
 
         #endregion
-
 
         public CustomGroupBox(IContainer container)
         {
