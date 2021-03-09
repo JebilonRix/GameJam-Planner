@@ -57,14 +57,10 @@ namespace GameJam_Planner
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.RightClickBox = new System.Windows.Forms.ToolStripMenuItem();
             this.RightClickPicture = new System.Windows.Forms.ToolStripMenuItem();
-            this.customGroupBox1 = new GameJam_Planner.CustomGroupBox(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBoxMain.SuspendLayout();
             this.groupBoxMechanics.SuspendLayout();
             this.menuStripPlanner.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
-            this.customGroupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBoxMain
@@ -84,7 +80,7 @@ namespace GameJam_Planner
             this.groupBoxMain.Controls.Add(this.label1);
             this.groupBoxMain.Controls.Add(this.textBoxName);
             this.groupBoxMain.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBoxMain.Location = new System.Drawing.Point(12, 40);
+            this.groupBoxMain.Location = new System.Drawing.Point(12, 36);
             this.groupBoxMain.Name = "groupBoxMain";
             this.groupBoxMain.Size = new System.Drawing.Size(357, 265);
             this.groupBoxMain.TabIndex = 1;
@@ -311,25 +307,6 @@ namespace GameJam_Planner
             this.RightClickPicture.Text = "AddPicture";
             this.RightClickPicture.Click += new System.EventHandler(this.RightClickPicture_Click);
             // 
-            // customGroupBox1
-            // 
-            this.customGroupBox1.Controls.Add(this.pictureBox1);
-            this.customGroupBox1.Location = new System.Drawing.Point(26, 323);
-            this.customGroupBox1.Name = "customGroupBox1";
-            this.customGroupBox1.Size = new System.Drawing.Size(200, 100);
-            this.customGroupBox1.TabIndex = 11;
-            this.customGroupBox1.TabStop = false;
-            this.customGroupBox1.Text = "customGroupBox1";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.pictureBox1.Location = new System.Drawing.Point(26, 28);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(151, 66);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // Form_Gamejam_Planner
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 22F);
@@ -337,7 +314,6 @@ namespace GameJam_Planner
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1430, 727);
             this.ContextMenuStrip = this.contextMenuStrip;
-            this.Controls.Add(this.customGroupBox1);
             this.Controls.Add(this.groupBoxMain);
             this.Controls.Add(this.menuStripPlanner);
             this.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -354,8 +330,6 @@ namespace GameJam_Planner
             this.menuStripPlanner.ResumeLayout(false);
             this.menuStripPlanner.PerformLayout();
             this.contextMenuStrip.ResumeLayout(false);
-            this.customGroupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -384,11 +358,9 @@ namespace GameJam_Planner
         private System.Windows.Forms.ToolStripMenuItem ExitMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noteBoxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ImageBoxToolStripMenuItem;
-        private CustomGroupBox customGroupBox1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem RightClickBox;
         private System.Windows.Forms.ToolStripMenuItem RightClickPicture;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ComboBox comboBoxEngines;
     }
 }

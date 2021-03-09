@@ -14,7 +14,7 @@ namespace GameJam_Planner
         #region Main
         public CustomGroupBox()
         {
-
+            SetUpContextMenu();
         }
         public CustomGroupBox(IContainer container)
         {
