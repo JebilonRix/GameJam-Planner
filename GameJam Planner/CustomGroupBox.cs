@@ -123,7 +123,7 @@ namespace GameJam_Planner
                     if (ofd.ShowDialog() == DialogResult.OK)
                     {
                         PC.Image = Image.FromFile(ofd.FileName);
-                        File.Copy(ofd.FileName, ofd.SafeFileName, true);
+                       // File.Copy(ofd.FileName, ofd.SafeFileName, true);
                     }
                 }
             }
@@ -134,7 +134,7 @@ namespace GameJam_Planner
                     if (ofd.ShowDialog() == DialogResult.OK)
                     {
                         PC.Image = Image.FromFile(ofd.FileName);
-                        File.Copy(ofd.FileName, ofd.SafeFileName, true);
+                        //File.Copy(ofd.FileName, ofd.SafeFileName, true);
                     }
                 }
             }
