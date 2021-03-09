@@ -36,7 +36,21 @@ namespace GameJam_Planner
         } //bitmedi
         private void ClearMenuItem_Click(object sender, EventArgs e)
         {
-        }  //bitmedi
+            if (MessageBox.Show("Are you sure?", "Clear", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
+            {
+                foreach (Control item in groupBoxMain.Controls)
+                {
+                    if (item is TextBox)
+                    {
+                        item.Text = "";
+                    }
+                    else if (item is ComboBox)
+                    {
+                        item.Text = "-Select -";
+                    }
+                }
+            }
+        }  
         private void HintsMenuItem_Click(object sender, EventArgs e)
         {
             string message = "You can add boxes like:" + "\n"
@@ -70,7 +84,6 @@ namespace GameJam_Planner
         {
             var BoxSpawn = Class_Spawner.Spawner.Spawn_Group();
             this.Controls.Add(BoxSpawn);
-
         }
         private void Pic()
         {

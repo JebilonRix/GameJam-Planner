@@ -84,7 +84,7 @@ namespace GameJam_Planner
             this.groupBoxMain.Controls.Add(this.label1);
             this.groupBoxMain.Controls.Add(this.textBoxName);
             this.groupBoxMain.ForeColor = System.Drawing.SystemColors.Info;
-            this.groupBoxMain.Location = new System.Drawing.Point(12, 38);
+            this.groupBoxMain.Location = new System.Drawing.Point(12, 40);
             this.groupBoxMain.Name = "groupBoxMain";
             this.groupBoxMain.Size = new System.Drawing.Size(357, 265);
             this.groupBoxMain.TabIndex = 1;
@@ -99,6 +99,7 @@ namespace GameJam_Planner
             this.comboBoxEngines.Location = new System.Drawing.Point(130, 205);
             this.comboBoxEngines.Name = "comboBoxEngines";
             this.comboBoxEngines.Size = new System.Drawing.Size(154, 27);
+            this.comboBoxEngines.Sorted = true;
             this.comboBoxEngines.TabIndex = 5;
             this.comboBoxEngines.Text = "-Select-";
             // 
@@ -375,7 +376,6 @@ namespace GameJam_Planner
         private System.Windows.Forms.RichTextBox richTextBoxMec;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxGroupName;
-        private System.Windows.Forms.ComboBox comboBoxEngines;
         private System.Windows.Forms.MenuStrip menuStripPlanner;
         private System.Windows.Forms.ToolStripMenuItem SaveMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AddMenuItem;
@@ -389,6 +389,7 @@ namespace GameJam_Planner
         private System.Windows.Forms.ToolStripMenuItem RightClickBox;
         private System.Windows.Forms.ToolStripMenuItem RightClickPicture;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ComboBox comboBoxEngines;
     }
 }
 
