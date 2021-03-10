@@ -24,7 +24,7 @@ namespace GameJam_Planner
             }
             else if (type == 1)
             {
-                SetUpContextMenu2();
+                SetUpContextMenuPic();
                 Class_Spawner.Spawner.LockButton(this).Click += ButtonLock_Click;
             }
             else if (type == 2)
@@ -89,7 +89,7 @@ namespace GameJam_Planner
             cm.MenuItems.Add("Change Name", new EventHandler(ChangeName_Click));
             cm.MenuItems.Add("Delet Dis", new EventHandler(Delete_Click));
         }
-        private void SetUpContextMenu2()
+        private void SetUpContextMenuPic()
         {
             cm.MenuItems.Add("Change Color", new EventHandler(ChangeColor_Click));
             cm.MenuItems.Add("Change Name", new EventHandler(ChangeName_Click));
