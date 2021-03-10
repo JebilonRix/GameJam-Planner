@@ -45,12 +45,7 @@ namespace GameJam_Planner
                 comboBoxEngines.Items.Add(Engines[i]);
             }
 
-            textBoxGroupName.Text = "";
-            textBoxTheme.Text = "";
-            textBoxName.Text = "";
-            textBoxGenre.Text = "";
-            textBoxArtStyle.Text = "";
-            comboBoxEngines.SelectedItem = "";
+            comboBoxEngines.SelectedIndex = 0;
         }
         private void SaveMenuItem_Click(object sender, EventArgs e)
         {
@@ -129,6 +124,6 @@ namespace GameJam_Planner
             this.Controls.Add(BoxSpawn);
         }
 
-  
+
     }
 }
