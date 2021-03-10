@@ -8,16 +8,20 @@ namespace GameJam_Planner
 {
     public class CustomGroupBox : GroupBox
     {
+        public static CustomGroupBox CGB;
         Point point;
         public bool isLocked;
+        public bool BasCek;
         ContextMenu cm = new ContextMenu();
         Form_Name_Changer FNC = new Form_Name_Changer();
         Image img;
 
+
         public CustomGroupBox()
         {
             SetUpContextMenu();
-
+            Class_Spawner.Spawner.LockButton(this).Click += ButtonLock_Click;
+            Class_Spawner.Spawner.AddButton(this).Click += AddButton_Click;
         }
 
         #region Mouse Events
@@ -54,23 +58,29 @@ namespace GameJam_Planner
         #endregion
 
         #region Lock Controls
-        public Button CustomGroupBoxLock(Button buttonLock)   //çalışmıyor
+        private void AddButton_Click(object sender, EventArgs e)
         {
-            buttonLock.Click += ButtonLock_Click;
+            this.BasCek = !this.BasCek;
 
-            switch (isLocked)
+            FNC.ShowDialog();
+
+
+            switch (BasCek)
             {
-                case true: buttonLock.BackColor = Color.Red; break;
-                case false: buttonLock.BackColor = Color.White; break;
+                case true: Class_Spawner.Spawner.CheckListItemText = FNC.Joker; break;
                 default: break;
             }
-
-            return buttonLock;
         }
         private void ButtonLock_Click(object sender, EventArgs e)
         {
             this.isLocked = !this.isLocked;
 
+            switch (isLocked)
+            {
+                case true: Class_Spawner.Spawner.LockButton(this).BackColor = Color.Red; break;
+                case false: Class_Spawner.Spawner.LockButton(this).BackColor = Color.White; break;
+                default: break;
+            }
         }
 
         #endregion
@@ -112,16 +122,13 @@ namespace GameJam_Planner
         {
             ImageImporter();
         }
-
         public Image ImageImporter()
         {
-            // Debug.WriteLine("Heheheh");
-
             if (img == null)
             {
                 using (OpenFileDialog ofd = new OpenFileDialog())
                 {
-
+                    ofd.Filter = "(*.BMP; *.JPG; *.JPEG; *.GIF *.PNG;)| *.BMP; *.JPG; .JPEG; *.GIF;*.PNG; | All files(*.*) | *.*";
                     if (ofd.ShowDialog() == DialogResult.OK)
                     {
                         img = new Bitmap(ofd.FileName);
@@ -129,7 +136,6 @@ namespace GameJam_Planner
                     }
                 }
             }
-
             else
             {
                 img.Dispose();
@@ -149,10 +155,5 @@ namespace GameJam_Planner
 
         #endregion
 
-        public CustomGroupBox(IContainer container)
-        {
-            container.Add(this);
-            SetUpContextMenu();
-        }
     }
 }

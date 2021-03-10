@@ -64,11 +64,8 @@ namespace GameJam_Planner
             Application.Exit();
         }
 
+
         private void noteBoxToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Box();
-        }
-        private void RightClickBox_Click(object sender, EventArgs e)
         {
             Box();
         }
@@ -76,10 +73,24 @@ namespace GameJam_Planner
         {
             Pic();
         }
+        private void toDoBoxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToDo();
+        }
+        private void RightClickToDo_Click(object sender, EventArgs e)
+        {
+            ToDo();
+        }
         private void RightClickPicture_Click(object sender, EventArgs e)
         {
             Pic();
         }
+        private void RightClickBox_Click(object sender, EventArgs e)
+        {
+            Box();
+        }
+
+
         private void Box()
         {
             var BoxSpawn = Class_Spawner.Spawner.Spawn_Group();
@@ -90,6 +101,12 @@ namespace GameJam_Planner
             var BoxSpawn = Class_Spawner.Spawner.Spawn_Picture();
             this.Controls.Add(BoxSpawn);
         }
+        private void ToDo()
+        {
+            var BoxSpawn = Class_Spawner.Spawner.Spawn_ToDo();
+            this.Controls.Add(BoxSpawn);
+        }
 
+    
     }
 }
