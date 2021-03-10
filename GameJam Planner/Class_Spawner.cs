@@ -6,11 +6,8 @@ namespace GameJam_Planner
     public class Class_Spawner
     {
         public static Class_Spawner Spawner;
-        public int box_id;
-        public int pic_id;
-        public int do_id;
-        public string TypeOfBox;
-        public string CheckListItemText;
+        public int box_id, pic_id, do_id;
+        public string TypeOfBox, CheckListItemText;
 
         private CustomGroupBox GroupBox(int type)
         {
