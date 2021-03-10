@@ -10,8 +10,34 @@ namespace GameJam_Planner
             InitializeComponent();
             Class_Spawner.Spawner = new Class_Spawner();
         }
+        public void GetMainValues()
+        {
+            textBoxGroupName.Text = Properties.Settings.Default.Group;
+            textBoxTheme.Text = Properties.Settings.Default.Theme;
+            textBoxName.Text = Properties.Settings.Default.Name;
+            textBoxGenre.Text = Properties.Settings.Default.Genre;
+            textBoxArtStyle.Text = Properties.Settings.Default.ArtStyle;
+            comboBoxEngines.SelectedItem = Properties.Settings.Default.GameEngine;
+        }
+        public void SaveMainValues()
+        {
+            Properties.Settings.Default.Group = textBoxGroupName.Text;
+            Properties.Settings.Default.Theme = textBoxTheme.Text;
+            Properties.Settings.Default.Name = textBoxName.Text;
+            Properties.Settings.Default.Genre = textBoxGenre.Text;
+            Properties.Settings.Default.ArtStyle = textBoxArtStyle.Text;
+
+            if (comboBoxEngines.SelectedItem != null)
+            {
+                Properties.Settings.Default.GameEngine = comboBoxEngines.SelectedItem.ToString();
+            }
+
+            Properties.Settings.Default.Save();
+        }
         private void Form_Gamejam_Planner_Load(object sender, EventArgs e)
         {
+            GetMainValues();
+
             string[] Engines = new string[] { "Unity", "Unreal", "Godot", "CryEngine", "GameMaker" };
 
             for (int i = 0; i < Engines.Length; i++)
@@ -28,12 +54,10 @@ namespace GameJam_Planner
         }
         private void SaveMenuItem_Click(object sender, EventArgs e)
         {
-            if (comboBoxEngines.SelectedItem != null)
-            {
-
-            }
+            SaveMainValues();
             MessageBox.Show("Saved.");
-        } //bitmedi
+            GetMainValues();
+        }
         private void ClearMenuItem_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure?", "Clear", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
@@ -64,7 +88,6 @@ namespace GameJam_Planner
             Application.Exit();
         }
 
-
         private void noteBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Box();
@@ -90,7 +113,6 @@ namespace GameJam_Planner
             Box();
         }
 
-
         private void Box()
         {
             var BoxSpawn = Class_Spawner.Spawner.Spawn_Group();
@@ -107,6 +129,6 @@ namespace GameJam_Planner
             this.Controls.Add(BoxSpawn);
         }
 
-    
+  
     }
 }

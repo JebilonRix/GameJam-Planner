@@ -118,7 +118,7 @@ namespace GameJam_Planner
 
             if (CheckListItemText != null)
             {
-                CheckedListBox(groupBox).Items.Add(CheckListItemText, false);
+                CheckedListBox(groupBox).Items.Insert(0, CheckListItemText);
             }
 
             return groupBox;

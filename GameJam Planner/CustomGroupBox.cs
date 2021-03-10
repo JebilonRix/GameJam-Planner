@@ -80,7 +80,6 @@ namespace GameJam_Planner
             }
         }
 
-
         #region MenuItems
         private void SetUpContextMenu()
         {
