@@ -37,21 +37,11 @@ namespace GameJam_Planner
         private void Form_Gamejam_Planner_Load(object sender, EventArgs e)
         {
             GetMainValues();
-
-            string[] Engines = new string[] { "Unity", "Unreal", "Godot", "CryEngine", "GameMaker" };
-
-            for (int i = 0; i < Engines.Length; i++)
-            {
-                comboBoxEngines.Items.Add(Engines[i]);
-            }
-
-            comboBoxEngines.SelectedIndex = 0;
         }
         private void SaveMenuItem_Click(object sender, EventArgs e)
         {
             SaveMainValues();
             MessageBox.Show("Saved.");
-            GetMainValues();
         }
         private void ClearMenuItem_Click(object sender, EventArgs e)
         {
@@ -123,7 +113,6 @@ namespace GameJam_Planner
             var BoxSpawn = Class_Spawner.Spawner.Spawn_ToDo();
             this.Controls.Add(BoxSpawn);
         }
-
 
     }
 }

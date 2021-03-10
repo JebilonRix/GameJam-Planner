@@ -97,6 +97,12 @@ namespace GameJam_Planner
             this.comboBoxEngines.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.comboBoxEngines.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.comboBoxEngines.FormattingEnabled = true;
+            this.comboBoxEngines.Items.AddRange(new object[] {
+            "CryEngine",
+            "GameMaker",
+            "Godot",
+            "Unity",
+            "Unreal"});
             this.comboBoxEngines.Location = new System.Drawing.Point(130, 205);
             this.comboBoxEngines.Name = "comboBoxEngines";
             this.comboBoxEngines.Size = new System.Drawing.Size(154, 27);
