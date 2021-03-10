@@ -11,20 +11,30 @@ namespace GameJam_Planner
         public static CustomGroupBox CGB;
         Point point;
         public bool isLocked;
-        public bool BasCek;
         ContextMenu cm = new ContextMenu();
         Form_Name_Changer FNC = new Form_Name_Changer();
         Image img;
 
-
-        public CustomGroupBox()
+        public CustomGroupBox(int type)
         {
-            SetUpContextMenu();
-            Class_Spawner.Spawner.LockButton(this).Click += ButtonLock_Click;
-            Class_Spawner.Spawner.AddButton(this).Click += AddButton_Click;
+            if (type == 0)
+            {
+                SetUpContextMenu();
+                Class_Spawner.Spawner.LockButton(this).Click += ButtonLock_Click;
+            }
+            else if (type == 1)
+            {
+                SetUpContextMenu2();
+                Class_Spawner.Spawner.LockButton(this).Click += ButtonLock_Click;
+            }
+            else if (type == 2)
+            {
+                SetUpContextMenu();
+                Class_Spawner.Spawner.LockButton(this).Click += ButtonLock_Click;
+                Class_Spawner.Spawner.AddButton(this).Click += AddButton_Click;
+            }
         }
 
-        #region Mouse Events
         protected override void OnMouseDown(MouseEventArgs e)
         {
             point = e.Location;
@@ -54,22 +64,10 @@ namespace GameJam_Planner
                 default: break;
             }
         }
-
-        #endregion
-
-        #region Lock Controls
         private void AddButton_Click(object sender, EventArgs e)
         {
-            this.BasCek = !this.BasCek;
-
             FNC.ShowDialog();
-
-
-            switch (BasCek)
-            {
-                case true: Class_Spawner.Spawner.CheckListItemText = FNC.Joker; break;
-                default: break;
-            }
+            Class_Spawner.Spawner.CheckListItemText = FNC.Joker;
         }
         private void ButtonLock_Click(object sender, EventArgs e)
         {
@@ -83,10 +81,15 @@ namespace GameJam_Planner
             }
         }
 
-        #endregion
 
         #region MenuItems
         private void SetUpContextMenu()
+        {
+            cm.MenuItems.Add("Change Color", new EventHandler(ChangeColor_Click));
+            cm.MenuItems.Add("Change Name", new EventHandler(ChangeName_Click));
+            cm.MenuItems.Add("Delet Dis", new EventHandler(Delete_Click));
+        }
+        private void SetUpContextMenu2()
         {
             cm.MenuItems.Add("Change Color", new EventHandler(ChangeColor_Click));
             cm.MenuItems.Add("Change Name", new EventHandler(ChangeName_Click));

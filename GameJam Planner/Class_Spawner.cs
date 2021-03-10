@@ -12,14 +12,15 @@ namespace GameJam_Planner
         public string TypeOfBox;
         public string CheckListItemText;
 
-        private CustomGroupBox GroupBox()
+        private CustomGroupBox GroupBox(int type)
         {
-            CustomGroupBox groupBox = new CustomGroupBox();
+            CustomGroupBox groupBox = new CustomGroupBox(type);
             groupBox.Size = new Size(230, 200);
             groupBox.Location = new Point(390, 50);
             groupBox.ForeColor = Color.White;
             groupBox.Font = new Font("Arial", 15.25F, FontStyle.Bold, GraphicsUnit.Point);
-
+            groupBox.AutoSize = true;
+            groupBox.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 
             return groupBox;
         }
@@ -90,10 +91,9 @@ namespace GameJam_Planner
         {
             box_id++;
             TypeOfBox = "GroupText";
-            CustomGroupBox groupBox = GroupBox();
+            CustomGroupBox groupBox = GroupBox(0);
             RichTextBox(groupBox);
             LockButton(groupBox);
-
             groupBox.isLocked = false;
 
             return groupBox;
@@ -102,7 +102,7 @@ namespace GameJam_Planner
         {
             pic_id++;
             TypeOfBox = "GroupPict";
-            CustomGroupBox groupBox = GroupBox();
+            CustomGroupBox groupBox = GroupBox(1);
             PictureBox(groupBox);
             LockButton(groupBox);
             groupBox.isLocked = false;
@@ -113,12 +113,11 @@ namespace GameJam_Planner
         {
             do_id++;
             TypeOfBox = "GroupDo";
-            CustomGroupBox groupBox = GroupBox();
+            CustomGroupBox groupBox = GroupBox(2);
             CheckedListBox(groupBox);
             AddButton(groupBox);
             LockButton(groupBox);
             groupBox.isLocked = false;
-            groupBox.BasCek = false;
 
             if (CheckListItemText != null)
             {
