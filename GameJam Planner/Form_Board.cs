@@ -6,7 +6,6 @@ namespace GameJam_Planner
 {
     public partial class Form_Board : Form
     {
-        public static Point DefaultSpawnPoint = new Point(390, 50);
 
         public Form_Board()
         {
@@ -48,44 +47,47 @@ namespace GameJam_Planner
 
         private void noteBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Box();
+            SpawnBox();
         }
         private void ImageBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Pic();
+            SpawnPic();
         }
         private void toDoBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ToDo();
+            SpawnToDo();
         }
         private void RightClickToDo_Click(object sender, EventArgs e)
         {
-            ToDo();
+            SpawnToDo();
         }
         private void RightClickPicture_Click(object sender, EventArgs e)
         {
-            Pic();
+            SpawnPic();
         }
         private void RightClickBox_Click(object sender, EventArgs e)
         {
-            Box();
+            SpawnBox();
         }
 
-        private void Box()
+        private void SpawnBox()
         {
-            Class_Spawner.Spawner.SpawnLocation = DefaultSpawnPoint;
+            Point cp = PointToClient(Cursor.Position);
+            Class_Spawner.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
             var BoxSpawn = Class_Spawner.Spawner.Spawn_Group();
             this.Controls.Add(BoxSpawn);
         }
-        private void Pic()
+        private void SpawnPic()
         {
-            Class_Spawner.Spawner.SpawnLocation = DefaultSpawnPoint;
+            Point cp = PointToClient(Cursor.Position);
+            Class_Spawner.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
             var BoxSpawn = Class_Spawner.Spawner.Spawn_Picture();
             this.Controls.Add(BoxSpawn);
         }
-        private void ToDo()
+        private void SpawnToDo()
         {
-            Class_Spawner.Spawner.SpawnLocation = DefaultSpawnPoint;
+            Point cp = PointToClient(Cursor.Position);
+            Class_Spawner.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
             var BoxSpawn = Class_Spawner.Spawner.Spawn_ToDo();
             this.Controls.Add(BoxSpawn);
         }

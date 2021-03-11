@@ -10,9 +10,7 @@ namespace GameJam_Planner
 
         public int box_id, pic_id, do_id;
         public string TypeOfBox, CheckListItemText;
-        public Point mouselocation;
-        public Point SpawnLocation = new Point(Control.MousePosition.X, Control.MousePosition.Y);
-
+        public Point SpawnLocation;
         public string DefaultName(CustomGroupBox groupBox)
         {
             switch (TypeOfBox)
@@ -30,6 +28,7 @@ namespace GameJam_Planner
             CustomGroupBox groupBox = new CustomGroupBox(type);
 
             groupBox.Location = SpawnLocation;
+
             groupBox.ForeColor = Color.White;
 
             switch (TypeOfBox)
