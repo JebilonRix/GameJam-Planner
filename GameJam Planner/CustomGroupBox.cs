@@ -15,24 +15,31 @@ namespace GameJam_Planner
         Form_Name_Changer FNC = new Form_Name_Changer();
         Image img;
 
+        Button MyLockButton;
+        Button MyAddButton;
+
         public CustomGroupBox(int type)
         {
 
             if (type == 0)
             {
                 SetUpContextMenu();
-                Class_Spawner.Spawner.LockButton(this).Click += ButtonLock_Click;
+                MyLockButton = Class_Spawner.Spawner.LockButton(this);
+                MyLockButton.Click += ButtonLock_Click;
             }
             else if (type == 1)
             {
                 SetUpContextMenuPic();
-                Class_Spawner.Spawner.LockButton(this).Click += ButtonLock_Click;
+                MyLockButton = Class_Spawner.Spawner.LockButton(this);
+                MyLockButton.Click += ButtonLock_Click;
             }
             else if (type == 2)
             {
                 SetUpContextMenu();
-                Class_Spawner.Spawner.LockButton(this).Click += ButtonLock_Click;
-                Class_Spawner.Spawner.AddButton(this).Click += AddButton_Click;
+                MyLockButton = Class_Spawner.Spawner.LockButton(this);
+                MyLockButton.Click += ButtonLock_Click;
+                MyAddButton = Class_Spawner.Spawner.AddButton(this);
+                MyAddButton.Click += AddButton_Click;
             }
         }
 
@@ -77,8 +84,8 @@ namespace GameJam_Planner
 
             switch (isLocked)
             {
-                case true: Class_Spawner.Spawner.LockButton(this).BackColor = Color.Red; break;
-                case false: Class_Spawner.Spawner.LockButton(this).BackColor = Color.White; break;
+                case true: MyLockButton.BackColor = Color.Red; break;
+                case false: MyLockButton.BackColor = Color.White; break;
                 default: break;
             }
         }
