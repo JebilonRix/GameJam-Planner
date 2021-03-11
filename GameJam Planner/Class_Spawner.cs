@@ -11,7 +11,7 @@ namespace GameJam_Planner
         public int box_id, pic_id, do_id;
         public string TypeOfBox, CheckListItemText;
         public Point mouselocation;
-        public Point SpawnLocation = new Point(390, 50);
+        public Point SpawnLocation = new Point(Control.MousePosition.X, Control.MousePosition.Y);
 
         public string DefaultName(CustomGroupBox groupBox)
         {
@@ -29,7 +29,7 @@ namespace GameJam_Planner
         {
             CustomGroupBox groupBox = new CustomGroupBox(type);
 
-            groupBox.Location = new Point(390, 50);
+            groupBox.Location = SpawnLocation;
             groupBox.ForeColor = Color.White;
 
             switch (TypeOfBox)
@@ -58,7 +58,7 @@ namespace GameJam_Planner
         public PictureBox PictureBox(CustomGroupBox groupBox)
         {
             PictureBox pictureBox = new PictureBox();
-
+            pictureBox.Location = new Point(6, 45);
             pictureBox.Size = new Size(220, 150);
             pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox.Image = groupBox.ImageImporter();
@@ -130,6 +130,7 @@ namespace GameJam_Planner
             CustomGroupBox groupBox = GroupBox(1);
             PictureBox(groupBox);
             LockButton(groupBox);
+            DefaultName(groupBox);
             groupBox.isLocked = false;
 
             return groupBox;
@@ -142,6 +143,7 @@ namespace GameJam_Planner
             CheckedListBox(groupBox);
             AddButton(groupBox);
             LockButton(groupBox);
+            DefaultName(groupBox);
             groupBox.isLocked = false;
 
             return groupBox;
