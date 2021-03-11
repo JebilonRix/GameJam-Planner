@@ -6,6 +6,8 @@ namespace GameJam_Planner
 {
     public partial class Form_Gamejam_Planner : Form
     {
+        public static Point DefaultSpawnPoint = new Point(390, 50);
+
         public Form_Gamejam_Planner()
         {
             InitializeComponent();
@@ -76,26 +78,32 @@ namespace GameJam_Planner
 
         private void noteBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Class_Spawner.Spawner.SpawnLocation = DefaultSpawnPoint;
             Box();
         }
         private void ImageBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Class_Spawner.Spawner.SpawnLocation = DefaultSpawnPoint;
             Pic();
         }
         private void toDoBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Class_Spawner.Spawner.SpawnLocation = DefaultSpawnPoint;
             ToDo();
         }
         private void RightClickToDo_Click(object sender, EventArgs e)
         {
+            Class_Spawner.Spawner.SpawnLocation = MousePosition;
             ToDo();
         }
         private void RightClickPicture_Click(object sender, EventArgs e)
         {
+            Class_Spawner.Spawner.SpawnLocation = MousePosition;
             Pic();
         }
         private void RightClickBox_Click(object sender, EventArgs e)
         {
+            Class_Spawner.Spawner.SpawnLocation = MousePosition;
             Box();
         }
 

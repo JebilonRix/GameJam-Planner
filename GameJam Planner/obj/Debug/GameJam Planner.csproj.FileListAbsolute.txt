@@ -48,3 +48,4 @@ C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\Newtonsoft.Json.dll
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\Newtonsoft.Json.xml
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csproj.CopyComplete
+C:\Users\Legion\Desktop\CURSED PROJECTS\Quarantine Mood\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_Name_Changer.resources

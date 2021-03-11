@@ -8,7 +8,7 @@ namespace GameJam_Planner
         public static Class_Spawner Spawner;
         public int box_id, pic_id, do_id;
         public string TypeOfBox, CheckListItemText;
-        public Point mouselocation;
+        public Point SpawnLocation = new Point(390, 50);
 
         Class_Depo depo = new Class_Depo();
 
@@ -16,7 +16,7 @@ namespace GameJam_Planner
         {
             CustomGroupBox groupBox = new CustomGroupBox(type);
             groupBox.Size = new Size(230, 200);
-            groupBox.Location = new Point(390, 50);
+            groupBox.Location = SpawnLocation;
             groupBox.ForeColor = Color.White;
 
             return groupBox;
