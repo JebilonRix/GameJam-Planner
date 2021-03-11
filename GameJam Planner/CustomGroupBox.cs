@@ -8,6 +8,7 @@ namespace GameJam_Planner
     public class CustomGroupBox : GroupBox
     {
         public static CustomGroupBox CGB;
+
         Point point;
         public bool isLocked;
         ContextMenu cm = new ContextMenu();
@@ -16,6 +17,7 @@ namespace GameJam_Planner
 
         public CustomGroupBox(int type)
         {
+
             if (type == 0)
             {
                 SetUpContextMenu();
@@ -37,8 +39,17 @@ namespace GameJam_Planner
         protected override void OnMouseDown(MouseEventArgs e)
         {
             point = e.Location;
-            customGroupBox_Click(e);
+
+            switch (e.Button)
+            {
+                case MouseButtons.Right: cm.Show(this, point); break;
+                case MouseButtons.Middle: Delete_Click(this, e); break;
+                default: break;
+            }
+
+
             base.OnMouseDown(e);
+
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
@@ -54,15 +65,7 @@ namespace GameJam_Planner
 
             base.OnMouseMove(e);
         }
-        private void customGroupBox_Click(MouseEventArgs e)
-        {
-            switch (e.Button)
-            {
-                case MouseButtons.Right: cm.Show(this, point); break;
-                case MouseButtons.Middle: Delete_Click(this, e); break;
-                default: break;
-            }
-        }
+
         private void AddButton_Click(object sender, EventArgs e)
         {
             FNC.ShowDialog();

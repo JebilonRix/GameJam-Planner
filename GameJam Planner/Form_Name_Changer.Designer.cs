@@ -86,7 +86,7 @@ namespace GameJam_Planner
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Change Name";
+            this.Text = "Change";
             this.ResumeLayout(false);
             this.PerformLayout();
 

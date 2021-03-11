@@ -241,7 +241,7 @@ namespace GameJam_Planner
             this.ExitMenuItem});
             this.menuStripPlanner.Location = new System.Drawing.Point(0, 0);
             this.menuStripPlanner.Name = "menuStripPlanner";
-            this.menuStripPlanner.Size = new System.Drawing.Size(1430, 24);
+            this.menuStripPlanner.Size = new System.Drawing.Size(1337, 24);
             this.menuStripPlanner.TabIndex = 10;
             this.menuStripPlanner.Text = "PlannerManu";
             // 
@@ -366,7 +366,7 @@ namespace GameJam_Planner
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1430, 727);
+            this.ClientSize = new System.Drawing.Size(1337, 581);
             this.ContextMenuStrip = this.contextMenuStrip;
             this.Controls.Add(this.groupBoxMain);
             this.Controls.Add(this.menuStripPlanner);

@@ -8,28 +8,30 @@ namespace GameJam_Planner
         public static Class_Spawner Spawner;
         public int box_id, pic_id, do_id;
         public string TypeOfBox, CheckListItemText;
+        public Point mouselocation;
 
         private CustomGroupBox GroupBox(int type)
         {
             CustomGroupBox groupBox = new CustomGroupBox(type);
             groupBox.Size = new Size(230, 200);
             groupBox.Location = new Point(390, 50);
+          
             groupBox.ForeColor = Color.White;
-            groupBox.Font = new Font("Arial", 15.25F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox.AutoSize = true;
-            groupBox.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            //groupBox.Font = new Font("Arial", 15.25F, FontStyle.Bold, GraphicsUnit.Point);
 
             return groupBox;
         }
         public RichTextBox RichTextBox(CustomGroupBox groupBox)
         {
             groupBox.Text = "GroupBox" + box_id.ToString();
+
             RichTextBox richTextBox = new RichTextBox();
             richTextBox.Location = new Point(6, 45);
             richTextBox.Size = new Size(220, 150);
             richTextBox.ForeColor = Color.Black;
             richTextBox.BackColor = Color.White;
             richTextBox.Font = new Font("Arial", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
+
             groupBox.Controls.Add(richTextBox);
             return richTextBox;
         }
@@ -92,7 +94,7 @@ namespace GameJam_Planner
             RichTextBox(groupBox);
             LockButton(groupBox);
             groupBox.isLocked = false;
-
+      
             return groupBox;
         }
         public CustomGroupBox Spawn_Picture()
