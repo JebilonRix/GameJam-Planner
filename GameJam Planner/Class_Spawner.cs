@@ -56,6 +56,7 @@ namespace GameJam_Planner
             checkedListBox.Location = new Point(6, 47);
             checkedListBox.Size = new Size(200, 252);
             groupBox.Controls.Add(checkedListBox);
+            groupBox.MyTodoList = checkedListBox;
 
             return checkedListBox;
         }
@@ -120,7 +121,7 @@ namespace GameJam_Planner
 
             if (CheckListItemText != null)
             {
-                CheckedListBox(groupBox).Items.Insert(0, CheckListItemText);
+                groupBox.MyTodoList.Items.Insert(0, CheckListItemText);
             }
 
             return groupBox;

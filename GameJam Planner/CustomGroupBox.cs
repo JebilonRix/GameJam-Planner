@@ -17,6 +17,7 @@ namespace GameJam_Planner
 
         Button MyLockButton;
         Button MyAddButton;
+        public CheckedListBox MyTodoList;
 
         public CustomGroupBox(int type)
         {
@@ -76,7 +77,8 @@ namespace GameJam_Planner
         private void AddButton_Click(object sender, EventArgs e)
         {
             FNC.ShowDialog();
-            Class_Spawner.Spawner.CheckListItemText = FNC.Joker;
+            int len = MyTodoList.Items.Count;
+            MyTodoList.Items.Insert(len, FNC.Joker);
         }
         private void ButtonLock_Click(object sender, EventArgs e)
         {
