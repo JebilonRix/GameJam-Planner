@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
+using System.IO;
 
 namespace GameJam_Planner
 {
@@ -11,24 +12,13 @@ namespace GameJam_Planner
         public int box_id, pic_id, do_id;
         public string TypeOfBox, CheckListItemText;
         public Point SpawnLocation;
-        public string DefaultName(CustomGroupBox groupBox)
-        {
-            switch (TypeOfBox)
-            {
-                case "GroupText": groupBox.Text = "GroupBox" + (box_id + 1).ToString(); break;
-                case "GroupPicture": groupBox.Text = "PictureBox" + (pic_id + 1).ToString(); break;
-                case "GroupDo": groupBox.Text = "ToDoBox" + (do_id + 1).ToString(); break;
-                default: break;
-            }
 
-            return groupBox.Text;
-        }
+
         private CustomGroupBox GroupBox(int type)
         {
             CustomGroupBox groupBox = new CustomGroupBox(type);
 
             groupBox.Location = SpawnLocation;
-
             groupBox.ForeColor = Color.White;
 
             switch (TypeOfBox)
@@ -116,7 +106,7 @@ namespace GameJam_Planner
             CustomGroupBox groupBox = GroupBox(0);
             RichTextBox(groupBox);
             LockButton(groupBox);
-            string name = DefaultName(groupBox);
+            DefaultName(groupBox);
             groupBox.isLocked = false;
 
             box_id++;
@@ -148,12 +138,22 @@ namespace GameJam_Planner
             return groupBox;
         }
 
-        public void DataSave()
+        public string DefaultName(CustomGroupBox groupBox)
         {
-            int TotalBoxText = Class_Spawner.Spawner.box_id;
-            int TotalBoxPicture = Class_Spawner.Spawner.pic_id;
-            int TotalBoxTodo = Class_Spawner.Spawner.do_id;
+            switch (TypeOfBox)
+            {
+                case "GroupText": groupBox.Text = "GroupBox" + (box_id + 1).ToString(); break;
+                case "GroupPicture": groupBox.Text = "PictureBox" + (pic_id + 1).ToString(); break;
+                case "GroupDo": groupBox.Text = "ToDoBox" + (do_id + 1).ToString(); break;
+                default: break;
+            }
 
+            return groupBox.Text;
+        }
+
+
+        public void DataSave(CustomGroupBox groupBox)
+        {
             DataTable dt1 = new DataTable();
             DataTable dt2 = new DataTable();
             DataTable dt3 = new DataTable();
@@ -184,17 +184,29 @@ namespace GameJam_Planner
             DataRow dr2 = dt2.NewRow();
             DataRow dr3 = dt3.NewRow();
 
-            for (int i = 0; i < TotalBoxText; i++)
+            for (int i = 0; i < box_id; i++)
             {
+                dr1["ID"] = box_id;
+                dr1["Title"] = DefaultName(groupBox);
+                // dr1["Location"] = groupBox.LocationChanged;
+                dr1["Size"] = groupBox.Size;
+                dr1["Lock"] = groupBox.isLocked;
+                dr1["Text"] = RichTextBox(groupBox).Text;
 
                 dt1.Rows.Add(dr1);
             }
-            for (int i = 0; i < TotalBoxPicture; i++)
+            for (int i = 0; i < pic_id; i++)
             {
+                dr2["ID"] = pic_id;
+                dr2["Title"] = DefaultName(groupBox);
+                // dr2["Location"] = groupBox.LocationChanged;
+                dr2["Size"] = groupBox.Size;
+                dr2["Lock"] = groupBox.isLocked;
+                dr2["Text"] = CustomGroupBox.CGB.LocationOfPicture;
 
                 dt2.Rows.Add(dr2);
             }
-            for (int i = 0; i < TotalBoxTodo; i++)
+            for (int i = 0; i < do_id; i++)
 
                 dt3.Rows.Add(dr3);
         }

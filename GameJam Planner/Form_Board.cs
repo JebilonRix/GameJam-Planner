@@ -18,6 +18,7 @@ namespace GameJam_Planner
         }
         private void SaveMenuItem_Click(object sender, EventArgs e)
         {
+            Updater();
             MessageBox.Show("Saved.");
         }
         private void ClearMenuItem_Click(object sender, EventArgs e)
@@ -99,6 +100,11 @@ namespace GameJam_Planner
             Class_Spawner.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
             var BoxSpawn = Class_Spawner.Spawner.Spawn_ToDo();
             this.Controls.Add(BoxSpawn);
+        }
+
+        public void Updater()
+        {
+
         }
 
     }

@@ -41,6 +41,7 @@ namespace GameJam_Planner
             this.ClearMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showOpeningSceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeBackgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.RightClickBox = new System.Windows.Forms.ToolStripMenuItem();
             this.RightClickPicture = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,7 +49,6 @@ namespace GameJam_Planner
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.changeBackgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripPlanner.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -136,6 +136,13 @@ namespace GameJam_Planner
             this.showOpeningSceneToolStripMenuItem.Text = "Show Opening Scene";
             this.showOpeningSceneToolStripMenuItem.Click += new System.EventHandler(this.showOpeningSceneToolStripMenuItem_Click);
             // 
+            // changeBackgroundColorToolStripMenuItem
+            // 
+            this.changeBackgroundColorToolStripMenuItem.Name = "changeBackgroundColorToolStripMenuItem";
+            this.changeBackgroundColorToolStripMenuItem.Size = new System.Drawing.Size(159, 20);
+            this.changeBackgroundColorToolStripMenuItem.Text = "Change Background Color";
+            this.changeBackgroundColorToolStripMenuItem.Click += new System.EventHandler(this.changeBackgroundColorToolStripMenuItem_Click);
+            // 
             // contextMenuStrip
             // 
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -192,13 +199,6 @@ namespace GameJam_Planner
             this.button2.TabIndex = 2;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // changeBackgroundColorToolStripMenuItem
-            // 
-            this.changeBackgroundColorToolStripMenuItem.Name = "changeBackgroundColorToolStripMenuItem";
-            this.changeBackgroundColorToolStripMenuItem.Size = new System.Drawing.Size(159, 20);
-            this.changeBackgroundColorToolStripMenuItem.Text = "Change Background Color";
-            this.changeBackgroundColorToolStripMenuItem.Click += new System.EventHandler(this.changeBackgroundColorToolStripMenuItem_Click);
             // 
             // Form_Board
             // 

@@ -42,8 +42,6 @@ namespace GameJam_Planner
                 MyAddButton.Click += AddButton_Click;
             }
 
-          
-
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -58,7 +56,7 @@ namespace GameJam_Planner
             }
 
             base.OnMouseDown(e);
-      
+
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
@@ -93,7 +91,7 @@ namespace GameJam_Planner
 
         }
 
-       
+
         private void SetUpContextMenu()
         {
             cm.MenuItems.Add("Change Color", new EventHandler(ChangeColor_Click));
@@ -137,6 +135,8 @@ namespace GameJam_Planner
         {
             ImageImporter();
         }
+
+        public string LocationOfPicture;
         public Image ImageImporter()
         {
             if (img == null)
@@ -148,6 +148,7 @@ namespace GameJam_Planner
                     {
                         img = new Bitmap(ofd.FileName);
                         File.Copy(ofd.FileName, ofd.SafeFileName, true);
+                        LocationOfPicture = ofd.SafeFileName;
                     }
                 }
             }
@@ -161,6 +162,7 @@ namespace GameJam_Planner
                     {
                         img = new Bitmap(ofd.FileName);
                         File.Copy(ofd.FileName, ofd.SafeFileName, true);
+                        LocationOfPicture = ofd.SafeFileName;
                     }
                 }
             }
