@@ -10,14 +10,14 @@ namespace GameJam_Planner
         public string TypeOfBox, CheckListItemText;
         public Point mouselocation;
 
+        Class_Depo depo = new Class_Depo();
+
         private CustomGroupBox GroupBox(int type)
         {
             CustomGroupBox groupBox = new CustomGroupBox(type);
             groupBox.Size = new Size(230, 200);
             groupBox.Location = new Point(390, 50);
-          
             groupBox.ForeColor = Color.White;
-            //groupBox.Font = new Font("Arial", 15.25F, FontStyle.Bold, GraphicsUnit.Point);
 
             return groupBox;
         }

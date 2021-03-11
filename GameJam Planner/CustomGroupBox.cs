@@ -21,7 +21,6 @@ namespace GameJam_Planner
 
         public CustomGroupBox(int type)
         {
-
             if (type == 0)
             {
                 SetUpContextMenu();
@@ -54,7 +53,6 @@ namespace GameJam_Planner
                 case MouseButtons.Middle: Delete_Click(this, e); break;
                 default: break;
             }
-
 
             base.OnMouseDown(e);
 
