@@ -9,6 +9,7 @@ namespace GameJam_Planner
         public int box_id, pic_id, do_id;
         public string TypeOfBox, CheckListItemText;
         public Point mouselocation;
+        public Point SpawnLocation = new Point(390, 50);
 
         Class_Depo depo = new Class_Depo();
 
