@@ -1,7 +1,7 @@
 ﻿using System.Data;
 using System.Drawing;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 
 namespace GameJam_Planner
 {
@@ -12,7 +12,7 @@ namespace GameJam_Planner
         public int box_id, pic_id, do_id;
         public string TypeOfBox, CheckListItemText;
         public Point SpawnLocation;
-
+        int type;
 
         private CustomGroupBox GroupBox(int type)
         {
@@ -31,7 +31,7 @@ namespace GameJam_Planner
 
             return groupBox;
         }
-        public RichTextBox RichTextBox(CustomGroupBox groupBox)
+        private RichTextBox RichTextBox(CustomGroupBox groupBox)
         {
             RichTextBox richTextBox = new RichTextBox();
             richTextBox.Location = new Point(6, 45);
@@ -44,7 +44,7 @@ namespace GameJam_Planner
             groupBox.Controls.Add(richTextBox);
             return richTextBox;
         }
-        public PictureBox PictureBox(CustomGroupBox groupBox)
+        private PictureBox PictureBox(CustomGroupBox groupBox)
         {
             PictureBox pictureBox = new PictureBox();
             pictureBox.Location = new Point(6, 45);
@@ -55,7 +55,7 @@ namespace GameJam_Planner
 
             return pictureBox;
         }
-        public CheckedListBox CheckedListBox(CustomGroupBox groupBox)
+        private CheckedListBox CheckedListBox(CustomGroupBox groupBox)
         {
             CheckedListBox checkedListBox = new CheckedListBox();
             checkedListBox.Location = new Point(6, 47);
@@ -106,39 +106,45 @@ namespace GameJam_Planner
             CustomGroupBox groupBox = GroupBox(0);
             RichTextBox(groupBox);
             LockButton(groupBox);
-            DefaultName(groupBox);
+            string nameBox = DefaultName(groupBox);
             groupBox.isLocked = false;
+            type = 0;
+            Saving(type, groupBox, box_id, nameBox);
 
             box_id++;
             return groupBox;
         }
         public CustomGroupBox Spawn_Picture()
         {
-            pic_id++;
             TypeOfBox = "GroupPicture";
             CustomGroupBox groupBox = GroupBox(1);
             PictureBox(groupBox);
             LockButton(groupBox);
-            DefaultName(groupBox);
+            string nameBox = DefaultName(groupBox);
             groupBox.isLocked = false;
+            type = 1;
+            Saving(type, groupBox, pic_id, nameBox);
 
+            pic_id++;
             return groupBox;
         }
         public CustomGroupBox Spawn_ToDo()
         {
-            do_id++;
             TypeOfBox = "GroupDo";
             CustomGroupBox groupBox = GroupBox(2);
             CheckedListBox(groupBox);
             AddButton(groupBox);
             LockButton(groupBox);
-            DefaultName(groupBox);
+            string nameBox = DefaultName(groupBox);
             groupBox.isLocked = false;
+            type = 2;
+            Saving(type, groupBox, do_id, nameBox);
 
+            do_id++;
             return groupBox;
         }
 
-        public string DefaultName(CustomGroupBox groupBox)
+        private string DefaultName(CustomGroupBox groupBox)
         {
             switch (TypeOfBox)
             {
@@ -150,10 +156,10 @@ namespace GameJam_Planner
 
             return groupBox.Text;
         }
-
-
-        public void DataSave(CustomGroupBox groupBox)
+        public async void Saving(int type, CustomGroupBox groupBox, int idBox, string nameBox)
         {
+            //MessageBox.Show("Done.");
+
             DataTable dt1 = new DataTable();
             DataTable dt2 = new DataTable();
             DataTable dt3 = new DataTable();
@@ -184,32 +190,85 @@ namespace GameJam_Planner
             DataRow dr2 = dt2.NewRow();
             DataRow dr3 = dt3.NewRow();
 
-            for (int i = 0; i < box_id; i++)
+            if (type == 0)
             {
-                dr1["ID"] = box_id;
-                dr1["Title"] = DefaultName(groupBox);
-                // dr1["Location"] = groupBox.LocationChanged;
-                dr1["Size"] = groupBox.Size;
-                dr1["Lock"] = groupBox.isLocked;
-                dr1["Text"] = RichTextBox(groupBox).Text;
+                for (int i = 0; i < idBox; i++)
+                {
+                    dr1["ID"] = idBox;
+                    dr1["Title"] = nameBox;
+                    dr1["Location"] = CustomGroupBox.CGB.point;
+                    dr1["Size"] = groupBox.Size;
+                    dr1["Lock"] = groupBox.isLocked;
+                    dr1["Text"] = CustomGroupBox.CGB.Text;
 
-                dt1.Rows.Add(dr1);
+                    dt1.Rows.Add(dr1);
+                }
             }
-            for (int i = 0; i < pic_id; i++)
+            else if (type == 1)
             {
-                dr2["ID"] = pic_id;
-                dr2["Title"] = DefaultName(groupBox);
-                // dr2["Location"] = groupBox.LocationChanged;
-                dr2["Size"] = groupBox.Size;
-                dr2["Lock"] = groupBox.isLocked;
-                dr2["Text"] = CustomGroupBox.CGB.LocationOfPicture;
+                for (int i = 0; i < idBox; i++)
+                {
+                    dr2["ID"] = idBox;
+                    dr2["Title"] = nameBox;
+                    dr2["Location"] = CustomGroupBox.CGB.point;
+                    dr2["Size"] = groupBox.Size;
+                    dr2["Lock"] = groupBox.isLocked;
+                    dr2["Text"] = CustomGroupBox.CGB.LocationOfPicture;
 
-                dt2.Rows.Add(dr2);
+                    dt2.Rows.Add(dr2);
+                }
             }
-            for (int i = 0; i < do_id; i++)
+            else if (type == 2)
+            {
+                for (int i = 0; i < idBox; i++)
+                {
+                    dr3["ID"] = idBox;
+                    dr3["Title"] = nameBox;
+                    dr3["Location"] = CustomGroupBox.CGB.point;
+                    dr3["Size"] = groupBox.Size;
+                    dr3["Lock"] = groupBox.isLocked;
+                    dr3["Text"] = CustomGroupBox.CGB.LocationOfPicture;
 
-                dt3.Rows.Add(dr3);
+                    dt3.Rows.Add(dr3);
+                }
+            }
+
+
+            string[] LineText = new string[idBox];
+
+            for (int i = 0; i < idBox; i++)
+            {
+                dr1.ItemArray[i] = LineText[i];
+            }
+            using (StreamWriter sw = new StreamWriter(@"saved.txt"))
+            {
+                await sw.WriteLineAsync(Class_Print.Array_string(LineText));
+            }
+
+
+            for (int i = 0; i < idBox; i++)
+            {
+                dr2.ItemArray[i] = LineText[i];
+            }
+            using (StreamWriter sw = new StreamWriter(@"saved.txt"))
+            {
+                await sw.WriteLineAsync(Class_Print.Array_string(LineText));
+            }
+
+
+            for (int i = 0; i < idBox; i++)
+            {
+                dr3.ItemArray[i] = LineText[i];
+            }
+            using (StreamWriter sw = new StreamWriter(@"saved.txt"))
+            {
+                await sw.WriteLineAsync(Class_Print.Array_string(LineText));
+            }
+
+
+
+
         }
-
     }
 }
+

@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class_Print.cs" />
     <Compile Include="Class_Spawner.cs" />
     <Compile Include="CustomGroupBox.cs">
       <SubType>Component</SubType>

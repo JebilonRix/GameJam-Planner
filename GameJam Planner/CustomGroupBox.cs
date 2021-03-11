@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -9,11 +10,12 @@ namespace GameJam_Planner
     {
         public static CustomGroupBox CGB;
 
-        Point point;
+        public Point point;
         public bool isLocked;
         ContextMenu cm = new ContextMenu();
         Form_CustomMessageBox FNC = new Form_CustomMessageBox();
         Image img;
+
 
         Button MyLockButton;
         Button MyAddButton;
@@ -44,9 +46,22 @@ namespace GameJam_Planner
 
         }
 
+        public Point MousePush;
+
         protected override void OnMouseDown(MouseEventArgs e)
         {
             point = e.Location;
+
+            Debug.WriteLine("Mouse'a tıkladığım pozisyon:" + point.X + " " + point.Y);
+            string TypeOfBox = Class_Spawner.Spawner.TypeOfBox;
+
+            switch (TypeOfBox)
+            {
+                case "GroupText": point = e.Location; break;
+                case "GroupPicture": point = e.Location; break;
+                case "GroupDo": point = e.Location; break;
+                default: break;
+            }
 
             switch (e.Button)
             {
@@ -56,8 +71,8 @@ namespace GameJam_Planner
             }
 
             base.OnMouseDown(e);
-
         }
+
         protected override void OnMouseMove(MouseEventArgs e)
         {
             if (this.isLocked == false && e.Button == MouseButtons.Left)
@@ -90,6 +105,7 @@ namespace GameJam_Planner
             }
 
         }
+
 
 
         private void SetUpContextMenu()

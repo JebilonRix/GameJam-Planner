@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -6,21 +7,21 @@ namespace GameJam_Planner
 {
     public partial class Form_Board : Form
     {
+        public static Form_Board Board;
         public Form_Board()
         {
             InitializeComponent();
             Class_Spawner.Spawner = new Class_Spawner();
         }
-
         private void Form_Board_Load(object sender, EventArgs e)
         {
 
         }
         private void SaveMenuItem_Click(object sender, EventArgs e)
         {
-            Updater();
             MessageBox.Show("Saved.");
         }
+      
         private void ClearMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -102,10 +103,7 @@ namespace GameJam_Planner
             this.Controls.Add(BoxSpawn);
         }
 
-        public void Updater()
-        {
 
-        }
 
     }
 }
