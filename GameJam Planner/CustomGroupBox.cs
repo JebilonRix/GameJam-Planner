@@ -41,6 +41,9 @@ namespace GameJam_Planner
                 MyAddButton = Class_Spawner.Spawner.AddButton(this);
                 MyAddButton.Click += AddButton_Click;
             }
+
+          
+
         }
 
         protected override void OnMouseDown(MouseEventArgs e)
@@ -90,7 +93,7 @@ namespace GameJam_Planner
 
         }
 
-        #region MenuItems
+       
         private void SetUpContextMenu()
         {
             cm.MenuItems.Add("Change Color", new EventHandler(ChangeColor_Click));
@@ -165,7 +168,6 @@ namespace GameJam_Planner
             return img;
         }
 
-        #endregion
 
     }
 }

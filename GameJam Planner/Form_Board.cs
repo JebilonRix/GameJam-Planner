@@ -6,14 +6,13 @@ namespace GameJam_Planner
 {
     public partial class Form_Board : Form
     {
-
         public Form_Board()
         {
             InitializeComponent();
             Class_Spawner.Spawner = new Class_Spawner();
         }
 
-        private void Form_Gamejam_Planner_Load(object sender, EventArgs e)
+        private void Form_Board_Load(object sender, EventArgs e)
         {
 
         }
@@ -43,6 +42,16 @@ namespace GameJam_Planner
             enter.GetMainValues();
             this.Close();
             enter.ShowDialog();
+        }
+        private void changeBackgroundColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (ColorDialog cd = new ColorDialog())
+            {
+                if (cd.ShowDialog() == DialogResult.OK)
+                {
+                    this.BackColor = cd.Color;
+                }
+            }
         }
 
         private void noteBoxToolStripMenuItem_Click(object sender, EventArgs e)

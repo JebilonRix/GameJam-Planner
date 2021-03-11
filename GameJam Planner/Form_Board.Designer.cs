@@ -40,6 +40,7 @@ namespace GameJam_Planner
             this.HintsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ClearMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showOpeningSceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.RightClickBox = new System.Windows.Forms.ToolStripMenuItem();
             this.RightClickPicture = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +48,7 @@ namespace GameJam_Planner
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.showOpeningSceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeBackgroundColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripPlanner.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +62,8 @@ namespace GameJam_Planner
             this.HintsMenuItem,
             this.ClearMenuItem,
             this.ExitMenuItem,
-            this.showOpeningSceneToolStripMenuItem});
+            this.showOpeningSceneToolStripMenuItem,
+            this.changeBackgroundColorToolStripMenuItem});
             this.menuStripPlanner.Location = new System.Drawing.Point(0, 0);
             this.menuStripPlanner.Name = "menuStripPlanner";
             this.menuStripPlanner.Size = new System.Drawing.Size(1337, 24);
@@ -127,6 +129,13 @@ namespace GameJam_Planner
             this.ExitMenuItem.Text = "Exit";
             this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
             // 
+            // showOpeningSceneToolStripMenuItem
+            // 
+            this.showOpeningSceneToolStripMenuItem.Name = "showOpeningSceneToolStripMenuItem";
+            this.showOpeningSceneToolStripMenuItem.Size = new System.Drawing.Size(131, 20);
+            this.showOpeningSceneToolStripMenuItem.Text = "Show Opening Scene";
+            this.showOpeningSceneToolStripMenuItem.Click += new System.EventHandler(this.showOpeningSceneToolStripMenuItem_Click);
+            // 
             // contextMenuStrip
             // 
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -184,12 +193,12 @@ namespace GameJam_Planner
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // showOpeningSceneToolStripMenuItem
+            // changeBackgroundColorToolStripMenuItem
             // 
-            this.showOpeningSceneToolStripMenuItem.Name = "showOpeningSceneToolStripMenuItem";
-            this.showOpeningSceneToolStripMenuItem.Size = new System.Drawing.Size(131, 20);
-            this.showOpeningSceneToolStripMenuItem.Text = "Show Opening Scene";
-            this.showOpeningSceneToolStripMenuItem.Click += new System.EventHandler(this.showOpeningSceneToolStripMenuItem_Click);
+            this.changeBackgroundColorToolStripMenuItem.Name = "changeBackgroundColorToolStripMenuItem";
+            this.changeBackgroundColorToolStripMenuItem.Size = new System.Drawing.Size(159, 20);
+            this.changeBackgroundColorToolStripMenuItem.Text = "Change Background Color";
+            this.changeBackgroundColorToolStripMenuItem.Click += new System.EventHandler(this.changeBackgroundColorToolStripMenuItem_Click);
             // 
             // Form_Board
             // 
@@ -206,7 +215,7 @@ namespace GameJam_Planner
             this.Name = "Form_Board";
             this.Text = "GameJam Planner";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.Load += new System.EventHandler(this.Form_Gamejam_Planner_Load);
+            this.Load += new System.EventHandler(this.Form_Board_Load);
             this.menuStripPlanner.ResumeLayout(false);
             this.menuStripPlanner.PerformLayout();
             this.contextMenuStrip.ResumeLayout(false);
@@ -233,6 +242,7 @@ namespace GameJam_Planner
         private System.Windows.Forms.ToolStripMenuItem RightClickToDo;
         private System.Windows.Forms.ToolStripMenuItem toDoBoxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showOpeningSceneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem changeBackgroundColorToolStripMenuItem;
     }
 }
 
