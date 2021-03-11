@@ -9,6 +9,8 @@ namespace GameJam_Planner
     {
         public static CustomGroupBox CGB;
 
+        Class_Depo Storage = new Class_Depo();
+
         Point point;
         public bool isLocked;
         ContextMenu cm = new ContextMenu();
@@ -55,7 +57,7 @@ namespace GameJam_Planner
             }
 
             base.OnMouseDown(e);
-
+      
         }
         protected override void OnMouseMove(MouseEventArgs e)
         {
@@ -88,6 +90,7 @@ namespace GameJam_Planner
                 case false: MyLockButton.BackColor = Color.White; break;
                 default: break;
             }
+
         }
 
         #region MenuItems
