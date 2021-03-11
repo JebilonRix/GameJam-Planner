@@ -33,9 +33,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,30 +46,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class_Depo.cs" />
     <Compile Include="Class_Spawner.cs" />
     <Compile Include="CustomGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form_Gamejam_Planner.cs">
+    <Compile Include="Form_Enter.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Gamejam_Planner.Designer.cs">
-      <DependentUpon>Form_Gamejam_Planner.cs</DependentUpon>
+    <Compile Include="Form_Enter.Designer.cs">
+      <DependentUpon>Form_Enter.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Name_Changer.cs">
+    <Compile Include="Form_Board.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form_Name_Changer.Designer.cs">
-      <DependentUpon>Form_Name_Changer.cs</DependentUpon>
+    <Compile Include="Form_Board.Designer.cs">
+      <DependentUpon>Form_Board.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_CustomMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_CustomMessageBox.Designer.cs">
+      <DependentUpon>Form_CustomMessageBox.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form_Gamejam_Planner.resx">
-      <DependentUpon>Form_Gamejam_Planner.cs</DependentUpon>
+    <EmbeddedResource Include="Form_Enter.resx">
+      <DependentUpon>Form_Enter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form_Name_Changer.resx">
-      <DependentUpon>Form_Name_Changer.cs</DependentUpon>
+    <EmbeddedResource Include="Form_Board.resx">
+      <DependentUpon>Form_Board.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_CustomMessageBox.resx">
+      <DependentUpon>Form_CustomMessageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -83,7 +88,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

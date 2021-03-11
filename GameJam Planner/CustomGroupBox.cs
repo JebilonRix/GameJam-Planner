@@ -9,12 +9,10 @@ namespace GameJam_Planner
     {
         public static CustomGroupBox CGB;
 
-        Class_Depo Storage = new Class_Depo();
-
         Point point;
         public bool isLocked;
         ContextMenu cm = new ContextMenu();
-        Form_Name_Changer FNC = new Form_Name_Changer();
+        Form_CustomMessageBox FNC = new Form_CustomMessageBox();
         Image img;
 
         Button MyLockButton;
@@ -73,7 +71,6 @@ namespace GameJam_Planner
 
             base.OnMouseMove(e);
         }
-
         private void AddButton_Click(object sender, EventArgs e)
         {
             FNC.ShowDialog();

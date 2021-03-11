@@ -11,7 +11,6 @@ C:\Users\fuat\Desktop\kodlama\_Github\GameJam Planner\obj\Debug\GameJam Planner.
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\GameJam Planner.exe.config
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\GameJam Planner.exe
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\GameJam Planner.pdb
-C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_Gamejam_Planner.resources
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Properties.Resources.resources
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csproj.GenerateResource.cache
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csproj.CoreCompileInputs.cache
@@ -30,7 +29,6 @@ C:\Users\fuat\Desktop\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.
 C:\Users\fuat\Desktop\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.exe
 C:\Users\fuat\Desktop\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.pdb
 C:\Users\fuat\Desktop\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csprojAssemblyReference.cache
-C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csprojAssemblyReference.cache
 C:\Users\Legion\Desktop\CURSED PROJECTS\Quarantine Mood\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csprojAssemblyReference.cache
 C:\Users\Legion\Desktop\CURSED PROJECTS\Quarantine Mood\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_Gamejam_Planner.resources
 C:\Users\Legion\Desktop\CURSED PROJECTS\Quarantine Mood\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Properties.Resources.resources
@@ -44,8 +42,8 @@ C:\Users\Legion\Desktop\CURSED PROJECTS\Quarantine Mood\GameJam-Planner\GameJam 
 C:\Users\Legion\Desktop\CURSED PROJECTS\Quarantine Mood\GameJam-Planner\GameJam Planner\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Legion\Desktop\CURSED PROJECTS\Quarantine Mood\GameJam-Planner\GameJam Planner\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Legion\Desktop\CURSED PROJECTS\Quarantine Mood\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csproj.CopyComplete
-C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_Name_Changer.resources
-C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\Newtonsoft.Json.dll
-C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\Newtonsoft.Json.xml
-C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csproj.CopyComplete
 C:\Users\Legion\Desktop\CURSED PROJECTS\Quarantine Mood\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_Name_Changer.resources
+C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_Enter.resources
+C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_Board.resources
+C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_CustomMessageBox.resources
+C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csprojAssemblyReference.cache

@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace GameJam_Planner
@@ -7,13 +8,23 @@ namespace GameJam_Planner
     {
         public static Class_Spawner Spawner;
 
-        Class_Depo Storage = new Class_Depo();
-
         public int box_id, pic_id, do_id;
         public string TypeOfBox, CheckListItemText;
         public Point mouselocation;
         public Point SpawnLocation = new Point(390, 50);
 
+        public string DefaultName(CustomGroupBox groupBox)
+        {
+            switch (TypeOfBox)
+            {
+                case "GroupText": groupBox.Text = "GroupBox" + (box_id + 1).ToString(); break;
+                case "GroupPicture": groupBox.Text = "PictureBox" + (pic_id + 1).ToString(); break;
+                case "GroupDo": groupBox.Text = "ToDoBox" + (do_id + 1).ToString(); break;
+                default: break;
+            }
+
+            return groupBox.Text;
+        }
         private CustomGroupBox GroupBox(int type)
         {
             CustomGroupBox groupBox = new CustomGroupBox(type);
@@ -135,27 +146,57 @@ namespace GameJam_Planner
 
             return groupBox;
         }
-        public string DefaultName(CustomGroupBox groupBox)
+
+        public void DataSave()
         {
-            switch (TypeOfBox)
+            int TotalBoxText = Class_Spawner.Spawner.box_id;
+            int TotalBoxPicture = Class_Spawner.Spawner.pic_id;
+            int TotalBoxTodo = Class_Spawner.Spawner.do_id;
+
+            DataTable dt1 = new DataTable();
+            DataTable dt2 = new DataTable();
+            DataTable dt3 = new DataTable();
+
+            dt1.Columns.Add("ID", typeof(int));
+            dt1.Columns.Add("Title", typeof(string));
+            dt1.Columns.Add("Location", typeof(string));
+            dt1.Columns.Add("Size", typeof(string));
+            dt1.Columns.Add("Lock", typeof(bool));
+            dt1.Columns.Add("Text", typeof(string));
+
+            dt2.Columns.Add("ID", typeof(int));
+            dt2.Columns.Add("Title", typeof(string));
+            dt2.Columns.Add("Location", typeof(string));
+            dt2.Columns.Add("Size", typeof(string));
+            dt2.Columns.Add("Lock", typeof(bool));
+            dt2.Columns.Add("FileLocation", typeof(string));
+
+            dt3.Columns.Add("ID", typeof(int));
+            dt3.Columns.Add("Title", typeof(string));
+            dt3.Columns.Add("Location", typeof(string));
+            dt3.Columns.Add("Size", typeof(string));
+            dt3.Columns.Add("Lock", typeof(bool));
+            dt3.Columns.Add("ItemID", typeof(int));
+            dt3.Columns.Add("ItemName", typeof(string));
+
+            DataRow dr1 = dt1.NewRow();
+            DataRow dr2 = dt2.NewRow();
+            DataRow dr3 = dt3.NewRow();
+
+            for (int i = 0; i < TotalBoxText; i++)
             {
-                case "GroupText": groupBox.Text = "GroupBox" + (box_id + 1).ToString(); break;
-                case "GroupPicture": groupBox.Text = "PictureBox" + (pic_id + 1).ToString(); break;
-                case "GroupDo": groupBox.Text = "ToDoBox" + (do_id + 1).ToString(); break;
-                default: break;
+
+                dt1.Rows.Add(dr1);
             }
+            for (int i = 0; i < TotalBoxPicture; i++)
+            {
 
-            return groupBox.Text;
+                dt2.Rows.Add(dr2);
+            }
+            for (int i = 0; i < TotalBoxTodo; i++)
+
+                dt3.Rows.Add(dr3);
         }
-
-
-        private void Updater()
-        {
-
-
-         
-        }
-
 
     }
 }

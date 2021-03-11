@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace GameJam_Planner
 {
-    public partial class Form_Name_Changer : Form
+    public partial class Form_CustomMessageBox : Form
     {
         public string Joker;
 
-        public Form_Name_Changer()
+        public Form_CustomMessageBox()
         {
             InitializeComponent();
         }

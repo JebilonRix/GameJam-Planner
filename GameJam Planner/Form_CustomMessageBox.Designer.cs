@@ -1,7 +1,7 @@
 ﻿
 namespace GameJam_Planner
 {
-    partial class Form_Name_Changer
+    partial class Form_CustomMessageBox
     {
         /// <summary>
         /// Required designer variable.

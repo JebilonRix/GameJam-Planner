@@ -16,7 +16,7 @@ namespace GameJam_Planner
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form_Gamejam_Planner());
+            Application.Run(new Form_Enter());
         }
     }
 }
