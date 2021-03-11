@@ -120,6 +120,7 @@ namespace GameJam_Planner
             {
                 case "GroupText": Class_Spawner.Spawner.box_id--; break;
                 case "GroupPict": Class_Spawner.Spawner.pic_id--; break;
+                case "GroupDo": Class_Spawner.Spawner.do_id--; break;
                 default: break;
             }
             this.Dispose();
