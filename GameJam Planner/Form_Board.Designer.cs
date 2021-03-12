@@ -41,17 +41,17 @@ namespace GameJam_Planner
             this.ClearMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showOpeningSceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.RightClickToBox = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.RightClickBox = new System.Windows.Forms.ToolStripMenuItem();
             this.RightClickPicture = new System.Windows.Forms.ToolStripMenuItem();
             this.RightClickToDo = new System.Windows.Forms.ToolStripMenuItem();
+            this.changeBackcolorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.changeBackcolorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStripPlanner.SuspendLayout();
-            this.contextMenuStrip.SuspendLayout();
+            this.RightClickToBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,36 +137,43 @@ namespace GameJam_Planner
             this.showOpeningSceneToolStripMenuItem.Text = "Show Opening Scene";
             this.showOpeningSceneToolStripMenuItem.Click += new System.EventHandler(this.showOpeningSceneToolStripMenuItem_Click);
             // 
-            // contextMenuStrip
+            // RightClickToBox
             // 
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.RightClickToBox.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.RightClickBox,
             this.RightClickPicture,
             this.RightClickToDo,
             this.changeBackcolorToolStripMenuItem});
-            this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(171, 92);
+            this.RightClickToBox.Name = "contextMenuStrip";
+            this.RightClickToBox.Size = new System.Drawing.Size(181, 114);
             // 
             // RightClickBox
             // 
             this.RightClickBox.Name = "RightClickBox";
-            this.RightClickBox.Size = new System.Drawing.Size(170, 22);
+            this.RightClickBox.Size = new System.Drawing.Size(180, 22);
             this.RightClickBox.Text = "Add Box";
             this.RightClickBox.Click += new System.EventHandler(this.RightClickBox_Click);
             // 
             // RightClickPicture
             // 
             this.RightClickPicture.Name = "RightClickPicture";
-            this.RightClickPicture.Size = new System.Drawing.Size(170, 22);
+            this.RightClickPicture.Size = new System.Drawing.Size(180, 22);
             this.RightClickPicture.Text = "AddPicture";
             this.RightClickPicture.Click += new System.EventHandler(this.RightClickPicture_Click);
             // 
             // RightClickToDo
             // 
             this.RightClickToDo.Name = "RightClickToDo";
-            this.RightClickToDo.Size = new System.Drawing.Size(170, 22);
+            this.RightClickToDo.Size = new System.Drawing.Size(180, 22);
             this.RightClickToDo.Text = "AddToDo";
             this.RightClickToDo.Click += new System.EventHandler(this.RightClickToDo_Click);
+            // 
+            // changeBackcolorToolStripMenuItem
+            // 
+            this.changeBackcolorToolStripMenuItem.Name = "changeBackcolorToolStripMenuItem";
+            this.changeBackcolorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changeBackcolorToolStripMenuItem.Text = "Change Backcolor";
+            this.changeBackcolorToolStripMenuItem.Click += new System.EventHandler(this.changeBackcolorToolStripMenuItem_Click);
             // 
             // checkedListBox1
             // 
@@ -195,13 +202,6 @@ namespace GameJam_Planner
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // changeBackcolorToolStripMenuItem
-            // 
-            this.changeBackcolorToolStripMenuItem.Name = "changeBackcolorToolStripMenuItem";
-            this.changeBackcolorToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.changeBackcolorToolStripMenuItem.Text = "Change Backcolor";
-            this.changeBackcolorToolStripMenuItem.Click += new System.EventHandler(this.changeBackcolorToolStripMenuItem_Click);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -216,7 +216,7 @@ namespace GameJam_Planner
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1337, 581);
-            this.ContextMenuStrip = this.contextMenuStrip;
+            this.ContextMenuStrip = this.RightClickToBox;
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStripPlanner);
             this.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -230,7 +230,7 @@ namespace GameJam_Planner
             this.Load += new System.EventHandler(this.Form_Board_Load);
             this.menuStripPlanner.ResumeLayout(false);
             this.menuStripPlanner.PerformLayout();
-            this.contextMenuStrip.ResumeLayout(false);
+            this.RightClickToBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -246,7 +246,7 @@ namespace GameJam_Planner
         private System.Windows.Forms.ToolStripMenuItem ExitMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noteBoxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ImageBoxToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ContextMenuStrip RightClickToBox;
         private System.Windows.Forms.ToolStripMenuItem RightClickBox;
         private System.Windows.Forms.ToolStripMenuItem RightClickPicture;
         private System.Windows.Forms.Button button2;

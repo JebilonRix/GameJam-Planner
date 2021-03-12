@@ -51,8 +51,7 @@ namespace GameJam_Planner
         protected override void OnMouseDown(MouseEventArgs e)
         {
             point = e.Location;
-
-            Debug.WriteLine("Mouse'a tıkladığım pozisyon:" + point.X + " " + point.Y);
+          //  Debug.WriteLine("Mouse'a tıkladığım pozisyon:" + point.X + " " + point.Y);
             string TypeOfBox = Class_Spawner.Spawner.TypeOfBox;
 
             switch (TypeOfBox)

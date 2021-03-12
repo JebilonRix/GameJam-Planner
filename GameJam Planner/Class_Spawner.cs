@@ -8,8 +8,9 @@ namespace GameJam_Planner
         public static Class_Spawner Spawner;
 
         public int box_id, pic_id, do_id;
-        public string TypeOfBox, CheckListItemText,DefaultTitle;
+        public string TypeOfBox, CheckListItemText, DefaultTitle;
         public Point SpawnLocation;
+        public Size BoxSize;
 
         public Class_Spawner()
         {
@@ -119,6 +120,7 @@ namespace GameJam_Planner
             SizeHandler(groupBox);
             groupBox.isLocked = false;
 
+            Class_Depo.Depo.Depola(TypeOfBox, box_id, DefaultName(groupBox), SpawnLocation, SizeHandler(groupBox), groupBox.isLocked, RichTextBox(groupBox).Text, null);
 
             pic_id++;
             return groupBox;
@@ -133,6 +135,8 @@ namespace GameJam_Planner
             DefaultName(groupBox);
             groupBox.isLocked = false;
             SizeHandler(groupBox);
+
+            Class_Depo.Depo.Depola(TypeOfBox, box_id, DefaultName(groupBox), SpawnLocation, SizeHandler(groupBox), groupBox.isLocked, RichTextBox(groupBox).Text, null);
 
             do_id++;
             return groupBox;
@@ -166,7 +170,7 @@ namespace GameJam_Planner
 
             return groupBox.Size;
         }
-        public Size BoxSize;
+
 
     }
 }

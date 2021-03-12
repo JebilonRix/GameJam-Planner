@@ -41,28 +41,28 @@ namespace GameJam_Planner
                 default: break;
             }
 
-            string title = "";
+            string skull = CustomGroupBox.CGB.Title;
+            string joker = Form_CustomMessageBox.CustomMessageBox.Joker;
+            string title;
 
-            if (CustomGroupBox.CGB.Title == "")
-            {
-                title = Class_Spawner.Spawner.DefaultTitle;
-            }
-            else 
+            if (skull == joker)
             {
                 title = CustomGroupBox.CGB.Title;
+            }
+            else
+            {
+                title = Class_Spawner.Spawner.DefaultTitle;
             }
 
             Point location = CustomGroupBox.CGB.point;
             Size size = Class_Spawner.Spawner.BoxSize;
+
             bool locked = CustomGroupBox.CGB.isLocked;
 
             string content1 = "";
             string content2 = "";
 
-            Depola(type, id, title, location,size, locked,  content1,  content2);
-
-
-
+            Depola(type, id, title, location, size, locked, content1, content2);
 
         }
 

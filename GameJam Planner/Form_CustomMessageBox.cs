@@ -6,6 +6,7 @@ namespace GameJam_Planner
 {
     public partial class Form_CustomMessageBox : Form
     {
+        public static Form_CustomMessageBox CustomMessageBox;
         public string Joker;
 
         public Form_CustomMessageBox()
