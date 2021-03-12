@@ -3,12 +3,12 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace GameJam_Planner
 {
     public class CustomGroupBox : GroupBox
     {
-        PlannerEntities planner = new PlannerEntities();
 
         public static CustomGroupBox CGB;
 
@@ -174,6 +174,34 @@ namespace GameJam_Planner
             return img;
         }
 
-
+    }
+    class JsonNoteBox
+    {
+        public int BoxID { get; set; }
+        public string BoxTitle { get; set; }
+        public Point BoxLocation { get; set; }
+        public Color BoxBackColor { get; set; }
+        public bool BoxIsLocked { get; set; }
+        public string RichText { get; set; }
+    }
+    class JsonPicTureBox
+    {
+        public int BoxID { get; set; }
+        public string BoxTitle { get; set; }
+        public Point BoxLocation { get; set; }
+        public Color BoxBackColor { get; set; }
+        public bool BoxIsLocked { get; set; }
+        public string PictureLocation { get; set; }
+    }
+    class JsonToDoBox
+    {
+        public int BoxID { get; set; }
+        public string BoxTitle { get; set; }
+        public Point BoxLocation { get; set; }
+        public Color BoxBackColor { get; set; }
+        public bool BoxIsLocked { get; set; }
+        public int ItemID { get; set; }
+        public string ItemName { get; set; }
+        public bool ItemChecked { get; set; }
     }
 }

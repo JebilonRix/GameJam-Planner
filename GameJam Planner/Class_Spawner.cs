@@ -1,28 +1,28 @@
-﻿using System.Drawing;
+﻿using System.Collections.Generic;
+using System.Drawing;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace GameJam_Planner
 {
     public class Class_Spawner
     {
         public static Class_Spawner Spawner;
-        PlannerEntities planner = new PlannerEntities();
-
         public string TypeOfBox, CheckListItemText, DefaultTitle;
         public Point SpawnLocation;
 
         public Class_Spawner()
         {
         }
-        private CustomGroupBox GroupBox(int type)
+        public CustomGroupBox GroupBox(int type)
         {
             CustomGroupBox groupBox = new CustomGroupBox(type);
 
             switch (TypeOfBox)
             {
-                case "GroupNote": groupBox.Text = "NoteBox" ; break;
-                case "GroupPicture": groupBox.Text = "PictureBox" ; break;
-                case "GroupDo": groupBox.Text = "ToDoBox"  ; break;
+                case "GroupNote": groupBox.Text = "NoteBox"; break;
+                case "GroupPicture": groupBox.Text = "PictureBox"; break;
+                case "GroupDo": groupBox.Text = "ToDoBox"; break;
                 default: break;
             }
 
@@ -51,7 +51,7 @@ namespace GameJam_Planner
             groupBox.Controls.Add(richTextBox);
             return richTextBox;
         }
-        private PictureBox PictureBox(CustomGroupBox groupBox)
+        public PictureBox PictureBox(CustomGroupBox groupBox)
         {
             PictureBox picBox = new PictureBox();
             picBox.Location = new Point(6, 45);
@@ -62,7 +62,7 @@ namespace GameJam_Planner
 
             return picBox;
         }
-        private CheckedListBox CheckedListBox(CustomGroupBox groupBox)
+        public CheckedListBox CheckedListBox(CustomGroupBox groupBox)
         {
             CheckedListBox checkedListBox = new CheckedListBox();
             checkedListBox.Location = new Point(6, 47);
@@ -108,13 +108,12 @@ namespace GameJam_Planner
 
         public CustomGroupBox Spawn_Note()
         {
-            NoteBox noteBox = new NoteBox();
             TypeOfBox = "GroupNote"; //keyword
             CustomGroupBox groupBox = GroupBox(0);
             RichTextBox(groupBox);
             LockButton(groupBox);
             groupBox.isLocked = false;
-        
+
             return groupBox;
         }
         public CustomGroupBox Spawn_Picture()
@@ -123,10 +122,8 @@ namespace GameJam_Planner
             CustomGroupBox groupBox = GroupBox(1);
             PictureBox(groupBox);
             LockButton(groupBox);
-
             groupBox.isLocked = false;
 
-     
             return groupBox;
         }
         public CustomGroupBox Spawn_ToDo()
@@ -140,7 +137,6 @@ namespace GameJam_Planner
 
             return groupBox;
         }
-  
 
     }
 }

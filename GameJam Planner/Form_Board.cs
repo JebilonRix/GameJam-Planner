@@ -1,14 +1,13 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace GameJam_Planner
 {
     public partial class Form_Board : Form
     {
         public static Form_Board Board;
-
-        PlannerEntities planner = new PlannerEntities();
 
         public Form_Board()
         {
@@ -97,7 +96,6 @@ namespace GameJam_Planner
             var BoxSpawn = Class_Spawner.Spawner.Spawn_ToDo();
             this.Controls.Add(BoxSpawn);
         }
-
     
     }
 }
