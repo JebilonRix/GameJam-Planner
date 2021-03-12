@@ -32,7 +32,6 @@ namespace GameJam_Planner
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Board));
             this.menuStripPlanner = new System.Windows.Forms.MenuStrip();
-            this.SaveMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AddMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noteBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ImageBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,17 +48,14 @@ namespace GameJam_Planner
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStripPlanner.SuspendLayout();
             this.RightClickToBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStripPlanner
             // 
             this.menuStripPlanner.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("menuStripPlanner.BackgroundImage")));
             this.menuStripPlanner.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.SaveMenuItem,
             this.AddMenuItem,
             this.HintsMenuItem,
             this.ClearMenuItem,
@@ -70,13 +66,6 @@ namespace GameJam_Planner
             this.menuStripPlanner.Size = new System.Drawing.Size(1337, 24);
             this.menuStripPlanner.TabIndex = 10;
             this.menuStripPlanner.Text = "PlannerManu";
-            // 
-            // SaveMenuItem
-            // 
-            this.SaveMenuItem.Name = "SaveMenuItem";
-            this.SaveMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.SaveMenuItem.Text = "Save";
-            this.SaveMenuItem.Click += new System.EventHandler(this.SaveMenuItem_Click);
             // 
             // AddMenuItem
             // 
@@ -91,21 +80,21 @@ namespace GameJam_Planner
             // noteBoxToolStripMenuItem
             // 
             this.noteBoxToolStripMenuItem.Name = "noteBoxToolStripMenuItem";
-            this.noteBoxToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.noteBoxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.noteBoxToolStripMenuItem.Text = "Note Box";
             this.noteBoxToolStripMenuItem.Click += new System.EventHandler(this.noteBoxToolStripMenuItem_Click);
             // 
             // ImageBoxToolStripMenuItem
             // 
             this.ImageBoxToolStripMenuItem.Name = "ImageBoxToolStripMenuItem";
-            this.ImageBoxToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.ImageBoxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ImageBoxToolStripMenuItem.Text = "Image Box";
             this.ImageBoxToolStripMenuItem.Click += new System.EventHandler(this.ImageBoxToolStripMenuItem_Click);
             // 
             // toDoBoxToolStripMenuItem
             // 
             this.toDoBoxToolStripMenuItem.Name = "toDoBoxToolStripMenuItem";
-            this.toDoBoxToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.toDoBoxToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.toDoBoxToolStripMenuItem.Text = "ToDo Box";
             this.toDoBoxToolStripMenuItem.Click += new System.EventHandler(this.toDoBoxToolStripMenuItem_Click);
             // 
@@ -202,14 +191,6 @@ namespace GameJam_Planner
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 40);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(883, 170);
-            this.dataGridView1.TabIndex = 11;
-            // 
             // Form_Board
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 22F);
@@ -217,7 +198,6 @@ namespace GameJam_Planner
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1337, 581);
             this.ContextMenuStrip = this.RightClickToBox;
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStripPlanner);
             this.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -231,7 +211,6 @@ namespace GameJam_Planner
             this.menuStripPlanner.ResumeLayout(false);
             this.menuStripPlanner.PerformLayout();
             this.RightClickToBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,7 +218,6 @@ namespace GameJam_Planner
 
         #endregion
         private System.Windows.Forms.MenuStrip menuStripPlanner;
-        private System.Windows.Forms.ToolStripMenuItem SaveMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AddMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ClearMenuItem;
         private System.Windows.Forms.ToolStripMenuItem HintsMenuItem;
@@ -256,7 +234,6 @@ namespace GameJam_Planner
         private System.Windows.Forms.ToolStripMenuItem toDoBoxToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showOpeningSceneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeBackcolorToolStripMenuItem;
-        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
 

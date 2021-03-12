@@ -8,23 +8,21 @@ namespace GameJam_Planner
 {
     public class CustomGroupBox : GroupBox
     {
+        PlannerEntities planner = new PlannerEntities();
+
         public static CustomGroupBox CGB;
 
         public Point point;
         public Point MousePush;
         public bool isLocked;
         public CheckedListBox MyTodoList;
-        public string Title;
-        public string LocationOfPicture;
-        public int ToDoItemCount=0;
-        public string ToDoItemName;
+        public int BoxID;
 
         ContextMenu cm = new ContextMenu();
         Form_CustomMessageBox FNC = new Form_CustomMessageBox();
         Image img;
         Button MyLockButton;
         Button MyAddButton;
-
 
         public CustomGroupBox(int type)
         {
@@ -90,7 +88,7 @@ namespace GameJam_Planner
         private void AddButton_Click(object sender, EventArgs e)
         {
             FNC.ShowDialog();
-            ToDoItemCount = MyTodoList.Items.Count;
+            int ToDoItemCount = MyTodoList.Items.Count;
             MyTodoList.Items.Insert(ToDoItemCount, FNC.Joker);
         }
         private void ButtonLock_Click(object sender, EventArgs e)
@@ -131,20 +129,12 @@ namespace GameJam_Planner
         }
         private void Delete_Click(object sender, EventArgs e)
         {
-            switch (Class_Spawner.Spawner.TypeOfBox)
-            {
-                case "GroupText": Class_Spawner.Spawner.box_id--; break;
-                case "GroupPict": Class_Spawner.Spawner.pic_id--; break;
-                case "GroupDo": Class_Spawner.Spawner.do_id--; break;
-                default: break;
-            }
             this.Dispose();
         }
         private void ChangeName_Click(object sender, EventArgs e)
         {
             FNC.ShowDialog();
             this.Text = FNC.Joker;
-            Title = this.Text;
         }
         private void AddPicture_Click(object sender, EventArgs e)
         {
@@ -152,6 +142,7 @@ namespace GameJam_Planner
         }
         public Image ImageImporter()
         {
+            string LocationOfPicture = "";
             if (img == null)
             {
                 using (OpenFileDialog ofd = new OpenFileDialog())

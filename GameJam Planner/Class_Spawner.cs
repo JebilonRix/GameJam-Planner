@@ -6,27 +6,40 @@ namespace GameJam_Planner
     public class Class_Spawner
     {
         public static Class_Spawner Spawner;
+        PlannerEntities planner = new PlannerEntities();
 
-        public int box_id, pic_id, do_id;
         public string TypeOfBox, CheckListItemText, DefaultTitle;
         public Point SpawnLocation;
-        public Size BoxSize;
 
         public Class_Spawner()
         {
-            Class_Depo.Depo = new Class_Depo();
         }
-
         private CustomGroupBox GroupBox(int type)
         {
             CustomGroupBox groupBox = new CustomGroupBox(type);
 
+            switch (TypeOfBox)
+            {
+                case "GroupNote": groupBox.Text = "NoteBox" ; break;
+                case "GroupPicture": groupBox.Text = "PictureBox" ; break;
+                case "GroupDo": groupBox.Text = "ToDoBox"  ; break;
+                default: break;
+            }
+
             groupBox.Location = SpawnLocation;
             groupBox.ForeColor = Color.White;
 
+            switch (TypeOfBox)
+            {
+                case "GroupNote": groupBox.Size = new Size(230, 200); break;
+                case "GroupPicture": groupBox.Size = new Size(230, 200); break;
+                case "GroupDo": groupBox.Size = new Size(210, 250); break;
+                default: break;
+            }
+
             return groupBox;
         }
-        private RichTextBox RichTextBox(CustomGroupBox groupBox)
+        public RichTextBox RichTextBox(CustomGroupBox groupBox)
         {
             RichTextBox richTextBox = new RichTextBox();
             richTextBox.Location = new Point(6, 45);
@@ -40,14 +53,14 @@ namespace GameJam_Planner
         }
         private PictureBox PictureBox(CustomGroupBox groupBox)
         {
-            PictureBox pictureBox = new PictureBox();
-            pictureBox.Location = new Point(6, 45);
-            pictureBox.Size = new Size(220, 150);
-            pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox.Image = groupBox.ImageImporter();
-            groupBox.Controls.Add(pictureBox);
+            PictureBox picBox = new PictureBox();
+            picBox.Location = new Point(6, 45);
+            picBox.Size = new Size(220, 150);
+            picBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            picBox.Image = groupBox.ImageImporter();
+            groupBox.Controls.Add(picBox);
 
-            return pictureBox;
+            return picBox;
         }
         private CheckedListBox CheckedListBox(CustomGroupBox groupBox)
         {
@@ -65,7 +78,7 @@ namespace GameJam_Planner
 
             switch (TypeOfBox)
             {
-                case "GroupText": buttonLock.Location = new Point(207, 22); break;
+                case "GroupNote": buttonLock.Location = new Point(207, 22); break;
                 case "GroupPicture": buttonLock.Location = new Point(207, 22); break;
                 case "GroupDo": buttonLock.Location = new Point(190, 23); break;
                 default: break;
@@ -93,20 +106,15 @@ namespace GameJam_Planner
             return addButton;
         }
 
-        public CustomGroupBox Spawn_Group()
+        public CustomGroupBox Spawn_Note()
         {
-            TypeOfBox = "GroupText";
-
+            NoteBox noteBox = new NoteBox();
+            TypeOfBox = "GroupNote"; //keyword
             CustomGroupBox groupBox = GroupBox(0);
             RichTextBox(groupBox);
             LockButton(groupBox);
-            DefaultName(groupBox);
-            SizeHandler(groupBox);
             groupBox.isLocked = false;
-
-            Class_Depo.Depo.Depola(TypeOfBox, box_id, DefaultName(groupBox), SpawnLocation,  groupBox.isLocked, RichTextBox(groupBox).Text, null);
-
-            box_id++;
+        
             return groupBox;
         }
         public CustomGroupBox Spawn_Picture()
@@ -115,13 +123,10 @@ namespace GameJam_Planner
             CustomGroupBox groupBox = GroupBox(1);
             PictureBox(groupBox);
             LockButton(groupBox);
-            DefaultName(groupBox);
-            SizeHandler(groupBox);
+
             groupBox.isLocked = false;
 
-            Class_Depo.Depo.Depola(TypeOfBox, box_id, DefaultName(groupBox), SpawnLocation,  groupBox.isLocked, RichTextBox(groupBox).Text, null);
-
-            pic_id++;
+     
             return groupBox;
         }
         public CustomGroupBox Spawn_ToDo()
@@ -131,45 +136,11 @@ namespace GameJam_Planner
             CheckedListBox(groupBox);
             AddButton(groupBox);
             LockButton(groupBox);
-            DefaultName(groupBox);
             groupBox.isLocked = false;
-            SizeHandler(groupBox);
 
-            Class_Depo.Depo.Depola(TypeOfBox, box_id, DefaultName(groupBox), SpawnLocation, groupBox.isLocked, RichTextBox(groupBox).Text, null);
-
-            do_id++;
             return groupBox;
         }
-
-        public string DefaultName(CustomGroupBox groupBox)
-        {
-            switch (TypeOfBox)
-            {
-                case "GroupText": groupBox.Text = "GroupBox" + (box_id + 1).ToString(); break;
-                case "GroupPicture": groupBox.Text = "PictureBox" + (pic_id + 1).ToString(); break;
-                case "GroupDo": groupBox.Text = "ToDoBox" + (do_id + 1).ToString(); break;
-                default: break;
-            }
-
-            DefaultTitle = groupBox.Text;
-
-            return groupBox.Text;
-        }
-        private Size SizeHandler(CustomGroupBox groupBox)
-        {
-            switch (TypeOfBox)
-            {
-                case "GroupText": groupBox.Size = new Size(230, 200); break;
-                case "GroupPicture": groupBox.Size = new Size(230, 200); break;
-                case "GroupDo": groupBox.Size = new Size(210, 250); break;
-                default: break;
-            }
-
-            BoxSize = groupBox.Size;
-
-            return groupBox.Size;
-        }
-
+  
 
     }
 }

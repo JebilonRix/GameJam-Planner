@@ -47,3 +47,8 @@ C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_Board.resources
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_CustomMessageBox.resources
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csprojAssemblyReference.cache
+C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\EntityFramework.dll
+C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\EntityFramework.xml
+C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csproj.CopyComplete

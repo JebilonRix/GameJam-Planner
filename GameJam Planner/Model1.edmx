@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PlannerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BoxGenel">
+          <Key>
+            <PropertyRef Name="BoxID" />
+          </Key>
+          <Property Name="BoxID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BoxTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="BoxLocation" Type="nvarchar" MaxLength="50" />
+          <Property Name="BoxSize" Type="nvarchar" MaxLength="50" />
+          <Property Name="BoxBackColor" Type="nvarchar" MaxLength="50" />
+          <Property Name="BoxIsLocked" Type="bit" />
+        </EntityType>
+        <EntityType Name="NoteBox">
+          <Key>
+            <PropertyRef Name="NoteBoxID" />
+          </Key>
+          <Property Name="NoteBoxID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NoteBoxText" Type="nvarchar(max)" />
+          <Property Name="BoxID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PictureBoxTable">
+          <Key>
+            <PropertyRef Name="PictureBoxID" />
+          </Key>
+          <Property Name="PictureBoxID" Type="int" Nullable="false" />
+          <Property Name="PictureBoxDataLocation" Type="nvarchar(max)" />
+          <Property Name="BoxID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="ToDoBox">
+          <Key>
+            <PropertyRef Name="ToDoBoxID" />
+          </Key>
+          <Property Name="ToDoBoxID" Type="int" Nullable="false" />
+          <Property Name="BoxID" Type="int" />
+        </EntityType>
+        <EntityType Name="ToDoItems">
+          <Key>
+            <PropertyRef Name="ToDoItemID" />
+          </Key>
+          <Property Name="ToDoItemID" Type="int" Nullable="false" />
+          <Property Name="ToDoItemName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ToDoItemChecked" Type="bit" />
+          <Property Name="ToDoBoxID" Type="int" />
+        </EntityType>
+        <Association Name="FK_NoteBox_BoxGenel">
+          <End Role="BoxGenel" Type="Self.BoxGenel" Multiplicity="1" />
+          <End Role="NoteBox" Type="Self.NoteBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BoxGenel">
+              <PropertyRef Name="BoxID" />
+            </Principal>
+            <Dependent Role="NoteBox">
+              <PropertyRef Name="BoxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PictureBoxTable_BoxGenel">
+          <End Role="BoxGenel" Type="Self.BoxGenel" Multiplicity="1" />
+          <End Role="PictureBoxTable" Type="Self.PictureBoxTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BoxGenel">
+              <PropertyRef Name="BoxID" />
+            </Principal>
+            <Dependent Role="PictureBoxTable">
+              <PropertyRef Name="BoxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToDoBox_BoxGenel">
+          <End Role="BoxGenel" Type="Self.BoxGenel" Multiplicity="0..1" />
+          <End Role="ToDoBox" Type="Self.ToDoBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BoxGenel">
+              <PropertyRef Name="BoxID" />
+            </Principal>
+            <Dependent Role="ToDoBox">
+              <PropertyRef Name="BoxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToDoItems_ToDoBox">
+          <End Role="ToDoBox" Type="Self.ToDoBox" Multiplicity="0..1" />
+          <End Role="ToDoItems" Type="Self.ToDoItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ToDoBox">
+              <PropertyRef Name="ToDoBoxID" />
+            </Principal>
+            <Dependent Role="ToDoItems">
+              <PropertyRef Name="ToDoBoxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PlannerModelStoreContainer">
+          <EntitySet Name="BoxGenel" EntityType="Self.BoxGenel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NoteBox" EntityType="Self.NoteBox" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PictureBoxTable" EntityType="Self.PictureBoxTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ToDoBox" EntityType="Self.ToDoBox" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ToDoItems" EntityType="Self.ToDoItems" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_NoteBox_BoxGenel" Association="Self.FK_NoteBox_BoxGenel">
+            <End Role="BoxGenel" EntitySet="BoxGenel" />
+            <End Role="NoteBox" EntitySet="NoteBox" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PictureBoxTable_BoxGenel" Association="Self.FK_PictureBoxTable_BoxGenel">
+            <End Role="BoxGenel" EntitySet="BoxGenel" />
+            <End Role="PictureBoxTable" EntitySet="PictureBoxTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToDoBox_BoxGenel" Association="Self.FK_ToDoBox_BoxGenel">
+            <End Role="BoxGenel" EntitySet="BoxGenel" />
+            <End Role="ToDoBox" EntitySet="ToDoBox" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToDoItems_ToDoBox" Association="Self.FK_ToDoItems_ToDoBox">
+            <End Role="ToDoBox" EntitySet="ToDoBox" />
+            <End Role="ToDoItems" EntitySet="ToDoItems" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PlannerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BoxGenel">
+          <Key>
+            <PropertyRef Name="BoxID" />
+          </Key>
+          <Property Name="BoxID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BoxTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BoxLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BoxSize" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BoxBackColor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BoxIsLocked" Type="Boolean" />
+          <NavigationProperty Name="NoteBox" Relationship="Self.FK_NoteBox_BoxGenel" FromRole="BoxGenel" ToRole="NoteBox" />
+          <NavigationProperty Name="PictureBoxTable" Relationship="Self.FK_PictureBoxTable_BoxGenel" FromRole="BoxGenel" ToRole="PictureBoxTable" />
+          <NavigationProperty Name="ToDoBox" Relationship="Self.FK_ToDoBox_BoxGenel" FromRole="BoxGenel" ToRole="ToDoBox" />
+        </EntityType>
+        <EntityType Name="NoteBox">
+          <Key>
+            <PropertyRef Name="NoteBoxID" />
+          </Key>
+          <Property Name="NoteBoxID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NoteBoxText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BoxID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BoxGenel" Relationship="Self.FK_NoteBox_BoxGenel" FromRole="NoteBox" ToRole="BoxGenel" />
+        </EntityType>
+        <EntityType Name="PictureBoxTable">
+          <Key>
+            <PropertyRef Name="PictureBoxID" />
+          </Key>
+          <Property Name="PictureBoxID" Type="Int32" Nullable="false" />
+          <Property Name="PictureBoxDataLocation" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="BoxID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="BoxGenel" Relationship="Self.FK_PictureBoxTable_BoxGenel" FromRole="PictureBoxTable" ToRole="BoxGenel" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="ToDoBox">
+          <Key>
+            <PropertyRef Name="ToDoBoxID" />
+          </Key>
+          <Property Name="ToDoBoxID" Type="Int32" Nullable="false" />
+          <Property Name="BoxID" Type="Int32" />
+          <NavigationProperty Name="BoxGenel" Relationship="Self.FK_ToDoBox_BoxGenel" FromRole="ToDoBox" ToRole="BoxGenel" />
+          <NavigationProperty Name="ToDoItems" Relationship="Self.FK_ToDoItems_ToDoBox" FromRole="ToDoBox" ToRole="ToDoItems" />
+        </EntityType>
+        <EntityType Name="ToDoItems">
+          <Key>
+            <PropertyRef Name="ToDoItemID" />
+          </Key>
+          <Property Name="ToDoItemID" Type="Int32" Nullable="false" />
+          <Property Name="ToDoItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ToDoItemChecked" Type="Boolean" />
+          <Property Name="ToDoBoxID" Type="Int32" />
+          <NavigationProperty Name="ToDoBox" Relationship="Self.FK_ToDoItems_ToDoBox" FromRole="ToDoItems" ToRole="ToDoBox" />
+        </EntityType>
+        <Association Name="FK_NoteBox_BoxGenel">
+          <End Role="BoxGenel" Type="Self.BoxGenel" Multiplicity="1" />
+          <End Role="NoteBox" Type="Self.NoteBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BoxGenel">
+              <PropertyRef Name="BoxID" />
+            </Principal>
+            <Dependent Role="NoteBox">
+              <PropertyRef Name="BoxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PictureBoxTable_BoxGenel">
+          <End Role="BoxGenel" Type="Self.BoxGenel" Multiplicity="1" />
+          <End Role="PictureBoxTable" Type="Self.PictureBoxTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BoxGenel">
+              <PropertyRef Name="BoxID" />
+            </Principal>
+            <Dependent Role="PictureBoxTable">
+              <PropertyRef Name="BoxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToDoBox_BoxGenel">
+          <End Role="BoxGenel" Type="Self.BoxGenel" Multiplicity="0..1" />
+          <End Role="ToDoBox" Type="Self.ToDoBox" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BoxGenel">
+              <PropertyRef Name="BoxID" />
+            </Principal>
+            <Dependent Role="ToDoBox">
+              <PropertyRef Name="BoxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToDoItems_ToDoBox">
+          <End Role="ToDoBox" Type="Self.ToDoBox" Multiplicity="0..1" />
+          <End Role="ToDoItems" Type="Self.ToDoItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ToDoBox">
+              <PropertyRef Name="ToDoBoxID" />
+            </Principal>
+            <Dependent Role="ToDoItems">
+              <PropertyRef Name="ToDoBoxID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PlannerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BoxGenel" EntityType="Self.BoxGenel" />
+          <EntitySet Name="NoteBox" EntityType="Self.NoteBox" />
+          <EntitySet Name="PictureBoxTable" EntityType="Self.PictureBoxTable" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="ToDoBox" EntityType="Self.ToDoBox" />
+          <EntitySet Name="ToDoItems" EntityType="Self.ToDoItems" />
+          <AssociationSet Name="FK_NoteBox_BoxGenel" Association="Self.FK_NoteBox_BoxGenel">
+            <End Role="BoxGenel" EntitySet="BoxGenel" />
+            <End Role="NoteBox" EntitySet="NoteBox" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PictureBoxTable_BoxGenel" Association="Self.FK_PictureBoxTable_BoxGenel">
+            <End Role="BoxGenel" EntitySet="BoxGenel" />
+            <End Role="PictureBoxTable" EntitySet="PictureBoxTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToDoBox_BoxGenel" Association="Self.FK_ToDoBox_BoxGenel">
+            <End Role="BoxGenel" EntitySet="BoxGenel" />
+            <End Role="ToDoBox" EntitySet="ToDoBox" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToDoItems_ToDoBox" Association="Self.FK_ToDoItems_ToDoBox">
+            <End Role="ToDoBox" EntitySet="ToDoBox" />
+            <End Role="ToDoItems" EntitySet="ToDoItems" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PlannerModelStoreContainer" CdmEntityContainer="PlannerEntities">
+          <EntitySetMapping Name="BoxGenel">
+            <EntityTypeMapping TypeName="PlannerModel.BoxGenel">
+              <MappingFragment StoreEntitySet="BoxGenel">
+                <ScalarProperty Name="BoxID" ColumnName="BoxID" />
+                <ScalarProperty Name="BoxTitle" ColumnName="BoxTitle" />
+                <ScalarProperty Name="BoxLocation" ColumnName="BoxLocation" />
+                <ScalarProperty Name="BoxSize" ColumnName="BoxSize" />
+                <ScalarProperty Name="BoxBackColor" ColumnName="BoxBackColor" />
+                <ScalarProperty Name="BoxIsLocked" ColumnName="BoxIsLocked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NoteBox">
+            <EntityTypeMapping TypeName="PlannerModel.NoteBox">
+              <MappingFragment StoreEntitySet="NoteBox">
+                <ScalarProperty Name="NoteBoxID" ColumnName="NoteBoxID" />
+                <ScalarProperty Name="NoteBoxText" ColumnName="NoteBoxText" />
+                <ScalarProperty Name="BoxID" ColumnName="BoxID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PictureBoxTable">
+            <EntityTypeMapping TypeName="PlannerModel.PictureBoxTable">
+              <MappingFragment StoreEntitySet="PictureBoxTable">
+                <ScalarProperty Name="PictureBoxID" ColumnName="PictureBoxID" />
+                <ScalarProperty Name="PictureBoxDataLocation" ColumnName="PictureBoxDataLocation" />
+                <ScalarProperty Name="BoxID" ColumnName="BoxID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="PlannerModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ToDoBox">
+            <EntityTypeMapping TypeName="PlannerModel.ToDoBox">
+              <MappingFragment StoreEntitySet="ToDoBox">
+                <ScalarProperty Name="ToDoBoxID" ColumnName="ToDoBoxID" />
+                <ScalarProperty Name="BoxID" ColumnName="BoxID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ToDoItems">
+            <EntityTypeMapping TypeName="PlannerModel.ToDoItems">
+              <MappingFragment StoreEntitySet="ToDoItems">
+                <ScalarProperty Name="ToDoItemID" ColumnName="ToDoItemID" />
+                <ScalarProperty Name="ToDoItemName" ColumnName="ToDoItemName" />
+                <ScalarProperty Name="ToDoItemChecked" ColumnName="ToDoItemChecked" />
+                <ScalarProperty Name="ToDoBoxID" ColumnName="ToDoBoxID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,32 +7,17 @@ namespace GameJam_Planner
     public partial class Form_Board : Form
     {
         public static Form_Board Board;
+
+        PlannerEntities planner = new PlannerEntities();
+
         public Form_Board()
         {
             InitializeComponent();
             Class_Spawner.Spawner = new Class_Spawner();
-            Class_Depo.Depo = new Class_Depo();
         }
         private void Form_Board_Load(object sender, EventArgs e)
         {
-            Class_Depo.Depo.DataTableDepo.Columns.Add("Type", typeof(string));
-            Class_Depo.Depo.DataTableDepo.Columns.Add("ID", typeof(int));
-            Class_Depo.Depo.DataTableDepo.Columns.Add("Title", typeof(string));
-            Class_Depo.Depo.DataTableDepo.Columns.Add("Location", typeof(string));
-            Class_Depo.Depo.DataTableDepo.Columns.Add("Lock", typeof(bool));
-            Class_Depo.Depo.DataTableDepo.Columns.Add("Content1", typeof(string));
-            Class_Depo.Depo.DataTableDepo.Columns.Add("Content2", typeof(string));
-
-            dataGridView1.DataSource = Class_Depo.Depo.DataTableDepo;
         }
-
-        private void SaveMenuItem_Click(object sender, EventArgs e)
-        {
-            //Class_Depo.Depo.Updates();
-            Class_Depo.Depo.Writer(Class_Spawner.Spawner.box_id + Class_Spawner.Spawner.pic_id + Class_Spawner.Spawner.do_id);
-            MessageBox.Show("Saved.");
-        }
-
         private void ClearMenuItem_Click(object sender, EventArgs e)
         {
 
@@ -81,14 +65,23 @@ namespace GameJam_Planner
         {
             SpawnBox();
         }
+        private void changeBackcolorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (ColorDialog cd = new ColorDialog())
+            {
+                if (cd.ShowDialog() == DialogResult.OK)
+                {
+                    this.BackColor = cd.Color;
+                }
+            }
+        }
 
         private void SpawnBox()
         {
             Point cp = PointToClient(Cursor.Position);
             Class_Spawner.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
-            var BoxSpawn = Class_Spawner.Spawner.Spawn_Group();
+            var BoxSpawn = Class_Spawner.Spawner.Spawn_Note();
             this.Controls.Add(BoxSpawn);
-
         }
         private void SpawnPic()
         {
@@ -104,15 +97,7 @@ namespace GameJam_Planner
             var BoxSpawn = Class_Spawner.Spawner.Spawn_ToDo();
             this.Controls.Add(BoxSpawn);
         }
-        private void changeBackcolorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (ColorDialog cd = new ColorDialog())
-            {
-                if (cd.ShowDialog() == DialogResult.OK)
-                {
-                    this.BackColor = cd.Color;
-                }
-            }
-        }
+
+    
     }
 }
