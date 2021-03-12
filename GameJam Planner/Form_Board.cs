@@ -75,6 +75,7 @@ namespace GameJam_Planner
             }
         }
 
+
         private void SpawnBox()
         {
             Point cp = PointToClient(Cursor.Position);
@@ -96,6 +97,5 @@ namespace GameJam_Planner
             var BoxSpawn = Class_Spawner.Spawner.Spawn_ToDo();
             this.Controls.Add(BoxSpawn);
         }
-    
     }
 }
