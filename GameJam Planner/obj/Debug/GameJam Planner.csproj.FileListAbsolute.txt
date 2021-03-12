@@ -46,3 +46,4 @@ C:\Users\Legion\Desktop\CURSED PROJECTS\Quarantine Mood\GameJam-Planner\GameJam 
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_Enter.resources
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_Board.resources
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_CustomMessageBox.resources
+C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csprojAssemblyReference.cache

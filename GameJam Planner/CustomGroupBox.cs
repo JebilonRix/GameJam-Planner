@@ -11,15 +11,18 @@ namespace GameJam_Planner
         public static CustomGroupBox CGB;
 
         public Point point;
+        public Point MousePush;
         public bool isLocked;
+        public CheckedListBox MyTodoList;
+        public string Title;
+        public string LocationOfPicture;
+
         ContextMenu cm = new ContextMenu();
         Form_CustomMessageBox FNC = new Form_CustomMessageBox();
         Image img;
-
-
         Button MyLockButton;
         Button MyAddButton;
-        public CheckedListBox MyTodoList;
+
 
         public CustomGroupBox(int type)
         {
@@ -45,9 +48,6 @@ namespace GameJam_Planner
             }
 
         }
-
-        public Point MousePush;
-
         protected override void OnMouseDown(MouseEventArgs e)
         {
             point = e.Location;
@@ -72,7 +72,6 @@ namespace GameJam_Planner
 
             base.OnMouseDown(e);
         }
-
         protected override void OnMouseMove(MouseEventArgs e)
         {
             if (this.isLocked == false && e.Button == MouseButtons.Left)
@@ -105,8 +104,6 @@ namespace GameJam_Planner
             }
 
         }
-
-
 
         private void SetUpContextMenu()
         {
@@ -146,13 +143,12 @@ namespace GameJam_Planner
         {
             FNC.ShowDialog();
             this.Text = FNC.Joker;
+            Title = this.Text;
         }
         private void AddPicture_Click(object sender, EventArgs e)
         {
             ImageImporter();
         }
-
-        public string LocationOfPicture;
         public Image ImageImporter()
         {
             if (img == null)
