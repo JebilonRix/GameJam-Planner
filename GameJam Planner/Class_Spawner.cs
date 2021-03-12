@@ -34,7 +34,6 @@ namespace GameJam_Planner
             richTextBox.ForeColor = Color.Black;
             richTextBox.BackColor = Color.White;
             richTextBox.Font = new Font("Arial", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
-            richTextBox.Text = "";
 
             groupBox.Controls.Add(richTextBox);
             return richTextBox;
@@ -105,7 +104,7 @@ namespace GameJam_Planner
             SizeHandler(groupBox);
             groupBox.isLocked = false;
 
-            Class_Depo.Depo.Depola(TypeOfBox, box_id, DefaultName(groupBox), SpawnLocation, SizeHandler(groupBox), groupBox.isLocked, RichTextBox(groupBox).Text, null);
+            Class_Depo.Depo.Depola(TypeOfBox, box_id, DefaultName(groupBox), SpawnLocation,  groupBox.isLocked, RichTextBox(groupBox).Text, null);
 
             box_id++;
             return groupBox;
@@ -120,7 +119,7 @@ namespace GameJam_Planner
             SizeHandler(groupBox);
             groupBox.isLocked = false;
 
-            Class_Depo.Depo.Depola(TypeOfBox, box_id, DefaultName(groupBox), SpawnLocation, SizeHandler(groupBox), groupBox.isLocked, RichTextBox(groupBox).Text, null);
+            Class_Depo.Depo.Depola(TypeOfBox, box_id, DefaultName(groupBox), SpawnLocation,  groupBox.isLocked, RichTextBox(groupBox).Text, null);
 
             pic_id++;
             return groupBox;
@@ -136,7 +135,7 @@ namespace GameJam_Planner
             groupBox.isLocked = false;
             SizeHandler(groupBox);
 
-            Class_Depo.Depo.Depola(TypeOfBox, box_id, DefaultName(groupBox), SpawnLocation, SizeHandler(groupBox), groupBox.isLocked, RichTextBox(groupBox).Text, null);
+            Class_Depo.Depo.Depola(TypeOfBox, box_id, DefaultName(groupBox), SpawnLocation, groupBox.isLocked, RichTextBox(groupBox).Text, null);
 
             do_id++;
             return groupBox;

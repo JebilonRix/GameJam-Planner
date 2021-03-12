@@ -16,20 +16,21 @@ namespace GameJam_Planner
         }
         private void Form_Board_Load(object sender, EventArgs e)
         {
-            Class_Depo.Depo.dt1.Columns.Add("Type", typeof(string));
-            Class_Depo.Depo.dt1.Columns.Add("ID", typeof(int));
-            Class_Depo.Depo.dt1.Columns.Add("Title", typeof(string));
-            Class_Depo.Depo.dt1.Columns.Add("Location", typeof(string));
-            Class_Depo.Depo.dt1.Columns.Add("Size", typeof(string));
-            Class_Depo.Depo.dt1.Columns.Add("Lock", typeof(bool));
-            Class_Depo.Depo.dt1.Columns.Add("Content1", typeof(string));
-            Class_Depo.Depo.dt1.Columns.Add("Content2", typeof(string));
+            Class_Depo.Depo.DataTableDepo.Columns.Add("Type", typeof(string));
+            Class_Depo.Depo.DataTableDepo.Columns.Add("ID", typeof(int));
+            Class_Depo.Depo.DataTableDepo.Columns.Add("Title", typeof(string));
+            Class_Depo.Depo.DataTableDepo.Columns.Add("Location", typeof(string));
+            Class_Depo.Depo.DataTableDepo.Columns.Add("Lock", typeof(bool));
+            Class_Depo.Depo.DataTableDepo.Columns.Add("Content1", typeof(string));
+            Class_Depo.Depo.DataTableDepo.Columns.Add("Content2", typeof(string));
 
-            dataGridView1.DataSource = Class_Depo.Depo.dt1;
+            dataGridView1.DataSource = Class_Depo.Depo.DataTableDepo;
         }
+
         private void SaveMenuItem_Click(object sender, EventArgs e)
         {
-            Class_Depo.Depo.Updates();
+            //Class_Depo.Depo.Updates();
+            Class_Depo.Depo.Writer(Class_Spawner.Spawner.box_id + Class_Spawner.Spawner.pic_id + Class_Spawner.Spawner.do_id);
             MessageBox.Show("Saved.");
         }
 

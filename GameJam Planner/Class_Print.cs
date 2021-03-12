@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GameJam_Planner
+﻿namespace GameJam_Planner
 {
     public class Class_Print
     {
-
-        //Print.Array_double
+        public Class_Print() { }
+      
         public static string Array_double(double[] potis)
         {
             string result = "";

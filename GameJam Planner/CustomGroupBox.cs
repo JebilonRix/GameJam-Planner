@@ -16,6 +16,8 @@ namespace GameJam_Planner
         public CheckedListBox MyTodoList;
         public string Title;
         public string LocationOfPicture;
+        public int ToDoItemCount=0;
+        public string ToDoItemName;
 
         ContextMenu cm = new ContextMenu();
         Form_CustomMessageBox FNC = new Form_CustomMessageBox();
@@ -51,7 +53,7 @@ namespace GameJam_Planner
         protected override void OnMouseDown(MouseEventArgs e)
         {
             point = e.Location;
-          //  Debug.WriteLine("Mouse'a tıkladığım pozisyon:" + point.X + " " + point.Y);
+            //  Debug.WriteLine("Mouse'a tıkladığım pozisyon:" + point.X + " " + point.Y);
             string TypeOfBox = Class_Spawner.Spawner.TypeOfBox;
 
             switch (TypeOfBox)
@@ -88,8 +90,8 @@ namespace GameJam_Planner
         private void AddButton_Click(object sender, EventArgs e)
         {
             FNC.ShowDialog();
-            int len = MyTodoList.Items.Count;
-            MyTodoList.Items.Insert(len, FNC.Joker);
+            ToDoItemCount = MyTodoList.Items.Count;
+            MyTodoList.Items.Insert(ToDoItemCount, FNC.Joker);
         }
         private void ButtonLock_Click(object sender, EventArgs e)
         {

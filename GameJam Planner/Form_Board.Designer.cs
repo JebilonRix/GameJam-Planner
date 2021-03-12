@@ -145,33 +145,33 @@ namespace GameJam_Planner
             this.RightClickToDo,
             this.changeBackcolorToolStripMenuItem});
             this.RightClickToBox.Name = "contextMenuStrip";
-            this.RightClickToBox.Size = new System.Drawing.Size(181, 114);
+            this.RightClickToBox.Size = new System.Drawing.Size(171, 92);
             // 
             // RightClickBox
             // 
             this.RightClickBox.Name = "RightClickBox";
-            this.RightClickBox.Size = new System.Drawing.Size(180, 22);
+            this.RightClickBox.Size = new System.Drawing.Size(170, 22);
             this.RightClickBox.Text = "Add Box";
             this.RightClickBox.Click += new System.EventHandler(this.RightClickBox_Click);
             // 
             // RightClickPicture
             // 
             this.RightClickPicture.Name = "RightClickPicture";
-            this.RightClickPicture.Size = new System.Drawing.Size(180, 22);
+            this.RightClickPicture.Size = new System.Drawing.Size(170, 22);
             this.RightClickPicture.Text = "AddPicture";
             this.RightClickPicture.Click += new System.EventHandler(this.RightClickPicture_Click);
             // 
             // RightClickToDo
             // 
             this.RightClickToDo.Name = "RightClickToDo";
-            this.RightClickToDo.Size = new System.Drawing.Size(180, 22);
+            this.RightClickToDo.Size = new System.Drawing.Size(170, 22);
             this.RightClickToDo.Text = "AddToDo";
             this.RightClickToDo.Click += new System.EventHandler(this.RightClickToDo_Click);
             // 
             // changeBackcolorToolStripMenuItem
             // 
             this.changeBackcolorToolStripMenuItem.Name = "changeBackcolorToolStripMenuItem";
-            this.changeBackcolorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.changeBackcolorToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.changeBackcolorToolStripMenuItem.Text = "Change Backcolor";
             this.changeBackcolorToolStripMenuItem.Click += new System.EventHandler(this.changeBackcolorToolStripMenuItem_Click);
             // 
@@ -207,7 +207,7 @@ namespace GameJam_Planner
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 40);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(639, 170);
+            this.dataGridView1.Size = new System.Drawing.Size(883, 170);
             this.dataGridView1.TabIndex = 11;
             // 
             // Form_Board

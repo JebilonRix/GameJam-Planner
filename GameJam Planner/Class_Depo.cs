@@ -1,34 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Windows.Forms;
 
 namespace GameJam_Planner
 {
     public class Class_Depo
     {
         public static Class_Depo Depo;
+        public DataTable DataTableDepo = new DataTable();
 
-        public DataTable dt1 = new DataTable();
-        public void Depola(string type, int id, string title, Point location, Size size, bool locked, string content1, string content2)
+        public Class_Depo()
         {
-            DataRow dr1 = dt1.NewRow();
 
-            dr1["Type"] = type;
-            dr1["ID"] = id;
-            dr1["Title"] = title;
-            dr1["Location"] = location;
-            dr1["Size"] = size;
-            dr1["Lock"] = locked;
-            dr1["Content1"] = content1;
-            dr1["Content2"] = content2;
-
-            dt1.Rows.Add(dr1);
         }
+        public void Depola(string type, int id, string title, Point location,  bool locked, string content1, string content2)
+        {
+            DataRow DataRowDepo = DataTableDepo.NewRow();
 
+            DataRowDepo["Type"] = type;
+            DataRowDepo["ID"] = id;
+            DataRowDepo["Title"] = title;
+            DataRowDepo["Location"] = location;
+            DataRowDepo["Lock"] = locked;
+            DataRowDepo["Content1"] = content1;
+            DataRowDepo["Content2"] = content2;
+
+            DataTableDepo.Rows.Add(DataRowDepo);
+        }
+        //sıkıntılı
         public void Updates()
         {
             string type = Class_Spawner.Spawner.TypeOfBox;
@@ -41,31 +42,65 @@ namespace GameJam_Planner
                 default: break;
             }
 
-            string skull = CustomGroupBox.CGB.Title;
-            string joker = Form_CustomMessageBox.CustomMessageBox.Joker;
             string title;
 
-            if (skull == joker)
+            if (Form_CustomMessageBox.CustomMessageBox.Joker != null)
             {
                 title = CustomGroupBox.CGB.Title;
             }
             else
             {
-                title = Class_Spawner.Spawner.DefaultTitle;
+                title = CustomGroupBox.CGB.Title;
             }
 
+
             Point location = CustomGroupBox.CGB.point;
-            Size size = Class_Spawner.Spawner.BoxSize;
+         
 
             bool locked = CustomGroupBox.CGB.isLocked;
 
             string content1 = "";
             string content2 = "";
 
-            Depola(type, id, title, location, size, locked, content1, content2);
+            if (type == "GroupPicture")
+            {
+                content1 = CustomGroupBox.CGB.LocationOfPicture;
+                content2 = "";
+            }
+            else if (type == "GroupText")
+            {
+                content1 = "";
+                content2 = "";
+            }
+            else if (type == "GroupDo" && CustomGroupBox.CGB.ToDoItemCount != 0)
+            {
+#pragma warning disable CS1690 // Başvuruya göre sıralanan bir sınıfın alanında üyeye erişmek çalışma zamanı özel durumuna neden olabilir
+                content1 = CustomGroupBox.CGB.ToDoItemCount.ToString();
+#pragma warning restore CS1690 // Başvuruya göre sıralanan bir sınıfın alanında üyeye erişmek çalışma zamanı özel durumuna neden olabilir
+                content2 = CustomGroupBox.CGB.ToDoItemName;
+            }
+
+            Depola(type, id, title, location, locked, content1, content2);
 
         }
+        public void Reload()
+        {
+            using (StreamReader sr = new StreamReader(@"deney.txt"))
+            {
+
+            }
+        }
+
+        public async void Writer(int id)
+        {
+            string[] Lines = new string[id];
 
 
+            using (StreamWriter sw = new StreamWriter(@"deney.txt"))
+            {
+                await sw.WriteLineAsync(Class_Print.Array_string(Lines));
+            }
+
+        }
     }
 }
