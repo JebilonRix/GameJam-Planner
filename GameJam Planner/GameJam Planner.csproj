@@ -65,12 +65,6 @@
     <Compile Include="CustomGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Form_Enter.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_Enter.Designer.cs">
-      <DependentUpon>Form_Enter.cs</DependentUpon>
-    </Compile>
     <Compile Include="Form_Board.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,9 +109,6 @@
     <Compile Include="ToDoItems.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form_Enter.resx">
-      <DependentUpon>Form_Enter.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Form_Board.resx">
       <DependentUpon>Form_Board.cs</DependentUpon>
     </EmbeddedResource>

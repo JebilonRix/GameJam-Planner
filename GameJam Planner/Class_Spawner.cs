@@ -94,6 +94,8 @@ namespace GameJam_Planner
             buttonLock.Text = "";
             buttonLock.BackColor = Color.White;
             buttonLock.BackgroundImage = Image.FromFile(@"Assets\kilit.png");
+
+
             groupBox.Controls.Add(buttonLock);
 
             return buttonLock;

@@ -19,6 +19,8 @@ namespace GameJam_Planner
 
         private void Form_Board_Load(object sender, EventArgs e)
         {
+            GetMainValues();
+
             if (!File.Exists(@"Note") || !File.Exists(@"Picture") || !File.Exists(@"ToDo")) { return; }
             List<JsonNoteBox> Panter = new List<JsonNoteBox>();
             List<JsonPictureBox> Noir = new List<JsonPictureBox>();
@@ -60,6 +62,8 @@ namespace GameJam_Planner
         }
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SaveMainValues();
+
             List<JsonNoteBox> Panter = new List<JsonNoteBox>();
             foreach (var item in Class_Spawner.Spawner.MyBoxesNote)
             {
@@ -106,6 +110,23 @@ namespace GameJam_Planner
             Class_Spawner.Spawner.MyBoxesNote = new List<CustomGroupBox>();
             Class_Spawner.Spawner.MyBoxesPicture = new List<CustomGroupBox>();
             Class_Spawner.Spawner.MyBoxesToDo = new List<CustomGroupBox>();
+
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            comboBox1.SelectedItem = null;
+        }
+        private void changeBackcolorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (ColorDialog cd = new ColorDialog())
+            {
+                if (cd.ShowDialog() == DialogResult.OK)
+                {
+                    this.BackColor = cd.Color;
+                }
+            }
         }
         private void HintsMenuItem_Click(object sender, EventArgs e)
         {
@@ -119,6 +140,8 @@ namespace GameJam_Planner
         {
             Application.Exit();
         }
+
+
         private void RightClickToDo_Click(object sender, EventArgs e)
         {
             SpawnToDo();
@@ -130,16 +153,6 @@ namespace GameJam_Planner
         private void RightClickBox_Click(object sender, EventArgs e)
         {
             SpawnBox();
-        }
-        private void changeBackcolorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (ColorDialog cd = new ColorDialog())
-            {
-                if (cd.ShowDialog() == DialogResult.OK)
-                {
-                    this.BackColor = cd.Color;
-                }
-            }
         }
 
 
@@ -165,12 +178,45 @@ namespace GameJam_Planner
             this.Controls.Add(BoxSpawn);
         }
 
+
         private void mainToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form_Enter enter = new Form_Enter();
-            enter.GetMainValues();
-            this.Close();
-            enter.ShowDialog();
+            panelMain.Visible = true;
+            panelMain.Enabled = true;
+        }
+        public void GetMainValues()
+        {
+            textBox1.Text = Properties.Settings.Default.Group;
+            textBox2.Text = Properties.Settings.Default.Name;
+            textBox3.Text = Properties.Settings.Default.Theme;
+            textBox4.Text = Properties.Settings.Default.Genre;
+            textBox5.Text = Properties.Settings.Default.ArtStyle;
+            comboBox1.SelectedItem = Properties.Settings.Default.GameEngine;
+        }
+        public void SaveMainValues()
+        {
+            Properties.Settings.Default.Group = textBox1.Text;
+            Properties.Settings.Default.Name = textBox2.Text;
+            Properties.Settings.Default.Theme = textBox3.Text;
+            Properties.Settings.Default.Genre = textBox4.Text;
+            Properties.Settings.Default.ArtStyle = textBox5.Text;
+
+            if (comboBox1.SelectedItem != null)
+            {
+                Properties.Settings.Default.GameEngine = comboBox1.SelectedItem.ToString();
+            }
+            else
+            {
+                Properties.Settings.Default.GameEngine = comboBox1.Text;
+            }
+
+            Properties.Settings.Default.Save();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            panelMain.Visible = false;
+            panelMain.Enabled = false;
         }
     }
 }
