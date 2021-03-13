@@ -60,6 +60,19 @@ namespace GameJam_Planner
             }
 
         }
+        private void Form_Board_save(object sender, EventArgs e, bool saveExit)
+        {
+            if (saveExit != true)
+            {
+                saveToolStripMenuItem_Click(sender, e);
+                MessageBox.Show("Saved");
+            }
+            else
+            {
+                saveToolStripMenuItem_Click(sender, e);
+            }
+
+        }
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveMainValues();
@@ -87,36 +100,38 @@ namespace GameJam_Planner
             }
             string MyToDoJson = JsonConvert.SerializeObject(Queen);
             using (StreamWriter sr = new StreamWriter(@"ToDo")) { sr.Write(MyToDoJson); }
-
-            MessageBox.Show("That's OK!");
         }
         private void ClearMenuItem_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Are you sure?");
-
-            foreach (var item in Class_Spawner.Spawner.MyBoxesNote)
+            DialogResult dialog = MessageBox.Show("Are you sure?", "ÇIKIŞ", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
             {
-                item.Dispose();
-            }
-            foreach (var item in Class_Spawner.Spawner.MyBoxesPicture)
-            {
-                item.Dispose();
-            }
-            foreach (var item in Class_Spawner.Spawner.MyBoxesToDo)
-            {
-                item.Dispose();
+                foreach (var item in Class_Spawner.Spawner.MyBoxesNote)
+                {
+                    item.Dispose();
+                }
+                foreach (var item in Class_Spawner.Spawner.MyBoxesPicture)
+                {
+                    item.Dispose();
+                }
+                foreach (var item in Class_Spawner.Spawner.MyBoxesToDo)
+                {
+                    item.Dispose();
+                }
+
+                Class_Spawner.Spawner.MyBoxesNote = new List<CustomGroupBox>();
+                Class_Spawner.Spawner.MyBoxesPicture = new List<CustomGroupBox>();
+                Class_Spawner.Spawner.MyBoxesToDo = new List<CustomGroupBox>();
+
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
+                comboBox1.SelectedItem = null;
             }
 
-            Class_Spawner.Spawner.MyBoxesNote = new List<CustomGroupBox>();
-            Class_Spawner.Spawner.MyBoxesPicture = new List<CustomGroupBox>();
-            Class_Spawner.Spawner.MyBoxesToDo = new List<CustomGroupBox>();
 
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
-            comboBox1.SelectedItem = null;
         }
         private void changeBackcolorToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -138,9 +153,13 @@ namespace GameJam_Planner
         }
         private void ExitMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult dialog = MessageBox.Show("Are you sure?", "Exit", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                Form_Board_save(sender, e, true);
+                Application.Exit();
+            }
         }
-
 
         private void RightClickToDo_Click(object sender, EventArgs e)
         {
@@ -218,5 +237,16 @@ namespace GameJam_Planner
             panelMain.Visible = false;
             panelMain.Enabled = false;
         }
+        private void Form_Board_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Are you sure?", "Exit", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                Form_Board_save(sender, e, true);
+                Application.Exit();
+            }
+        }
+
+
     }
 }

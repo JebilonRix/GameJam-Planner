@@ -47,6 +47,7 @@ namespace GameJam_Planner
             this.button2 = new System.Windows.Forms.Button();
             this.showOpeningSceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panelMain = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -59,7 +60,6 @@ namespace GameJam_Planner
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
             this.menuStripPlanner.SuspendLayout();
             this.RightClickToBox.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -76,7 +76,7 @@ namespace GameJam_Planner
             this.ExitMenuItem});
             this.menuStripPlanner.Location = new System.Drawing.Point(0, 0);
             this.menuStripPlanner.Name = "menuStripPlanner";
-            this.menuStripPlanner.Size = new System.Drawing.Size(1337, 24);
+            this.menuStripPlanner.Size = new System.Drawing.Size(1350, 24);
             this.menuStripPlanner.TabIndex = 10;
             this.menuStripPlanner.Text = "PlannerManu";
             // 
@@ -206,9 +206,19 @@ namespace GameJam_Planner
             this.panelMain.Enabled = false;
             this.panelMain.Location = new System.Drawing.Point(0, 24);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(233, 557);
+            this.panelMain.Size = new System.Drawing.Size(233, 705);
             this.panelMain.TabIndex = 11;
             this.panelMain.Visible = false;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(109, 217);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(34, 29);
+            this.button3.TabIndex = 12;
+            this.button3.Text = "▲";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // comboBox1
             // 
@@ -325,22 +335,12 @@ namespace GameJam_Planner
             this.label1.TabIndex = 0;
             this.label1.Text = "Name Of Group:";
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(109, 217);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(34, 29);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "▲";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // Form_Board
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1337, 581);
+            this.ClientSize = new System.Drawing.Size(1350, 729);
             this.ContextMenuStrip = this.RightClickToBox;
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.menuStripPlanner);
@@ -350,8 +350,10 @@ namespace GameJam_Planner
             this.MainMenuStrip = this.menuStripPlanner;
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "Form_Board";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GameJam Planner";
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Board_FormClosing);
             this.Load += new System.EventHandler(this.Form_Board_Load);
             this.menuStripPlanner.ResumeLayout(false);
             this.menuStripPlanner.PerformLayout();
