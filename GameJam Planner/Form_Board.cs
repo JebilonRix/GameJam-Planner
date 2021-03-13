@@ -60,19 +60,6 @@ namespace GameJam_Planner
             }
 
         }
-        private void Form_Board_save(object sender, EventArgs e, bool saveExit)
-        {
-            if (saveExit != true)
-            {
-                saveToolStripMenuItem_Click(sender, e);
-                MessageBox.Show("Saved");
-            }
-            else
-            {
-                saveToolStripMenuItem_Click(sender, e);
-            }
-
-        }
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveMainValues();
@@ -100,6 +87,8 @@ namespace GameJam_Planner
             }
             string MyToDoJson = JsonConvert.SerializeObject(Queen);
             using (StreamWriter sr = new StreamWriter(@"ToDo")) { sr.Write(MyToDoJson); }
+
+            MessageBox.Show("Saved");
         }
         private void ClearMenuItem_Click(object sender, EventArgs e)
         {
@@ -154,25 +143,16 @@ namespace GameJam_Planner
         }
         private void ExitMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Hobba?", "Exit", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("Are you sure?", "Exit", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
-                Form_Board_save(sender, e, true);
+                saveToolStripMenuItem_Click(sender, e);
                 Application.Exit();
             }
         }
         private void Form_Board_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Hobba?", "Exit", MessageBoxButtons.YesNo);
-            if (dialog == DialogResult.Yes)
-            {
-                Form_Board_save(sender, e, true);
-                Application.Exit();
-            }
-            else
-            {
-                e.Cancel = true;
-            }
+            Application.Exit();
         }
 
         private void RightClickToDo_Click(object sender, EventArgs e)

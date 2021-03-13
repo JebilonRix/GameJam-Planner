@@ -114,6 +114,7 @@ namespace GameJam_Planner
             return addButton;
         }
 
+
         public CustomGroupBox Spawn_Note()
         {
             TypeOfBox = "GroupNote"; //keyword

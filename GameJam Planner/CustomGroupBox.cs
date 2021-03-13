@@ -128,6 +128,8 @@ namespace GameJam_Planner
         {
             this.Dispose();
             Class_Spawner.Spawner.MyBoxesNote.Remove(this);
+            Class_Spawner.Spawner.MyBoxesPicture.Remove(this);
+            Class_Spawner.Spawner.MyBoxesToDo.Remove(this);
         }
         private void ChangeName_Click(object sender, EventArgs e)
         {
@@ -150,6 +152,11 @@ namespace GameJam_Planner
                     img = new Bitmap(ofd.FileName);
                     File.Copy(ofd.FileName, ofd.SafeFileName, true);
                     LocationOfPicture = ofd.SafeFileName;
+                }
+                else
+                {
+                    this.Dispose();
+                    Class_Spawner.Spawner.MyBoxesPicture.Remove(this);
                 }
             }
 
