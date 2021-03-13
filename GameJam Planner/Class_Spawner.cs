@@ -2,8 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-
-
 namespace GameJam_Planner
 {
     public class Class_Spawner
@@ -78,10 +76,10 @@ namespace GameJam_Planner
 
             return checkedListBox;
         }
-        public Button LockButton(CustomGroupBox groupBox,bool isLocked)
+        public Button LockButton(CustomGroupBox groupBox, bool isLocked)
         {
             Button buttonLock = new Button();
-
+            buttonLock.BackgroundImage = Image.FromFile(@"Assets\kilit.png");
             switch (TypeOfBox)
             {
                 case "GroupNote": buttonLock.Location = new Point(207, 22); break;
@@ -99,8 +97,6 @@ namespace GameJam_Planner
                 case false: buttonLock.BackColor = Color.White; break;
                 default: break;
             }
-
-            buttonLock.BackgroundImage = Image.FromFile(@"Assets\kilit.png");
 
             groupBox.Controls.Add(buttonLock);
 
@@ -172,7 +168,7 @@ namespace GameJam_Planner
             groupBox.isLocked = jsonInput.BoxIsLocked;
             Button lockbutton = LockButton(groupBox, groupBox.isLocked);
             lockbutton.BackColor = jsonInput.LocButtonBackground;
-           
+
             MyBoxesNote.Add(groupBox);
             return groupBox;
         }

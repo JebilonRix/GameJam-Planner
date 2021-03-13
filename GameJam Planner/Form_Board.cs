@@ -10,7 +10,7 @@ namespace GameJam_Planner
     public partial class Form_Board : Form
     {
         public static Form_Board Board;
-
+        bool exiting = false;
         public Form_Board()
         {
             InitializeComponent();
@@ -138,18 +138,14 @@ namespace GameJam_Planner
         }
         private void HintsMenuItem_Click(object sender, EventArgs e)
         {
-            string message = "You can add boxes like:" + "\n"
-                + "\n" + "Coding: Dynamics, Methods"
-                + "\n" + "Art Style: Characters, Objects, Animations"
-                + "\n" + "Audio: Music, Foley";
+            string message = "Please, press your right mouse button for adding boxes.";
             MessageBox.Show(message);
         }
-        bool exiting = false;
+      
 
         private void ExitMenuItem_Click(object sender, EventArgs e)
         {
             closeProgram(sender, e, "Menu");
-
         }
         private void Form_Board_FormClosing(object sender, FormClosingEventArgs e)
         {
