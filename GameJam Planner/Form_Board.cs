@@ -103,7 +103,8 @@ namespace GameJam_Planner
         }
         private void ClearMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Are you sure?", "ÇIKIŞ", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("Are you sure?", "Clear", MessageBoxButtons.YesNo);
+
             if (dialog == DialogResult.Yes)
             {
                 foreach (var item in Class_Spawner.Spawner.MyBoxesNote)
@@ -153,11 +154,24 @@ namespace GameJam_Planner
         }
         private void ExitMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Are you sure?", "Exit", MessageBoxButtons.YesNo);
+            DialogResult dialog = MessageBox.Show("Hobba?", "Exit", MessageBoxButtons.YesNo);
             if (dialog == DialogResult.Yes)
             {
                 Form_Board_save(sender, e, true);
                 Application.Exit();
+            }
+        }
+        private void Form_Board_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Hobba?", "Exit", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                Form_Board_save(sender, e, true);
+                Application.Exit();
+            }
+            else
+            {
+                e.Cancel = true;
             }
         }
 
@@ -231,22 +245,11 @@ namespace GameJam_Planner
 
             Properties.Settings.Default.Save();
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             panelMain.Visible = false;
             panelMain.Enabled = false;
         }
-        private void Form_Board_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DialogResult dialog = MessageBox.Show("Are you sure?", "Exit", MessageBoxButtons.YesNo);
-            if (dialog == DialogResult.Yes)
-            {
-                Form_Board_save(sender, e, true);
-                Application.Exit();
-            }
-        }
-
 
     }
 }

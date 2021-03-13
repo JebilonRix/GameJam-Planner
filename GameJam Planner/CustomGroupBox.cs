@@ -127,6 +127,7 @@ namespace GameJam_Planner
         private void Delete_Click(object sender, EventArgs e)
         {
             this.Dispose();
+            Class_Spawner.Spawner.MyBoxesNote.Remove(this);
         }
         private void ChangeName_Click(object sender, EventArgs e)
         {
