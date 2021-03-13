@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -92,11 +91,7 @@ namespace GameJam_Planner
             {
                 MessageBox.Show("Saved");
             }
-            else
-            {
-                Debug.WriteLine("Saved");
-            }
-            
+
         }
         private void ClearMenuItem_Click(object sender, EventArgs e)
         {
@@ -156,10 +151,9 @@ namespace GameJam_Planner
 
         public bool exiting = false;
         private void Form_Board_FormClosing(object sender, FormClosingEventArgs e)
-        {    
+        {
             closeProgram(sender, e);
         }
-
         void closeProgram(object sender, EventArgs e)
         {
             if (exiting)
@@ -177,7 +171,6 @@ namespace GameJam_Planner
                 }
             }
         }
-
         private void RightClickToDo_Click(object sender, EventArgs e)
         {
             SpawnToDo();
@@ -210,8 +203,9 @@ namespace GameJam_Planner
             }
             catch (Exception)
             {
+                //We'll bang, OK!
             }
-            
+
         }
         private void SpawnToDo()
         {

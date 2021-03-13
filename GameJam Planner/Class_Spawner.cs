@@ -78,7 +78,7 @@ namespace GameJam_Planner
 
             return checkedListBox;
         }
-        public Button LockButton(CustomGroupBox groupBox)
+        public Button LockButton(CustomGroupBox groupBox,bool isLocked)
         {
             Button buttonLock = new Button();
 
@@ -92,9 +92,15 @@ namespace GameJam_Planner
 
             buttonLock.Size = new Size(20, 20);
             buttonLock.Text = "";
-            buttonLock.BackColor = Color.White;
-            buttonLock.BackgroundImage = Image.FromFile(@"Assets\kilit.png");
 
+            switch (isLocked)
+            {
+                case true: buttonLock.BackColor = Color.Red; break;
+                case false: buttonLock.BackColor = Color.White; break;
+                default: break;
+            }
+
+            buttonLock.BackgroundImage = Image.FromFile(@"Assets\kilit.png");
 
             groupBox.Controls.Add(buttonLock);
 
@@ -120,8 +126,8 @@ namespace GameJam_Planner
             TypeOfBox = "GroupNote"; //keyword
             CustomGroupBox groupBox = GroupBox(0);
             RichTextBox(groupBox);
-            LockButton(groupBox);
             groupBox.isLocked = false;
+            LockButton(groupBox, groupBox.isLocked);
 
             MyBoxesNote.Add(groupBox);
             return groupBox;
@@ -131,8 +137,8 @@ namespace GameJam_Planner
             TypeOfBox = "GroupPicture";
             CustomGroupBox groupBox = GroupBox(1);
             PictureBox(groupBox);
-            LockButton(groupBox);
             groupBox.isLocked = false;
+            LockButton(groupBox, groupBox.isLocked);
 
             MyBoxesPicture.Add(groupBox);
             return groupBox;
@@ -143,8 +149,8 @@ namespace GameJam_Planner
             CustomGroupBox groupBox = GroupBox(2);
             CheckedListBox(groupBox);
             AddButton(groupBox);
-            LockButton(groupBox);
             groupBox.isLocked = false;
+            LockButton(groupBox, groupBox.isLocked);
 
             MyBoxesToDo.Add(groupBox);
             return groupBox;
@@ -163,10 +169,10 @@ namespace GameJam_Planner
             RichTextBox(groupBox);
             groupBox.rtb.Text = jsonInput.RichText;
 
-            Button lockbutton = LockButton(groupBox);
             groupBox.isLocked = jsonInput.BoxIsLocked;
+            Button lockbutton = LockButton(groupBox, groupBox.isLocked);
             lockbutton.BackColor = jsonInput.LocButtonBackground;
-
+           
             MyBoxesNote.Add(groupBox);
             return groupBox;
         }
@@ -187,8 +193,8 @@ namespace GameJam_Planner
             groupBox.Controls.Add(picBox);
             groupBox.LocationOfPicture = jsonInput.PictureLocation;
 
-            Button lockbutton = LockButton(groupBox);
             groupBox.isLocked = jsonInput.BoxIsLocked;
+            Button lockbutton = LockButton(groupBox, groupBox.isLocked);
             lockbutton.BackColor = jsonInput.LocButtonBackground;
 
             MyBoxesNote.Add(groupBox);
@@ -211,11 +217,9 @@ namespace GameJam_Planner
                 groupBox.MyTodoList.Items[i] = jsonInput.ItemName[i];
             }
 
-            Button lockbutton = LockButton(groupBox);
             groupBox.isLocked = jsonInput.BoxIsLocked;
+            Button lockbutton = LockButton(groupBox, groupBox.isLocked);
             lockbutton.BackColor = jsonInput.LocButtonBackground;
-
-
             AddButton(groupBox);
 
             MyBoxesToDo.Add(groupBox);

@@ -27,19 +27,19 @@ namespace GameJam_Planner
             if (type == 0)
             {
                 SetUpContextMenu();
-                MyLockButton = Class_Spawner.Spawner.LockButton(this);
+                MyLockButton = Class_Spawner.Spawner.LockButton(this, isLocked);
                 MyLockButton.Click += ButtonLock_Click;
             }
             else if (type == 1)
             {
                 SetUpContextMenuPic();
-                MyLockButton = Class_Spawner.Spawner.LockButton(this);
+                MyLockButton = Class_Spawner.Spawner.LockButton(this, isLocked);
                 MyLockButton.Click += ButtonLock_Click;
             }
             else if (type == 2)
             {
                 SetUpContextMenu();
-                MyLockButton = Class_Spawner.Spawner.LockButton(this);
+                MyLockButton = Class_Spawner.Spawner.LockButton(this, isLocked);
                 MyLockButton.Click += ButtonLock_Click;
                 MyAddButton = Class_Spawner.Spawner.AddButton(this);
                 MyAddButton.Click += AddButton_Click;
