@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Newtonsoft.Json;
+
+
 
 namespace GameJam_Planner
 {
@@ -10,6 +11,9 @@ namespace GameJam_Planner
         public static Class_Spawner Spawner;
         public string TypeOfBox, CheckListItemText, DefaultTitle;
         public Point SpawnLocation;
+        public List<CustomGroupBox> MyBoxesNote = new List<CustomGroupBox>();
+        public List<CustomGroupBox> MyBoxesPicture = new List<CustomGroupBox>();
+        public List<CustomGroupBox> MyBoxesToDo = new List<CustomGroupBox>();
 
         public Class_Spawner()
         {
@@ -47,6 +51,8 @@ namespace GameJam_Planner
             richTextBox.ForeColor = Color.Black;
             richTextBox.BackColor = Color.White;
             richTextBox.Font = new Font("Arial", 12.25F, FontStyle.Bold, GraphicsUnit.Point);
+            richTextBox.Text = "";
+            groupBox.rtb = richTextBox;
 
             groupBox.Controls.Add(richTextBox);
             return richTextBox;
@@ -114,6 +120,7 @@ namespace GameJam_Planner
             LockButton(groupBox);
             groupBox.isLocked = false;
 
+            MyBoxesNote.Add(groupBox);
             return groupBox;
         }
         public CustomGroupBox Spawn_Picture()
@@ -124,6 +131,7 @@ namespace GameJam_Planner
             LockButton(groupBox);
             groupBox.isLocked = false;
 
+            MyBoxesPicture.Add(groupBox);
             return groupBox;
         }
         public CustomGroupBox Spawn_ToDo()
@@ -135,9 +143,81 @@ namespace GameJam_Planner
             LockButton(groupBox);
             groupBox.isLocked = false;
 
+            MyBoxesToDo.Add(groupBox);
             return groupBox;
         }
 
+
+        public CustomGroupBox Spawn_Note_With_Json(JsonNoteBox jsonInput)
+        {
+            TypeOfBox = "GroupNote"; //keyword
+            CustomGroupBox groupBox = GroupBox(0);
+            groupBox.BoxID = jsonInput.BoxID;
+            groupBox.Text = jsonInput.BoxTitle;
+            groupBox.Location = jsonInput.BoxLocation;
+            groupBox.BackColor = jsonInput.BoxBackColor;
+
+            RichTextBox(groupBox);
+            groupBox.rtb.Text = jsonInput.RichText;
+
+            Button lockbutton = LockButton(groupBox);
+            groupBox.isLocked = jsonInput.BoxIsLocked;
+            lockbutton.BackColor = jsonInput.LocButtonBackground;
+
+            MyBoxesNote.Add(groupBox);
+            return groupBox;
+        }
+        public CustomGroupBox Spawn_Picture_With_Json(JsonPictureBox jsonInput)
+        {
+            TypeOfBox = "GroupNote"; //keyword
+            CustomGroupBox groupBox = GroupBox(0);
+            groupBox.BoxID = jsonInput.BoxID;
+            groupBox.Text = jsonInput.BoxTitle;
+            groupBox.Location = jsonInput.BoxLocation;
+            groupBox.BackColor = jsonInput.BoxBackColor;
+
+            PictureBox picBox = new PictureBox();
+            picBox.Location = new Point(6, 45);
+            picBox.Size = new Size(220, 150);
+            picBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            picBox.Image = new Bitmap(jsonInput.PictureLocation);
+            groupBox.Controls.Add(picBox);
+            groupBox.LocationOfPicture = jsonInput.PictureLocation;
+
+            Button lockbutton = LockButton(groupBox);
+            groupBox.isLocked = jsonInput.BoxIsLocked;
+            lockbutton.BackColor = jsonInput.LocButtonBackground;
+
+            MyBoxesNote.Add(groupBox);
+            return groupBox;
+        }
+        public CustomGroupBox Spawn_ToDo_With_Json(JsonToDoBox jsonInput)
+        {
+            TypeOfBox = "GroupDo";
+            CustomGroupBox groupBox = GroupBox(2);
+            groupBox.BoxID = jsonInput.BoxID;
+            groupBox.Text = jsonInput.BoxTitle;
+            groupBox.Location = jsonInput.BoxLocation;
+            groupBox.BackColor = jsonInput.BoxBackColor;
+
+            CheckedListBox(groupBox);
+
+            for (int i = 0; i < jsonInput.ItemID.Length; i++)
+            {
+                groupBox.MyTodoList.Items.Add(jsonInput.ItemName[i], jsonInput.ItemChecked[i]);
+                groupBox.MyTodoList.Items[i] = jsonInput.ItemName[i];
+            }
+
+            Button lockbutton = LockButton(groupBox);
+            groupBox.isLocked = jsonInput.BoxIsLocked;
+            lockbutton.BackColor = jsonInput.LocButtonBackground;
+
+
+            AddButton(groupBox);
+
+            MyBoxesToDo.Add(groupBox);
+            return groupBox;
+        }
     }
 }
 

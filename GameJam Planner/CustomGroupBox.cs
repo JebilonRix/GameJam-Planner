@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 
 namespace GameJam_Planner
 {
     public class CustomGroupBox : GroupBox
     {
-
         public static CustomGroupBox CGB;
 
         public Point point;
@@ -17,12 +14,13 @@ namespace GameJam_Planner
         public bool isLocked;
         public CheckedListBox MyTodoList;
         public int BoxID;
+        public RichTextBox rtb;
 
         ContextMenu cm = new ContextMenu();
         Form_CustomMessageBox FNC = new Form_CustomMessageBox();
-        Image img;
         Button MyLockButton;
         Button MyAddButton;
+        public string LocationOfPicture;
 
         public CustomGroupBox(int type)
         {
@@ -51,7 +49,6 @@ namespace GameJam_Planner
         protected override void OnMouseDown(MouseEventArgs e)
         {
             point = e.Location;
-            //  Debug.WriteLine("Mouse'a tıkladığım pozisyon:" + point.X + " " + point.Y);
             string TypeOfBox = Class_Spawner.Spawner.TypeOfBox;
 
             switch (TypeOfBox)
@@ -142,40 +139,82 @@ namespace GameJam_Planner
         }
         public Image ImageImporter()
         {
-            string LocationOfPicture = "";
-            if (img == null)
-            {
-                using (OpenFileDialog ofd = new OpenFileDialog())
-                {
-                    ofd.Filter = "(*.BMP; *.JPG; *.JPEG; *.GIF *.PNG;)| *.BMP; *.JPG; .JPEG; *.GIF;*.PNG; | All files(*.*) | *.*";
-                    if (ofd.ShowDialog() == DialogResult.OK)
-                    {
-                        img = new Bitmap(ofd.FileName);
-                        File.Copy(ofd.FileName, ofd.SafeFileName, true);
-                        LocationOfPicture = ofd.SafeFileName;
-                    }
-                }
-            }
-            else
-            {
-                img.Dispose();
+            Image img = null;
 
-                using (OpenFileDialog ofd = new OpenFileDialog())
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                ofd.Filter = "(*.BMP; *.JPG; *.JPEG; *.GIF *.PNG;)| *.BMP; *.JPG; .JPEG; *.GIF;*.PNG; | All files(*.*) | *.*";
+                if (ofd.ShowDialog() == DialogResult.OK)
                 {
-                    if (ofd.ShowDialog() == DialogResult.OK)
-                    {
-                        img = new Bitmap(ofd.FileName);
-                        File.Copy(ofd.FileName, ofd.SafeFileName, true);
-                        LocationOfPicture = ofd.SafeFileName;
-                    }
+                    img = new Bitmap(ofd.FileName);
+                    File.Copy(ofd.FileName, ofd.SafeFileName, true);
+                    LocationOfPicture = ofd.SafeFileName;
                 }
             }
 
             return img;
         }
 
+        public JsonNoteBox ConvertJsonNoteBox()
+        {
+            JsonNoteBox output = new JsonNoteBox();
+            output.BoxID = BoxID;
+            output.BoxTitle = Text;
+            output.BoxLocation = Location;
+            output.BoxBackColor = BackColor;
+            output.BoxIsLocked = isLocked;
+            output.LocButtonBackground = MyLockButton.BackColor;
+
+            if (rtb.Text == null)
+            {
+                rtb.Text = "";
+            }
+
+            output.RichText = rtb.Text;
+
+            return output;
+        }
+        public JsonPictureBox ConvertJsonPictureBox()
+        {
+            JsonPictureBox output = new JsonPictureBox();
+            output.BoxID = BoxID;
+            output.BoxTitle = Text;
+            output.BoxLocation = Location;
+            output.BoxBackColor = BackColor;
+            output.BoxIsLocked = isLocked;
+            output.PictureLocation = LocationOfPicture;
+            output.LocButtonBackground = MyLockButton.BackColor;
+
+            return output;
+        }
+        public JsonToDoBox ConvertJsonToDoBox()
+        {
+            JsonToDoBox output = new JsonToDoBox();
+            output.BoxID = BoxID;
+            output.BoxTitle = Text;
+            output.BoxLocation = Location;
+            output.BoxBackColor = BackColor;
+            output.BoxIsLocked = isLocked;
+            output.LocButtonBackground = MyLockButton.BackColor;
+
+            int len = MyTodoList.Items.Count;
+
+            output.ItemID = new int[len];
+            output.ItemName = new string[len];
+            output.ItemChecked = new bool[len];
+
+            for (int i = 0; i < len; i++)
+            {
+                output.ItemID[i] = i;
+                output.ItemName[i] = MyTodoList.Items[i].ToString();
+                output.ItemChecked[i] = MyTodoList.GetItemChecked(i);
+
+            }
+            return output;
+        }
     }
-    class JsonNoteBox
+
+    public class JsonNoteBox
     {
         public int BoxID { get; set; }
         public string BoxTitle { get; set; }
@@ -183,8 +222,9 @@ namespace GameJam_Planner
         public Color BoxBackColor { get; set; }
         public bool BoxIsLocked { get; set; }
         public string RichText { get; set; }
+        public Color LocButtonBackground { get; set; }
     }
-    class JsonPicTureBox
+    public class JsonPictureBox
     {
         public int BoxID { get; set; }
         public string BoxTitle { get; set; }
@@ -192,16 +232,18 @@ namespace GameJam_Planner
         public Color BoxBackColor { get; set; }
         public bool BoxIsLocked { get; set; }
         public string PictureLocation { get; set; }
+        public Color LocButtonBackground { get; set; }
     }
-    class JsonToDoBox
+    public class JsonToDoBox
     {
         public int BoxID { get; set; }
         public string BoxTitle { get; set; }
         public Point BoxLocation { get; set; }
         public Color BoxBackColor { get; set; }
         public bool BoxIsLocked { get; set; }
-        public int ItemID { get; set; }
-        public string ItemName { get; set; }
-        public bool ItemChecked { get; set; }
+        public int[] ItemID { get; set; }
+        public string[] ItemName { get; set; }
+        public bool[] ItemChecked { get; set; }
+        public Color LocButtonBackground { get; set; }
     }
 }

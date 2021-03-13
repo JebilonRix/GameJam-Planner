@@ -32,14 +32,10 @@ namespace GameJam_Planner
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Board));
             this.menuStripPlanner = new System.Windows.Forms.MenuStrip();
-            this.AddMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.noteBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ImageBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toDoBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.HintsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ClearMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showOpeningSceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RightClickToBox = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.RightClickBox = new System.Windows.Forms.ToolStripMenuItem();
             this.RightClickPicture = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,6 +44,8 @@ namespace GameJam_Planner
             this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.showOpeningSceneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripPlanner.SuspendLayout();
             this.RightClickToBox.SuspendLayout();
             this.SuspendLayout();
@@ -56,47 +54,16 @@ namespace GameJam_Planner
             // 
             this.menuStripPlanner.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("menuStripPlanner.BackgroundImage")));
             this.menuStripPlanner.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AddMenuItem,
+            this.mainToolStripMenuItem,
+            this.saveToolStripMenuItem,
             this.HintsMenuItem,
             this.ClearMenuItem,
-            this.ExitMenuItem,
-            this.showOpeningSceneToolStripMenuItem});
+            this.ExitMenuItem});
             this.menuStripPlanner.Location = new System.Drawing.Point(0, 0);
             this.menuStripPlanner.Name = "menuStripPlanner";
             this.menuStripPlanner.Size = new System.Drawing.Size(1337, 24);
             this.menuStripPlanner.TabIndex = 10;
             this.menuStripPlanner.Text = "PlannerManu";
-            // 
-            // AddMenuItem
-            // 
-            this.AddMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.noteBoxToolStripMenuItem,
-            this.ImageBoxToolStripMenuItem,
-            this.toDoBoxToolStripMenuItem});
-            this.AddMenuItem.Name = "AddMenuItem";
-            this.AddMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.AddMenuItem.Text = "Add";
-            // 
-            // noteBoxToolStripMenuItem
-            // 
-            this.noteBoxToolStripMenuItem.Name = "noteBoxToolStripMenuItem";
-            this.noteBoxToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.noteBoxToolStripMenuItem.Text = "Note Box";
-            this.noteBoxToolStripMenuItem.Click += new System.EventHandler(this.noteBoxToolStripMenuItem_Click);
-            // 
-            // ImageBoxToolStripMenuItem
-            // 
-            this.ImageBoxToolStripMenuItem.Name = "ImageBoxToolStripMenuItem";
-            this.ImageBoxToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.ImageBoxToolStripMenuItem.Text = "Image Box";
-            this.ImageBoxToolStripMenuItem.Click += new System.EventHandler(this.ImageBoxToolStripMenuItem_Click);
-            // 
-            // toDoBoxToolStripMenuItem
-            // 
-            this.toDoBoxToolStripMenuItem.Name = "toDoBoxToolStripMenuItem";
-            this.toDoBoxToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.toDoBoxToolStripMenuItem.Text = "ToDo Box";
-            this.toDoBoxToolStripMenuItem.Click += new System.EventHandler(this.toDoBoxToolStripMenuItem_Click);
             // 
             // HintsMenuItem
             // 
@@ -119,12 +86,12 @@ namespace GameJam_Planner
             this.ExitMenuItem.Text = "Exit";
             this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
             // 
-            // showOpeningSceneToolStripMenuItem
+            // saveToolStripMenuItem
             // 
-            this.showOpeningSceneToolStripMenuItem.Name = "showOpeningSceneToolStripMenuItem";
-            this.showOpeningSceneToolStripMenuItem.Size = new System.Drawing.Size(131, 20);
-            this.showOpeningSceneToolStripMenuItem.Text = "Show Opening Scene";
-            this.showOpeningSceneToolStripMenuItem.Click += new System.EventHandler(this.showOpeningSceneToolStripMenuItem_Click);
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // RightClickToBox
             // 
@@ -191,6 +158,19 @@ namespace GameJam_Planner
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // showOpeningSceneToolStripMenuItem
+            // 
+            this.showOpeningSceneToolStripMenuItem.Name = "showOpeningSceneToolStripMenuItem";
+            this.showOpeningSceneToolStripMenuItem.Size = new System.Drawing.Size(131, 20);
+            this.showOpeningSceneToolStripMenuItem.Text = "Show Opening Scene";
+            // 
+            // mainToolStripMenuItem
+            // 
+            this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
+            this.mainToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
+            this.mainToolStripMenuItem.Text = "Main";
+            this.mainToolStripMenuItem.Click += new System.EventHandler(this.mainToolStripMenuItem_Click);
+            // 
             // Form_Board
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 22F);
@@ -218,12 +198,9 @@ namespace GameJam_Planner
 
         #endregion
         private System.Windows.Forms.MenuStrip menuStripPlanner;
-        private System.Windows.Forms.ToolStripMenuItem AddMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ClearMenuItem;
         private System.Windows.Forms.ToolStripMenuItem HintsMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ExitMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem noteBoxToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ImageBoxToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip RightClickToBox;
         private System.Windows.Forms.ToolStripMenuItem RightClickBox;
         private System.Windows.Forms.ToolStripMenuItem RightClickPicture;
@@ -231,9 +208,10 @@ namespace GameJam_Planner
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.ToolStripMenuItem RightClickToDo;
-        private System.Windows.Forms.ToolStripMenuItem toDoBoxToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem showOpeningSceneToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeBackcolorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showOpeningSceneToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mainToolStripMenuItem;
     }
 }
 

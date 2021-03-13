@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 
 namespace GameJam_Planner
 {
@@ -14,12 +16,96 @@ namespace GameJam_Planner
             InitializeComponent();
             Class_Spawner.Spawner = new Class_Spawner();
         }
+
         private void Form_Board_Load(object sender, EventArgs e)
         {
+            if (!File.Exists(@"Note") || !File.Exists(@"Picture") || !File.Exists(@"ToDo")) { return; }
+            List<JsonNoteBox> Panter = new List<JsonNoteBox>();
+            List<JsonPictureBox> Noir = new List<JsonPictureBox>();
+            List<JsonToDoBox> Queen = new List<JsonToDoBox>();
+
+            using (StreamReader sr = new StreamReader(@"Note"))
+            {
+                string noteJsonInput = sr.ReadToEnd();
+                Panter = JsonConvert.DeserializeObject<List<JsonNoteBox>>(noteJsonInput);
+            }
+            using (StreamReader sr = new StreamReader(@"Picture"))
+            {
+                string noteJsonInput = sr.ReadToEnd();
+                Noir = JsonConvert.DeserializeObject<List<JsonPictureBox>>(noteJsonInput);
+            }
+
+            using (StreamReader sr = new StreamReader(@"ToDo"))
+            {
+                string noteJsonInput = sr.ReadToEnd();
+                Queen = JsonConvert.DeserializeObject<List<JsonToDoBox>>(noteJsonInput);
+            }
+
+            foreach (var item in Panter)
+            {
+                CustomGroupBox cb = Class_Spawner.Spawner.Spawn_Note_With_Json(item);
+                this.Controls.Add(cb);
+            }
+            foreach (var item in Noir)
+            {
+                CustomGroupBox cb = Class_Spawner.Spawner.Spawn_Picture_With_Json(item);
+                this.Controls.Add(cb);
+            }
+            foreach (var item in Queen)
+            {
+                CustomGroupBox cb = Class_Spawner.Spawner.Spawn_ToDo_With_Json(item);
+                this.Controls.Add(cb);
+            }
+
+        }
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<JsonNoteBox> Panter = new List<JsonNoteBox>();
+            foreach (var item in Class_Spawner.Spawner.MyBoxesNote)
+            {
+                Panter.Add(item.ConvertJsonNoteBox());
+            }
+            string MyNoteJson = JsonConvert.SerializeObject(Panter);
+            using (StreamWriter sr = new StreamWriter(@"Note")) { sr.Write(MyNoteJson); }
+
+            List<JsonPictureBox> Noir = new List<JsonPictureBox>();
+            foreach (var item in Class_Spawner.Spawner.MyBoxesPicture)
+            {
+                Noir.Add(item.ConvertJsonPictureBox());
+            }
+            string MyPictureJson = JsonConvert.SerializeObject(Noir);
+            using (StreamWriter sr = new StreamWriter(@"Picture")) { sr.Write(MyPictureJson); }
+
+            List<JsonToDoBox> Queen = new List<JsonToDoBox>();
+            foreach (var item in Class_Spawner.Spawner.MyBoxesToDo)
+            {
+                Queen.Add(item.ConvertJsonToDoBox());
+            }
+            string MyToDoJson = JsonConvert.SerializeObject(Queen);
+            using (StreamWriter sr = new StreamWriter(@"ToDo")) { sr.Write(MyToDoJson); }
+
+            MessageBox.Show("That's OK!");
         }
         private void ClearMenuItem_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Are you sure?");
 
+            foreach (var item in Class_Spawner.Spawner.MyBoxesNote)
+            {
+                item.Dispose();
+            }
+            foreach (var item in Class_Spawner.Spawner.MyBoxesPicture)
+            {
+                item.Dispose();
+            }
+            foreach (var item in Class_Spawner.Spawner.MyBoxesToDo)
+            {
+                item.Dispose();
+            }
+
+            Class_Spawner.Spawner.MyBoxesNote = new List<CustomGroupBox>();
+            Class_Spawner.Spawner.MyBoxesPicture = new List<CustomGroupBox>();
+            Class_Spawner.Spawner.MyBoxesToDo = new List<CustomGroupBox>();
         }
         private void HintsMenuItem_Click(object sender, EventArgs e)
         {
@@ -32,25 +118,6 @@ namespace GameJam_Planner
         private void ExitMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-        private void showOpeningSceneToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Form_Enter enter = new Form_Enter();
-            enter.GetMainValues();
-            this.Close();
-            enter.ShowDialog();
-        }
-        private void noteBoxToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SpawnBox();
-        }
-        private void ImageBoxToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SpawnPic();
-        }
-        private void toDoBoxToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SpawnToDo();
         }
         private void RightClickToDo_Click(object sender, EventArgs e)
         {
@@ -96,6 +163,14 @@ namespace GameJam_Planner
             Class_Spawner.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
             var BoxSpawn = Class_Spawner.Spawner.Spawn_ToDo();
             this.Controls.Add(BoxSpawn);
+        }
+
+        private void mainToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_Enter enter = new Form_Enter();
+            enter.GetMainValues();
+            this.Close();
+            enter.ShowDialog();
         }
     }
 }
