@@ -45,7 +45,6 @@ C:\Users\Legion\Desktop\CURSED PROJECTS\Quarantine Mood\GameJam-Planner\GameJam 
 C:\Users\Legion\Desktop\CURSED PROJECTS\Quarantine Mood\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_Name_Changer.resources
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_Board.resources
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_CustomMessageBox.resources
-C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csprojAssemblyReference.cache
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\EntityFramework.dll
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\EntityFramework.xml
