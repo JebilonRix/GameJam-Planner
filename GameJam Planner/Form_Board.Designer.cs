@@ -60,6 +60,7 @@ namespace GameJam_Planner
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.creditsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripPlanner.SuspendLayout();
             this.RightClickToBox.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -73,7 +74,8 @@ namespace GameJam_Planner
             this.saveToolStripMenuItem,
             this.HintsMenuItem,
             this.ClearMenuItem,
-            this.ExitMenuItem});
+            this.ExitMenuItem,
+            this.creditsToolStripMenuItem});
             this.menuStripPlanner.Location = new System.Drawing.Point(0, 0);
             this.menuStripPlanner.Name = "menuStripPlanner";
             this.menuStripPlanner.Size = new System.Drawing.Size(1350, 24);
@@ -335,6 +337,13 @@ namespace GameJam_Planner
             this.label1.TabIndex = 0;
             this.label1.Text = "Name Of Group:";
             // 
+            // creditsToolStripMenuItem
+            // 
+            this.creditsToolStripMenuItem.Name = "creditsToolStripMenuItem";
+            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.creditsToolStripMenuItem.Text = "Credits";
+            this.creditsToolStripMenuItem.Click += new System.EventHandler(this.creditsToolStripMenuItem_Click);
+            // 
             // Form_Board
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 22F);
@@ -395,6 +404,7 @@ namespace GameJam_Planner
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ToolStripMenuItem creditsToolStripMenuItem;
     }
 }
 

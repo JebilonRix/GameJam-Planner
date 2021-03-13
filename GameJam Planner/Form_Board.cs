@@ -255,5 +255,10 @@ namespace GameJam_Planner
             panelMain.Enabled = false;
         }
 
+        private void creditsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string credits = ":Coders:" + "\n" + "\n" + "Fuat Can ERYİĞİT" + "\n" + "Muzaffer Erkan Küpçük" + "\n" + "Taha Buğra ŞENEL" + "\n" + "\n" + ":Special Thanks:" + "\n" + "\n" + "Tecelli Akıntuğ" + "\n" + "Özge Selen Bulgu";
+            MessageBox.Show(credits);
+        }
     }
 }
