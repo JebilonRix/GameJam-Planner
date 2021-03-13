@@ -144,17 +144,18 @@ namespace GameJam_Planner
                 + "\n" + "Audio: Music, Foley";
             MessageBox.Show(message);
         }
+        bool exiting = false;
+
         private void ExitMenuItem_Click(object sender, EventArgs e)
         {
-            closeProgram(sender, e);
-        }
+            closeProgram(sender, e, "Menu");
 
-        public bool exiting = false;
+        }
         private void Form_Board_FormClosing(object sender, FormClosingEventArgs e)
         {
-            closeProgram(sender, e);
+            closeProgram(sender, e, "x");
         }
-        void closeProgram(object sender, EventArgs e)
+        void closeProgram(object sender, EventArgs e, string exitingtype)
         {
             if (exiting)
             {
@@ -168,6 +169,11 @@ namespace GameJam_Planner
                     exiting = true;
                     saveToolStripMenuItem_Click(sender, e);
                     Application.Exit();
+                }
+                else if (dialog == DialogResult.No && exitingtype == "x")
+                {
+                    var f = e as FormClosingEventArgs;
+                    f.Cancel = true;
                 }
             }
         }
