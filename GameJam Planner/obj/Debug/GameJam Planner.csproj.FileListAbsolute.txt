@@ -53,3 +53,21 @@ C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csproj.CopyComplete
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\Newtonsoft.Json.dll
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\Newtonsoft.Json.xml
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\bin\Debug\GameJam Planner.exe.config
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\bin\Debug\GameJam Planner.exe
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\bin\Debug\GameJam Planner.pdb
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\bin\Debug\EntityFramework.dll
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\bin\Debug\Newtonsoft.Json.dll
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\bin\Debug\EntityFramework.xml
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\bin\Debug\Newtonsoft.Json.xml
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csprojAssemblyReference.cache
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_Board.resources
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Form_CustomMessageBox.resources
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\obj\Debug\GameJam_Planner.Properties.Resources.resources
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csproj.GenerateResource.cache
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csproj.CoreCompileInputs.cache
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csproj.CopyComplete
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.exe
+C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.pdb

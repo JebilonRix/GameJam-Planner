@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -87,8 +88,15 @@ namespace GameJam_Planner
             }
             string MyToDoJson = JsonConvert.SerializeObject(Queen);
             using (StreamWriter sr = new StreamWriter(@"ToDo")) { sr.Write(MyToDoJson); }
-
-            MessageBox.Show("Saved");
+            if (!exiting)
+            {
+                MessageBox.Show("Saved");
+            }
+            else
+            {
+                Debug.WriteLine("Saved");
+            }
+            
         }
         private void ClearMenuItem_Click(object sender, EventArgs e)
         {
@@ -143,16 +151,31 @@ namespace GameJam_Planner
         }
         private void ExitMenuItem_Click(object sender, EventArgs e)
         {
-            DialogResult dialog = MessageBox.Show("Are you sure?", "Exit", MessageBoxButtons.YesNo);
-            if (dialog == DialogResult.Yes)
+            closeProgram(sender, e);
+        }
+
+        public bool exiting = false;
+        private void Form_Board_FormClosing(object sender, FormClosingEventArgs e)
+        {    
+            closeProgram(sender, e);
+        }
+
+        void closeProgram(object sender, EventArgs e)
+        {
+            if (exiting)
             {
-                saveToolStripMenuItem_Click(sender, e);
                 Application.Exit();
             }
-        }
-        private void Form_Board_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
+            else
+            {
+                DialogResult dialog = MessageBox.Show("Are you sure?", "Exit", MessageBoxButtons.YesNo);
+                if (dialog == DialogResult.Yes)
+                {
+                    exiting = true;
+                    saveToolStripMenuItem_Click(sender, e);
+                    Application.Exit();
+                }
+            }
         }
 
         private void RightClickToDo_Click(object sender, EventArgs e)
@@ -181,7 +204,14 @@ namespace GameJam_Planner
             Point cp = PointToClient(Cursor.Position);
             Class_Spawner.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
             var BoxSpawn = Class_Spawner.Spawner.Spawn_Picture();
-            this.Controls.Add(BoxSpawn);
+            try
+            {
+                this.Controls.Add(BoxSpawn);
+            }
+            catch (Exception)
+            {
+            }
+            
         }
         private void SpawnToDo()
         {
