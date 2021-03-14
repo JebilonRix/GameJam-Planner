@@ -354,10 +354,10 @@ namespace GameJam_Planner
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControl1.Location = new System.Drawing.Point(233, 212);
+            this.tabControl1.Location = new System.Drawing.Point(233, 284);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1117, 517);
+            this.tabControl1.Size = new System.Drawing.Size(1117, 445);
             this.tabControl1.TabIndex = 12;
             // 
             // tabPage1
@@ -368,7 +368,7 @@ namespace GameJam_Planner
             this.tabPage1.Location = new System.Drawing.Point(4, 31);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1109, 482);
+            this.tabPage1.Size = new System.Drawing.Size(1109, 410);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -377,7 +377,7 @@ namespace GameJam_Planner
             this.tabPage2.Location = new System.Drawing.Point(4, 31);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 65);
+            this.tabPage2.Size = new System.Drawing.Size(1109, 482);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -385,8 +385,9 @@ namespace GameJam_Planner
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Top;
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label7.Location = new System.Drawing.Point(1218, 33);
+            this.label7.Location = new System.Drawing.Point(233, 24);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(128, 22);
             this.label7.TabIndex = 13;

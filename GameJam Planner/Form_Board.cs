@@ -34,6 +34,7 @@ namespace GameJam_Planner
             tabPage2.BackColor = Color.FromArgb(64, 64, 64);
             tabPage2.ForeColor = Color.FromArgb(224, 224, 224);
 
+           
         }
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -272,6 +273,5 @@ namespace GameJam_Planner
 
             Properties.Settings.Default.Save();
         }
-       
     }
 }
