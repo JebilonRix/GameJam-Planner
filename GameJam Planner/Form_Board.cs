@@ -24,21 +24,14 @@ namespace GameJam_Planner
         {
             this.Controls.Add(panelMain);
             this.Controls.Add(tabControl1);
+
             this.KeyPreview = true;
             GetMainValues();
-
-            tabPage1.Text = "Active";
-            tabPage1.BackColor = Color.FromArgb(64, 64, 64);
-            tabPage1.ForeColor = Color.FromArgb(224, 224, 224);
-            tabPage2.Text = "Finished";
-            tabPage2.BackColor = Color.FromArgb(64, 64, 64);
-            tabPage2.ForeColor = Color.FromArgb(224, 224, 224);
-
-           
+            TabPage();
         }
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveMainValues();
+            SetMainValues();
             if (!exiting)
             {
                 MessageBox.Show("Saved");
@@ -133,7 +126,7 @@ namespace GameJam_Planner
         {
             if (e.Control && e.KeyCode == Keys.S)
             {
-                SaveMainValues();
+                SetMainValues();
                 e.SuppressKeyPress = true;
                 PopupNotifier pop = new PopupNotifier();
                 pop.TitleText = "Planner";
@@ -244,7 +237,7 @@ namespace GameJam_Planner
             comboBox1.SelectedItem = Properties.Settings.Default.GameEngine;
             this.BackColor = Properties.Settings.Default.Color;
         }
-        public void SaveMainValues()
+        public void SetMainValues()
         {
             List<JsonNoteBox> Panter = new List<JsonNoteBox>();
             foreach (var item in Class_Spawner.Spawner.MyBoxesNote) { Panter.Add(item.ConvertJsonNoteBox()); }
@@ -272,6 +265,16 @@ namespace GameJam_Planner
             else { Properties.Settings.Default.GameEngine = comboBox1.Text; }
 
             Properties.Settings.Default.Save();
+        }
+        private void TabPage()
+        {
+            tabPage1.Text = "Active";
+            tabPage1.BackColor = Color.FromArgb(64, 64, 64);
+            tabPage1.ForeColor = Color.FromArgb(224, 224, 224);
+            tabPage2.Text = "Finished";
+            tabPage2.BackColor = Color.FromArgb(64, 64, 64);
+            tabPage2.ForeColor = Color.FromArgb(224, 224, 224);
+           
         }
     }
 }
