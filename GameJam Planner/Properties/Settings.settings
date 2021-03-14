@@ -20,5 +20,8 @@
     <Setting Name="GameEngine" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="Color" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">64, 64, 64</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

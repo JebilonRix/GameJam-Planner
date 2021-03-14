@@ -26,7 +26,7 @@ namespace GameJam_Planner
         {
             if (type == 0)
             {
-                SetUpContextMenu();
+                SetUpContextMenuNoteBox();
                 MyLockButton = Class_Spawner.Spawner.LockButton(this, isLocked);
                 MyLockButton.Click += ButtonLock_Click;
             }
@@ -38,7 +38,7 @@ namespace GameJam_Planner
             }
             else if (type == 2)
             {
-                SetUpContextMenu();
+                SetUpContextMenuToDo();
                 MyLockButton = Class_Spawner.Spawner.LockButton(this, isLocked);
                 MyLockButton.Click += ButtonLock_Click;
                 MyAddButton = Class_Spawner.Spawner.AddButton(this);
@@ -100,8 +100,12 @@ namespace GameJam_Planner
             }
 
         }
+        private void ToDoBox_DeleteLine(object sender, EventArgs e)
+        {
+            this.MyTodoList.Items.Remove(MyTodoList.SelectedItem);
+        }
 
-        private void SetUpContextMenu()
+        private void SetUpContextMenuNoteBox()
         {
             cm.MenuItems.Add("Change Color", new EventHandler(ChangeColor_Click));
             cm.MenuItems.Add("Change Name", new EventHandler(ChangeName_Click));
@@ -109,11 +113,16 @@ namespace GameJam_Planner
         }
         private void SetUpContextMenuPic()
         {
-            cm.MenuItems.Add("Change Color", new EventHandler(ChangeColor_Click));
-            cm.MenuItems.Add("Change Name", new EventHandler(ChangeName_Click));
-            cm.MenuItems.Add("Delet Dis", new EventHandler(Delete_Click));
+            SetUpContextMenuNoteBox();
             cm.MenuItems.Add("Add Pic", new EventHandler(AddPicture_Click));
         }
+        private void SetUpContextMenuToDo()
+        {
+            SetUpContextMenuNoteBox();
+            cm.MenuItems.Add("Delete Line", new EventHandler(ToDoBox_DeleteLine));
+        }
+
+
         private void ChangeColor_Click(object sender, EventArgs e)
         {
             using (ColorDialog cd = new ColorDialog())
@@ -127,9 +136,14 @@ namespace GameJam_Planner
         private void Delete_Click(object sender, EventArgs e)
         {
             this.Dispose();
-            Class_Spawner.Spawner.MyBoxesNote.Remove(this);
-            Class_Spawner.Spawner.MyBoxesPicture.Remove(this);
-            Class_Spawner.Spawner.MyBoxesToDo.Remove(this);
+            string typeofbox = Class_Spawner.Spawner.TypeOfBox;
+            switch (typeofbox)
+            {
+                case "note": Class_Spawner.Spawner.MyBoxesNote.Remove(this); break;
+                case "pic": Class_Spawner.Spawner.MyBoxesPicture.Remove(this);  break;
+                case "do": Class_Spawner.Spawner.MyBoxesToDo.Remove(this); break;
+                default: break;
+            }
         }
         private void ChangeName_Click(object sender, EventArgs e)
         {

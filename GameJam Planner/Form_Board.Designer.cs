@@ -61,6 +61,8 @@ namespace GameJam_Planner
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.timerSave = new System.Windows.Forms.Timer(this.components);
             this.menuStripPlanner.SuspendLayout();
             this.RightClickToBox.SuspendLayout();
             this.panelMain.SuspendLayout();
@@ -344,6 +346,19 @@ namespace GameJam_Planner
             this.label1.TabIndex = 0;
             this.label1.Text = "Name Of Group:";
             // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(557, 0);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(118, 23);
+            this.progressBar1.TabIndex = 12;
+            this.progressBar1.Visible = false;
+            // 
+            // timerSave
+            // 
+            this.timerSave.Interval = 1000;
+           
+            // 
             // Form_Board
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 22F);
@@ -351,6 +366,7 @@ namespace GameJam_Planner
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1350, 729);
             this.ContextMenuStrip = this.RightClickToBox;
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.menuStripPlanner);
             this.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -364,6 +380,7 @@ namespace GameJam_Planner
             this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Board_FormClosing);
             this.Load += new System.EventHandler(this.Form_Board_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form_Board_KeyDown);
             this.menuStripPlanner.ResumeLayout(false);
             this.menuStripPlanner.PerformLayout();
             this.RightClickToBox.ResumeLayout(false);
@@ -405,6 +422,8 @@ namespace GameJam_Planner
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ToolStripMenuItem creditsToolStripMenuItem;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Timer timerSave;
     }
 }
 

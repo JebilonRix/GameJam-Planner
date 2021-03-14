@@ -13,18 +13,18 @@ namespace GameJam_Planner
         public List<CustomGroupBox> MyBoxesPicture = new List<CustomGroupBox>();
         public List<CustomGroupBox> MyBoxesToDo = new List<CustomGroupBox>();
 
-        public Class_Spawner()
-        {
-        }
+        static string[] boxtype = { "note", "pic", "do" };
+
+        public Class_Spawner() { }
         public CustomGroupBox GroupBox(int type)
         {
             CustomGroupBox groupBox = new CustomGroupBox(type);
 
             switch (TypeOfBox)
             {
-                case "GroupNote": groupBox.Text = "NoteBox"; break;
-                case "GroupPicture": groupBox.Text = "PictureBox"; break;
-                case "GroupDo": groupBox.Text = "ToDoBox"; break;
+                case "note": groupBox.Text = "NoteBox"; break;
+                case "pic": groupBox.Text = "PictureBox"; break;
+                case "do": groupBox.Text = "ToDoBox"; break;
                 default: break;
             }
 
@@ -33,9 +33,9 @@ namespace GameJam_Planner
 
             switch (TypeOfBox)
             {
-                case "GroupNote": groupBox.Size = new Size(230, 200); break;
-                case "GroupPicture": groupBox.Size = new Size(230, 200); break;
-                case "GroupDo": groupBox.Size = new Size(210, 250); break;
+                case "note": groupBox.Size = new Size(230, 200); break;
+                case "pic": groupBox.Size = new Size(230, 200); break;
+                case "do": groupBox.Size = new Size(210, 250); break;
                 default: break;
             }
 
@@ -82,9 +82,9 @@ namespace GameJam_Planner
             buttonLock.BackgroundImage = Image.FromFile(@"Assets\kilit.png");
             switch (TypeOfBox)
             {
-                case "GroupNote": buttonLock.Location = new Point(207, 22); break;
-                case "GroupPicture": buttonLock.Location = new Point(207, 22); break;
-                case "GroupDo": buttonLock.Location = new Point(190, 23); break;
+                case "note": buttonLock.Location = new Point(207, 22); break;
+                case "pic": buttonLock.Location = new Point(207, 22); break;
+                case "do": buttonLock.Location = new Point(190, 23); break;
                 default: break;
             }
 
@@ -119,7 +119,7 @@ namespace GameJam_Planner
 
         public CustomGroupBox Spawn_Note()
         {
-            TypeOfBox = "GroupNote"; //keyword
+            TypeOfBox = boxtype[0]; //keyword
             CustomGroupBox groupBox = GroupBox(0);
             RichTextBox(groupBox);
             groupBox.isLocked = false;
@@ -130,7 +130,7 @@ namespace GameJam_Planner
         }
         public CustomGroupBox Spawn_Picture()
         {
-            TypeOfBox = "GroupPicture";
+            TypeOfBox = boxtype[1];
             CustomGroupBox groupBox = GroupBox(1);
             PictureBox(groupBox);
             groupBox.isLocked = false;
@@ -141,7 +141,7 @@ namespace GameJam_Planner
         }
         public CustomGroupBox Spawn_ToDo()
         {
-            TypeOfBox = "GroupDo";
+            TypeOfBox = boxtype[2];
             CustomGroupBox groupBox = GroupBox(2);
             CheckedListBox(groupBox);
             AddButton(groupBox);
@@ -151,11 +151,9 @@ namespace GameJam_Planner
             MyBoxesToDo.Add(groupBox);
             return groupBox;
         }
-
-
         public CustomGroupBox Spawn_Note_With_Json(JsonNoteBox jsonInput)
         {
-            TypeOfBox = "GroupNote"; //keyword
+            TypeOfBox = boxtype[0]; //keyword
             CustomGroupBox groupBox = GroupBox(0);
             groupBox.BoxID = jsonInput.BoxID;
             groupBox.Text = jsonInput.BoxTitle;
@@ -174,7 +172,7 @@ namespace GameJam_Planner
         }
         public CustomGroupBox Spawn_Picture_With_Json(JsonPictureBox jsonInput)
         {
-            TypeOfBox = "GroupNote"; //keyword
+            TypeOfBox = boxtype[1]; //keyword
             CustomGroupBox groupBox = GroupBox(0);
             groupBox.BoxID = jsonInput.BoxID;
             groupBox.Text = jsonInput.BoxTitle;
@@ -198,7 +196,7 @@ namespace GameJam_Planner
         }
         public CustomGroupBox Spawn_ToDo_With_Json(JsonToDoBox jsonInput)
         {
-            TypeOfBox = "GroupDo";
+            TypeOfBox = boxtype[2];
             CustomGroupBox groupBox = GroupBox(2);
             groupBox.BoxID = jsonInput.BoxID;
             groupBox.Text = jsonInput.BoxTitle;

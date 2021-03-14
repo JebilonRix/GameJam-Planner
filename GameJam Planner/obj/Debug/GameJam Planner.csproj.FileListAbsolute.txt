@@ -67,3 +67,4 @@ C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\obj\Debug\GameJ
 C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.exe
 C:\Users\taha_\Desktop\git yedek\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.pdb
 C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\obj\Debug\GameJam Planner.csprojAssemblyReference.cache
+C:\Users\fuat\Desktop\kodlama\_Github\GameJam-Planner\GameJam Planner\bin\Debug\Tulpep.NotificationWindow.dll
