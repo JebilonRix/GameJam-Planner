@@ -22,8 +22,18 @@ namespace GameJam_Planner
 
         private void Form_Board_Load(object sender, EventArgs e)
         {
+            this.Controls.Add(panelMain);
+            this.Controls.Add(tabControl1);
             this.KeyPreview = true;
             GetMainValues();
+
+            tabPage1.Text = "Active";
+            tabPage1.BackColor = Color.FromArgb(64, 64, 64);
+            tabPage1.ForeColor = Color.FromArgb(224, 224, 224);
+            tabPage2.Text = "Finished";
+            tabPage2.BackColor = Color.FromArgb(64, 64, 64);
+            tabPage2.ForeColor = Color.FromArgb(224, 224, 224);
+
         }
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -62,6 +72,8 @@ namespace GameJam_Planner
                 textBox4.Text = "";
                 textBox5.Text = "";
                 comboBox1.SelectedItem = null;
+
+                this.BackColor = Color.FromArgb(64, 64, 64);
             }
 
 
@@ -95,10 +107,6 @@ namespace GameJam_Planner
         {
             closeProgram(sender, e, "Menu");
         }
-        private void Form_Board_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            closeProgram(sender, e, "x");
-        }
         private void RightClickToDo_Click(object sender, EventArgs e)
         {
             SpawnToDo();
@@ -116,6 +124,10 @@ namespace GameJam_Planner
             panelMain.Visible = false;
             panelMain.Enabled = false;
         }
+        private void Form_Board_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            closeProgram(sender, e, "x");
+        }
         private void Form_Board_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.S)
@@ -131,6 +143,29 @@ namespace GameJam_Planner
                 pop.Popup();
             }
         }
+        private void closeProgram(object sender, EventArgs e, string exitingtype)
+        {
+            if (exiting)
+            {
+                Application.Exit();
+            }
+            else
+            {
+                DialogResult dialog = MessageBox.Show("Are you sure?", "Exit", MessageBoxButtons.YesNo);
+                if (dialog == DialogResult.Yes)
+                {
+                    exiting = true;
+                    saveToolStripMenuItem_Click(sender, e);
+                    Application.Exit();
+                }
+                else if (dialog == DialogResult.No && exitingtype == "x")
+                {
+                    var f = e as FormClosingEventArgs;
+                    f.Cancel = true;
+                }
+            }
+        }
+
 
         private void SpawnBox()
         {
@@ -237,28 +272,6 @@ namespace GameJam_Planner
 
             Properties.Settings.Default.Save();
         }
-        private void closeProgram(object sender, EventArgs e, string exitingtype)
-        {
-            if (exiting)
-            {
-                Application.Exit();
-            }
-            else
-            {
-                DialogResult dialog = MessageBox.Show("Are you sure?", "Exit", MessageBoxButtons.YesNo);
-                if (dialog == DialogResult.Yes)
-                {
-                    exiting = true;
-                    saveToolStripMenuItem_Click(sender, e);
-                    Application.Exit();
-                }
-                else if (dialog == DialogResult.No && exitingtype == "x")
-                {
-                    var f = e as FormClosingEventArgs;
-                    f.Cancel = true;
-                }
-            }
-        }
-
+       
     }
 }
