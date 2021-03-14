@@ -97,13 +97,40 @@ namespace GameJam_Planner.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("64, 64, 64")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Control")]
         public global::System.Drawing.Color Color {
             get {
                 return ((global::System.Drawing.Color)(this["Color"]));
             }
             set {
                 this["Color"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Control")]
+        public global::System.Drawing.Color BackColor {
+            get {
+                return ((global::System.Drawing.Color)(this["BackColor"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Visible {
+            get {
+                return ((bool)(this["Visible"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Tile")]
+        public global::System.Windows.Forms.ImageLayout BackgroudImageLayout {
+            get {
+                return ((global::System.Windows.Forms.ImageLayout)(this["BackgroudImageLayout"]));
             }
         }
     }

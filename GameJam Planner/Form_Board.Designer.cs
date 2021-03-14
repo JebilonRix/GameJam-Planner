@@ -30,6 +30,7 @@ namespace GameJam_Planner
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.TabControl tabControl1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Board));
             this.menuStripPlanner = new System.Windows.Forms.MenuStrip();
             this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,13 +63,13 @@ namespace GameJam_Planner
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            tabControl1 = new System.Windows.Forms.TabControl();
             this.menuStripPlanner.SuspendLayout();
             this.RightClickToBox.SuspendLayout();
             this.panelMain.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripPlanner
@@ -362,34 +363,38 @@ namespace GameJam_Planner
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControl1.Location = new System.Drawing.Point(233, 369);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1117, 360);
-            this.tabControl1.TabIndex = 14;
+            tabControl1.Alignment = System.Windows.Forms.TabAlignment.Right;
+            tabControl1.AllowDrop = true;
+            tabControl1.BackColor = global::GameJam_Planner.Properties.Settings.Default.BackColor;
+            tabControl1.Controls.Add(this.tabPage1);
+            tabControl1.Controls.Add(this.tabPage2);
+            tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            tabControl1.Location = new System.Drawing.Point(233, 353);
+            tabControl1.Multiline = true;
+            tabControl1.Name = "tabControl1";
+            tabControl1.Padding = new System.Drawing.Point(0, 0);
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new System.Drawing.Size(1117, 376);
+            tabControl1.TabIndex = 14;
             // 
             // tabPage1
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 31);
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tabPage1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1109, 325);
+            this.tabPage1.Size = new System.Drawing.Size(1081, 368);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Text = "Active";
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 31);
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tabPage2.Location = new System.Drawing.Point(4, 4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 65);
+            this.tabPage2.Size = new System.Drawing.Size(1081, 368);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Text = "Finished";
             // 
             // Form_Board
             // 
@@ -398,7 +403,7 @@ namespace GameJam_Planner
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1350, 729);
             this.ContextMenuStrip = this.RightClickToBox;
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(tabControl1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.menuStripPlanner);
@@ -410,7 +415,7 @@ namespace GameJam_Planner
             this.Name = "Form_Board";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GameJam Planner";
-            this.TransparencyKey = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Board_FormClosing);
             this.Load += new System.EventHandler(this.Form_Board_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form_Board_KeyDown);
@@ -419,7 +424,7 @@ namespace GameJam_Planner
             this.RightClickToBox.ResumeLayout(false);
             this.panelMain.ResumeLayout(false);
             this.panelMain.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -457,7 +462,6 @@ namespace GameJam_Planner
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ToolStripMenuItem creditsToolStripMenuItem;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
     }

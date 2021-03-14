@@ -19,16 +19,15 @@ namespace GameJam_Planner
             Class_Spawner.Spawner = new Class_Spawner();
             this.KeyDown += new KeyEventHandler(Form_Board_KeyDown);
         }
-
         private void Form_Board_Load(object sender, EventArgs e)
         {
+           
+            this.BackColor = Properties.Settings.Default.Color;
             this.Controls.Add(panelMain);
-            this.Controls.Add(tabControl1);
-
             this.KeyPreview = true;
             GetMainValues();
-            TabPage();
         }
+
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SetMainValues();
@@ -99,7 +98,7 @@ namespace GameJam_Planner
         }
         private void ExitMenuItem_Click(object sender, EventArgs e)
         {
-            closeProgram(sender, e, "Menu");
+            CloseProgram(sender, e, "Menu");
         }
         private void RightClickToDo_Click(object sender, EventArgs e)
         {
@@ -120,7 +119,7 @@ namespace GameJam_Planner
         }
         private void Form_Board_FormClosing(object sender, FormClosingEventArgs e)
         {
-            closeProgram(sender, e, "x");
+            CloseProgram(sender, e, "x");
         }
         private void Form_Board_KeyDown(object sender, KeyEventArgs e)
         {
@@ -137,7 +136,7 @@ namespace GameJam_Planner
                 pop.Popup();
             }
         }
-        private void closeProgram(object sender, EventArgs e, string exitingtype)
+        private void CloseProgram(object sender, EventArgs e, string exitingtype)
         {
             if (exiting)
             {
@@ -160,13 +159,13 @@ namespace GameJam_Planner
             }
         }
 
-
         private void SpawnBox()
         {
             Point cp = PointToClient(Cursor.Position);
             Class_Spawner.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
             var BoxSpawn = Class_Spawner.Spawner.Spawn_Note();
             this.Controls.Add(BoxSpawn);
+            BoxSpawn.BringToFront();
         }
         private void SpawnPic()
         {
@@ -181,7 +180,7 @@ namespace GameJam_Planner
             {
                 //We'll bang, OK!
             }
-
+            BoxSpawn.BringToFront();
         }
         private void SpawnToDo()
         {
@@ -189,8 +188,8 @@ namespace GameJam_Planner
             Class_Spawner.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
             var BoxSpawn = Class_Spawner.Spawner.Spawn_ToDo();
             this.Controls.Add(BoxSpawn);
+            BoxSpawn.BringToFront();
         }
-
 
         public void GetMainValues()
         {
@@ -235,7 +234,6 @@ namespace GameJam_Planner
             textBox4.Text = Properties.Settings.Default.Genre;
             textBox5.Text = Properties.Settings.Default.ArtStyle;
             comboBox1.SelectedItem = Properties.Settings.Default.GameEngine;
-            this.BackColor = Properties.Settings.Default.Color;
         }
         public void SetMainValues()
         {
@@ -266,15 +264,6 @@ namespace GameJam_Planner
 
             Properties.Settings.Default.Save();
         }
-        private void TabPage()
-        {
-            tabPage1.Text = "Active";
-            tabPage1.BackColor = Color.FromArgb(64, 64, 64);
-            tabPage1.ForeColor = Color.FromArgb(224, 224, 224);
-            tabPage2.Text = "Finished";
-            tabPage2.BackColor = Color.FromArgb(64, 64, 64);
-            tabPage2.ForeColor = Color.FromArgb(224, 224, 224);
-           
-        }
+
     }
 }

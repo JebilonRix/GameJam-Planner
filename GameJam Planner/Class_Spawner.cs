@@ -15,6 +15,7 @@ namespace GameJam_Planner
 
         static string[] boxtype = { "note", "pic", "do" };
 
+
         public Class_Spawner() { }
         public CustomGroupBox GroupBox(int type)
         {
@@ -116,6 +117,7 @@ namespace GameJam_Planner
             return addButton;
         }
 
+     
 
         public CustomGroupBox Spawn_Note()
         {
@@ -124,6 +126,7 @@ namespace GameJam_Planner
             RichTextBox(groupBox);
             groupBox.isLocked = false;
             LockButton(groupBox, groupBox.isLocked);
+
 
             MyBoxesNote.Add(groupBox);
             return groupBox;

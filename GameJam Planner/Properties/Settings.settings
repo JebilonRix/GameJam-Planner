@@ -21,7 +21,16 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Color" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">64, 64, 64</Value>
+      <Value Profile="(Default)">Control</Value>
+    </Setting>
+    <Setting Name="BackColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">Control</Value>
+    </Setting>
+    <Setting Name="Visible" Type="System.Boolean" Scope="Application">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="BackgroudImageLayout" Type="System.Windows.Forms.ImageLayout" Scope="Application">
+      <Value Profile="(Default)">Tile</Value>
     </Setting>
   </Settings>
 </SettingsFile>

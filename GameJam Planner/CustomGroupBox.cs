@@ -104,7 +104,6 @@ namespace GameJam_Planner
         {
             this.MyTodoList.Items.Remove(MyTodoList.SelectedItem);
         }
-
         private void SetUpContextMenuNoteBox()
         {
             cm.MenuItems.Add("Change Color", new EventHandler(ChangeColor_Click));
