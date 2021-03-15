@@ -30,15 +30,7 @@ namespace GameJam_Planner
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TabControl tabControl1;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Board));
-            this.menuStripPlanner = new System.Windows.Forms.MenuStrip();
-            this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.HintsMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ClearMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ExitMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.creditsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.RightClickToBox = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.RightClickBox = new System.Windows.Forms.ToolStripMenuItem();
             this.RightClickPicture = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,73 +54,24 @@ namespace GameJam_Planner
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.panelSummary = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            tabControl1 = new System.Windows.Forms.TabControl();
-            this.menuStripPlanner.SuspendLayout();
+            this.button4 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.panelMenu = new System.Windows.Forms.Panel();
+            this.buttonSummary = new System.Windows.Forms.Button();
+            this.buttonExit = new System.Windows.Forms.Button();
+            this.buttonCredits = new System.Windows.Forms.Button();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.buttonHints = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonMain = new System.Windows.Forms.Button();
             this.RightClickToBox.SuspendLayout();
             this.panelMain.SuspendLayout();
-            tabControl1.SuspendLayout();
+            this.panelSummary.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panelMenu.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStripPlanner
-            // 
-            this.menuStripPlanner.BackColor = System.Drawing.Color.Gray;
-            this.menuStripPlanner.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mainToolStripMenuItem,
-            this.saveToolStripMenuItem,
-            this.HintsMenuItem,
-            this.ClearMenuItem,
-            this.ExitMenuItem,
-            this.creditsToolStripMenuItem});
-            this.menuStripPlanner.Location = new System.Drawing.Point(0, 0);
-            this.menuStripPlanner.Name = "menuStripPlanner";
-            this.menuStripPlanner.Size = new System.Drawing.Size(1350, 24);
-            this.menuStripPlanner.TabIndex = 10;
-            this.menuStripPlanner.Text = "PlannerManu";
-            // 
-            // mainToolStripMenuItem
-            // 
-            this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
-            this.mainToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.mainToolStripMenuItem.Text = "Main";
-            this.mainToolStripMenuItem.Click += new System.EventHandler(this.mainToolStripMenuItem_Click);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-            // 
-            // HintsMenuItem
-            // 
-            this.HintsMenuItem.Name = "HintsMenuItem";
-            this.HintsMenuItem.Size = new System.Drawing.Size(47, 20);
-            this.HintsMenuItem.Text = "Hints";
-            this.HintsMenuItem.Click += new System.EventHandler(this.HintsMenuItem_Click);
-            // 
-            // ClearMenuItem
-            // 
-            this.ClearMenuItem.Name = "ClearMenuItem";
-            this.ClearMenuItem.Size = new System.Drawing.Size(46, 20);
-            this.ClearMenuItem.Text = "Clear";
-            this.ClearMenuItem.Click += new System.EventHandler(this.ClearMenuItem_Click);
-            // 
-            // ExitMenuItem
-            // 
-            this.ExitMenuItem.Name = "ExitMenuItem";
-            this.ExitMenuItem.Size = new System.Drawing.Size(38, 20);
-            this.ExitMenuItem.Text = "Exit";
-            this.ExitMenuItem.Click += new System.EventHandler(this.ExitMenuItem_Click);
-            // 
-            // creditsToolStripMenuItem
-            // 
-            this.creditsToolStripMenuItem.Name = "creditsToolStripMenuItem";
-            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
-            this.creditsToolStripMenuItem.Text = "Credits";
-            this.creditsToolStripMenuItem.Click += new System.EventHandler(this.creditsToolStripMenuItem_Click);
             // 
             // RightClickToBox
             // 
@@ -166,7 +109,6 @@ namespace GameJam_Planner
             this.changeBackcolorToolStripMenuItem.Name = "changeBackcolorToolStripMenuItem";
             this.changeBackcolorToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.changeBackcolorToolStripMenuItem.Text = "Change Backcolor";
-            this.changeBackcolorToolStripMenuItem.Click += new System.EventHandler(this.changeBackcolorToolStripMenuItem_Click);
             // 
             // checkedListBox1
             // 
@@ -219,9 +161,9 @@ namespace GameJam_Planner
             this.panelMain.Controls.Add(this.label1);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMain.Enabled = false;
-            this.panelMain.Location = new System.Drawing.Point(0, 24);
+            this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(233, 705);
+            this.panelMain.Size = new System.Drawing.Size(233, 729);
             this.panelMain.TabIndex = 11;
             this.panelMain.Visible = false;
             // 
@@ -350,91 +292,175 @@ namespace GameJam_Planner
             this.label1.TabIndex = 0;
             this.label1.Text = "Name Of Group:";
             // 
+            // panelSummary
+            // 
+            this.panelSummary.BackColor = System.Drawing.Color.Gray;
+            this.panelSummary.Controls.Add(this.label7);
+            this.panelSummary.Controls.Add(this.button4);
+            this.panelSummary.Controls.Add(this.dataGridView1);
+            this.panelSummary.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelSummary.Enabled = false;
+            this.panelSummary.Location = new System.Drawing.Point(1220, 0);
+            this.panelSummary.Name = "panelSummary";
+            this.panelSummary.Size = new System.Drawing.Size(233, 729);
+            this.panelSummary.TabIndex = 19;
+            this.panelSummary.Visible = false;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Top;
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label7.Location = new System.Drawing.Point(233, 24);
+            this.label7.Location = new System.Drawing.Point(45, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(128, 22);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "On Progress";
+            this.label7.Size = new System.Drawing.Size(99, 22);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Summary";
             // 
-            // tabControl1
+            // button4
             // 
-            tabControl1.Alignment = System.Windows.Forms.TabAlignment.Right;
-            tabControl1.AllowDrop = true;
-            tabControl1.BackColor = global::GameJam_Planner.Properties.Settings.Default.BackColor;
-            tabControl1.Controls.Add(this.tabPage1);
-            tabControl1.Controls.Add(this.tabPage2);
-            tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            tabControl1.Location = new System.Drawing.Point(233, 353);
-            tabControl1.Multiline = true;
-            tabControl1.Name = "tabControl1";
-            tabControl1.Padding = new System.Drawing.Point(0, 0);
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new System.Drawing.Size(1117, 376);
-            tabControl1.TabIndex = 14;
+            this.button4.Location = new System.Drawing.Point(110, 611);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(34, 29);
+            this.button4.TabIndex = 13;
+            this.button4.Text = "▲";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // tabPage1
+            // dataGridView1
             // 
-            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tabPage1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.tabPage1.Location = new System.Drawing.Point(4, 4);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1081, 368);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Active";
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 25);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.Size = new System.Drawing.Size(222, 580);
+            this.dataGridView1.TabIndex = 0;
             // 
-            // tabPage2
+            // panelMenu
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tabPage2.Location = new System.Drawing.Point(4, 4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(1081, 368);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Finished";
+            this.panelMenu.BackColor = System.Drawing.Color.Gray;
+            this.panelMenu.Controls.Add(this.buttonSummary);
+            this.panelMenu.Controls.Add(this.buttonExit);
+            this.panelMenu.Controls.Add(this.buttonCredits);
+            this.panelMenu.Controls.Add(this.buttonClear);
+            this.panelMenu.Controls.Add(this.buttonHints);
+            this.panelMenu.Controls.Add(this.buttonSave);
+            this.panelMenu.Controls.Add(this.buttonMain);
+            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelMenu.Location = new System.Drawing.Point(233, 0);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(987, 40);
+            this.panelMenu.TabIndex = 20;
+            // 
+            // buttonSummary
+            // 
+            this.buttonSummary.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonSummary.Location = new System.Drawing.Point(99, 8);
+            this.buttonSummary.Name = "buttonSummary";
+            this.buttonSummary.Size = new System.Drawing.Size(78, 23);
+            this.buttonSummary.TabIndex = 6;
+            this.buttonSummary.Text = "Summary";
+            this.buttonSummary.UseVisualStyleBackColor = true;
+            this.buttonSummary.Click += new System.EventHandler(this.buttonSummary_Click);
+            // 
+            // buttonExit
+            // 
+            this.buttonExit.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonExit.Location = new System.Drawing.Point(507, 10);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(75, 23);
+            this.buttonExit.TabIndex = 5;
+            this.buttonExit.Text = "Exit";
+            this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
+            // buttonCredits
+            // 
+            this.buttonCredits.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonCredits.Location = new System.Drawing.Point(426, 9);
+            this.buttonCredits.Name = "buttonCredits";
+            this.buttonCredits.Size = new System.Drawing.Size(75, 23);
+            this.buttonCredits.TabIndex = 4;
+            this.buttonCredits.Text = "Credits";
+            this.buttonCredits.UseVisualStyleBackColor = true;
+            this.buttonCredits.Click += new System.EventHandler(this.buttonCredits_Click);
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonClear.Location = new System.Drawing.Point(345, 8);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(75, 23);
+            this.buttonClear.TabIndex = 3;
+            this.buttonClear.Text = "Clear";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // buttonHints
+            // 
+            this.buttonHints.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonHints.Location = new System.Drawing.Point(264, 8);
+            this.buttonHints.Name = "buttonHints";
+            this.buttonHints.Size = new System.Drawing.Size(75, 23);
+            this.buttonHints.TabIndex = 2;
+            this.buttonHints.Text = "Hints";
+            this.buttonHints.UseVisualStyleBackColor = true;
+            this.buttonHints.Click += new System.EventHandler(this.buttonHints_Click);
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonSave.Location = new System.Drawing.Point(183, 9);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 1;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // buttonMain
+            // 
+            this.buttonMain.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonMain.Location = new System.Drawing.Point(18, 9);
+            this.buttonMain.Name = "buttonMain";
+            this.buttonMain.Size = new System.Drawing.Size(75, 23);
+            this.buttonMain.TabIndex = 0;
+            this.buttonMain.Text = "Main";
+            this.buttonMain.UseVisualStyleBackColor = true;
+            this.buttonMain.Click += new System.EventHandler(this.buttonMain_Click);
             // 
             // Form_Board
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.ClientSize = new System.Drawing.Size(1453, 729);
             this.ContextMenuStrip = this.RightClickToBox;
-            this.Controls.Add(tabControl1);
-            this.Controls.Add(this.label7);
+            this.Controls.Add(this.panelMenu);
+            this.Controls.Add(this.panelSummary);
             this.Controls.Add(this.panelMain);
-            this.Controls.Add(this.menuStripPlanner);
             this.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStripPlanner;
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "Form_Board";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GameJam Planner";
-            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Board_FormClosing);
             this.Load += new System.EventHandler(this.Form_Board_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form_Board_KeyDown);
-            this.menuStripPlanner.ResumeLayout(false);
-            this.menuStripPlanner.PerformLayout();
             this.RightClickToBox.ResumeLayout(false);
             this.panelMain.ResumeLayout(false);
             this.panelMain.PerformLayout();
-            tabControl1.ResumeLayout(false);
+            this.panelSummary.ResumeLayout(false);
+            this.panelSummary.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.MenuStrip menuStripPlanner;
-        private System.Windows.Forms.ToolStripMenuItem ClearMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem HintsMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem ExitMenuItem;
         private System.Windows.Forms.ContextMenuStrip RightClickToBox;
         private System.Windows.Forms.ToolStripMenuItem RightClickBox;
         private System.Windows.Forms.ToolStripMenuItem RightClickPicture;
@@ -443,9 +469,7 @@ namespace GameJam_Planner
         private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.ToolStripMenuItem RightClickToDo;
         private System.Windows.Forms.ToolStripMenuItem changeBackcolorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showOpeningSceneToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mainToolStripMenuItem;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label6;
@@ -460,10 +484,18 @@ namespace GameJam_Planner
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ToolStripMenuItem creditsToolStripMenuItem;
+        private System.Windows.Forms.Panel panelSummary;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Panel panelMenu;
+        private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.Button buttonCredits;
+        private System.Windows.Forms.Button buttonClear;
+        private System.Windows.Forms.Button buttonHints;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonMain;
+        private System.Windows.Forms.Button buttonSummary;
     }
 }
 

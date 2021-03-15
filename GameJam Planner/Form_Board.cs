@@ -12,7 +12,6 @@ namespace GameJam_Planner
     {
         public static Form_Board Board;
         bool exiting = false;
-
         public Form_Board()
         {
             InitializeComponent();
@@ -21,84 +20,12 @@ namespace GameJam_Planner
         }
         private void Form_Board_Load(object sender, EventArgs e)
         {
-           
             this.BackColor = Properties.Settings.Default.Color;
             this.Controls.Add(panelMain);
+            this.Controls.Add(panelSummary);
+            this.Controls.Add(panelMenu);
             this.KeyPreview = true;
             GetMainValues();
-        }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SetMainValues();
-            if (!exiting)
-            {
-                MessageBox.Show("Saved");
-            }
-        }
-        private void ClearMenuItem_Click(object sender, EventArgs e)
-        {
-            DialogResult dialog = MessageBox.Show("Are you sure?", "Clear", MessageBoxButtons.YesNo);
-
-            if (dialog == DialogResult.Yes)
-            {
-                foreach (var item in Class_Spawner.Spawner.MyBoxesNote)
-                {
-                    item.Dispose();
-                }
-                foreach (var item in Class_Spawner.Spawner.MyBoxesPicture)
-                {
-                    item.Dispose();
-                }
-                foreach (var item in Class_Spawner.Spawner.MyBoxesToDo)
-                {
-                    item.Dispose();
-                }
-
-                Class_Spawner.Spawner.MyBoxesNote = new List<CustomGroupBox>();
-                Class_Spawner.Spawner.MyBoxesPicture = new List<CustomGroupBox>();
-                Class_Spawner.Spawner.MyBoxesToDo = new List<CustomGroupBox>();
-
-                textBox1.Text = "";
-                textBox2.Text = "";
-                textBox3.Text = "";
-                textBox4.Text = "";
-                textBox5.Text = "";
-                comboBox1.SelectedItem = null;
-
-                this.BackColor = Color.FromArgb(64, 64, 64);
-            }
-
-
-        }
-        private void changeBackcolorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (ColorDialog cd = new ColorDialog())
-            {
-                if (cd.ShowDialog() == DialogResult.OK)
-                {
-                    this.BackColor = cd.Color;
-                }
-            }
-        }
-        private void HintsMenuItem_Click(object sender, EventArgs e)
-        {
-            string message = "Please, press your right mouse button for adding boxes.";
-            MessageBox.Show(message);
-        }
-        private void creditsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            string credits = ":Coders:" + "\n" + "\n" + "Fuat Can ERYİĞİT" + "\n" + "Muzaffer Erkan Küpçük" + "\n" + "Taha Buğra ŞENEL" + "\n" + "\n" + ":Special Thanks:" + "\n" + "\n" + "Tecelli Akıntuğ" + "\n" + "Özge Selen Bulgu";
-            MessageBox.Show(credits);
-        }
-        private void mainToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            panelMain.Visible = true;
-            panelMain.Enabled = true;
-        }
-        private void ExitMenuItem_Click(object sender, EventArgs e)
-        {
-            CloseProgram(sender, e, "Menu");
         }
         private void RightClickToDo_Click(object sender, EventArgs e)
         {
@@ -111,11 +38,6 @@ namespace GameJam_Planner
         private void RightClickBox_Click(object sender, EventArgs e)
         {
             SpawnBox();
-        }
-        private void button3_Click(object sender, EventArgs e)
-        {
-            panelMain.Visible = false;
-            panelMain.Enabled = false;
         }
         private void Form_Board_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -136,28 +58,7 @@ namespace GameJam_Planner
                 pop.Popup();
             }
         }
-        private void CloseProgram(object sender, EventArgs e, string exitingtype)
-        {
-            if (exiting)
-            {
-                Application.Exit();
-            }
-            else
-            {
-                DialogResult dialog = MessageBox.Show("Are you sure?", "Exit", MessageBoxButtons.YesNo);
-                if (dialog == DialogResult.Yes)
-                {
-                    exiting = true;
-                    saveToolStripMenuItem_Click(sender, e);
-                    Application.Exit();
-                }
-                else if (dialog == DialogResult.No && exitingtype == "x")
-                {
-                    var f = e as FormClosingEventArgs;
-                    f.Cancel = true;
-                }
-            }
-        }
+
 
         private void SpawnBox()
         {
@@ -190,7 +91,6 @@ namespace GameJam_Planner
             this.Controls.Add(BoxSpawn);
             BoxSpawn.BringToFront();
         }
-
         public void GetMainValues()
         {
             if (!File.Exists(@"Note") || !File.Exists(@"Picture") || !File.Exists(@"ToDo")) { return; }
@@ -264,6 +164,105 @@ namespace GameJam_Planner
 
             Properties.Settings.Default.Save();
         }
+        private void CloseProgram(object sender, EventArgs e, string exitingtype)
+        {
+            if (exiting)
+            {
+                Application.Exit();
+            }
+            else
+            {
+                DialogResult dialog = MessageBox.Show("Are you sure?", "Exit", MessageBoxButtons.YesNo);
+                if (dialog == DialogResult.Yes)
+                {
+                    exiting = true;
+                    buttonSave_Click(sender, e);
+                    Application.Exit();
+                }
+                else if (dialog == DialogResult.No && exitingtype == "x")
+                {
+                    var f = e as FormClosingEventArgs;
+                    f.Cancel = true;
+                }
+            }
+        }
 
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            panelMain.Visible = false;
+            panelMain.Enabled = false;
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            panelSummary.Visible = false;
+            panelSummary.Enabled = false;
+        }
+        private void buttonMain_Click(object sender, EventArgs e)
+        {
+            panelMain.Visible = true;
+            panelMain.Enabled = true;
+        }
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            SetMainValues();
+            if (!exiting)
+            {
+                MessageBox.Show("Saved");
+            }
+        }
+        private void buttonHints_Click(object sender, EventArgs e)
+        {
+            string message = "Please, press your right mouse button for adding boxes.";
+            MessageBox.Show(message);
+        }
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Are you sure?", "Clear", MessageBoxButtons.YesNo);
+
+            if (dialog == DialogResult.Yes)
+            {
+                foreach (var item in Class_Spawner.Spawner.MyBoxesNote)
+                {
+                    item.Dispose();
+                }
+                foreach (var item in Class_Spawner.Spawner.MyBoxesPicture)
+                {
+                    item.Dispose();
+                }
+                foreach (var item in Class_Spawner.Spawner.MyBoxesToDo)
+                {
+                    item.Dispose();
+                }
+
+                Class_Spawner.Spawner.MyBoxesNote = new List<CustomGroupBox>();
+                Class_Spawner.Spawner.MyBoxesPicture = new List<CustomGroupBox>();
+                Class_Spawner.Spawner.MyBoxesToDo = new List<CustomGroupBox>();
+
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+                textBox4.Text = "";
+                textBox5.Text = "";
+                comboBox1.SelectedItem = null;
+
+                this.BackColor = Color.FromArgb(64, 64, 64);
+            }
+        }
+        private void buttonCredits_Click(object sender, EventArgs e)
+        {
+            string credits = ":Coders:" + "\n" + "\n" + "Fuat Can ERYİĞİT" + "\n" + "\n" + ":Special Thanks:" + "\n" + "\n"
+                + "Muzaffer Erkan KÜPÇÜK" + "\n" + "Taha Buğra ŞENEL" + "Tecelli AKINTUĞ" + "\n" + "Özge Selen BULGU";
+            MessageBox.Show(credits);
+        }
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            CloseProgram(sender, e, "Menu");
+        }
+        private void buttonSummary_Click(object sender, EventArgs e)
+        {
+            panelSummary.Enabled = true;
+            panelSummary.Visible = true;
+        }
     }
 }
