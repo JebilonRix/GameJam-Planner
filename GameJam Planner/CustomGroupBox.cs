@@ -15,6 +15,7 @@ namespace GameJam_Planner
         public CheckedListBox MyTodoList;
         public int BoxID;
         public RichTextBox rtb;
+        
 
         ContextMenu cm = new ContextMenu();
         Form_CustomMessageBox FNC = new Form_CustomMessageBox();
@@ -24,11 +25,13 @@ namespace GameJam_Planner
 
         public CustomGroupBox(int type)
         {
+
             if (type == 0)
             {
                 SetUpContextMenuNoteBox();
                 MyLockButton = Class_Spawner.Spawner.LockButton(this, isLocked);
                 MyLockButton.Click += ButtonLock_Click;
+          
             }
             else if (type == 1)
             {
@@ -139,7 +142,7 @@ namespace GameJam_Planner
             switch (typeofbox)
             {
                 case "note": Class_Spawner.Spawner.MyBoxesNote.Remove(this); break;
-                case "pic": Class_Spawner.Spawner.MyBoxesPicture.Remove(this);  break;
+                case "pic": Class_Spawner.Spawner.MyBoxesPicture.Remove(this); break;
                 case "do": Class_Spawner.Spawner.MyBoxesToDo.Remove(this); break;
                 default: break;
             }
@@ -148,6 +151,7 @@ namespace GameJam_Planner
         {
             FNC.ShowDialog();
             this.Text = FNC.Joker;
+         //   Form_Board.Board.tb.Rows.Add(false, this.Text, "");
         }
         private void AddPicture_Click(object sender, EventArgs e)
         {

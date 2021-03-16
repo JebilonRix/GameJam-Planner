@@ -30,6 +30,8 @@ namespace GameJam_Planner
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Board));
             this.RightClickToBox = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.RightClickBox = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,7 +59,7 @@ namespace GameJam_Planner
             this.panelSummary = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewSummary = new System.Windows.Forms.DataGridView();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.buttonSummary = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
@@ -69,7 +71,7 @@ namespace GameJam_Planner
             this.RightClickToBox.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panelSummary.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSummary)).BeginInit();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -297,12 +299,12 @@ namespace GameJam_Planner
             this.panelSummary.BackColor = System.Drawing.Color.Gray;
             this.panelSummary.Controls.Add(this.label7);
             this.panelSummary.Controls.Add(this.button4);
-            this.panelSummary.Controls.Add(this.dataGridView1);
+            this.panelSummary.Controls.Add(this.dataGridViewSummary);
             this.panelSummary.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelSummary.Enabled = false;
-            this.panelSummary.Location = new System.Drawing.Point(1220, 0);
+            this.panelSummary.Location = new System.Drawing.Point(1110, 0);
             this.panelSummary.Name = "panelSummary";
-            this.panelSummary.Size = new System.Drawing.Size(233, 729);
+            this.panelSummary.Size = new System.Drawing.Size(343, 729);
             this.panelSummary.TabIndex = 19;
             this.panelSummary.Visible = false;
             // 
@@ -310,7 +312,7 @@ namespace GameJam_Planner
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label7.Location = new System.Drawing.Point(45, 0);
+            this.label7.Location = new System.Drawing.Point(6, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(99, 22);
             this.label7.TabIndex = 14;
@@ -318,7 +320,7 @@ namespace GameJam_Planner
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(110, 611);
+            this.button4.Location = new System.Drawing.Point(23, 611);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(34, 29);
             this.button4.TabIndex = 13;
@@ -326,15 +328,37 @@ namespace GameJam_Planner
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // dataGridView1
+            // dataGridViewSummary
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 25);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(222, 580);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridViewSummary.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridViewSummary.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewSummary.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.dataGridViewSummary.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSummary.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSummary.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.dataGridViewSummary.Location = new System.Drawing.Point(23, 25);
+            this.dataGridViewSummary.MultiSelect = false;
+            this.dataGridViewSummary.Name = "dataGridViewSummary";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSummary.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewSummary.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridViewSummary.Size = new System.Drawing.Size(308, 580);
+            this.dataGridViewSummary.TabIndex = 0;
+            this.dataGridViewSummary.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // panelMenu
             // 
@@ -349,7 +373,7 @@ namespace GameJam_Planner
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelMenu.Location = new System.Drawing.Point(233, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(987, 40);
+            this.panelMenu.Size = new System.Drawing.Size(877, 40);
             this.panelMenu.TabIndex = 20;
             // 
             // buttonSummary
@@ -454,7 +478,7 @@ namespace GameJam_Planner
             this.panelMain.PerformLayout();
             this.panelSummary.ResumeLayout(false);
             this.panelSummary.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSummary)).EndInit();
             this.panelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -485,7 +509,7 @@ namespace GameJam_Planner
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Panel panelSummary;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewSummary;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panelMenu;

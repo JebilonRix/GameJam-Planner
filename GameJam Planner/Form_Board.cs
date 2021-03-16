@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -12,11 +13,20 @@ namespace GameJam_Planner
     {
         public static Form_Board Board;
         bool exiting = false;
+
+        public DataTable tb = new DataTable();
         public Form_Board()
         {
             InitializeComponent();
             Class_Spawner.Spawner = new Class_Spawner();
             this.KeyDown += new KeyEventHandler(Form_Board_KeyDown);
+            tb.Columns.Add("Situation", typeof(bool));
+            tb.Columns.Add("Task", typeof(string));
+            tb.Columns.Add("Managing", typeof(string));
+            tb.AcceptChanges();
+
+         
+            dataGridViewSummary.DataSource = tb;
         }
         private void Form_Board_Load(object sender, EventArgs e)
         {
@@ -251,8 +261,8 @@ namespace GameJam_Planner
         }
         private void buttonCredits_Click(object sender, EventArgs e)
         {
-            string credits = ":Coders:" + "\n" + "\n" + "Fuat Can ERYİĞİT" + "\n" + "\n" + ":Special Thanks:" + "\n" + "\n"
-                + "Muzaffer Erkan KÜPÇÜK" + "\n" + "Taha Buğra ŞENEL" + "Tecelli AKINTUĞ" + "\n" + "Özge Selen BULGU";
+            string credits = ":Coder:" + "\n" + "\n" + "Fuat Can ERYİĞİT" + "\n" + "\n" + ":Special Thanks:" + "\n" + "\n"
+                + "Muzaffer Erkan KÜPÇÜK" + "\n" + "Taha Buğra ŞENEL" + "\n" + "Tecelli AKINTUĞ" + "\n" + "Özge Selen BULGU";
             MessageBox.Show(credits);
         }
         private void buttonExit_Click(object sender, EventArgs e)
@@ -263,6 +273,11 @@ namespace GameJam_Planner
         {
             panelSummary.Enabled = true;
             panelSummary.Visible = true;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

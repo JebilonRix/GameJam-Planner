@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -29,6 +30,7 @@ namespace GameJam_Planner
                 default: break;
             }
 
+            // Form_Board.Board.tb.Rows.Add(false, groupBox.Text, "");
             groupBox.Location = SpawnLocation;
             groupBox.ForeColor = Color.White;
 
@@ -117,7 +119,7 @@ namespace GameJam_Planner
             return addButton;
         }
 
-     
+
 
         public CustomGroupBox Spawn_Note()
         {
@@ -126,6 +128,7 @@ namespace GameJam_Planner
             RichTextBox(groupBox);
             groupBox.isLocked = false;
             LockButton(groupBox, groupBox.isLocked);
+
 
 
             MyBoxesNote.Add(groupBox);
