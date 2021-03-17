@@ -12,20 +12,20 @@ namespace GameJam_Planner
     public partial class Form_Board : Form
     {
         public static Form_Board Board;
-        bool exiting = false;
-
         public DataTable tb = new DataTable();
+
+        string SavePath;
+
         public Form_Board()
         {
             InitializeComponent();
-            Class_Spawner.Spawner = new Class_Spawner();
+            Spawn_Box.Spawner = new Spawn_Box();
             this.KeyDown += new KeyEventHandler(Form_Board_KeyDown);
             tb.Columns.Add("Situation", typeof(bool));
             tb.Columns.Add("Task", typeof(string));
             tb.Columns.Add("Managing", typeof(string));
             tb.AcceptChanges();
 
-         
             dataGridViewSummary.DataSource = tb;
         }
         private void Form_Board_Load(object sender, EventArgs e)
@@ -35,29 +35,44 @@ namespace GameJam_Planner
             this.Controls.Add(panelSummary);
             this.Controls.Add(panelMenu);
             this.KeyPreview = true;
-            GetMainValues();
         }
-        private void RightClickToDo_Click(object sender, EventArgs e)
+        private void RightClickNote_Click(object sender, EventArgs e)
         {
-            SpawnToDo();
+            Point cp = PointToClient(Cursor.Position);
+            Spawn_Box.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
+            var BoxSpawn = Spawn_Box.Spawner.Spawn_A_Box(0);
+            this.Controls.Add(BoxSpawn);
+            BoxSpawn.BringToFront();
         }
         private void RightClickPicture_Click(object sender, EventArgs e)
         {
-            SpawnPic();
+            Point cp = PointToClient(Cursor.Position);
+            Spawn_Box.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
+            var BoxSpawn = Spawn_Box.Spawner.Spawn_A_Box(1);
+            try
+            {
+                this.Controls.Add(BoxSpawn);
+            }
+            catch (Exception)
+            {
+                //We'll bang, OK!
+            }
+
+            BoxSpawn.BringToFront();
         }
-        private void RightClickBox_Click(object sender, EventArgs e)
+        private void RightClickToDo_Click(object sender, EventArgs e)
         {
-            SpawnBox();
-        }
-        private void Form_Board_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            CloseProgram(sender, e, "x");
+            Point cp = PointToClient(Cursor.Position);
+            Spawn_Box.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
+            var BoxSpawn = Spawn_Box.Spawner.Spawn_A_Box(2);
+            this.Controls.Add(BoxSpawn);
+            BoxSpawn.BringToFront();
         }
         private void Form_Board_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.S)
             {
-                SetMainValues();
+                SetMainValues(SavePath);
                 e.SuppressKeyPress = true;
                 PopupNotifier pop = new PopupNotifier();
                 pop.TitleText = "Planner";
@@ -68,76 +83,32 @@ namespace GameJam_Planner
                 pop.Popup();
             }
         }
+        public void GetMainValues(string location)
+        {
+            List<JsonBox> Panter = new List<JsonBox>();
 
-
-        private void SpawnBox()
-        {
-            Point cp = PointToClient(Cursor.Position);
-            Class_Spawner.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
-            var BoxSpawn = Class_Spawner.Spawner.Spawn_Note();
-            this.Controls.Add(BoxSpawn);
-            BoxSpawn.BringToFront();
-        }
-        private void SpawnPic()
-        {
-            Point cp = PointToClient(Cursor.Position);
-            Class_Spawner.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
-            var BoxSpawn = Class_Spawner.Spawner.Spawn_Picture();
-            try
-            {
-                this.Controls.Add(BoxSpawn);
-            }
-            catch (Exception)
-            {
-                //We'll bang, OK!
-            }
-            BoxSpawn.BringToFront();
-        }
-        private void SpawnToDo()
-        {
-            Point cp = PointToClient(Cursor.Position);
-            Class_Spawner.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
-            var BoxSpawn = Class_Spawner.Spawner.Spawn_ToDo();
-            this.Controls.Add(BoxSpawn);
-            BoxSpawn.BringToFront();
-        }
-        public void GetMainValues()
-        {
-            if (!File.Exists(@"Note") || !File.Exists(@"Picture") || !File.Exists(@"ToDo")) { return; }
-            List<JsonNoteBox> Panter = new List<JsonNoteBox>();
-            List<JsonPictureBox> Noir = new List<JsonPictureBox>();
-            List<JsonToDoBox> Queen = new List<JsonToDoBox>();
-
-            using (StreamReader sr = new StreamReader(@"Note"))
+            using (StreamReader sr = new StreamReader(location))
             {
                 string noteJsonInput = sr.ReadToEnd();
-                Panter = JsonConvert.DeserializeObject<List<JsonNoteBox>>(noteJsonInput);
-            }
-            using (StreamReader sr = new StreamReader(@"Picture"))
-            {
-                string noteJsonInput = sr.ReadToEnd();
-                Noir = JsonConvert.DeserializeObject<List<JsonPictureBox>>(noteJsonInput);
-            }
-            using (StreamReader sr = new StreamReader(@"ToDo"))
-            {
-                string noteJsonInput = sr.ReadToEnd();
-                Queen = JsonConvert.DeserializeObject<List<JsonToDoBox>>(noteJsonInput);
+                Panter = JsonConvert.DeserializeObject<List<JsonBox>>(noteJsonInput);
             }
             foreach (var item in Panter)
             {
-                CustomGroupBox cb = Class_Spawner.Spawner.Spawn_Note_With_Json(item);
-                this.Controls.Add(cb);
+                switch (item.BoxType)
+                {
+                    case "note":
+                        CustomGroupBox cc = Spawn_Box.Spawner.Spawn_Json_A_Box(0, item);
+                        this.Controls.Add(cc); break;
+                    case "pic":
+                        CustomGroupBox aa = Spawn_Box.Spawner.Spawn_Json_A_Box(1, item);
+                        this.Controls.Add(aa); break;
+                    case "do":
+                        CustomGroupBox bb = Spawn_Box.Spawner.Spawn_Json_A_Box(2, item);
+                        this.Controls.Add(bb); break;
+                    default: break;
+                }
             }
-            foreach (var item in Noir)
-            {
-                CustomGroupBox cb = Class_Spawner.Spawner.Spawn_Picture_With_Json(item);
-                this.Controls.Add(cb);
-            }
-            foreach (var item in Queen)
-            {
-                CustomGroupBox cb = Class_Spawner.Spawner.Spawn_ToDo_With_Json(item);
-                this.Controls.Add(cb);
-            }
+
             textBox1.Text = Properties.Settings.Default.Group;
             textBox2.Text = Properties.Settings.Default.Name;
             textBox3.Text = Properties.Settings.Default.Theme;
@@ -145,22 +116,12 @@ namespace GameJam_Planner
             textBox5.Text = Properties.Settings.Default.ArtStyle;
             comboBox1.SelectedItem = Properties.Settings.Default.GameEngine;
         }
-        public void SetMainValues()
+        public void SetMainValues(string location)
         {
-            List<JsonNoteBox> Panter = new List<JsonNoteBox>();
-            foreach (var item in Class_Spawner.Spawner.MyBoxesNote) { Panter.Add(item.ConvertJsonNoteBox()); }
-            string MyNoteJson = JsonConvert.SerializeObject(Panter);
-            using (StreamWriter sr = new StreamWriter(@"Note")) { sr.Write(MyNoteJson); }
-
-            List<JsonPictureBox> Noir = new List<JsonPictureBox>();
-            foreach (var item in Class_Spawner.Spawner.MyBoxesPicture) { Noir.Add(item.ConvertJsonPictureBox()); }
-            string MyPictureJson = JsonConvert.SerializeObject(Noir);
-            using (StreamWriter sr = new StreamWriter(@"Picture")) { sr.Write(MyPictureJson); }
-
-            List<JsonToDoBox> Queen = new List<JsonToDoBox>();
-            foreach (var item in Class_Spawner.Spawner.MyBoxesToDo) { Queen.Add(item.ConvertJsonToDoBox()); }
-            string MyToDoJson = JsonConvert.SerializeObject(Queen);
-            using (StreamWriter sr = new StreamWriter(@"ToDo")) { sr.Write(MyToDoJson); }
+            List<JsonBox> Skull = new List<JsonBox>();
+            foreach (var item in Spawn_Box.Spawner.MyBoxList) { Skull.Add(item.ConvertJsonBox()); }
+            string MyBoxJson = JsonConvert.SerializeObject(Skull);
+            using (StreamWriter sr = new StreamWriter(location)) { sr.Write(MyBoxJson); }
 
             Properties.Settings.Default.Group = textBox1.Text;
             Properties.Settings.Default.Name = textBox2.Text;
@@ -174,29 +135,6 @@ namespace GameJam_Planner
 
             Properties.Settings.Default.Save();
         }
-        private void CloseProgram(object sender, EventArgs e, string exitingtype)
-        {
-            if (exiting)
-            {
-                Application.Exit();
-            }
-            else
-            {
-                DialogResult dialog = MessageBox.Show("Are you sure?", "Exit", MessageBoxButtons.YesNo);
-                if (dialog == DialogResult.Yes)
-                {
-                    exiting = true;
-                    buttonSave_Click(sender, e);
-                    Application.Exit();
-                }
-                else if (dialog == DialogResult.No && exitingtype == "x")
-                {
-                    var f = e as FormClosingEventArgs;
-                    f.Cancel = true;
-                }
-            }
-        }
-
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -213,14 +151,6 @@ namespace GameJam_Planner
             panelMain.Visible = true;
             panelMain.Enabled = true;
         }
-        private void buttonSave_Click(object sender, EventArgs e)
-        {
-            SetMainValues();
-            if (!exiting)
-            {
-                MessageBox.Show("Saved");
-            }
-        }
         private void buttonHints_Click(object sender, EventArgs e)
         {
             string message = "Please, press your right mouse button for adding boxes.";
@@ -232,22 +162,29 @@ namespace GameJam_Planner
 
             if (dialog == DialogResult.Yes)
             {
-                foreach (var item in Class_Spawner.Spawner.MyBoxesNote)
-                {
-                    item.Dispose();
-                }
-                foreach (var item in Class_Spawner.Spawner.MyBoxesPicture)
-                {
-                    item.Dispose();
-                }
-                foreach (var item in Class_Spawner.Spawner.MyBoxesToDo)
+                //foreach (var item in Class_Spawner.Spawner.MyBoxesNote)
+                //{
+                //    item.Dispose();
+                //}
+                //foreach (var item in Class_Spawner.Spawner.MyBoxesPicture)
+                //{
+                //    item.Dispose();
+                //}
+                //foreach (var item in Class_Spawner.Spawner.MyBoxesToDo)
+                //{
+                //    item.Dispose();
+                //}
+
+                //Class_Spawner.Spawner.MyBoxesNote = new List<CustomGroupBox>();
+                //Class_Spawner.Spawner.MyBoxesPicture = new List<CustomGroupBox>();
+                //Class_Spawner.Spawner.MyBoxesToDo = new List<CustomGroupBox>();
+
+                foreach (var item in Spawn_Box.Spawner.MyBoxList)
                 {
                     item.Dispose();
                 }
 
-                Class_Spawner.Spawner.MyBoxesNote = new List<CustomGroupBox>();
-                Class_Spawner.Spawner.MyBoxesPicture = new List<CustomGroupBox>();
-                Class_Spawner.Spawner.MyBoxesToDo = new List<CustomGroupBox>();
+                Spawn_Box.Spawner.MyBoxList = new List<CustomGroupBox>();
 
                 textBox1.Text = "";
                 textBox2.Text = "";
@@ -265,9 +202,54 @@ namespace GameJam_Planner
                 + "Muzaffer Erkan KÜPÇÜK" + "\n" + "Taha Buğra ŞENEL" + "\n" + "Tecelli AKINTUĞ" + "\n" + "Özge Selen BULGU";
             MessageBox.Show(credits);
         }
+        private void buttonLoad_Click(object sender, EventArgs e)
+        {
+            foreach (var item in Spawn_Box.Spawner.MyBoxList)
+            {
+                item.Dispose();
+            }
+
+            Spawn_Box.Spawner.MyBoxList = new List<CustomGroupBox>();
+
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox3.Text = "";
+            textBox4.Text = "";
+            textBox5.Text = "";
+            comboBox1.SelectedItem = null;
+
+            using (OpenFileDialog ofd = new OpenFileDialog())
+            {
+                if (ofd.ShowDialog() == DialogResult.OK)
+                {
+                    SavePath = ofd.FileName;
+                    GetMainValues(ofd.FileName);
+                    MessageBox.Show("Ta-daa");
+                }
+            }
+        }
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    SetMainValues(sfd.FileName);
+                    SavePath = sfd.FileName;
+                    MessageBox.Show("Saved");
+                }
+            }
+        }
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            CloseProgram(sender, e, "Menu");
+            DialogResult dialog = MessageBox.Show("Do you want to save?", "Exit", MessageBoxButtons.YesNoCancel);
+
+            switch (dialog)
+            {
+                case DialogResult.Yes: SetMainValues(SavePath); Application.Exit(); break;
+                case DialogResult.No: Application.Exit(); break;
+                case DialogResult.Cancel: break;
+            }
         }
         private void buttonSummary_Click(object sender, EventArgs e)
         {
@@ -275,9 +257,5 @@ namespace GameJam_Planner
             panelSummary.Visible = true;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

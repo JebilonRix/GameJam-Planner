@@ -5,19 +5,18 @@ using System.Windows.Forms;
 
 namespace GameJam_Planner
 {
-    public class Class_Spawner
+    public class Spawn_Box
     {
-        public static Class_Spawner Spawner;
+        public static Spawn_Box Spawner;
         public string TypeOfBox, CheckListItemText, DefaultTitle;
         public Point SpawnLocation;
-        public List<CustomGroupBox> MyBoxesNote = new List<CustomGroupBox>();
-        public List<CustomGroupBox> MyBoxesPicture = new List<CustomGroupBox>();
-        public List<CustomGroupBox> MyBoxesToDo = new List<CustomGroupBox>();
+
+        public List<CustomGroupBox> MyBoxList = new List<CustomGroupBox>();
+
+        int box_id;
 
         static string[] boxtype = { "note", "pic", "do" };
-
-
-        public Class_Spawner() { }
+        public Spawn_Box() { }
         public CustomGroupBox GroupBox(int type)
         {
             CustomGroupBox groupBox = new CustomGroupBox(type);
@@ -30,7 +29,6 @@ namespace GameJam_Planner
                 default: break;
             }
 
-            // Form_Board.Board.tb.Rows.Add(false, groupBox.Text, "");
             groupBox.Location = SpawnLocation;
             groupBox.ForeColor = Color.White;
 
@@ -118,111 +116,73 @@ namespace GameJam_Planner
 
             return addButton;
         }
-
-
-
-        public CustomGroupBox Spawn_Note()
+        public CustomGroupBox Spawn_A_Box(int type)
         {
-            TypeOfBox = boxtype[0]; //keyword
-            CustomGroupBox groupBox = GroupBox(0);
-            RichTextBox(groupBox);
+            TypeOfBox = boxtype[type];
+            CustomGroupBox groupBox = GroupBox(type);
             groupBox.isLocked = false;
             LockButton(groupBox, groupBox.isLocked);
+            MyBoxList.Add(groupBox);
+            groupBox.BoxID = box_id;
+            groupBox.BoxType = TypeOfBox;
+            box_id++;
 
-
-
-            MyBoxesNote.Add(groupBox);
-            return groupBox;
-        }
-        public CustomGroupBox Spawn_Picture()
-        {
-            TypeOfBox = boxtype[1];
-            CustomGroupBox groupBox = GroupBox(1);
-            PictureBox(groupBox);
-            groupBox.isLocked = false;
-            LockButton(groupBox, groupBox.isLocked);
-
-            MyBoxesPicture.Add(groupBox);
-            return groupBox;
-        }
-        public CustomGroupBox Spawn_ToDo()
-        {
-            TypeOfBox = boxtype[2];
-            CustomGroupBox groupBox = GroupBox(2);
-            CheckedListBox(groupBox);
-            AddButton(groupBox);
-            groupBox.isLocked = false;
-            LockButton(groupBox, groupBox.isLocked);
-
-            MyBoxesToDo.Add(groupBox);
-            return groupBox;
-        }
-        public CustomGroupBox Spawn_Note_With_Json(JsonNoteBox jsonInput)
-        {
-            TypeOfBox = boxtype[0]; //keyword
-            CustomGroupBox groupBox = GroupBox(0);
-            groupBox.BoxID = jsonInput.BoxID;
-            groupBox.Text = jsonInput.BoxTitle;
-            groupBox.Location = jsonInput.BoxLocation;
-            groupBox.BackColor = jsonInput.BoxBackColor;
-
-            RichTextBox(groupBox);
-            groupBox.rtb.Text = jsonInput.RichText;
-
-            groupBox.isLocked = jsonInput.BoxIsLocked;
-            Button lockbutton = LockButton(groupBox, groupBox.isLocked);
-            lockbutton.BackColor = jsonInput.LocButtonBackground;
-
-            MyBoxesNote.Add(groupBox);
-            return groupBox;
-        }
-        public CustomGroupBox Spawn_Picture_With_Json(JsonPictureBox jsonInput)
-        {
-            TypeOfBox = boxtype[1]; //keyword
-            CustomGroupBox groupBox = GroupBox(0);
-            groupBox.BoxID = jsonInput.BoxID;
-            groupBox.Text = jsonInput.BoxTitle;
-            groupBox.Location = jsonInput.BoxLocation;
-            groupBox.BackColor = jsonInput.BoxBackColor;
-
-            PictureBox picBox = new PictureBox();
-            picBox.Location = new Point(6, 45);
-            picBox.Size = new Size(220, 150);
-            picBox.SizeMode = PictureBoxSizeMode.StretchImage;
-            picBox.Image = new Bitmap(jsonInput.PictureLocation);
-            groupBox.Controls.Add(picBox);
-            groupBox.LocationOfPicture = jsonInput.PictureLocation;
-
-            groupBox.isLocked = jsonInput.BoxIsLocked;
-            Button lockbutton = LockButton(groupBox, groupBox.isLocked);
-            lockbutton.BackColor = jsonInput.LocButtonBackground;
-
-            MyBoxesNote.Add(groupBox);
-            return groupBox;
-        }
-        public CustomGroupBox Spawn_ToDo_With_Json(JsonToDoBox jsonInput)
-        {
-            TypeOfBox = boxtype[2];
-            CustomGroupBox groupBox = GroupBox(2);
-            groupBox.BoxID = jsonInput.BoxID;
-            groupBox.Text = jsonInput.BoxTitle;
-            groupBox.Location = jsonInput.BoxLocation;
-            groupBox.BackColor = jsonInput.BoxBackColor;
-
-            CheckedListBox(groupBox);
-
-            for (int i = 0; i < jsonInput.ItemID.Length; i++)
+            if (type == 0)
             {
-                groupBox.MyTodoList.Items.Add(jsonInput.ItemName[i], jsonInput.ItemChecked[i]);
-                groupBox.MyTodoList.Items[i] = jsonInput.ItemName[i];
+                RichTextBox(groupBox);
+            }
+            else if (type == 1)
+            {
+                PictureBox(groupBox);
+            }
+            else if (type == 2)
+            {
+                CheckedListBox(groupBox);
+                AddButton(groupBox);
             }
 
+            return groupBox;
+        }
+        public CustomGroupBox Spawn_Json_A_Box(int type, JsonBox jsonInput)
+        {
+            TypeOfBox = boxtype[type];
+            CustomGroupBox groupBox = GroupBox(type);
+            groupBox.BoxID = jsonInput.BoxID;
+            groupBox.Text = jsonInput.BoxTitle;
+            groupBox.Location = jsonInput.BoxLocation;
+            groupBox.BackColor = jsonInput.BoxBackColor;
+            groupBox.BoxType = jsonInput.BoxType;
             groupBox.isLocked = jsonInput.BoxIsLocked;
             Button lockbutton = LockButton(groupBox, groupBox.isLocked);
-            lockbutton.BackColor = jsonInput.LocButtonBackground;
-            AddButton(groupBox);
+            lockbutton.BackColor = jsonInput.LockButtonBackground;
+            MyBoxList.Add(groupBox);
 
-            MyBoxesToDo.Add(groupBox);
+            if (type == 0)
+            {
+                RichTextBox(groupBox);
+                groupBox.rtb.Text = jsonInput.RichText;
+            }
+            else if (type == 1)
+            {
+                PictureBox picBox = new PictureBox();
+                picBox.Location = new Point(6, 45);
+                picBox.Size = new Size(220, 150);
+                picBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                picBox.Image = new Bitmap(jsonInput.PictureLocation);
+                groupBox.Controls.Add(picBox);
+                groupBox.LocationOfPicture = jsonInput.PictureLocation;
+            }
+            else if (type == 2)
+            {
+                AddButton(groupBox);
+                CheckedListBox(groupBox);
+                for (int i = 0; i < jsonInput.ItemID.Length; i++)
+                {
+                    groupBox.MyTodoList.Items.Add(jsonInput.ItemName[i], jsonInput.ItemChecked[i]);
+                    groupBox.MyTodoList.Items[i] = jsonInput.ItemName[i];
+                }
+            }
+
             return groupBox;
         }
     }

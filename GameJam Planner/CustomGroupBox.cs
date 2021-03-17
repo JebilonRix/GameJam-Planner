@@ -14,8 +14,8 @@ namespace GameJam_Planner
         public bool isLocked;
         public CheckedListBox MyTodoList;
         public int BoxID;
+        public string BoxType;
         public RichTextBox rtb;
-        
 
         ContextMenu cm = new ContextMenu();
         Form_CustomMessageBox FNC = new Form_CustomMessageBox();
@@ -29,22 +29,22 @@ namespace GameJam_Planner
             if (type == 0)
             {
                 SetUpContextMenuNoteBox();
-                MyLockButton = Class_Spawner.Spawner.LockButton(this, isLocked);
+                MyLockButton = Spawn_Box.Spawner.LockButton(this, isLocked);
                 MyLockButton.Click += ButtonLock_Click;
-          
+
             }
             else if (type == 1)
             {
                 SetUpContextMenuPic();
-                MyLockButton = Class_Spawner.Spawner.LockButton(this, isLocked);
+                MyLockButton = Spawn_Box.Spawner.LockButton(this, isLocked);
                 MyLockButton.Click += ButtonLock_Click;
             }
             else if (type == 2)
             {
                 SetUpContextMenuToDo();
-                MyLockButton = Class_Spawner.Spawner.LockButton(this, isLocked);
+                MyLockButton = Spawn_Box.Spawner.LockButton(this, isLocked);
                 MyLockButton.Click += ButtonLock_Click;
-                MyAddButton = Class_Spawner.Spawner.AddButton(this);
+                MyAddButton = Spawn_Box.Spawner.AddButton(this);
                 MyAddButton.Click += AddButton_Click;
             }
 
@@ -52,7 +52,7 @@ namespace GameJam_Planner
         protected override void OnMouseDown(MouseEventArgs e)
         {
             point = e.Location;
-            string TypeOfBox = Class_Spawner.Spawner.TypeOfBox;
+            string TypeOfBox = Spawn_Box.Spawner.TypeOfBox;
 
             switch (TypeOfBox)
             {
@@ -138,12 +138,12 @@ namespace GameJam_Planner
         private void Delete_Click(object sender, EventArgs e)
         {
             this.Dispose();
-            string typeofbox = Class_Spawner.Spawner.TypeOfBox;
+            string typeofbox = Spawn_Box.Spawner.TypeOfBox;
             switch (typeofbox)
             {
-                case "note": Class_Spawner.Spawner.MyBoxesNote.Remove(this); break;
-                case "pic": Class_Spawner.Spawner.MyBoxesPicture.Remove(this); break;
-                case "do": Class_Spawner.Spawner.MyBoxesToDo.Remove(this); break;
+                case "note": Spawn_Box.Spawner.MyBoxList.Remove(this); break;
+                case "pic": Spawn_Box.Spawner.MyBoxList.Remove(this); break;
+                case "do": Spawn_Box.Spawner.MyBoxList.Remove(this); break;
                 default: break;
             }
         }
@@ -151,7 +151,6 @@ namespace GameJam_Planner
         {
             FNC.ShowDialog();
             this.Text = FNC.Joker;
-         //   Form_Board.Board.tb.Rows.Add(false, this.Text, "");
         }
         private void AddPicture_Click(object sender, EventArgs e)
         {
@@ -164,6 +163,7 @@ namespace GameJam_Planner
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
                 ofd.Filter = "(*.BMP; *.JPG; *.JPEG; *.GIF *.PNG;)| *.BMP; *.JPG; .JPEG; *.GIF;*.PNG; | All files(*.*) | *.*";
+
                 if (ofd.ShowDialog() == DialogResult.OK)
                 {
                     img = new Bitmap(ofd.FileName);
@@ -173,12 +173,13 @@ namespace GameJam_Planner
                 else
                 {
                     this.Dispose();
-                    Class_Spawner.Spawner.MyBoxesPicture.Remove(this);
+                    Spawn_Box.Spawner.MyBoxList.Remove(this);
                 }
             }
 
             return img;
         }
+
 
         public JsonNoteBox ConvertJsonNoteBox()
         {
@@ -208,7 +209,7 @@ namespace GameJam_Planner
             output.BoxBackColor = BackColor;
             output.BoxIsLocked = isLocked;
             output.PictureLocation = LocationOfPicture;
-            output.LocButtonBackground = MyLockButton.BackColor;
+            output.LockButtonBackground = MyLockButton.BackColor;
 
             return output;
         }
@@ -220,7 +221,7 @@ namespace GameJam_Planner
             output.BoxLocation = Location;
             output.BoxBackColor = BackColor;
             output.BoxIsLocked = isLocked;
-            output.LocButtonBackground = MyLockButton.BackColor;
+            output.LockButtonBackground = MyLockButton.BackColor;
 
             int len = MyTodoList.Items.Count;
 
@@ -237,8 +238,59 @@ namespace GameJam_Planner
             }
             return output;
         }
-    }
+        public JsonBox ConvertJsonBox()
+        {
+            JsonBox output = new JsonBox();
+            output.BoxID = BoxID;
+            output.BoxType = BoxType;
+            output.BoxTitle = Text;
+            output.BoxLocation = Location;
+            output.BoxBackColor = BackColor;
+            output.BoxIsLocked = isLocked;
+            output.LockButtonBackground = MyLockButton.BackColor;
 
+            switch (output.BoxType)
+            {
+                case "note":
+                    if (rtb.Text == null) { rtb.Text = ""; }
+                    output.RichText = rtb.Text;
+                    break;
+                case "pic":
+                    output.PictureLocation = LocationOfPicture;
+                    break;
+                case "do":
+                    int len = MyTodoList.Items.Count;
+                    output.ItemID = new int[len];
+                    output.ItemName = new string[len];
+                    output.ItemChecked = new bool[len];
+                    for (int i = 0; i < len; i++)
+                    {
+                        output.ItemID[i] = i;
+                        output.ItemName[i] = MyTodoList.Items[i].ToString();
+                        output.ItemChecked[i] = MyTodoList.GetItemChecked(i);
+
+                    }
+                    break;
+                default: break;
+            }
+            return output;
+        }
+    }
+    public class JsonBox
+    {
+        public int BoxID { get; set; }
+        public string BoxType { get; set; }
+        public string BoxTitle { get; set; }
+        public Point BoxLocation { get; set; }
+        public Color BoxBackColor { get; set; }
+        public bool BoxIsLocked { get; set; }
+        public Color LockButtonBackground { get; set; }
+        public string RichText { get; set; }
+        public string PictureLocation { get; set; }
+        public int[] ItemID { get; set; }
+        public string[] ItemName { get; set; }
+        public bool[] ItemChecked { get; set; }
+    }
     public class JsonNoteBox
     {
         public int BoxID { get; set; }
@@ -246,8 +298,8 @@ namespace GameJam_Planner
         public Point BoxLocation { get; set; }
         public Color BoxBackColor { get; set; }
         public bool BoxIsLocked { get; set; }
-        public string RichText { get; set; }
         public Color LocButtonBackground { get; set; }
+        public string RichText { get; set; }
     }
     public class JsonPictureBox
     {
@@ -256,8 +308,8 @@ namespace GameJam_Planner
         public Point BoxLocation { get; set; }
         public Color BoxBackColor { get; set; }
         public bool BoxIsLocked { get; set; }
+        public Color LockButtonBackground { get; set; }
         public string PictureLocation { get; set; }
-        public Color LocButtonBackground { get; set; }
     }
     public class JsonToDoBox
     {
@@ -266,9 +318,10 @@ namespace GameJam_Planner
         public Point BoxLocation { get; set; }
         public Color BoxBackColor { get; set; }
         public bool BoxIsLocked { get; set; }
+        public Color LockButtonBackground { get; set; }
         public int[] ItemID { get; set; }
         public string[] ItemName { get; set; }
         public bool[] ItemChecked { get; set; }
-        public Color LocButtonBackground { get; set; }
     }
+   
 }

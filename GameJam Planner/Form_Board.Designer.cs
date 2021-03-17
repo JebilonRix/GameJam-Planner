@@ -30,8 +30,6 @@ namespace GameJam_Planner
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Board));
             this.RightClickToBox = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.RightClickBox = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,8 +59,9 @@ namespace GameJam_Planner
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridViewSummary = new System.Windows.Forms.DataGridView();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.buttonSummary = new System.Windows.Forms.Button();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.buttonLoad = new System.Windows.Forms.Button();
+            this.buttonSummary = new System.Windows.Forms.Button();
             this.buttonCredits = new System.Windows.Forms.Button();
             this.buttonClear = new System.Windows.Forms.Button();
             this.buttonHints = new System.Windows.Forms.Button();
@@ -90,7 +89,7 @@ namespace GameJam_Planner
             this.RightClickBox.Name = "RightClickBox";
             this.RightClickBox.Size = new System.Drawing.Size(170, 22);
             this.RightClickBox.Text = "Add Box";
-            this.RightClickBox.Click += new System.EventHandler(this.RightClickBox_Click);
+            this.RightClickBox.Click += new System.EventHandler(this.RightClickNote_Click);
             // 
             // RightClickPicture
             // 
@@ -334,37 +333,21 @@ namespace GameJam_Planner
             this.dataGridViewSummary.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewSummary.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.dataGridViewSummary.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSummary.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSummary.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.dataGridViewSummary.Location = new System.Drawing.Point(23, 25);
             this.dataGridViewSummary.MultiSelect = false;
             this.dataGridViewSummary.Name = "dataGridViewSummary";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSummary.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewSummary.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewSummary.Size = new System.Drawing.Size(308, 580);
             this.dataGridViewSummary.TabIndex = 0;
-            this.dataGridViewSummary.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.Gray;
-            this.panelMenu.Controls.Add(this.buttonSummary);
             this.panelMenu.Controls.Add(this.buttonExit);
+            this.panelMenu.Controls.Add(this.buttonLoad);
+            this.panelMenu.Controls.Add(this.buttonSummary);
             this.panelMenu.Controls.Add(this.buttonCredits);
             this.panelMenu.Controls.Add(this.buttonClear);
             this.panelMenu.Controls.Add(this.buttonHints);
@@ -375,6 +358,28 @@ namespace GameJam_Planner
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(877, 40);
             this.panelMenu.TabIndex = 20;
+            // 
+            // buttonExit
+            // 
+            this.buttonExit.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonExit.Location = new System.Drawing.Point(588, 8);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(75, 23);
+            this.buttonExit.TabIndex = 8;
+            this.buttonExit.Text = "Exit";
+            this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
+            // buttonLoad
+            // 
+            this.buttonLoad.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.buttonLoad.Location = new System.Drawing.Point(183, 9);
+            this.buttonLoad.Name = "buttonLoad";
+            this.buttonLoad.Size = new System.Drawing.Size(75, 23);
+            this.buttonLoad.TabIndex = 7;
+            this.buttonLoad.Text = "Load";
+            this.buttonLoad.UseVisualStyleBackColor = true;
+            this.buttonLoad.Click += new System.EventHandler(this.buttonLoad_Click);
             // 
             // buttonSummary
             // 
@@ -387,21 +392,10 @@ namespace GameJam_Planner
             this.buttonSummary.UseVisualStyleBackColor = true;
             this.buttonSummary.Click += new System.EventHandler(this.buttonSummary_Click);
             // 
-            // buttonExit
-            // 
-            this.buttonExit.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonExit.Location = new System.Drawing.Point(507, 10);
-            this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(75, 23);
-            this.buttonExit.TabIndex = 5;
-            this.buttonExit.Text = "Exit";
-            this.buttonExit.UseVisualStyleBackColor = true;
-            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
-            // 
             // buttonCredits
             // 
             this.buttonCredits.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonCredits.Location = new System.Drawing.Point(426, 9);
+            this.buttonCredits.Location = new System.Drawing.Point(507, 9);
             this.buttonCredits.Name = "buttonCredits";
             this.buttonCredits.Size = new System.Drawing.Size(75, 23);
             this.buttonCredits.TabIndex = 4;
@@ -412,7 +406,7 @@ namespace GameJam_Planner
             // buttonClear
             // 
             this.buttonClear.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonClear.Location = new System.Drawing.Point(345, 8);
+            this.buttonClear.Location = new System.Drawing.Point(426, 8);
             this.buttonClear.Name = "buttonClear";
             this.buttonClear.Size = new System.Drawing.Size(75, 23);
             this.buttonClear.TabIndex = 3;
@@ -423,7 +417,7 @@ namespace GameJam_Planner
             // buttonHints
             // 
             this.buttonHints.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonHints.Location = new System.Drawing.Point(264, 8);
+            this.buttonHints.Location = new System.Drawing.Point(345, 8);
             this.buttonHints.Name = "buttonHints";
             this.buttonHints.Size = new System.Drawing.Size(75, 23);
             this.buttonHints.TabIndex = 2;
@@ -434,7 +428,7 @@ namespace GameJam_Planner
             // buttonSave
             // 
             this.buttonSave.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonSave.Location = new System.Drawing.Point(183, 9);
+            this.buttonSave.Location = new System.Drawing.Point(264, 9);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 1;
@@ -445,7 +439,7 @@ namespace GameJam_Planner
             // buttonMain
             // 
             this.buttonMain.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.buttonMain.Location = new System.Drawing.Point(18, 9);
+            this.buttonMain.Location = new System.Drawing.Point(18, 8);
             this.buttonMain.Name = "buttonMain";
             this.buttonMain.Size = new System.Drawing.Size(75, 23);
             this.buttonMain.TabIndex = 0;
@@ -470,7 +464,6 @@ namespace GameJam_Planner
             this.Name = "Form_Board";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "GameJam Planner";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Board_FormClosing);
             this.Load += new System.EventHandler(this.Form_Board_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form_Board_KeyDown);
             this.RightClickToBox.ResumeLayout(false);
@@ -513,13 +506,14 @@ namespace GameJam_Planner
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Panel panelMenu;
-        private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Button buttonCredits;
         private System.Windows.Forms.Button buttonClear;
         private System.Windows.Forms.Button buttonHints;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonMain;
         private System.Windows.Forms.Button buttonSummary;
+        private System.Windows.Forms.Button buttonLoad;
+        private System.Windows.Forms.Button buttonExit;
     }
 }
 
