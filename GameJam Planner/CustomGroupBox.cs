@@ -8,20 +8,19 @@ namespace GameJam_Planner
     public class CustomGroupBox : GroupBox
     {
         public static CustomGroupBox CGB;
-
-        public Point point;
-        public Point MousePush;
-        public bool isLocked;
         public CheckedListBox MyTodoList;
-        public int BoxID;
-        public string BoxType;
+        public string LocationOfPicture;
         public RichTextBox rtb;
+        public Point MousePush;
+        public string BoxType;
+        public bool isLocked;
+        public Point point;
+        public int BoxID;
 
-        ContextMenu cm = new ContextMenu();
         Form_CustomMessageBox FNC = new Form_CustomMessageBox();
+        ContextMenu cm = new ContextMenu();
         Button MyLockButton;
         Button MyAddButton;
-        public string LocationOfPicture;
 
         public CustomGroupBox(int type)
         {
@@ -124,7 +123,6 @@ namespace GameJam_Planner
             cm.MenuItems.Add("Delete Line", new EventHandler(ToDoBox_DeleteLine));
         }
 
-
         private void ChangeColor_Click(object sender, EventArgs e)
         {
             using (ColorDialog cd = new ColorDialog())
@@ -179,65 +177,6 @@ namespace GameJam_Planner
 
             return img;
         }
-
-
-        public JsonNoteBox ConvertJsonNoteBox()
-        {
-            JsonNoteBox output = new JsonNoteBox();
-            output.BoxID = BoxID;
-            output.BoxTitle = Text;
-            output.BoxLocation = Location;
-            output.BoxBackColor = BackColor;
-            output.BoxIsLocked = isLocked;
-            output.LocButtonBackground = MyLockButton.BackColor;
-
-            if (rtb.Text == null)
-            {
-                rtb.Text = "";
-            }
-
-            output.RichText = rtb.Text;
-
-            return output;
-        }
-        public JsonPictureBox ConvertJsonPictureBox()
-        {
-            JsonPictureBox output = new JsonPictureBox();
-            output.BoxID = BoxID;
-            output.BoxTitle = Text;
-            output.BoxLocation = Location;
-            output.BoxBackColor = BackColor;
-            output.BoxIsLocked = isLocked;
-            output.PictureLocation = LocationOfPicture;
-            output.LockButtonBackground = MyLockButton.BackColor;
-
-            return output;
-        }
-        public JsonToDoBox ConvertJsonToDoBox()
-        {
-            JsonToDoBox output = new JsonToDoBox();
-            output.BoxID = BoxID;
-            output.BoxTitle = Text;
-            output.BoxLocation = Location;
-            output.BoxBackColor = BackColor;
-            output.BoxIsLocked = isLocked;
-            output.LockButtonBackground = MyLockButton.BackColor;
-
-            int len = MyTodoList.Items.Count;
-
-            output.ItemID = new int[len];
-            output.ItemName = new string[len];
-            output.ItemChecked = new bool[len];
-
-            for (int i = 0; i < len; i++)
-            {
-                output.ItemID[i] = i;
-                output.ItemName[i] = MyTodoList.Items[i].ToString();
-                output.ItemChecked[i] = MyTodoList.GetItemChecked(i);
-
-            }
-            return output;
-        }
         public JsonBox ConvertJsonBox()
         {
             JsonBox output = new JsonBox();
@@ -291,37 +230,4 @@ namespace GameJam_Planner
         public string[] ItemName { get; set; }
         public bool[] ItemChecked { get; set; }
     }
-    public class JsonNoteBox
-    {
-        public int BoxID { get; set; }
-        public string BoxTitle { get; set; }
-        public Point BoxLocation { get; set; }
-        public Color BoxBackColor { get; set; }
-        public bool BoxIsLocked { get; set; }
-        public Color LocButtonBackground { get; set; }
-        public string RichText { get; set; }
-    }
-    public class JsonPictureBox
-    {
-        public int BoxID { get; set; }
-        public string BoxTitle { get; set; }
-        public Point BoxLocation { get; set; }
-        public Color BoxBackColor { get; set; }
-        public bool BoxIsLocked { get; set; }
-        public Color LockButtonBackground { get; set; }
-        public string PictureLocation { get; set; }
-    }
-    public class JsonToDoBox
-    {
-        public int BoxID { get; set; }
-        public string BoxTitle { get; set; }
-        public Point BoxLocation { get; set; }
-        public Color BoxBackColor { get; set; }
-        public bool BoxIsLocked { get; set; }
-        public Color LockButtonBackground { get; set; }
-        public int[] ItemID { get; set; }
-        public string[] ItemName { get; set; }
-        public bool[] ItemChecked { get; set; }
-    }
-   
 }
