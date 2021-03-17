@@ -1,29 +1,33 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace GameJam_Planner
 {
-    public class Spawn_Box
+    public class Class_Box_Spawner
     {
         public List<CustomGroupBox> MyBoxList = new List<CustomGroupBox>();
         public string TypeOfBox, CheckListItemText, DefaultTitle;
-        private static string[] boxtype = { "note", "pic", "do" };
-        public static Spawn_Box Spawner;
+        private static string[] box_type = { "note", "pic", "do" };
+        public static Class_Box_Spawner Spawner;
         public Point SpawnLocation;
         private int box_id;
+        public DataRow dr;
 
-        public Spawn_Box() { }
-        public CustomGroupBox Spawn_A_Box(int type)
+        public Class_Box_Spawner()
         {
-            TypeOfBox = boxtype[type];
+        }
+        public CustomGroupBox SpawnBox(int type)
+        {
+            TypeOfBox = box_type[type];
             CustomGroupBox groupBox = GroupBox(type);
             groupBox.isLocked = false;
-            LockButton(groupBox, groupBox.isLocked);
-            MyBoxList.Add(groupBox);
             groupBox.BoxID = box_id;
             groupBox.BoxType = TypeOfBox;
-            box_id++;
+            LockButton(groupBox, groupBox.isLocked);
+            MyBoxList.Add(groupBox);
+            Summary(groupBox.Text);
 
             if (type == 0)
             {
@@ -39,11 +43,12 @@ namespace GameJam_Planner
                 AddButton(groupBox);
             }
 
+            box_id++;
             return groupBox;
         }
-        public CustomGroupBox Spawn_Json_A_Box(int type, JsonBox jsonInput)
+        public CustomGroupBox SpawnBoxJson(int type, JsonBox jsonInput)
         {
-            TypeOfBox = boxtype[type];
+            TypeOfBox = box_type[type];
             CustomGroupBox groupBox = GroupBox(type);
             groupBox.BoxID = jsonInput.BoxID;
             groupBox.Text = jsonInput.BoxTitle;
@@ -54,6 +59,7 @@ namespace GameJam_Planner
             Button lockbutton = LockButton(groupBox, groupBox.isLocked);
             lockbutton.BackColor = jsonInput.LockButtonBackground;
             MyBoxList.Add(groupBox);
+            Summary(groupBox.Text);
 
             if (type == 0)
             {
@@ -181,6 +187,13 @@ namespace GameJam_Planner
             groupBox.Controls.Add(addButton);
 
             return addButton;
+        }
+        public void Summary(string title)
+        {
+            dr["Situation"] = false;
+            dr["Task"] = title;
+            dr["Managing"] = "";
+            Form_Board.Board.tb.Rows.Add(dr);   //bu hala çalışmıyor
         }
     }
 }

@@ -18,13 +18,14 @@ namespace GameJam_Planner
         public Form_Board()
         {
             InitializeComponent();
-            Spawn_Box.Spawner = new Spawn_Box();
+            Class_Box_Spawner.Spawner = new Class_Box_Spawner();
             this.KeyDown += new KeyEventHandler(Form_Board_KeyDown);
             tb.Columns.Add("Situation", typeof(bool));
             tb.Columns.Add("Task", typeof(string));
             tb.Columns.Add("Managing", typeof(string));
             tb.AcceptChanges();
 
+            Class_Box_Spawner.Spawner.dr = tb.NewRow();
             dataGridViewSummary.DataSource = tb;
         }
         private void Form_Board_Load(object sender, EventArgs e)
@@ -38,8 +39,8 @@ namespace GameJam_Planner
         private void OrtakSeyler(int type)
         {
             Point cp = PointToClient(Cursor.Position);
-            Spawn_Box.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
-            var BoxSpawn = Spawn_Box.Spawner.Spawn_A_Box(type);
+            Class_Box_Spawner.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
+            var BoxSpawn = Class_Box_Spawner.Spawner.SpawnBox(type);
             this.Controls.Add(BoxSpawn);
             BoxSpawn.BringToFront();
         }
@@ -57,13 +58,13 @@ namespace GameJam_Planner
                 switch (item.BoxType)
                 {
                     case "note":
-                        CustomGroupBox cc = Spawn_Box.Spawner.Spawn_Json_A_Box(0, item);
+                        CustomGroupBox cc = Class_Box_Spawner.Spawner.SpawnBoxJson(0, item);
                         this.Controls.Add(cc); break;
                     case "pic":
-                        CustomGroupBox aa = Spawn_Box.Spawner.Spawn_Json_A_Box(1, item);
+                        CustomGroupBox aa = Class_Box_Spawner.Spawner.SpawnBoxJson(1, item);
                         this.Controls.Add(aa); break;
                     case "do":
-                        CustomGroupBox bb = Spawn_Box.Spawner.Spawn_Json_A_Box(2, item);
+                        CustomGroupBox bb = Class_Box_Spawner.Spawner.SpawnBoxJson(2, item);
                         this.Controls.Add(bb); break;
                     default: break;
                 }
@@ -78,9 +79,9 @@ namespace GameJam_Planner
         }
         public void SetMainValues(string location)
         {
-            List<JsonBox> Skull = new List<JsonBox>();
-            foreach (var item in Spawn_Box.Spawner.MyBoxList) { Skull.Add(item.ConvertJsonBox()); }
-            string MyBoxJson = JsonConvert.SerializeObject(Skull);
+            List<JsonBox> Noir = new List<JsonBox>();
+            foreach (var item in Class_Box_Spawner.Spawner.MyBoxList) { Noir.Add(item.ConvertJsonBox()); }
+            string MyBoxJson = JsonConvert.SerializeObject(Noir);
             using (StreamWriter sr = new StreamWriter(location)) { sr.Write(MyBoxJson); }
 
             Properties.Settings.Default.Group = textBox1.Text;
@@ -147,12 +148,12 @@ namespace GameJam_Planner
         }
         private void buttonLoad_Click(object sender, EventArgs e)
         {
-            foreach (var item in Spawn_Box.Spawner.MyBoxList)
+            foreach (var item in Class_Box_Spawner.Spawner.MyBoxList)
             {
                 item.Dispose();
             }
 
-            Spawn_Box.Spawner.MyBoxList = new List<CustomGroupBox>();
+            Class_Box_Spawner.Spawner.MyBoxList = new List<CustomGroupBox>();
 
             textBox1.Text = "";
             textBox2.Text = "";
@@ -189,12 +190,12 @@ namespace GameJam_Planner
 
             if (dialog == DialogResult.Yes)
             {
-                foreach (var item in Spawn_Box.Spawner.MyBoxList)
+                foreach (var item in Class_Box_Spawner.Spawner.MyBoxList)
                 {
                     item.Dispose();
                 }
 
-                Spawn_Box.Spawner.MyBoxList = new List<CustomGroupBox>();
+                Class_Box_Spawner.Spawner.MyBoxList = new List<CustomGroupBox>();
 
                 textBox1.Text = "";
                 textBox2.Text = "";
@@ -235,7 +236,7 @@ namespace GameJam_Planner
                             }
                         }
                     }
-                    SetMainValues(SavePath); 
+                    SetMainValues(SavePath);
                     Application.Exit(); break;
                 case DialogResult.No: Application.Exit(); break;
                 case DialogResult.Cancel: break;

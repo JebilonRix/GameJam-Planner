@@ -61,7 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Spawn_Box.cs" />
+    <Compile Include="Class_Box_Spawner.cs" />
     <Compile Include="CustomGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>

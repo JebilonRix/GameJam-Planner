@@ -28,22 +28,22 @@ namespace GameJam_Planner
             if (type == 0)
             {
                 SetUpContextMenuNoteBox();
-                MyLockButton = Spawn_Box.Spawner.LockButton(this, isLocked);
+                MyLockButton = Class_Box_Spawner.Spawner.LockButton(this, isLocked);
                 MyLockButton.Click += ButtonLock_Click;
 
             }
             else if (type == 1)
             {
                 SetUpContextMenuPic();
-                MyLockButton = Spawn_Box.Spawner.LockButton(this, isLocked);
+                MyLockButton = Class_Box_Spawner.Spawner.LockButton(this, isLocked);
                 MyLockButton.Click += ButtonLock_Click;
             }
             else if (type == 2)
             {
                 SetUpContextMenuToDo();
-                MyLockButton = Spawn_Box.Spawner.LockButton(this, isLocked);
+                MyLockButton = Class_Box_Spawner.Spawner.LockButton(this, isLocked);
                 MyLockButton.Click += ButtonLock_Click;
-                MyAddButton = Spawn_Box.Spawner.AddButton(this);
+                MyAddButton = Class_Box_Spawner.Spawner.AddButton(this);
                 MyAddButton.Click += AddButton_Click;
             }
 
@@ -51,7 +51,7 @@ namespace GameJam_Planner
         protected override void OnMouseDown(MouseEventArgs e)
         {
             point = e.Location;
-            string TypeOfBox = Spawn_Box.Spawner.TypeOfBox;
+            string TypeOfBox = Class_Box_Spawner.Spawner.TypeOfBox;
 
             switch (TypeOfBox)
             {
@@ -136,12 +136,12 @@ namespace GameJam_Planner
         private void Delete_Click(object sender, EventArgs e)
         {
             this.Dispose();
-            string typeofbox = Spawn_Box.Spawner.TypeOfBox;
+            string typeofbox = Class_Box_Spawner.Spawner.TypeOfBox;
             switch (typeofbox)
             {
-                case "note": Spawn_Box.Spawner.MyBoxList.Remove(this); break;
-                case "pic": Spawn_Box.Spawner.MyBoxList.Remove(this); break;
-                case "do": Spawn_Box.Spawner.MyBoxList.Remove(this); break;
+                case "note": Class_Box_Spawner.Spawner.MyBoxList.Remove(this); break;
+                case "pic": Class_Box_Spawner.Spawner.MyBoxList.Remove(this); break;
+                case "do": Class_Box_Spawner.Spawner.MyBoxList.Remove(this); break;
                 default: break;
             }
         }
@@ -171,7 +171,7 @@ namespace GameJam_Planner
                 else
                 {
                     this.Dispose();
-                    Spawn_Box.Spawner.MyBoxList.Remove(this);
+                    Class_Box_Spawner.Spawner.MyBoxList.Remove(this);
                 }
             }
 
