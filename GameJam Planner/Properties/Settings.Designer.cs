@@ -133,5 +133,17 @@ namespace GameJam_Planner.Properties {
                 return ((global::System.Windows.Forms.ImageLayout)(this["BackgroudImageLayout"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Ayar {
+            get {
+                return ((string)(this["Ayar"]));
+            }
+            set {
+                this["Ayar"] = value;
+            }
+        }
     }
 }

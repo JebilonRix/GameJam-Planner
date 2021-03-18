@@ -16,6 +16,8 @@ namespace GameJam_Planner
         public bool isLocked;
         public Point point;
         public int BoxID;
+        public Size BoxSize;
+        public string BoxTitle;
 
         Form_CustomMessageBox FNC = new Form_CustomMessageBox();
         ContextMenu cm = new ContextMenu();
@@ -193,15 +195,18 @@ namespace GameJam_Planner
                 case "note":
                     if (rtb.Text == null) { rtb.Text = ""; }
                     output.RichText = rtb.Text;
+                    output.BoxSize = BoxSize;
                     break;
                 case "pic":
                     output.PictureLocation = LocationOfPicture;
+                    output.BoxSize = BoxSize;
                     break;
                 case "do":
                     int len = MyTodoList.Items.Count;
                     output.ItemID = new int[len];
                     output.ItemName = new string[len];
                     output.ItemChecked = new bool[len];
+                    output.BoxSize = BoxSize;
                     for (int i = 0; i < len; i++)
                     {
                         output.ItemID[i] = i;
@@ -224,6 +229,7 @@ namespace GameJam_Planner
         public Color BoxBackColor { get; set; }
         public bool BoxIsLocked { get; set; }
         public Color LockButtonBackground { get; set; }
+        public Size BoxSize { get; set; }
         public string RichText { get; set; }
         public string PictureLocation { get; set; }
         public int[] ItemID { get; set; }

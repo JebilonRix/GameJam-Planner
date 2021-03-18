@@ -20,13 +20,7 @@ namespace GameJam_Planner
             InitializeComponent();
             Class_Box_Spawner.Spawner = new Class_Box_Spawner();
             this.KeyDown += new KeyEventHandler(Form_Board_KeyDown);
-            tb.Columns.Add("Situation", typeof(bool));
-            tb.Columns.Add("Task", typeof(string));
-            tb.Columns.Add("Managing", typeof(string));
-            tb.AcceptChanges();
-
-            Class_Box_Spawner.Spawner.dr = tb.NewRow();
-            dataGridViewSummary.DataSource = tb;
+            TableImport();
         }
         private void Form_Board_Load(object sender, EventArgs e)
         {
@@ -41,8 +35,11 @@ namespace GameJam_Planner
             Point cp = PointToClient(Cursor.Position);
             Class_Box_Spawner.Spawner.SpawnLocation = new Point(cp.X, cp.Y);
             var BoxSpawn = Class_Box_Spawner.Spawner.SpawnBox(type);
-            this.Controls.Add(BoxSpawn);
             BoxSpawn.BringToFront();
+            this.Controls.Add(BoxSpawn);
+
+            tb.Rows.Add(false, BoxSpawn.BoxTitle, "");
+            dataGridViewSummary.DataSource = tb;
         }
         public void GetMainValues(string location)
         {
@@ -95,6 +92,14 @@ namespace GameJam_Planner
             else { Properties.Settings.Default.GameEngine = comboBox1.Text; }
 
             Properties.Settings.Default.Save();
+        }
+        private void TableImport()
+        {
+            tb.Columns.Add("Situation", typeof(bool));
+            tb.Columns.Add("Task", typeof(string));
+            tb.Columns.Add("Managing", typeof(string));
+            tb.AcceptChanges();
+            dataGridViewSummary.DataSource = tb;
         }
 
         private void RightClickNote_Click(object sender, EventArgs e)
@@ -154,6 +159,8 @@ namespace GameJam_Planner
             }
 
             Class_Box_Spawner.Spawner.MyBoxList = new List<CustomGroupBox>();
+            tb = new DataTable();
+            TableImport();
 
             textBox1.Text = "";
             textBox2.Text = "";
@@ -196,6 +203,8 @@ namespace GameJam_Planner
                 }
 
                 Class_Box_Spawner.Spawner.MyBoxList = new List<CustomGroupBox>();
+                tb = new DataTable();
+                dataGridViewSummary.DataSource = tb;
 
                 textBox1.Text = "";
                 textBox2.Text = "";
@@ -244,5 +253,7 @@ namespace GameJam_Planner
 
 
         }
+
+        
     }
 }
