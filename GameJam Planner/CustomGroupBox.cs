@@ -188,7 +188,7 @@ namespace GameJam_Planner
             output.BoxLocation = Location;
             output.BoxBackColor = BackColor;
             output.BoxIsLocked = isLocked;
-            output.LockButtonBackground = MyLockButton.BackColor;
+            output.LockButtonBackground = MyLockButton.BackColor; // 
 
             switch (output.BoxType)
             {
