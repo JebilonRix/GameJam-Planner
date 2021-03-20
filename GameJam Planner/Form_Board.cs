@@ -37,7 +37,6 @@ namespace GameJam_Planner
             var BoxSpawn = Class_Box_Spawner.Spawner.SpawnBox(type);
             BoxSpawn.BringToFront();
             this.Controls.Add(BoxSpawn);
-
             tb.Rows.Add(false, BoxSpawn.BoxTitle, "");
             dataGridViewSummary.DataSource = tb;
         }
@@ -97,7 +96,7 @@ namespace GameJam_Planner
         {
             tb.Columns.Add("Situation", typeof(bool));
             tb.Columns.Add("Task", typeof(string));
-            tb.Columns.Add("Managing", typeof(string));
+            tb.Columns.Add("Person", typeof(string));
             tb.AcceptChanges();
             dataGridViewSummary.DataSource = tb;
         }
@@ -254,6 +253,5 @@ namespace GameJam_Planner
 
         }
 
-        
     }
 }

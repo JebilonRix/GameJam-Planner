@@ -319,7 +319,7 @@ namespace GameJam_Planner
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(23, 611);
+            this.button4.Location = new System.Drawing.Point(23, 688);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(34, 29);
             this.button4.TabIndex = 13;
@@ -339,7 +339,7 @@ namespace GameJam_Planner
             this.dataGridViewSummary.MultiSelect = false;
             this.dataGridViewSummary.Name = "dataGridViewSummary";
             this.dataGridViewSummary.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridViewSummary.Size = new System.Drawing.Size(308, 580);
+            this.dataGridViewSummary.Size = new System.Drawing.Size(308, 657);
             this.dataGridViewSummary.TabIndex = 0;
             // 
             // panelMenu
